@@ -1,0 +1,35 @@
+{
+  "thresholds": {},
+  "signal_weights": {},
+  "regime_performance": {},
+  "confirmation_optimizer": {},
+  "entry_quality": {},
+  "discovered_rules": [
+    {
+      "rule": "BEST_ENTRY_TYPE",
+      "value": "SWING_HIGH",
+      "confidence": 0.5135294117647059
+    },
+    {
+      "rule": "OPTIMAL_SL_MULTIPLIER",
+      "value": 1.88,
+      "confidence": 0.8
+    },
+    {
+      "rule": "AVOID_HOURS",
+      "value": [
+        10,
+        15,
+        9
+      ],
+      "confidence": 0.7
+    },
+    {
+      "rule": "BEST_MARKET_CONDITION",
+      "value": "TRENDING",
+      "confidence": 1.0
+    }
+  ],
+  "version": 1,
+  "last_updated": "2026-03-15 16:07:30.767506"
+}

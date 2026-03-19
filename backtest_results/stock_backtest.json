@@ -1,0 +1,322 @@
+[
+  {
+    "symbol": "LT",
+    "total_trades": 2334,
+    "wins": 1124,
+    "losses": 1210,
+    "win_rate": 48.2,
+    "total_pnl": 1118682.72,
+    "total_return": 2237.4,
+    "max_drawdown": 50.5,
+    "yearly_pnl": {
+      "2022": 189094.2857142847,
+      "2023": 260721.8303571412,
+      "2024": 668866.6071428567
+    },
+    "final_capital": 1168682.72
+  },
+  {
+    "symbol": "NTPC",
+    "total_trades": 2316,
+    "wins": 1103,
+    "losses": 1213,
+    "win_rate": 47.6,
+    "total_pnl": 1117662.59,
+    "total_return": 2235.3,
+    "max_drawdown": 37.3,
+    "yearly_pnl": {
+      "2022": 155298.21428571557,
+      "2023": 256548.4821428578,
+      "2024": 705815.8928571411
+    },
+    "final_capital": 1167662.59
+  },
+  {
+    "symbol": "MARUTI",
+    "total_trades": 2307,
+    "wins": 1112,
+    "losses": 1195,
+    "win_rate": 48.2,
+    "total_pnl": 914916.7,
+    "total_return": 1829.8,
+    "max_drawdown": 29.9,
+    "yearly_pnl": {
+      "2022": 285359.9107142856,
+      "2023": 221266.07142857142,
+      "2024": 408290.71428571455
+    },
+    "final_capital": 964916.7
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "total_trades": 2307,
+    "wins": 1068,
+    "losses": 1239,
+    "win_rate": 46.3,
+    "total_pnl": 767479.73,
+    "total_return": 1535.0,
+    "max_drawdown": 41.3,
+    "yearly_pnl": {
+      "2022": 175037.72321428498,
+      "2023": 95903.12500000183,
+      "2024": 496538.8839285715
+    },
+    "final_capital": 817479.73
+  },
+  {
+    "symbol": "SBIN",
+    "total_trades": 2314,
+    "wins": 1095,
+    "losses": 1219,
+    "win_rate": 47.3,
+    "total_pnl": 687432.05,
+    "total_return": 1374.9,
+    "max_drawdown": 144.1,
+    "yearly_pnl": {
+      "2022": 23462.14285714249,
+      "2023": 91700.35714285745,
+      "2024": 572269.5535714277
+    },
+    "final_capital": 737432.05
+  },
+  {
+    "symbol": "POWERGRID",
+    "total_trades": 2277,
+    "wins": 1085,
+    "losses": 1192,
+    "win_rate": 47.7,
+    "total_pnl": 529489.07,
+    "total_return": 1059.0,
+    "max_drawdown": 76.2,
+    "yearly_pnl": {
+      "2022": 108517.25000000164,
+      "2023": 105235.92857142854,
+      "2024": 315735.892857143
+    },
+    "final_capital": 579489.07
+  },
+  {
+    "symbol": "TATAMOTORS",
+    "total_trades": 2305,
+    "wins": 1121,
+    "losses": 1184,
+    "win_rate": 48.6,
+    "total_pnl": 454873.63,
+    "total_return": 909.7,
+    "max_drawdown": 31.3,
+    "yearly_pnl": {
+      "2022": 89824.17857142583,
+      "2023": 142472.83928571365,
+      "2024": 222576.61607142762
+    },
+    "final_capital": 504873.63
+  },
+  {
+    "symbol": "RELIANCE",
+    "total_trades": 2351,
+    "wins": 1132,
+    "losses": 1219,
+    "win_rate": 48.1,
+    "total_pnl": 271109.78,
+    "total_return": 542.2,
+    "max_drawdown": 28.2,
+    "yearly_pnl": {
+      "2022": 129420.53571428591,
+      "2023": 66140.71428571381,
+      "2024": 75548.52678571377
+    },
+    "final_capital": 321109.78
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "total_trades": 2330,
+    "wins": 1076,
+    "losses": 1254,
+    "win_rate": 46.2,
+    "total_pnl": 250869.37,
+    "total_return": 501.7,
+    "max_drawdown": 40.9,
+    "yearly_pnl": {
+      "2022": 139924.01785714293,
+      "2023": 84986.51785714153,
+      "2024": 25958.839285714104
+    },
+    "final_capital": 300869.37
+  },
+  {
+    "symbol": "TCS",
+    "total_trades": 2349,
+    "wins": 1093,
+    "losses": 1256,
+    "win_rate": 46.5,
+    "total_pnl": 249078.88,
+    "total_return": 498.2,
+    "max_drawdown": 43.1,
+    "yearly_pnl": {
+      "2022": 141301.07142857165,
+      "2023": 166664.7321428571,
+      "2024": -58886.91964285676
+    },
+    "final_capital": 299078.88
+  },
+  {
+    "symbol": "AXISBANK",
+    "total_trades": 2275,
+    "wins": 1046,
+    "losses": 1229,
+    "win_rate": 46.0,
+    "total_pnl": 182019.53,
+    "total_return": 364.0,
+    "max_drawdown": 64.4,
+    "yearly_pnl": {
+      "2022": 59832.05357142788,
+      "2023": -23753.258928572308,
+      "2024": 145940.7366071431
+    },
+    "final_capital": 232019.53
+  },
+  {
+    "symbol": "INFY",
+    "total_trades": 2338,
+    "wins": 1082,
+    "losses": 1256,
+    "win_rate": 46.3,
+    "total_pnl": 159138.93,
+    "total_return": 318.3,
+    "max_drawdown": 61.7,
+    "yearly_pnl": {
+      "2022": 34119.28571428572,
+      "2023": 54753.928571428885,
+      "2024": 70265.71428571461
+    },
+    "final_capital": 209138.93
+  },
+  {
+    "symbol": "TATASTEEL",
+    "total_trades": 2362,
+    "wins": 1070,
+    "losses": 1292,
+    "win_rate": 45.3,
+    "total_pnl": 156574.73,
+    "total_return": 313.1,
+    "max_drawdown": 123.6,
+    "yearly_pnl": {
+      "2022": -18618.482142858295,
+      "2023": -39344.55357142749,
+      "2024": 214537.76785714255
+    },
+    "final_capital": 206574.73
+  },
+  {
+    "symbol": "WIPRO",
+    "total_trades": 2332,
+    "wins": 1061,
+    "losses": 1271,
+    "win_rate": 45.5,
+    "total_pnl": 120117.59,
+    "total_return": 240.2,
+    "max_drawdown": 42.6,
+    "yearly_pnl": {
+      "2022": 133120.98214285626,
+      "2023": 19836.428571429064,
+      "2024": -32839.82142857028
+    },
+    "final_capital": 170117.59
+  },
+  {
+    "symbol": "HDFCBANK",
+    "total_trades": 2338,
+    "wins": 1083,
+    "losses": 1255,
+    "win_rate": 46.3,
+    "total_pnl": 103377.81,
+    "total_return": 206.8,
+    "max_drawdown": 52.2,
+    "yearly_pnl": {
+      "2022": 135807.22321428574,
+      "2023": 22546.26785714227,
+      "2024": -54975.6785714281
+    },
+    "final_capital": 153377.81
+  },
+  {
+    "symbol": "ONGC",
+    "total_trades": 2288,
+    "wins": 1064,
+    "losses": 1224,
+    "win_rate": 46.5,
+    "total_pnl": 89043.28,
+    "total_return": 178.1,
+    "max_drawdown": 136.1,
+    "yearly_pnl": {
+      "2022": -43378.59375000015,
+      "2023": -29431.25000000047,
+      "2024": 161853.12499999895
+    },
+    "final_capital": 139043.28
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "total_trades": 2309,
+    "wins": 1052,
+    "losses": 1257,
+    "win_rate": 45.6,
+    "total_pnl": -165406.21,
+    "total_return": -330.8,
+    "max_drawdown": 221.3,
+    "yearly_pnl": {
+      "2022": -19532.142857142455,
+      "2023": -81180.21428571396,
+      "2024": -64693.85714285725
+    },
+    "final_capital": -115406.21
+  },
+  {
+    "symbol": "ICICIBANK",
+    "total_trades": 2314,
+    "wins": 1035,
+    "losses": 1279,
+    "win_rate": 44.7,
+    "total_pnl": -167664.38,
+    "total_return": -335.3,
+    "max_drawdown": 208.8,
+    "yearly_pnl": {
+      "2022": 48624.99999999962,
+      "2023": -120733.12500000007,
+      "2024": -95556.24999999987
+    },
+    "final_capital": -117664.38
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "total_trades": 2290,
+    "wins": 1065,
+    "losses": 1225,
+    "win_rate": 46.5,
+    "total_pnl": -178572.05,
+    "total_return": -357.1,
+    "max_drawdown": 293.5,
+    "yearly_pnl": {
+      "2022": -44619.12946428534,
+      "2023": -62833.23660714287,
+      "2024": -71119.68750000001
+    },
+    "final_capital": -128572.05
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "total_trades": 2243,
+    "wins": 975,
+    "losses": 1268,
+    "win_rate": 43.5,
+    "total_pnl": -200504.38,
+    "total_return": -401.0,
+    "max_drawdown": 345.5,
+    "yearly_pnl": {
+      "2022": -138208.43750000003,
+      "2023": -30188.437500000087,
+      "2024": -32107.500000000167
+    },
+    "final_capital": -150504.38
+  }
+]

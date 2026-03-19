@@ -1,0 +1,66 @@
+[
+  {
+    "symbol": "HINDUNILVR",
+    "total_trades": 1,
+    "wins": 0,
+    "losses": 1,
+    "win_rate": 0.0,
+    "total_pnl": -849.46,
+    "total_return": -1.7,
+    "max_drawdown": 1.7,
+    "yearly_pnl": {
+      "2024": -849.4642857143033
+    },
+    "final_capital": 49150.54,
+    "ml_used": true,
+    "type": "STOCK"
+  },
+  {
+    "symbol": "TATAMOTORS",
+    "total_trades": 2,
+    "wins": 1,
+    "losses": 1,
+    "win_rate": 50.0,
+    "total_pnl": -1088.54,
+    "total_return": -2.2,
+    "max_drawdown": 2.2,
+    "yearly_pnl": {
+      "2023": -1088.535714285707
+    },
+    "final_capital": 48911.46,
+    "ml_used": true,
+    "type": "STOCK"
+  },
+  {
+    "symbol": "NTPC",
+    "total_trades": 1,
+    "wins": 0,
+    "losses": 1,
+    "win_rate": 0.0,
+    "total_pnl": -4267.86,
+    "total_return": -8.5,
+    "max_drawdown": 8.5,
+    "yearly_pnl": {
+      "2022": -4267.857142857135
+    },
+    "final_capital": 45732.14,
+    "ml_used": true,
+    "type": "STOCK"
+  },
+  {
+    "symbol": "LT",
+    "total_trades": 1,
+    "wins": 0,
+    "losses": 1,
+    "win_rate": 0.0,
+    "total_pnl": -4487.23,
+    "total_return": -9.0,
+    "max_drawdown": 9.0,
+    "yearly_pnl": {
+      "2024": -4487.2321428571295
+    },
+    "final_capital": 45512.77,
+    "ml_used": true,
+    "type": "STOCK"
+  }
+]

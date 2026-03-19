@@ -1,0 +1,31 @@
+{
+  "optimal_score": 18,
+  "optimal_hours": [],
+  "best_regime": "TRENDING_DOWN",
+  "min_sl_atr": 0.75,
+  "require_fvg": false,
+  "failure_patterns": {
+    "counter_trend": 3832,
+    "no_fvg": 588,
+    "no_liq": 132,
+    "wrong_wyckoff": 601,
+    "sl_too_tight": 411,
+    "bad_session": 0,
+    "low_score": 0,
+    "ranging_market": 5296,
+    "no_trap": 5828,
+    "low_ml": 5620,
+    "timeout": 1527
+  },
+  "fixes": {
+    "no_trap": "Prefer trades with trap confirmation",
+    "low_ml": "Raise ML threshold to 0.5",
+    "sl_too_tight": "Minimum SL = 0.75x ATR",
+    "ranging_market": "In ranging: require gamma wall or trap",
+    "counter_trend": "Require both 5min+15min trend aligned",
+    "wrong_wyckoff": "Never buy in DIST/MARK phase",
+    "no_fvg": "Always require FVG for entry confirmation",
+    "timeout": "Reduce timeout or use trailing SL",
+    "no_liq": "Require liquidity sweep before entry"
+  }
+}

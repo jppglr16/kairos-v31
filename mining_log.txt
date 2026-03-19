@@ -1,0 +1,212 @@
+nohup: ignoring input
+
+============================================================
+  FAILURE PATTERN MINING
+  Analyzing 3 year failures...
+============================================================
+
+Mining NIFTY...
+[MINER] Analyzing NIFTY failures...
+[MINER] NIFTY: Analyzed=1416 Corrected=489 Rate=34.5%
+[MINER] NIFTY Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 489 corrections...
+[MINER] Not enough correction features
+
+Mining BANKNIFTY...
+[MINER] Analyzing BANKNIFTY failures...
+[MINER] BANKNIFTY: Analyzed=1333 Corrected=450 Rate=33.8%
+[MINER] BANKNIFTY Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 450 corrections...
+[MINER] Not enough correction features
+
+Mining SENSEX...
+[MINER] Analyzing SENSEX failures...
+[MINER] SENSEX: Analyzed=1423 Corrected=476 Rate=33.5%
+[MINER] SENSEX Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 476 corrections...
+[MINER] Not enough correction features
+
+Mining FINNIFTY...
+[MINER] Analyzing FINNIFTY failures...
+[MINER] FINNIFTY: Analyzed=1405 Corrected=455 Rate=32.4%
+[MINER] FINNIFTY Suggestions: SL=1.91x Entry=SWING_HIGH
+[MINER] Training on 455 corrections...
+[MINER] Not enough correction features
+
+Mining MIDCPNIFTY...
+[MINER] Analyzing MIDCPNIFTY failures...
+[MINER] MIDCPNIFTY: Analyzed=1450 Corrected=400 Rate=27.6%
+[MINER] MIDCPNIFTY Suggestions: SL=1.89x Entry=SWING_HIGH
+[MINER] Training on 400 corrections...
+[MINER] Not enough correction features
+
+Mining CRUDEOIL...
+[MINER] Analyzing CRUDEOIL failures...
+[MINER] CRUDEOIL: Analyzed=661 Corrected=288 Rate=43.6%
+[MINER] CRUDEOIL Suggestions: SL=1.89x Entry=SWING_HIGH
+[MINER] Training on 288 corrections...
+[MINER] Not enough correction features
+
+Mining GOLDM...
+[MINER] Analyzing GOLDM failures...
+[MINER] GOLDM: Analyzed=964 Corrected=374 Rate=38.8%
+[MINER] GOLDM Suggestions: SL=1.88x Entry=SWING_HIGH
+[MINER] Training on 374 corrections...
+[MINER] Not enough correction features
+
+Mining SILVERM...
+[MINER] Analyzing SILVERM failures...
+[MINER] SILVERM: Analyzed=1095 Corrected=423 Rate=38.6%
+[MINER] SILVERM Suggestions: SL=1.86x Entry=SWING_HIGH
+[MINER] Training on 423 corrections...
+[MINER] Not enough correction features
+
+Mining LT...
+[MINER] Analyzing LT failures...
+[MINER] LT: Analyzed=1400 Corrected=464 Rate=33.1%
+[MINER] LT Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 464 corrections...
+[MINER] Not enough correction features
+
+Mining NTPC...
+[MINER] Analyzing NTPC failures...
+[MINER] NTPC: Analyzed=1435 Corrected=471 Rate=32.8%
+[MINER] NTPC Suggestions: SL=1.88x Entry=SWING_HIGH
+[MINER] Training on 471 corrections...
+[MINER] Not enough correction features
+
+Mining MARUTI...
+[MINER] Analyzing MARUTI failures...
+[MINER] MARUTI: Analyzed=1421 Corrected=465 Rate=32.7%
+[MINER] MARUTI Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 465 corrections...
+[MINER] Not enough correction features
+
+Mining BHARTIARTL...
+[MINER] Analyzing BHARTIARTL failures...
+[MINER] BHARTIARTL: Analyzed=1473 Corrected=528 Rate=35.8%
+[MINER] BHARTIARTL Suggestions: SL=1.88x Entry=SWING_HIGH
+[MINER] Training on 528 corrections...
+[MINER] Not enough correction features
+
+Mining SBIN...
+[MINER] Analyzing SBIN failures...
+[MINER] SBIN: Analyzed=1398 Corrected=492 Rate=35.2%
+[MINER] SBIN Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 492 corrections...
+[MINER] Not enough correction features
+
+Mining TATAMOTORS...
+[MINER] Analyzing TATAMOTORS failures...
+[MINER] TATAMOTORS: Analyzed=1468 Corrected=513 Rate=34.9%
+[MINER] TATAMOTORS Suggestions: SL=1.90x Entry=SWING_HIGH
+[MINER] Training on 513 corrections...
+[MINER] Not enough correction features
+
+Mining RELIANCE...
+[MINER] Analyzing RELIANCE failures...
+[MINER] RELIANCE: Analyzed=1315 Corrected=479 Rate=36.4%
+[MINER] RELIANCE Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 479 corrections...
+[MINER] Not enough correction features
+
+Mining HINDUNILVR...
+[MINER] Analyzing HINDUNILVR failures...
+[MINER] HINDUNILVR: Analyzed=1454 Corrected=484 Rate=33.3%
+[MINER] HINDUNILVR Suggestions: SL=1.86x Entry=SWING_HIGH
+[MINER] Training on 484 corrections...
+[MINER] Not enough correction features
+
+Mining TCS...
+[MINER] Analyzing TCS failures...
+[MINER] TCS: Analyzed=1456 Corrected=528 Rate=36.3%
+[MINER] TCS Suggestions: SL=1.87x Entry=SWING_HIGH
+[MINER] Training on 528 corrections...
+[MINER] Not enough correction features
+
+Mining TATASTEEL...
+[MINER] Analyzing TATASTEEL failures...
+[MINER] TATASTEEL: Analyzed=1430 Corrected=483 Rate=33.8%
+[MINER] TATASTEEL Suggestions: SL=1.88x Entry=SWING_HIGH
+[MINER] Training on 483 corrections...
+[MINER] Not enough correction features
+
+============================================================
+  MINING COMPLETE!
+  Total failures analyzed: 28169
+  Correctable: 9677 (34.4% if total>0 else "N/A")%
+
+  Parameter Suggestions:
+  NIFTY:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 34.5%
+  BANKNIFTY:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 33.8%
+  SENSEX:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 33.5%
+  FINNIFTY:
+    SL multiplier: 1.91x
+    Best entry: SWING_HIGH
+    Correction rate: 32.4%
+  MIDCPNIFTY:
+    SL multiplier: 1.89x
+    Best entry: SWING_HIGH
+    Correction rate: 27.6%
+  CRUDEOIL:
+    SL multiplier: 1.89x
+    Best entry: SWING_HIGH
+    Correction rate: 43.6%
+  GOLDM:
+    SL multiplier: 1.88x
+    Best entry: SWING_HIGH
+    Correction rate: 38.8%
+  SILVERM:
+    SL multiplier: 1.86x
+    Best entry: SWING_HIGH
+    Correction rate: 38.6%
+  LT:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 33.1%
+  NTPC:
+    SL multiplier: 1.88x
+    Best entry: SWING_HIGH
+    Correction rate: 32.8%
+  MARUTI:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 32.7%
+  BHARTIARTL:
+    SL multiplier: 1.88x
+    Best entry: SWING_HIGH
+    Correction rate: 35.8%
+  SBIN:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 35.2%
+  TATAMOTORS:
+    SL multiplier: 1.9x
+    Best entry: SWING_HIGH
+    Correction rate: 34.9%
+  RELIANCE:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 36.4%
+  HINDUNILVR:
+    SL multiplier: 1.86x
+    Best entry: SWING_HIGH
+    Correction rate: 33.3%
+  TCS:
+    SL multiplier: 1.87x
+    Best entry: SWING_HIGH
+    Correction rate: 36.3%
+  TATASTEEL:
+    SL multiplier: 1.88x
+    Best entry: SWING_HIGH
+    Correction rate: 33.8%
+============================================================

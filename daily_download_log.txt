@@ -1,0 +1,116 @@
+[I 260317 15:35:10 smartConnect:124] in pool
+NIFTY: +75 candles
+BANKNIFTY: +75 candles
+SENSEX: +75 candles
+FINNIFTY: +75 candles
+MIDCPNIFTY: +75 candles
+CRUDEOIL: +79 candles
+GOLDM: +79 candles
+SILVERM: +79 candles
+LT: +75 candles
+NTPC: +75 candles
+MARUTI: +75 candles
+BHARTIARTL: +75 candles
+SBIN: +75 candles
+TATAMOTORS: +75 candles
+RELIANCE: +75 candles
+HINDUNILVR: +75 candles
+TCS: +75 candles
+TATASTEEL: +75 candles
+Done! Updated 18/18
+[I 260317 19:00:50 smartConnect:124] in pool
+[I 260317 20:01:01 smartConnect:124] in pool
+[I 260317 21:00:22 smartConnect:124] in pool
+[I 260317 22:00:25 smartConnect:124] in pool
+[I 260317 23:01:01 smartConnect:124] in pool
+MCX summary sent!
+[I 260318 00:00:11 smartConnect:124] in pool
+[I 260318 02:00:15 smartConnect:124] in pool
+[I 260318 03:00:25 smartConnect:124] in pool
+[I 260318 04:00:38 smartConnect:124] in pool
+[I 260318 05:00:49 smartConnect:124] in pool
+[I 260318 06:00:05 smartConnect:124] in pool
+[I 260318 07:00:39 smartConnect:124] in pool
+[I 260318 08:00:24 smartConnect:124] in pool
+[I 260318 09:00:52 smartConnect:124] in pool
+[I 260318 11:00:47 smartConnect:124] in pool
+[I 260318 12:00:33 smartConnect:124] in pool
+[I 260318 13:00:21 smartConnect:124] in pool
+[I 260318 14:00:59 smartConnect:124] in pool
+[I 260318 15:00:44 smartConnect:124] in pool
+NSE summary sent!
+[I 260318 15:35:27 smartConnect:124] in pool
+NIFTY: +75 candles
+BANKNIFTY: +75 candles
+SENSEX: +75 candles
+FINNIFTY: +75 candles
+MIDCPNIFTY: +75 candles
+CRUDEOIL: +79 candles
+GOLDM: +79 candles
+SILVERM: +79 candles
+LT: +75 candles
+NTPC: +75 candles
+MARUTI: +75 candles
+BHARTIARTL: +75 candles
+SBIN: +75 candles
+TATAMOTORS: +75 candles
+RELIANCE: +75 candles
+HINDUNILVR: +75 candles
+TCS: +75 candles
+TATASTEEL: +75 candles
+Done! Updated 18/18
+[I 260318 16:00:04 smartConnect:124] in pool
+[I 260318 17:00:22 smartConnect:124] in pool
+[I 260318 18:00:31 smartConnect:124] in pool
+[I 260318 19:00:47 smartConnect:124] in pool
+[I 260318 21:00:33 smartConnect:124] in pool
+[I 260318 22:00:49 smartConnect:124] in pool
+[I 260318 23:00:19 smartConnect:124] in pool
+MCX summary sent!
+[I 260319 00:00:19 smartConnect:124] in pool
+[I 260319 01:00:55 smartConnect:124] in pool
+[I 260319 06:00:46 smartConnect:124] in pool
+[I 260319 07:00:02 smartConnect:124] in pool
+[I 260319 08:00:34 smartConnect:124] in pool
+[08:30] Updating options master...
+Old: 130541 | New: 130541
+Added: 0 | Expired removed: 0
+Valid but removed: 0
+Done! Options master updated!
+[I 260319 09:00:21 smartConnect:124] in pool
+[I 260319 10:00:43 smartConnect:124] in pool
+[I 260319 11:00:59 smartConnect:124] in pool
+[I 260319 12:00:22 smartConnect:124] in pool
+[I 260319 14:00:20 smartConnect:124] in pool
+[I 260319 15:00:05 smartConnect:124] in pool
+NSE summary sent!
+[I 260319 15:35:38 smartConnect:124] in pool
+[E 260319 15:35:49 smartConnect:246] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData. Error: Too many requests. URL: https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData, Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '77:01:9a:e5:46:a2', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'exchange': 'NSE', 'symboltoken': '3456', 'interval': 'FIVE_MINUTE', 'fromdate': '2026-03-19 09:00', 'todate': '2026-03-19 15:30'}, Response: {'message': 'Too many requests', 'errorcode': 'AB1019', 'status': False, 'data': None}
+[E 260319 15:35:50 smartConnect:246] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData. Error: Too many requests. URL: https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData, Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '77:01:9a:e5:46:a2', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'exchange': 'NSE', 'symboltoken': '2885', 'interval': 'FIVE_MINUTE', 'fromdate': '2026-03-19 09:00', 'todate': '2026-03-19 15:30'}, Response: {'message': 'Too many requests', 'errorcode': 'AB1019', 'status': False, 'data': None}
+[E 260319 15:35:51 smartConnect:246] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData. Error: Too many requests. URL: https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData, Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '77:01:9a:e5:46:a2', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'exchange': 'NSE', 'symboltoken': '1394', 'interval': 'FIVE_MINUTE', 'fromdate': '2026-03-19 09:00', 'todate': '2026-03-19 15:30'}, Response: {'message': 'Too many requests', 'errorcode': 'AB1019', 'status': False, 'data': None}
+[E 260319 15:35:52 smartConnect:246] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData. Error: Too many requests. URL: https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData, Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '77:01:9a:e5:46:a2', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'exchange': 'NSE', 'symboltoken': '11536', 'interval': 'FIVE_MINUTE', 'fromdate': '2026-03-19 09:00', 'todate': '2026-03-19 15:30'}, Response: {'message': 'Too many requests', 'errorcode': 'AB1019', 'status': False, 'data': None}
+[E 260319 15:35:52 smartConnect:246] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData. Error: Too many requests. URL: https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData, Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '77:01:9a:e5:46:a2', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'exchange': 'NSE', 'symboltoken': '3499', 'interval': 'FIVE_MINUTE', 'fromdate': '2026-03-19 09:00', 'todate': '2026-03-19 15:30'}, Response: {'message': 'Too many requests', 'errorcode': 'AB1019', 'status': False, 'data': None}
+NIFTY: +75 candles
+BANKNIFTY: +75 candles
+SENSEX: +75 candles
+FINNIFTY: +75 candles
+MIDCPNIFTY: +75 candles
+CRUDEOIL: +79 candles
+GOLDM: +79 candles
+SILVERM: +79 candles
+LT: +75 candles
+NTPC: +75 candles
+MARUTI: +75 candles
+BHARTIARTL: +75 candles
+SBIN: +75 candles
+Done! Updated 13/18
+[I 260319 16:00:08 smartConnect:124] in pool
+[I 260319 17:00:38 smartConnect:124] in pool
+python3: can't open file '/data/data/com.termux/files/home/kairos_kotak_bot/download_stock_data.py': [Errno 2] No such file or directory
+python3: can't open file '/data/data/com.termux/files/home/kairos_kotak_bot/download_stock_data.py': [Errno 2] No such file or directory
+python3: can't open file '/data/data/com.termux/files/home/kairos_kotak_bot/download_stock_data.py': [Errno 2] No such file or directory
+[I 260319 18:00:52 smartConnect:124] in pool
+[I 260319 20:00:36 smartConnect:124] in pool
+[I 260319 21:00:02 smartConnect:124] in pool
+[I 260319 22:00:01 smartConnect:124] in pool
+[I 260319 23:00:12 smartConnect:124] in pool

@@ -1,0 +1,10 @@
+
+=================================================================
+  KAIROS V31 BACKTEST V2 - FULL OPTIONS MODEL
+  Theta + IV Crush + Spread + Delta Entry
+  RR=1:2 | Break-even at 1R | 50% exit at 1R/2R
+  ATR > 0.35% | Signal from index
+  Capital: Rs.50,000
+=================================================================
+
+[V31] NIFTY... 

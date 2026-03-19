@@ -1,0 +1,481 @@
+{
+  "instruments": {
+    "NIFTY": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "BANKNIFTY": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "SENSEX": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "FINNIFTY": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "MIDCPNIFTY": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "CRUDEOIL": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "GOLDM": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "SILVERM": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "LT": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "NTPC": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "MARUTI": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "BHARTIARTL": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "SBIN": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "TATAMOTORS": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "RELIANCE": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "HINDUNILVR": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "TCS": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    },
+    "TATASTEEL": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "sl_multiplier": 1.88,
+      "min_kairos": 15,
+      "min_confirmation": 4,
+      "best_hours": [
+        9,
+        10,
+        13,
+        14
+      ],
+      "avoid_hours": [
+        9,
+        10,
+        15
+      ],
+      "best_market": "TRENDING",
+      "sl_hit_count": 0,
+      "consecutive_losses": 0,
+      "recovery_mode": false,
+      "sl_adjustments": [],
+      "entry_adjustments": []
+    }
+  },
+  "sl_patterns": {},
+  "win_patterns": {},
+  "adjustments": {},
+  "market_performance": {},
+  "hour_performance": {},
+  "total_trades": 0,
+  "total_wins": 0,
+  "total_losses": 0,
+  "last_updated": "2026-03-15 16:07:30.769611"
+}

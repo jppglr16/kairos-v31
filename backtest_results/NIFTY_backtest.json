@@ -1,0 +1,12 @@
+{
+  "instrument": "NIFTY",
+  "total_trades": 4597,
+  "wins": 1531,
+  "losses": 3066,
+  "win_rate": 33.3,
+  "total_pnl": 300959.13,
+  "avg_pnl": 65.47,
+  "avg_win": 1431.66,
+  "avg_loss": -616.73,
+  "profit_factor": 1.16
+}

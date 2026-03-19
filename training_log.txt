@@ -1,0 +1,185 @@
+bash: /data/data/com.t
+============================================================
+  KAIROS+WYCKOFF+ICT+VP ML TRAINING
+  All 18 Instruments - Balanced Approach
+============================================================
+
+────────────────────────────────────────
+  NIFTY (index)
+────────────────────────────────────────
+[TRAIN] NIFTY: 55431 candles...
+[TRAIN] NIFTY: 10128 samples WR:35.6%
+[ML] NIFTY Balanced: 6521 wins 6521 losses
+[ML] RF: Acc=64.5% WP=1596 LP=1013
+[ML] GB: Acc=61.8% WP=1549 LP=1060
+[ML] ✅ NIFTY: RF 64.5% saved!
+
+────────────────────────────────────────
+  BANKNIFTY (index)
+────────────────────────────────────────
+[TRAIN] BANKNIFTY: 55422 candles...
+[TRAIN] BANKNIFTY: 9928 samples WR:34.0%
+[ML] BANKNIFTY Balanced: 6554 wins 6554 losses
+[ML] RF: Acc=66.9% WP=1620 LP=1002
+[ML] GB: Acc=63.1% WP=1643 LP=979
+[ML] ✅ BANKNIFTY: RF 66.9% saved!
+
+────────────────────────────────────────
+  SENSEX (index)
+────────────────────────────────────────
+[TRAIN] No data: SENSEX
+[SKIP] SENSEX: Only 0 samples
+
+────────────────────────────────────────
+  FINNIFTY (index)
+────────────────────────────────────────
+[TRAIN] No data: FINNIFTY
+[SKIP] FINNIFTY: Only 0 samples
+
+────────────────────────────────────────
+  MIDCPNIFTY (index)
+────────────────────────────────────────
+[TRAIN] No data: MIDCPNIFTY
+[SKIP] MIDCPNIFTY: Only 0 samples
+
+────────────────────────────────────────
+  CRUDEOIL (commodity)
+────────────────────────────────────────
+[TRAIN] CRUDEOIL: 59492 candles...
+[TRAIN] CRUDEOIL: 4717 samples WR:35.1%
+[ML] CRUDEOIL Balanced: 3063 wins 3063 losses
+[ML] RF: Acc=70.4% WP=755 LP=471
+[ML] GB: Acc=66.1% WP=738 LP=488
+[ML] ✅ CRUDEOIL: RF 70.4% saved!
+
+────────────────────────────────────────
+  GOLDM (commodity)
+────────────────────────────────────────
+[TRAIN] No data: GOLDM
+[SKIP] GOLDM: Only 0 samples
+
+────────────────────────────────────────
+  SILVERM (commodity)
+────────────────────────────────────────
+[TRAIN] No data: SILVERM
+[SKIP] SILVERM: Only 0 samples
+
+────────────────────────────────────────
+  LT (stock)
+────────────────────────────────────────
+[TRAIN] LT: 55433 candles...
+[TRAIN] LT: 10237 samples WR:34.9%
+[ML] LT Balanced: 6662 wins 6662 losses
+[ML] RF: Acc=68.3% WP=1487 LP=1178
+[ML] GB: Acc=63.0% WP=1475 LP=1190
+[ML] ✅ LT: RF 68.3% saved!
+
+────────────────────────────────────────
+  NTPC (stock)
+────────────────────────────────────────
+[TRAIN] NTPC: 55433 candles...
+[TRAIN] NTPC: 10020 samples WR:33.4%
+[ML] NTPC Balanced: 6674 wins 6674 losses
+[ML] RF: Acc=67.8% WP=1572 LP=1098
+[ML] GB: Acc=63.7% WP=1524 LP=1146
+[ML] ✅ NTPC: RF 67.8% saved!
+
+────────────────────────────────────────
+  MARUTI (stock)
+────────────────────────────────────────
+[TRAIN] MARUTI: 55432 candles...
+[TRAIN] MARUTI: 10085 samples WR:33.5%
+[ML] MARUTI Balanced: 6703 wins 6703 losses
+[ML] RF: Acc=67.8% WP=1565 LP=1117
+[ML] GB: Acc=63.1% WP=1518 LP=1164
+[ML] ✅ MARUTI: RF 67.8% saved!
+
+────────────────────────────────────────
+  BHARTIARTL (stock)
+────────────────────────────────────────
+[TRAIN] BHARTIARTL: 55430 candles...
+[TRAIN] BHARTIARTL: 9910 samples WR:31.0%
+[ML] BHARTIARTL Balanced: 6146 wins 6146 losses
+[ML] RF: Acc=68.8% WP=1225 LP=1234
+[ML] GB: Acc=63.1% WP=1236 LP=1223
+[ML] ✅ BHARTIARTL: RF 68.8% saved!
+
+────────────────────────────────────────
+  SBIN (stock)
+────────────────────────────────────────
+[TRAIN] SBIN: 55432 candles...
+[TRAIN] SBIN: 9905 samples WR:33.1%
+[ML] SBIN Balanced: 6564 wins 6564 losses
+[ML] RF: Acc=67.4% WP=1487 LP=1139
+[ML] GB: Acc=62.1% WP=1439 LP=1187
+[ML] ✅ SBIN: RF 67.4% saved!
+
+────────────────────────────────────────
+  TATAMOTORS (stock)
+────────────────────────────────────────
+[TRAIN] TATAMOTORS: 55434 candles...
+[TRAIN] TATAMOTORS: 10145 samples WR:32.6%
+[ML] TATAMOTORS Balanced: 6622 wins 6622 losses
+[ML] RF: Acc=66.9% WP=1553 LP=1096
+[ML] GB: Acc=62.4% WP=1544 LP=1105
+[ML] ✅ TATAMOTORS: RF 66.9% saved!
+
+────────────────────────────────────────
+  RELIANCE (stock)
+────────────────────────────────────────
+[TRAIN] RELIANCE: 55401 candles...
+[TRAIN] RELIANCE: 10337 samples WR:35.1%
+[ML] RELIANCE Balanced: 6705 wins 6705 losses
+[ML] RF: Acc=68.0% WP=1569 LP=1113
+[ML] GB: Acc=61.9% WP=1563 LP=1119
+[ML] ✅ RELIANCE: RF 68.0% saved!
+
+────────────────────────────────────────
+  HINDUNILVR (stock)
+────────────────────────────────────────
+[TRAIN] HINDUNILVR: 55433 candles...
+[TRAIN] HINDUNILVR: 9869 samples WR:31.3%
+[ML] HINDUNILVR Balanced: 6172 wins 6172 losses
+[ML] RF: Acc=72.4% WP=1251 LP=1218
+[ML] GB: Acc=62.9% WP=1379 LP=1090
+[ML] ✅ HINDUNILVR: RF 72.4% saved!
+
+────────────────────────────────────────
+  TCS (stock)
+────────────────────────────────────────
+[TRAIN] TCS: 55430 candles...
+[TRAIN] TCS: 9783 samples WR:33.3%
+[ML] TCS Balanced: 6506 wins 6506 losses
+[ML] RF: Acc=71.7% WP=1292 LP=1311
+[ML] GB: Acc=65.1% WP=1369 LP=1234
+[ML] ✅ TCS: RF 71.7% saved!
+
+────────────────────────────────────────
+  TATASTEEL (stock)
+────────────────────────────────────────
+[TRAIN] TATASTEEL: 55571 candles...
+[TRAIN] TATASTEEL: 9909 samples WR:33.6%
+[ML] TATASTEEL Balanced: 6582 wins 6582 losses
+[ML] RF: Acc=68.0% WP=1520 LP=1113
+[ML] GB: Acc=63.4% WP=1507 LP=1126
+[ML] ✅ TATASTEEL: RF 68.0% saved!
+
+============================================================
+  TRAINING COMPLETE!
+============================================================
+  HINDUNILVR: 72.4% (9869 samples)
+  TCS: 71.7% (9783 samples)
+  CRUDEOIL: 70.4% (4717 samples)
+  BHARTIARTL: 68.8% (9910 samples)
+  LT: 68.3% (10237 samples)
+  TATASTEEL: 68.0% (9909 samples)
+  RELIANCE: 68.0% (10337 samples)
+  MARUTI: 67.8% (10085 samples)
+  NTPC: 67.8% (10020 samples)
+  SBIN: 67.4% (9905 samples)
+  BANKNIFTY: 66.9% (9928 samples)
+  TATAMOTORS: 66.9% (10145 samples)
+  NIFTY: 64.5% (10128 samples)
+
+✅ 13/18 models trained!
+nohup: ignoring input

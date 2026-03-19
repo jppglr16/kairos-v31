@@ -1,0 +1,28 @@
+nohup: ignoring input
+2026-03-15 16:01:16,098 [V30] Kotak connected!
+2026-03-15 16:01:17,499 [V30] Capital: Rs.50000
+[I 260315 16:01:17 smartConnect:124] in pool
+2026-03-15 16:01:23,386 [CACHE] Preloading all market data...
+2026-03-15 16:01:28,599 [CACHE] Preload complete!
+2026-03-15 16:01:28,600 [CACHE] Preloading all market data...
+2026-03-15 16:01:31,317 [CACHE] Preload complete!
+2026-03-15 16:01:31,324 [FEED] Live feed started!
+2026-03-15 16:01:31,325 [V30] Kairos V30 LIVE!
+2026-03-15 16:01:31,530 Websocket connected
+2026-03-15 16:01:32,976 [V30] WEEKEND_Sunday - no trading
+2026-03-15 16:01:32,977 [V30] WEEKEND_Sunday - no trading
+2026-03-15 16:03:36,658 Connection to remote host was lost. - reconnect
+2026-03-15 17:07:29,750 [V30] WEEKEND_Sunday - no trading
+2026-03-15 17:07:29,760 [V30] WEEKEND_Sunday - no trading
+2026-03-15 18:07:29,828 [V30] WEEKEND_Sunday - no trading
+2026-03-15 18:07:29,838 [V30] WEEKEND_Sunday - no trading
+2026-03-15 19:07:29,950 [V30] WEEKEND_Sunday - no trading
+2026-03-15 19:07:29,954 [V30] WEEKEND_Sunday - no trading
+2026-03-15 20:20:14,671 [V30] WEEKEND_Sunday - no trading
+2026-03-15 20:20:14,682 [V30] WEEKEND_Sunday - no trading
+2026-03-15 21:30:14,086 [V30] WEEKEND_Sunday - no trading
+2026-03-15 21:30:14,092 [V30] WEEKEND_Sunday - no trading
+2026-03-15 22:30:14,131 [V30] WEEKEND_Sunday - no trading
+2026-03-15 22:30:14,145 [V30] WEEKEND_Sunday - no trading
+2026-03-15 23:30:14,201 [V30] WEEKEND_Sunday - no trading
+2026-03-15 23:30:14,206 [V30] WEEKEND_Sunday - no trading

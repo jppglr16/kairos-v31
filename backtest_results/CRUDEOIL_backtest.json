@@ -1,0 +1,12 @@
+{
+  "instrument": "CRUDEOIL",
+  "total_trades": 5807,
+  "wins": 1724,
+  "losses": 4083,
+  "win_rate": 29.7,
+  "total_pnl": 284394.64,
+  "avg_pnl": 48.97,
+  "avg_win": 2937.26,
+  "avg_loss": -1170.57,
+  "profit_factor": 1.06
+}

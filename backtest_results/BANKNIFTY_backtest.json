@@ -1,0 +1,12 @@
+{
+  "instrument": "BANKNIFTY",
+  "total_trades": 4461,
+  "wins": 1477,
+  "losses": 2984,
+  "win_rate": 33.1,
+  "total_pnl": 321066.54,
+  "avg_pnl": 71.97,
+  "avg_win": 2490.51,
+  "avg_loss": -1125.14,
+  "profit_factor": 1.1
+}

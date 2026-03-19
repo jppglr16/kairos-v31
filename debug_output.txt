@@ -1,0 +1,102 @@
+
+============================================================
+  DEBUG: NIFTY (55431 candles)
+============================================================
+
+Total iterations: 467
+Passed: 2 (0.4%)
+
+--- FILTER BLOCKS ---
+  low_volatility         297 ( 63.6%) ███████████████████████████████
+  wrong_hour             168 ( 36.0%) █████████████████
+
+--- REGIME DISTRIBUTION ---
+  TRENDING_DOWN            2 (0.4%)
+
+--- LIQUIDITY SWEEP TYPES ---
+  EQUAL_HIGHS              2
+  FVG detected:             2
+  OB detected:              2
+  BOS detected:             2
+
+--- SCORE DISTRIBUTION ---
+  Score 25-30        1 █
+  Score 30-35        1 █
+
+--- KEY INSIGHTS ---
+  Biggest blocker: low_volatility (297 trades)
+
+  Liq sweep rate: 100.0%
+  FVG rate: 0.4%
+  BOS rate: 0.4%
+
+
+============================================================
+  DEBUG: BANKNIFTY (55422 candles)
+============================================================
+
+Total iterations: 467
+Passed: 5 (1.1%)
+
+--- FILTER BLOCKS ---
+  low_volatility         288 ( 61.7%) ██████████████████████████████
+  wrong_hour             168 ( 36.0%) █████████████████
+  low_score                4 (  0.9%) 
+  trend_against            2 (  0.4%) 
+
+--- REGIME DISTRIBUTION ---
+  RANGING                 11 (2.4%)
+
+--- LIQUIDITY SWEEP TYPES ---
+  EQUAL_LOWS               9
+  FVG detected:             6
+  OB detected:              9
+  BOS detected:             7
+
+--- SCORE DISTRIBUTION ---
+  Score 5-10         1 █
+  Score 10-15        3 ███
+  Score 15-20        1 █
+  Score 20-25        2 ██
+  Score 25-30        1 █
+  Score 30-35        1 █
+
+--- KEY INSIGHTS ---
+  Biggest blocker: low_volatility (288 trades)
+
+  Liq sweep rate: 100.0%
+  FVG rate: 1.3%
+  BOS rate: 1.5%
+
+
+============================================================
+  DEBUG: SENSEX (55420 candles)
+============================================================
+
+Total iterations: 467
+Passed: 2 (0.4%)
+
+--- FILTER BLOCKS ---
+  low_volatility         297 ( 63.6%) ███████████████████████████████
+  wrong_hour             168 ( 36.0%) █████████████████
+
+--- REGIME DISTRIBUTION ---
+  TRENDING_DOWN            2 (0.4%)
+
+--- LIQUIDITY SWEEP TYPES ---
+  EQUAL_HIGHS              2
+  FVG detected:             2
+  OB detected:              2
+  BOS detected:             2
+
+--- SCORE DISTRIBUTION ---
+  Score 30-35        1 █
+  Score 35-40        1 █
+
+--- KEY INSIGHTS ---
+  Biggest blocker: low_volatility (297 trades)
+
+  Liq sweep rate: 100.0%
+  FVG rate: 0.4%
+  BOS rate: 0.4%
+

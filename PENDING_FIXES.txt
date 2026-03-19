@@ -1,0 +1,9 @@
+
+[DISABLED - Re-enable after training complete]
+File: v31_main.py
+Search: if False:  # Disabled until training complete
+Replace with: if _agr_pct<0.40:  # Re-enable after training 18/18
+Reason: LOW AGREEMENT filter disabled temporarily
+        All untrained models return 0.5 = always 17% agreement
+        Re-enable after Colab training completes!
+Date disabled: 2026-03-19

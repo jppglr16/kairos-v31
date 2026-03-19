@@ -1,0 +1,953 @@
+2026-03-11 17:01:44,687 Login response: {'error': [{'message': 'Any of Mobile Number, UCC or totp is missing'}]}
+2026-03-11 17:03:08,193 Validate response: {'error': [{'code': 400, 'message': "Missing required field 'Auth'"}, {'code': 400, 'message': "Missing required field 'Sid'"}]}
+2026-03-11 17:03:08,273 Connecting to 149.154.167.51:443/TcpFull...
+2026-03-11 17:07:10,347 Login: {'error': [{'code': 400, 'message': "Invalid field 'MobileNumber'; must be a valid mobile number"}]}
+2026-03-11 17:08:26,161 Validate: {'error': [{'code': 400, 'message': "Missing required field 'Auth'"}, {'code': 400, 'message': "Missing required field 'Sid'"}]}
+2026-03-11 17:08:26,189 Connecting to 149.154.167.51:443/TcpFull...
+2026-03-11 17:09:40,055 Login: {'error': [{'code': '10508', 'message': 'TOTP not registered for this user.'}]}
+2026-03-11 18:19:03,097 Validate: {'error': [{'code': 400, 'message': "Missing required field 'Auth'"}, {'code': 400, 'message': "Missing required field 'Sid'"}]}
+2026-03-11 18:19:03,153 Connecting to 149.154.167.51:443/TcpFull...
+2026-03-11 21:42:29,992 Logging into Kotak Neo...
+2026-03-11 21:42:30,225 Login:{'error': [{'code': '10508', 'message': 'TOTP not registered for this user.'}]}
+2026-03-11 21:42:30,382 Validate:{'error': [{'code': 400, 'message': "Missing required field 'Auth'"}, {'code': 400, 'message': "Missing required field 'Sid'"}]}
+2026-03-11 21:42:30,383 Kotak login done!
+2026-03-11 21:42:30,387 Connecting to 149.154.167.51:443/TcpFull...
+2026-03-11 21:42:33,483 Connection to 149.154.167.51:443/TcpFull complete!
+2026-03-11 21:42:34,407 Phone migrated to 5
+2026-03-11 21:42:34,620 Reconnecting to new data center 5
+2026-03-11 21:42:34,820 Disconnecting from 149.154.167.51:443/TcpFull...
+2026-03-11 21:42:34,823 Disconnection from 149.154.167.51:443/TcpFull complete!
+2026-03-11 21:42:34,824 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-11 21:42:36,336 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-11 21:42:52,848 Telegram connected!
+2026-03-11 21:42:52,849 Listening for Kairos X signals...
+2026-03-11 22:36:06,974 Disconnecting from 91.108.56.139:443/TcpFull...
+2026-03-11 22:36:06,983 Disconnection from 91.108.56.139:443/TcpFull complete!
+2026-03-11 22:37:55,906 Logging into Kotak Neo...
+2026-03-11 22:37:56,158 Login:{'error': [{'code': '10508', 'message': 'TOTP not registered for this user.'}]}
+2026-03-11 22:37:56,323 Validate:{'error': [{'code': 400, 'message': "Missing required field 'Auth'"}, {'code': 400, 'message': "Missing required field 'Sid'"}]}
+2026-03-11 22:37:56,323 Kotak login done!
+2026-03-11 22:37:56,349 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-11 22:37:56,414 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-11 22:37:57,060 Telegram connected!
+2026-03-11 22:37:57,062 Listening for Kairos X signals...
+2026-03-11 23:54:00,974 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-11 23:54:00,986 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-11 23:54:00,992 Closing current connection to begin reconnect...
+2026-03-11 23:54:00,993 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-11 23:54:00,995 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-11 23:54:01,017 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:02,070 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:03,085 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:04,096 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:05,677 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:06,684 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:07,688 Failed reconnection attempt 1 with ConnectionError
+2026-03-11 23:54:08,692 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-11 23:54:08,700 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-11 23:54:09,710 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 05:44:50,859 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 05:44:51,889 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 05:44:52,895 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 05:44:53,917 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 05:44:54,924 Failed reconnection attempt 2 with ConnectionError
+2026-03-12 05:44:55,926 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 05:44:55,938 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 05:44:57,043 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 05:44:57,641 Got difference for channel 2226221671 updates
+2026-03-12 05:45:38,609 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 05:45:38,620 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 05:45:38,621 Closing current connection to begin reconnect...
+2026-03-12 05:45:38,662 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 05:45:38,663 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 05:45:38,835 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 06:09:14,618 Disconnecting from 91.108.56.139:443/TcpFull...
+2026-03-12 06:09:14,632 Disconnection from 91.108.56.139:443/TcpFull complete!
+2026-03-12 06:10:08,231 Logging into Kotak Neo...
+2026-03-12 06:10:08,438 Login:{'error': [{'code': '10508', 'message': 'TOTP not registered for this user.'}]}
+2026-03-12 06:10:08,622 Validate:{'error': [{'code': 400, 'message': "Missing required field 'Auth'"}, {'code': 400, 'message': "Missing required field 'Sid'"}]}
+2026-03-12 06:10:08,622 Kotak login done!
+2026-03-12 06:10:08,649 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 06:10:08,715 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 06:10:09,233 Telegram connected!
+2026-03-12 06:10:09,234 Listening for Kairos X signals...
+2026-03-12 06:10:09,235 Next Kotak re-login in 2h 49m
+2026-03-12 06:25:09,425 Got difference for channel 1773718759 updates
+2026-03-12 06:49:04,429 Disconnecting from 91.108.56.139:443/TcpFull...
+2026-03-12 06:49:04,446 Disconnection from 91.108.56.139:443/TcpFull complete!
+2026-03-12 06:49:20,485 Logging into Kotak Neo...
+2026-03-12 06:49:20,779 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzM0MDIwMCwianRpIjoiYWRkN2JkYzUtYzk3My00MDM0LTlhNjMtYzhmMDAyMDk0NmQ1IiwiaWF0IjoxNzczMjc4MzYxLCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.mv7czok-18tokEQLiwGzThdnvO9Ej5EJkleeXYybse9Yk2EKan37b3xT3fVbWXmQC0ESpEJ5-wzNuulj5HZPLAqPa8B-dcES5pbUkk1Qyn__WVv0tZ0MqtIYfKgmqu4Q8FB1j15QXfEz4EiokGpv_3DbqlCm2r-t1H8iOH1D8M--hksu5reauMFUNvbq_lNr3XInl1781-GH9fHqzOucxdx7mmJ-IujqZ4Pb1lJ8s5dIuOlllpRYr1emGU6abR3sNaTcXcsoHTejIBQlnoYujysn7dyObjUeAIDekHGn7rc_gtgpONwhaC0aJSJFTQI2boh1_cGAX2LiRZ76oYwS7A', 'sid': '4c29094d-3759-440c-9fba-5c47e9595888', 'rid': '0e925d82-beaa-4461-81e1-09057d6111ee', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-12 06:49:21,012 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzMzNDAyMDAsImp0aSI6ImM4NjY3ZDAyLWYyMGYtNDY1Ny04NDA4LWUwMjI2OWFhMTI5MiIsImlhdCI6MTc3MzI3ODM2MiwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.ZoqUBpbDGWuTzvhQR9Q3_CQFlidvrsBo-PLTUoG0RYEmrrYvGZNdhbBLwXW8A1y_lAGwPiqsr9Ds7IZM7M7iBXMGZ-dSk0a4j6kTcvKIZzrNx6KqJtODwvGcZpZSi8rVC1mWTTrkZMotiZllg0uCTVVBL9YyK6TGpAlJGbGgcPAlaAic5BL7L-K0jB0v_5OYDAZMnqg_Np7rHzCcSdwzapBjoiDzIIZnQvYMX-SQBzhsZrd8HrYvCwdl6eq96iI2VAMhbA5URB2dcL6gSdSzyhJidx4jOMNyHHVDxNoN0yOjiKvua0UTd1KNiJTy8hROQTlJM4ath_Tg0pk09OLvZQ', 'sid': 'd690f7f1-72db-46e9-893b-bf3f8304b40c', 'rid': '0e925d82-beaa-4461-81e1-09057d6111ee', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-12 06:49:21,012 Kotak login done!
+2026-03-12 06:49:21,034 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 06:49:21,097 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 06:49:21,644 Telegram connected!
+2026-03-12 06:49:21,645 Listening for Kairos X signals...
+2026-03-12 06:49:21,648 Next Kotak re-login in 2h 10m
+2026-03-12 07:55:10,480 Got difference for account updates
+2026-03-12 09:00:59,547 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 09:00:59,558 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 09:00:59,559 Closing current connection to begin reconnect...
+2026-03-12 09:00:59,561 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 09:00:59,563 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 09:00:59,566 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 09:01:00,571 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 09:01:01,574 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 09:01:02,578 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 09:01:03,584 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 09:01:04,589 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 09:01:05,592 Failed reconnection attempt 1 with ConnectionError
+2026-03-12 09:01:06,594 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 09:01:06,683 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 09:05:37,265 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 09:05:37,268 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 09:05:37,269 Closing current connection to begin reconnect...
+2026-03-12 09:05:37,271 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 09:05:37,272 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 09:05:37,345 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 09:08:27,889 Got difference for account updates
+2026-03-12 09:14:37,884 Got difference for channel 1773718759 updates
+2026-03-12 09:23:53,155 Got difference for channel 2346340433 updates
+2026-03-12 09:23:53,334 Got difference for channel 1773718759 updates
+2026-03-12 09:39:46,290 Auto re-login to Kotak Neo...
+2026-03-12 09:39:46,623 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzM0MDIwMCwianRpIjoiNTg1NzAwMWQtYmZmZS00ZGUyLTllNzgtNDU0OTEwMDk2YjFmIiwiaWF0IjoxNzczMjg4NTg3LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.TL5uX26fRDTk2fSaZrlfskPFdfya-91oK_NhaCd2GtB3cejs5NLKMx5zipnKwEZ5Vb2GA-yOk1fw2ZX06mvVugEG9ybRfaAiBl99i1g2yzsmfUJcBiQRTCelbSxsg8VyXSyEa-2-pnaLkNkahMCXknepV38KZnw4V4EOsksHSrA7YSGo4IfoRAnnCi8gcM_S9aK4sXo6LEyvqV1DjJFjoPpa5eTuUy-JjJbryGTjtZb-qwPdzRgEXNxTJa2vK6d8a2I3ll7JFEiOF1_oXxCOc3cKFcYCAdbUh05SVw71dbf6aLwlG79Xby8CebKZsFjeuOXGtQR0y2VvuUocNvmqCA', 'sid': '443527cc-a2d9-4f85-9fb1-aaad335c889b', 'rid': 'a58bab13-2fbd-4020-80b6-b97c9420719b', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-12 09:39:46,888 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzMzNDAyMDAsImp0aSI6ImVlNzRiN2NiLTBhYjQtNDQ5MS04NjVhLTEzOTY1YmNkNzI0MyIsImlhdCI6MTc3MzI4ODU4OCwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.TUxAJTxya8wXtttxVa1HghCPYIwQ3fnng-XRi4YLwwXOdNbSh-yE3pgAiI_Ux9zUlxgGEHi0w6eSRpgA3Wrmq7QqJNbpuGzYuw0oXWpHg8m6i6tJpexzuJAwjL1pwT4HplEr8d5pvNe1EUGpHfGrxoS5X3YeenvPfLJtKADqBRP9fIuS8TaLT1GjWqP721QXAj9PO4TGUQbrT5kF9cgPKwD6Civ8aq2PklByjZm3x6igVqOqpj2YtrCqusxOG-jBv7cOUoM30OxGD4-Z8ropk354w5Nj3zqmA8bf7-IZ-2us-6PmnOrtVimz84qBJBQbKWD6qg7eQim7AIB-eO9cfA', 'sid': '3c70655d-089b-480d-a28c-c3ce3bfbd522', 'rid': 'a58bab13-2fbd-4020-80b6-b97c9420719b', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-12 09:39:46,888 Auto re-login done!
+2026-03-12 09:39:46,889 Next Kotak re-login in 23h 20m
+2026-03-12 10:22:07,180 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 10:22:07,202 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 10:22:07,202 Closing current connection to begin reconnect...
+2026-03-12 10:22:07,204 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 10:22:07,206 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 10:22:07,212 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 10:22:08,412 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 10:22:09,569 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 10:52:10,147 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 10:52:10,160 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 10:52:10,161 Closing current connection to begin reconnect...
+2026-03-12 10:52:10,163 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 10:52:10,165 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 10:52:10,298 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 11:33:28,342 Got difference for channel 1773718759 updates
+2026-03-12 11:36:52,030 Got difference for channel 1773718759 updates
+2026-03-12 12:40:52,377 Got difference for channel 1773718759 updates
+2026-03-12 14:49:05,464 Got difference for channel 1773718759 updates
+2026-03-12 15:26:29,518 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 15:26:29,558 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 15:26:29,559 Closing current connection to begin reconnect...
+2026-03-12 15:26:29,560 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 15:26:29,562 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 15:26:29,577 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 15:26:30,580 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 15:26:31,584 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 15:26:32,588 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 15:26:33,595 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 15:26:34,604 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 15:26:35,608 Failed reconnection attempt 1 with ConnectionError
+2026-03-12 15:26:36,610 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 15:26:36,718 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 15:41:22,273 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 15:41:22,280 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 15:41:22,280 Closing current connection to begin reconnect...
+2026-03-12 15:41:22,281 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 15:41:22,282 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 15:41:22,344 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 16:06:51,883 Got difference for channel 1773718759 updates
+2026-03-12 16:16:29,003 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 16:16:29,003 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 16:16:29,004 Closing current connection to begin reconnect...
+2026-03-12 16:16:29,006 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 16:16:29,009 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:16:29,020 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:16:30,026 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:16:31,031 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:16:32,040 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:16:33,115 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:16:34,120 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:16:35,122 Failed reconnection attempt 1 with ConnectionError
+2026-03-12 16:16:36,125 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:16:46,139 Attempt 1 at connecting failed: TimeoutError: 
+2026-03-12 16:16:47,214 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 16:17:21,728 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 16:17:21,730 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 16:17:21,738 Closing current connection to begin reconnect...
+2026-03-12 16:17:21,740 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 16:17:21,741 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:17:21,744 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:17:22,757 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:17:23,767 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:17:24,778 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:17:25,791 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:17:26,815 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:17:27,819 Failed reconnection attempt 1 with ConnectionError
+2026-03-12 16:17:28,822 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:17:29,498 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 16:27:52,647 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 16:27:52,650 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 16:27:52,652 Closing current connection to begin reconnect...
+2026-03-12 16:27:52,653 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 16:27:52,654 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:27:52,817 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 16:30:55,627 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 16:30:55,628 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 16:30:55,629 Closing current connection to begin reconnect...
+2026-03-12 16:30:55,631 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 16:30:55,632 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:30:55,635 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:31:01,034 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:31:02,042 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:31:03,055 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:31:04,067 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:31:05,085 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 16:31:06,089 Failed reconnection attempt 1 with ConnectionError
+2026-03-12 16:31:07,091 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:31:07,169 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 16:31:25,917 Got difference for channel 2226221671 updates
+2026-03-12 16:43:16,068 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 16:43:16,069 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 16:43:16,069 Closing current connection to begin reconnect...
+2026-03-12 16:43:16,071 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 16:43:16,072 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 16:43:16,149 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:25:27,184 Logging into Kotak Neo...
+2026-03-12 17:25:27,692 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzM0MDIwMCwianRpIjoiZTU2ZjU3OTgtN2ViZC00ZTQzLTk3YTQtNjlkMGM2ZDczMDkwIiwiaWF0IjoxNzczMzE2NTI4LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.ipLLlN9jWhPlt-WUHEttgzsmeXSlyuK7B4bHJYJdsGv-yrcG45Z2bP6aEDYWVn62h-Q_Fryi3eh1oXpQbOYXlxcDEDoXbp2I8CA9CMSYRJeGxmbcKCIAORLFr7CXm-N76YjfLc_ls2fWXlqjlsKyEB6_HuejyYAGu3j3QNjJ9aGgyd5myLzwIAlA9vmK-pBJ3EZYCCas_4P48hJgqiALedx8j3e6ObU9aeJEVTRHsAT33D1LER0Tx07KBaMgjS3fFpz1VltzqMgvEoM98muKJdqUYYhpAICS5hKMeXrGkBj19wtOXsUOsqbzt83Nd6JiDgksTJoaoKd4cVmCkRQI5A', 'sid': '07b07623-0f6e-4eca-81e9-a9256d09f0e7', 'rid': 'ccd81ab8-3285-4dd3-8349-953576a510df', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-12 17:25:28,212 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzMzNDAyMDAsImp0aSI6IjkyYmJjMTc1LWFjMTctNGQ5My04NTM3LTIxODc0Y2QyYjA4MyIsImlhdCI6MTc3MzMxNjUyOSwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.PeYBEX_mUAnk3-N1edCI1mi8d95lfHk4ElKhHNH8MO0f2Kj_SkC8iI-qDahcml-7Z9U-X5-u24rmPk4eJTC64imlFtQmJg-s73NZ86mAmoQoQhIjvR_HByurc_VX4ixap9qvMGA_6n-i6Hx1_QDvtKx4r9j5W1RHRfz1Fd6vBTUMNxviRefOM0CloY5qcYSUZ_s16zsY5_u0wRMhUYxk3h3loVWq85mhm4cgQd0sP-_XY03gcnH7IRlV5Rrjwv3Do76ivc9q9-LLOgeayaQC5Im_07ABGajR0HboEMDDa4XjAB3-8giPy2UQf73WwjVso3RhXDcw2jy_9WWUP4g16Q', 'sid': 'edb6f557-1ee5-4692-8eac-29059c4bbd8b', 'rid': 'ccd81ab8-3285-4dd3-8349-953576a510df', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-12 17:25:28,213 Kotak login done!
+2026-03-12 17:25:28,224 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:25:28,305 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:25:29,027 Telegram connected!
+2026-03-12 17:25:29,029 Listening for Kairos X signals...
+2026-03-12 17:25:29,032 Next Kotak re-login in 15h 34m
+2026-03-12 17:26:27,343 Disconnecting from 91.108.56.139:443/TcpFull...
+2026-03-12 17:26:27,349 Disconnection from 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:26:43,046 Logging into Kotak Neo...
+2026-03-12 17:26:43,557 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzM0MDIwMCwianRpIjoiNzkxNWEyZTUtNzU5MS00YTg5LTliZDgtMjQ4MGQ4NWRlZTE2IiwiaWF0IjoxNzczMzE2NjA0LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.hnqPyjqmV3yZChkmtMQcsohljX97L-KWrlIydO8LNndlsUiZ5ityNv5XXYll69k9jI3AiG8UOrmAY8ul1gqQPEGeF9LNCWhNwsS3aXeTohGMA5E7A6UXRn0LDH20qemC5B5jnlbiZqiwnEAzaULzKnFIQa_12KWbBLWPgzSZkPbUguNOr11SHrzUO8-oUKPXeVFFVXUlfwbANQwB_bEVHIO4-aOsmLRnfIosb5DaH90dfvQrnFvesqUXja3h2TsL4vhuzhcgyS-nhqcCnrQqbKdKM-oHKUnw6gSqCRxWjGQM26xUIyL8TRX_c-dCxWku21DVbC19fCmqW8Kt6-Qk1g', 'sid': 'ee0c4ff4-94d6-4c47-a8a2-bb2d2c27ec9c', 'rid': '9fe61975-bae2-4ba8-b9a7-97121295bce9', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-12 17:26:43,949 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzMzNDAyMDAsImp0aSI6IjJjYWRmNDdlLTIzMDQtNDZhMC05MmRjLTMzZTk1ZGEwYzg5MiIsImlhdCI6MTc3MzMxNjYwNSwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.ZCnDWlFAlqQsFiJ4l9-zIy-BTTthhhhHfP-O5hHIv_0xdWYZ6CNibwFZRTaLcXjUxVqgDxrWUHGfwVurKj2a1qaMcELhjAqfLSZyeJ3LJccXYll9oVRjJUzqiEg90x4gYjgCILSWnUAqdDhqzNeWaDdVehit_U073xbo7G6L04JqkcQqihkQNcV1AMrdceJbIUSYa8hcJsET2xzy8juOmWPJLh-kpyUNboF8Gikz0um_YMtcQ1gDACWH0OCSUouKP_hJec5Glvc2a0so_rCVcNxW0utC7iXt7N7g9mj7D-OIKKziwkPpdVkSO7pwF9i9cX8yn5iFNr9PWzdM4TvtPA', 'sid': '0ff26d78-6b54-462c-95e4-7e83ddac909a', 'rid': '9fe61975-bae2-4ba8-b9a7-97121295bce9', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-12 17:26:43,950 Kotak login done!
+2026-03-12 17:26:43,954 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:26:44,079 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:26:44,795 Telegram connected!
+2026-03-12 17:26:44,796 Listening for Kairos X signals...
+2026-03-12 17:26:44,797 Next Kotak re-login in 15h 33m
+2026-03-12 17:29:54,420 Disconnecting from 91.108.56.139:443/TcpFull...
+2026-03-12 17:29:54,427 Disconnection from 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:32:36,338 Logging into Kotak Neo...
+2026-03-12 17:32:36,955 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzM0MDIwMCwianRpIjoiNmVlZGVmY2YtOGE2MS00ZGY3LTg1NzktOWFjYWY3Mzk4NjM2IiwiaWF0IjoxNzczMzE2OTU4LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.kjba3YVZ_8IkIeQC-r3vPV4_DKdsVw1i7peYJ8JnlB8wlXY0Qzqu4tLJw7mwFEy3KbYWRCxH4DvNkSputv9oTMb2dCh3xGqzBkoHUZwkQ5zHbtfY--fLfLi4Laap4DresVwoZMgTtH6BmRi-Q--9SjqsEy81e2A4vSqBAkn7qt0-2pIOsvoW0cF9qrGDT3u007c57FMjT7kl5aqbMm79THdiVnm_nh59dJ5vlgq9y6ngtupkU3i9EVHD9Uff5Dg3s6w7xFgK3PLrw24J1TZ5cz9YKQsIWXboQDMjVCFz-q0oxL8xPxsZbWpvZDejPeFi3BvyU1C2xwWVK_NBMJxO6Q', 'sid': '42cd67d6-8d38-40c1-b0ae-985a4ab669fd', 'rid': '7095e06f-8683-46a8-ae29-3255975a0821', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-12 17:32:37,345 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzMzNDAyMDAsImp0aSI6ImMxYmVhYjMzLTAwNjEtNDdhMS1hY2FjLWVjOTJiZTJkZjkxMyIsImlhdCI6MTc3MzMxNjk1OCwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.afDkGn47gJ5SPErODcxoOfZuOOK1HwerEYYr27kuJVnA2PRRURKpXolilPUDDwX-PGvSLRY-59jgJVq1GWu29PItzlhunMfsIw1KiCN5Vk9MsdReaJ3FtJxUg1A3vTzxXH4W1S4Yhw9Q83ZBg1NF2UaBjbwqP4vsr-rop9RUDKkyelT-Jg-q8JYZj6rS-9bLvZuAjc-N-WEFjWq04-WtjMkV_ontA_10zlqsOWPWEkwbRakS-puY1kAjDtKxgGWOva6UzuCDqD2ikHUbaukasfBSXpcjFSib9Q5KvLhyXjQ3jDWc6jm6iQOlXvaw9mKKrT0vAuPqFvYoCQ4yhhd0Xg', 'sid': 'ed0ea26d-76be-4cf3-bc8f-f610ff7c55a5', 'rid': '7095e06f-8683-46a8-ae29-3255975a0821', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-12 17:32:37,345 Kotak login done!
+2026-03-12 17:32:37,365 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:32:37,460 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:32:38,273 Telegram connected!
+2026-03-12 17:32:38,275 Listening for Kairos X signals...
+2026-03-12 17:32:38,277 Next Kotak re-login in 15h 27m
+2026-03-12 17:40:34,016 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 17:40:34,014 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 17:40:34,020 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 17:40:34,020 Closing current connection to begin reconnect...
+2026-03-12 17:40:34,021 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 17:40:34,021 Closing current connection to begin reconnect...
+2026-03-12 17:40:34,021 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 17:40:34,021 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:40:34,022 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 17:40:34,024 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:40:34,032 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 17:40:34,036 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 17:40:35,038 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 17:40:35,040 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 17:40:36,118 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:40:36,122 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:48:32,489 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 17:48:32,503 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 17:48:32,505 Closing current connection to begin reconnect...
+2026-03-12 17:48:32,508 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 17:48:32,510 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:48:32,603 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:48:37,760 Error executing high-level request after reconnect: <class 'sqlite3.OperationalError'>: database is locked
+2026-03-12 17:55:59,728 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 17:55:59,743 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 17:55:59,745 Closing current connection to begin reconnect...
+2026-03-12 17:55:59,748 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 17:55:59,749 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 17:55:59,830 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 17:56:00,080 Got difference for channel 2226221671 updates
+2026-03-12 18:03:32,850 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 18:03:32,852 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 18:03:32,853 Closing current connection to begin reconnect...
+2026-03-12 18:03:32,854 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 18:03:32,854 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 18:03:32,924 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 18:03:38,058 Cannot get difference since the account is likely misusing the session: database is locked
+2026-03-12 18:03:38,071 Disconnecting from 91.108.56.139:443/TcpFull...
+2026-03-12 18:03:43,105 Error executing high-level request after reconnect: <class 'sqlite3.OperationalError'>: database is locked
+2026-03-12 18:03:43,108 Disconnection from 91.108.56.139:443/TcpFull complete!
+2026-03-12 18:03:43,113 Unhandled exception from keepalive_handle after cancelling <class '_asyncio.Task'> (<Task finished name='Task-7' coro=<UpdateMethods._keepalive_loop() done, defined at /data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/updates.py:485> exception=OperationalError('database is locked')>)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/helpers.py", line 176, in _cancel
+    await task
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/updates.py", line 521, in _keepalive_loop
+    await self._save_states_and_entities()
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 701, in _save_states_and_entities
+    self.session.process_entities(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        types.contacts.ResolvedPeer(None, [types.InputPeerUser(0, self._mb_entity_cache.self_id)], [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 301, in process_entities
+    c.executemany(
+    ~~~~~~~~~~~~~^
+        'insert or replace into entities values (?,?,?,?,?,?)', rows)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+2026-03-12 18:03:48,200 Task exception was never retrieved
+future: <Task finished name='Task-35' coro=<TelegramBaseClient._disconnect_coro() done, defined at /data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py:716> exception=OperationalError('database is locked')>
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 746, in _disconnect_coro
+    await self._save_states_and_entities()
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/telegrambaseclient.py", line 701, in _save_states_and_entities
+    self.session.process_entities(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        types.contacts.ResolvedPeer(None, [types.InputPeerUser(0, self._mb_entity_cache.self_id)], [])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/sessions/sqlite.py", line 301, in process_entities
+    c.executemany(
+    ~~~~~~~~~~~~~^
+        'insert or replace into entities values (?,?,?,?,?,?)', rows)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+2026-03-12 18:03:48,217 Not disconnecting (already have no connection)
+2026-03-12 18:03:48,219 Unhandled exception from keepalive_handle after cancelling <class '_asyncio.Task'> (<Task finished name='Task-7' coro=<UpdateMethods._keepalive_loop() done, defined at /data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/client/updates.py:485> exception=OperationalError('database is locked')>)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/telethon/helpers.py", line 176, in _cancel
+    await task
+sqlite3.OperationalError: database is locked
+2026-03-12 18:03:57,356 Logging into Kotak Neo...
+2026-03-12 18:03:57,924 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzM0MDIwMCwianRpIjoiZjNhYzk1NjItYmVlMS00ZmY3LTkzMGItZjdiNjNkODdjYWE4IiwiaWF0IjoxNzczMzE4ODM5LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.Wlcc_r4VtbvTCykodiWshYtdbL2mLzbOMqZmO3OHAJFqWXtPFohRTzDm12c-wDD6oXXqqPPLWLIK8tnAGTt8ezasEpwA6c5LSU7h1UBB_JMYCaPlctAAUZCQLVc4ACjmUrLFpYUNBvxiPTCrlqO3ORga8lwPNWRgFGMe_QINi4SV5oKv-yy0cHw0tV866i-CNDlgyUvdznXFCLDBF33j0tVRV8JXtUuGwZRov8xB-BN5KN1rybsCwDJZ1eUgSI7T2qZMLCoiy3USORa1bXIKZBzsN-bDLYETy6RmrG78cxniogOGPL8IIuHNNtzTgPR2XMcfb2_E0zHXbrD8uOXMvA', 'sid': '1908dcb7-ae70-45b1-b45a-d746353a1b72', 'rid': 'a2caf85c-09cb-4215-bf0a-3350e6da08dd', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-12 18:03:58,321 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzMzNDAyMDAsImp0aSI6IjNmYWM2MWRkLWEyZjktNDJjMS04YzBjLWU5M2E3YWU5ZTdkYyIsImlhdCI6MTc3MzMxODgzOSwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.ItCYItVXllqR3kssuQ5Qc2NOtI1bs7TcLQLTsUeOJJIsqDXA8mgk55O8hLNCsNHYWiyooQITelAVflCKuNSQWccObA4TqabeR3iJzO065X7sSMzTCVpOruj3ee2zAlDrNyYvXUte7E2xxnpXocqLRyAvXIY8DJfsRz6IYESTXP3mXdm1S2WSXC-mLuK7LiEi6nvY6RSzvodzLa5MfmfiridvQZ3hSbvT27GGsdkLoKA5GantK2jk4NHZo-C-UjyY-rhURZoOAa8Fi8IOxJ0WmN3CchsrfHIweAFpgV8PRqWJDMasN0cZe-WtVGsEqGjr2QOaequDURCw468LwShJ7w', 'sid': '2cb72d06-6b96-463b-b028-05c0970caeb8', 'rid': 'a2caf85c-09cb-4215-bf0a-3350e6da08dd', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-12 18:03:58,322 Kotak login done!
+2026-03-12 18:03:58,329 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 18:03:58,406 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 18:11:00,051 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 18:11:00,064 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 18:11:00,066 Closing current connection to begin reconnect...
+2026-03-12 18:11:00,071 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 18:11:00,072 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 18:11:00,161 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 18:11:00,421 Got difference for channel 2226221671 updates
+2026-03-12 18:22:49,970 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-12 18:22:49,983 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-12 18:22:49,985 Closing current connection to begin reconnect...
+2026-03-12 18:22:49,988 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-12 18:22:49,993 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 18:22:49,997 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:51,001 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:52,005 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:53,010 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:54,014 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:55,023 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:56,029 Failed reconnection attempt 1 with ConnectionError
+2026-03-12 18:22:57,033 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 18:22:57,041 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:22:58,050 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:44:52,541 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:44:53,546 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:44:54,549 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:45:30,473 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-12 18:45:31,475 Failed reconnection attempt 2 with ConnectionError
+2026-03-12 18:45:32,476 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 18:45:32,573 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 18:45:32,676 Server resent the older message 7616357134669384705, ignoring
+2026-03-12 18:45:33,049 Got difference for channel 2226221671 updates
+2026-03-12 19:10:35,204 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 19:10:35,208 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 19:10:35,209 Closing current connection to begin reconnect...
+2026-03-12 19:10:35,211 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 19:10:35,211 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 19:10:35,285 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 19:10:35,493 Got difference for channel 2226221671 updates
+2026-03-12 19:45:42,336 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 19:45:42,380 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 19:45:42,381 Closing current connection to begin reconnect...
+2026-03-12 19:45:42,398 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 19:45:42,398 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 19:45:42,499 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 19:45:42,598 Server resent the older message 7616372639188179969, ignoring
+2026-03-12 19:45:43,146 Got difference for channel 2226221671 updates
+2026-03-12 20:00:43,123 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 20:00:43,141 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 20:00:43,142 Closing current connection to begin reconnect...
+2026-03-12 20:00:43,173 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 20:00:43,185 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 20:00:43,267 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 20:00:43,520 Got difference for channel 2226221671 updates
+2026-03-12 20:15:43,596 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 20:15:43,609 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 20:15:43,610 Closing current connection to begin reconnect...
+2026-03-12 20:15:43,614 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 20:15:43,616 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 20:15:43,708 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 20:49:51,872 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 20:49:51,876 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 20:49:51,876 Closing current connection to begin reconnect...
+2026-03-12 20:49:51,878 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 20:49:51,878 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 20:49:51,956 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 20:49:52,089 Got difference for account updates
+2026-03-12 20:49:52,186 Got difference for channel 2226221671 updates
+2026-03-12 21:04:52,173 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 21:04:52,182 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 21:04:52,182 Closing current connection to begin reconnect...
+2026-03-12 21:04:52,186 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 21:04:52,187 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 21:04:52,256 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 21:04:52,495 Got difference for channel 2226221671 updates
+2026-03-12 21:25:01,119 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 21:25:01,136 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 21:25:01,139 Closing current connection to begin reconnect...
+2026-03-12 21:25:01,141 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 21:25:01,142 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 21:25:01,215 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 21:25:01,455 Got difference for channel 2226221671 updates
+2026-03-12 21:40:01,403 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 21:40:01,412 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 21:40:01,413 Closing current connection to begin reconnect...
+2026-03-12 21:40:01,415 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 21:40:01,416 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 21:40:01,477 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 21:40:01,949 Got difference for channel 2226221671 updates
+2026-03-12 21:40:02,033 Got difference for channel 1773718759 updates
+2026-03-12 21:55:01,977 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 21:55:01,994 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 21:55:01,997 Closing current connection to begin reconnect...
+2026-03-12 21:55:02,004 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 21:55:02,005 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 21:55:02,081 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 21:55:02,296 Got difference for channel 1773718759 updates
+2026-03-12 22:10:02,499 Got difference for channel 2226221671 updates
+2026-03-12 22:40:02,765 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 22:40:02,777 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 22:40:02,780 Closing current connection to begin reconnect...
+2026-03-12 22:40:02,788 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 22:40:02,790 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 22:40:02,864 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 22:55:03,117 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 22:55:03,123 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 22:55:03,124 Closing current connection to begin reconnect...
+2026-03-12 22:55:03,125 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 22:55:03,126 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 22:55:03,193 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 22:55:03,320 Got difference for account updates
+2026-03-12 23:10:03,435 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 23:10:03,449 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 23:10:03,452 Closing current connection to begin reconnect...
+2026-03-12 23:10:03,457 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 23:10:03,459 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 23:10:03,534 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 23:25:03,793 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 23:25:03,797 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 23:25:03,799 Closing current connection to begin reconnect...
+2026-03-12 23:25:03,803 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 23:25:03,804 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 23:25:03,870 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 23:40:04,107 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 23:40:04,109 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 23:40:04,110 Closing current connection to begin reconnect...
+2026-03-12 23:40:04,111 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 23:40:04,112 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 23:40:04,171 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-12 23:55:04,423 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-12 23:55:04,431 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-12 23:55:04,432 Closing current connection to begin reconnect...
+2026-03-12 23:55:04,434 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-12 23:55:04,435 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-12 23:55:04,501 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 00:10:04,755 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 00:10:04,772 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 00:10:04,773 Closing current connection to begin reconnect...
+2026-03-13 00:10:04,775 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 00:10:04,776 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 00:10:04,843 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 00:10:05,130 Got difference for channel 2346340433 updates
+2026-03-13 00:39:42,526 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 00:39:42,546 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 00:39:42,548 Closing current connection to begin reconnect...
+2026-03-13 00:39:42,553 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 00:39:42,554 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 00:39:42,629 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 00:39:42,857 Got difference for channel 2226221671 updates
+2026-03-13 00:49:01,852 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 00:49:01,858 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 00:49:01,859 Closing current connection to begin reconnect...
+2026-03-13 00:49:01,860 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 00:49:01,860 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 00:49:01,871 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:02,876 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:03,885 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:04,892 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:06,459 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:07,468 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:08,471 Failed reconnection attempt 1 with ConnectionError
+2026-03-13 00:49:09,475 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 00:49:09,479 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 00:49:10,489 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 05:45:01,823 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 05:45:02,844 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 05:45:03,847 Attempt 5 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 05:45:04,862 Attempt 6 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 05:45:05,867 Failed reconnection attempt 2 with ConnectionError
+2026-03-13 05:45:06,868 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 05:45:07,031 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 05:45:07,724 Got difference for channel 2226221671 updates
+2026-03-13 05:45:43,411 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 05:45:43,422 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 05:45:43,424 Closing current connection to begin reconnect...
+2026-03-13 05:45:43,429 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 05:45:43,438 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 05:45:43,600 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 06:19:19,225 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 06:19:19,234 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 06:19:19,235 Closing current connection to begin reconnect...
+2026-03-13 06:19:19,237 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 06:19:19,242 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 06:19:19,307 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 06:29:00,565 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 06:29:00,566 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 06:29:00,567 Closing current connection to begin reconnect...
+2026-03-13 06:29:00,567 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 06:29:00,568 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 06:29:00,570 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 06:29:01,574 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 06:29:02,578 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 06:29:03,585 Attempt 4 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 06:41:01,994 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 06:41:35,087 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 06:41:35,088 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 06:41:35,089 Closing current connection to begin reconnect...
+2026-03-13 06:41:35,092 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 06:41:35,094 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 06:41:35,157 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 07:12:05,298 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 07:12:05,345 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 07:12:05,345 Closing current connection to begin reconnect...
+2026-03-13 07:12:05,353 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 07:12:05,370 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 07:12:05,448 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 07:27:07,099 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 07:27:07,108 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 07:27:07,109 Closing current connection to begin reconnect...
+2026-03-13 07:27:07,111 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 07:27:07,113 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 07:27:07,177 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 07:53:04,456 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 07:53:04,459 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 07:53:04,460 Closing current connection to begin reconnect...
+2026-03-13 07:53:04,461 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 07:53:04,462 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 07:53:04,609 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 08:08:04,857 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 08:08:04,881 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 08:08:04,883 Closing current connection to begin reconnect...
+2026-03-13 08:08:04,889 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 08:08:04,891 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 08:08:04,981 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 08:23:05,196 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 08:23:05,202 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 08:23:05,203 Closing current connection to begin reconnect...
+2026-03-13 08:23:05,204 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 08:23:05,204 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 08:23:05,271 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 08:53:05,670 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 08:53:05,678 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 08:53:05,679 Closing current connection to begin reconnect...
+2026-03-13 08:53:05,680 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 08:53:05,681 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 08:53:05,744 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 08:53:05,996 Got difference for channel 1773718759 updates
+2026-03-13 09:08:05,979 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 09:08:05,987 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 09:08:05,987 Closing current connection to begin reconnect...
+2026-03-13 09:08:05,989 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 09:08:05,990 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 09:08:06,061 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 09:24:37,470 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 09:24:37,498 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 09:24:37,500 Closing current connection to begin reconnect...
+2026-03-13 09:24:37,505 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 09:24:37,506 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 09:24:37,593 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 09:24:37,729 Got difference for account updates
+2026-03-13 09:24:37,866 Got difference for channel 1773718759 updates
+2026-03-13 09:39:49,592 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 09:39:49,606 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 09:39:49,607 Closing current connection to begin reconnect...
+2026-03-13 09:39:49,610 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 09:39:49,611 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 09:39:49,675 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 09:39:49,778 Got difference for account updates
+2026-03-13 09:39:49,875 Got difference for channel 2226221671 updates
+2026-03-13 09:54:58,104 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 09:54:58,129 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 09:54:58,131 Closing current connection to begin reconnect...
+2026-03-13 09:54:58,136 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 09:54:58,138 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 09:54:58,219 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 09:54:58,364 Got difference for account updates
+2026-03-13 09:54:58,460 Got difference for channel 1773718759 updates
+2026-03-13 10:03:05,064 Got difference for channel 2346340433 updates
+2026-03-13 10:54:59,194 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 10:54:59,206 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 10:54:59,209 Closing current connection to begin reconnect...
+2026-03-13 10:54:59,213 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 10:54:59,216 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 10:54:59,289 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:03:06,008 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 11:03:06,012 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 11:03:06,012 Closing current connection to begin reconnect...
+2026-03-13 11:03:06,014 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 11:03:06,015 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 11:03:06,082 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:03:06,192 Got difference for channel 2346340433 updates
+2026-03-13 11:09:59,461 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 11:09:59,464 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 11:09:59,464 Closing current connection to begin reconnect...
+2026-03-13 11:09:59,466 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 11:09:59,467 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 11:09:59,535 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:18:06,396 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 11:18:06,410 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 11:18:06,411 Closing current connection to begin reconnect...
+2026-03-13 11:18:06,413 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 11:18:06,413 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 11:18:06,481 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:24:59,791 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 11:24:59,801 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 11:24:59,804 Closing current connection to begin reconnect...
+2026-03-13 11:24:59,806 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 11:24:59,807 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 11:24:59,868 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:40:00,100 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 11:40:00,112 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 11:40:00,114 Closing current connection to begin reconnect...
+2026-03-13 11:40:00,120 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 11:40:00,121 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 11:40:00,188 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:55:00,447 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 11:55:00,451 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 11:55:00,452 Closing current connection to begin reconnect...
+2026-03-13 11:55:00,454 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 11:55:00,455 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 11:55:00,531 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 11:55:00,797 Got difference for channel 2226221671 updates
+2026-03-13 11:55:00,898 Got difference for channel 1773718759 updates
+2026-03-13 12:03:07,073 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 12:03:07,082 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 12:03:07,083 Closing current connection to begin reconnect...
+2026-03-13 12:03:07,085 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 12:03:07,086 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 12:03:07,152 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 12:10:00,822 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 12:10:00,840 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 12:10:00,842 Closing current connection to begin reconnect...
+2026-03-13 12:10:00,849 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 12:10:00,851 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 12:10:00,923 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 12:10:01,158 Got difference for channel 2226221671 updates
+2026-03-13 12:10:01,250 Got difference for channel 1773718759 updates
+2026-03-13 12:25:01,150 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 12:25:01,159 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 12:25:01,160 Closing current connection to begin reconnect...
+2026-03-13 12:25:01,162 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 12:25:01,163 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 12:25:01,229 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 12:25:01,426 Got difference for channel 1773718759 updates
+2026-03-13 12:33:07,564 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 12:33:07,575 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 12:33:07,577 Closing current connection to begin reconnect...
+2026-03-13 12:33:07,579 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 12:33:07,580 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 12:33:07,655 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 12:37:50,566 Got difference for channel 2226221671 updates
+2026-03-13 12:40:01,677 Got difference for channel 2226221671 updates
+2026-03-13 12:40:01,776 Got difference for channel 1773718759 updates
+2026-03-13 12:48:07,923 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 12:48:07,928 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 12:48:07,929 Closing current connection to begin reconnect...
+2026-03-13 12:48:07,932 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 12:48:07,933 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 12:48:08,004 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 12:48:08,106 Got difference for channel 2346340433 updates
+2026-03-13 12:55:01,847 Got difference for channel 2226221671 updates
+2026-03-13 12:55:01,961 Got difference for channel 1773718759 updates
+2026-03-13 13:11:35,403 Got difference for channel 1773718759 updates
+2026-03-13 13:17:45,486 Got difference for account updates
+2026-03-13 13:17:45,592 Got difference for channel 1773718759 updates
+2026-03-13 13:19:06,582 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 13:19:06,592 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 13:19:06,596 Closing current connection to begin reconnect...
+2026-03-13 13:19:06,599 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 13:19:06,600 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 13:19:06,618 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 13:19:07,623 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 13:19:08,707 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 13:30:55,462 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 13:30:55,465 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 13:30:55,466 Closing current connection to begin reconnect...
+2026-03-13 13:30:55,467 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 13:30:55,467 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 13:30:55,605 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 13:33:28,971 Got difference for channel 2346340433 updates
+2026-03-13 13:38:07,591 Got difference for channel 1773718759 updates
+2026-03-13 13:44:11,270 Got difference for channel 2226221671 updates
+2026-03-13 14:24:08,754 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 14:24:08,766 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 14:24:08,768 Closing current connection to begin reconnect...
+2026-03-13 14:24:08,772 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 14:24:08,775 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 14:24:08,844 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 14:31:17,733 Got difference for channel 2226221671 updates
+2026-03-13 14:45:33,646 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 14:45:33,662 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 14:45:33,663 Closing current connection to begin reconnect...
+2026-03-13 14:45:33,667 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 14:45:33,672 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 14:45:33,741 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 14:47:49,596 Got difference for channel 1773718759 updates
+2026-03-13 15:00:48,301 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 15:00:48,310 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 15:00:48,310 Closing current connection to begin reconnect...
+2026-03-13 15:00:48,312 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 15:00:48,312 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 15:00:48,378 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 15:03:04,089 Got difference for channel 1773718759 updates
+2026-03-13 15:03:04,684 Got difference for channel 2226221671 updates
+2026-03-13 15:07:43,051 Got difference for channel 1773718759 updates
+2026-03-13 15:16:27,364 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 15:16:27,374 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 15:16:27,375 Closing current connection to begin reconnect...
+2026-03-13 15:16:27,376 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 15:16:27,377 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 15:16:27,380 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 15:16:28,387 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 15:16:29,541 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 15:18:29,155 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 15:18:29,156 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 15:18:29,157 Closing current connection to begin reconnect...
+2026-03-13 15:18:29,158 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 15:18:29,159 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 15:18:39,173 Attempt 1 at connecting failed: TimeoutError: 
+2026-03-13 15:18:55,193 Attempt 2 at connecting failed: ConnectionAbortedError: [Errno 103] Connect call failed ('91.108.56.139', 443)
+2026-03-13 15:18:56,502 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 15:21:02,813 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 15:21:02,814 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 15:21:02,815 Closing current connection to begin reconnect...
+2026-03-13 15:21:02,816 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 15:21:02,817 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 15:21:02,887 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 15:27:10,244 Got difference for channel 2226221671 updates
+2026-03-13 15:27:10,340 Got difference for channel 1773718759 updates
+2026-03-13 15:29:07,822 Got difference for account updates
+2026-03-13 16:36:23,738 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 16:36:23,750 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 16:36:23,751 Closing current connection to begin reconnect...
+2026-03-13 16:36:23,764 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 16:36:23,766 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 16:36:23,773 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 16:36:24,777 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 16:36:25,865 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 16:39:29,507 Got difference for channel 2226221671 updates
+2026-03-13 16:40:36,462 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 16:40:36,462 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 16:40:36,463 Closing current connection to begin reconnect...
+2026-03-13 16:40:36,463 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 16:40:36,463 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 16:40:36,526 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 16:48:50,645 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 16:48:50,664 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 16:48:50,666 Closing current connection to begin reconnect...
+2026-03-13 16:48:50,672 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 16:48:50,674 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 16:48:50,682 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 16:48:51,692 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 16:48:52,772 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 17:00:41,150 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 17:00:41,157 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 17:00:41,158 Closing current connection to begin reconnect...
+2026-03-13 17:00:41,160 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 17:00:41,162 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 17:00:41,234 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 17:24:09,562 Got difference for channel 2226221671 updates
+2026-03-13 17:39:09,671 Got difference for channel 2226221671 updates
+2026-03-13 18:10:47,989 Got difference for channel 2226221671 updates
+2026-03-13 18:58:30,721 Auto re-login to Kotak Neo...
+2026-03-13 18:58:31,178 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzQyNjYwMCwianRpIjoiYWMyMzYzMzAtYmFmOS00OTQ3LTg1MWItNGFjOGU0MTRjZDg2IiwiaWF0IjoxNzczNDA4NTEyLCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.YzjHK0eSW3EfLADSWv-clVtV3pjoRRKomzL2onyA7wrGV8pafjwMuA2yIFKv-DYd12sOl8FoW0W_J6TaS9C5RsOfITR96Zj3ylqrRhyaSa6ua1AC4wcnRR-dyzeyhLiZPGyTV9Z5u8E_9reT2p2bQhaMLHflydcbZUpGSFL8X4cV-guGoq8VMS4E2AJtzn2mJcGD0IPVAhNmVzE0CdpcaT2kjv9s9uWOERwc5p9Rpjvw3zlMIHxpYfPxAuNDLgIYPGxKZ5xphIUI2D_s_r1Qddz7ocuMeeSZpREzRjf7HhpSPIs4-cWA81vQ5mvncfMsgmnY3jQ8MPLT87bNA92yFw', 'sid': 'ddb1821c-a88e-4394-a849-5afc6a07a97e', 'rid': '0aaffd9a-3db7-465c-9d03-be5488d62612', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-13 18:58:31,483 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzM0MjY2MDAsImp0aSI6IjZiNmQ3OTFmLTM2MWYtNDhkNy1iMDI3LTNhMmEzNDQ4Yjk2NSIsImlhdCI6MTc3MzQwODUxMiwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.qhpIAz6_RDzGateXqNunFAHIZSuDccCujco6idv4m37-qeV1p0IgxIiSDnpVW9qaIPD98DBjDeYHVd25Khlr3m6bzD22Fz-W9RZsgBDdYj45Hxgkz6daDDvWt3MJaOYXVEuM_9KgnHbY07Nwanof23ND73xqrhpL0y8Ks4JJZ8YAvto1Za52zoNSOHQkStAYDEBch3mbFYBm_jwl8UuLgPjWZrCv6g2eRxKZ-Fx-j0uOoRjxuWs1M7ERiIDq9gKuYnrFXeP_RGyJhkEDClpeDtx0Ll8c5kPqPrkDPfM7A_6twbjhn8-6IGktS7BmKA_S_h02OZie04EYgw6sD4qgSQ', 'sid': '6a806777-5dbb-4fd8-960e-5d5aba658017', 'rid': '0aaffd9a-3db7-465c-9d03-be5488d62612', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-13 18:58:31,484 Auto re-login done!
+2026-03-13 18:58:31,484 Next Kotak re-login in 14h 1m
+2026-03-13 20:33:00,426 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 20:33:00,532 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 20:33:00,534 Closing current connection to begin reconnect...
+2026-03-13 20:33:00,563 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 20:33:00,565 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 20:33:01,514 Attempt 1 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 20:33:02,525 Attempt 2 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 20:33:03,565 Attempt 3 at connecting failed: OSError: [Errno 101] Network is unreachable
+2026-03-13 20:33:04,659 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 20:39:12,045 Got difference for channel 1773718759 updates
+2026-03-13 20:48:55,557 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 20:48:55,569 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 20:48:55,571 Closing current connection to begin reconnect...
+2026-03-13 20:48:55,574 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 20:48:55,577 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 20:48:55,657 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 20:54:47,898 Server closed the connection: [Errno 103] Software caused connection abort
+2026-03-13 20:54:47,908 Connection closed while receiving data: [Errno 103] Software caused connection abort
+2026-03-13 20:54:47,909 Closing current connection to begin reconnect...
+2026-03-13 20:54:47,910 <class 'ConnectionAbortedError'> during disconnect: [Errno 103] Software caused connection abort
+2026-03-13 20:54:47,915 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 20:54:47,981 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 20:55:50,210 Got difference for channel 2226221671 updates
+2026-03-13 20:55:50,331 Got difference for channel 1773718759 updates
+2026-03-13 21:04:22,021 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:04:22,029 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:04:22,030 Closing current connection to begin reconnect...
+2026-03-13 21:04:22,032 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:04:22,033 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:04:22,101 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:11:54,856 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:11:54,860 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:11:54,861 Closing current connection to begin reconnect...
+2026-03-13 21:11:54,864 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:11:54,864 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:11:54,929 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:11:55,188 Got difference for channel 2226221671 updates
+2026-03-13 21:20:00,851 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:20:00,855 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:20:00,856 Closing current connection to begin reconnect...
+2026-03-13 21:20:00,857 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:20:00,857 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:20:00,919 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:26:55,105 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:26:55,113 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:26:55,114 Closing current connection to begin reconnect...
+2026-03-13 21:26:55,116 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:26:55,118 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:26:55,180 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:26:55,555 Got difference for channel 2226221671 updates
+2026-03-13 21:26:55,660 Got difference for channel 1773718759 updates
+2026-03-13 21:35:01,157 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:35:01,160 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:35:01,161 Closing current connection to begin reconnect...
+2026-03-13 21:35:01,163 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:35:01,164 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:35:01,228 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:41:55,499 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:41:55,501 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:41:55,503 Closing current connection to begin reconnect...
+2026-03-13 21:41:55,505 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:41:55,506 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:41:55,575 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:41:55,804 Got difference for channel 2226221671 updates
+2026-03-13 21:50:01,376 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:50:01,376 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:50:01,377 Closing current connection to begin reconnect...
+2026-03-13 21:50:01,377 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:50:01,377 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:50:01,442 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:56:55,845 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 21:56:55,851 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 21:56:55,853 Closing current connection to begin reconnect...
+2026-03-13 21:56:55,856 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 21:56:55,857 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 21:56:55,927 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 21:56:56,180 Got difference for channel 2226221671 updates
+2026-03-13 22:05:01,612 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 22:05:01,613 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 22:05:01,615 Closing current connection to begin reconnect...
+2026-03-13 22:05:01,617 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 22:05:01,617 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 22:05:01,681 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 22:11:56,232 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 22:11:56,240 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 22:11:56,242 Closing current connection to begin reconnect...
+2026-03-13 22:11:56,247 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 22:11:56,248 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 22:11:56,332 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 22:27:24,287 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 22:27:24,297 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 22:27:24,299 Closing current connection to begin reconnect...
+2026-03-13 22:27:24,303 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 22:27:24,304 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 22:27:24,371 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 22:27:24,587 Got difference for channel 2226221671 updates
+2026-03-13 22:35:29,747 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 22:35:29,749 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 22:35:29,751 Closing current connection to begin reconnect...
+2026-03-13 22:35:29,753 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 22:35:29,754 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 22:35:29,820 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 22:42:24,604 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 22:42:24,622 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 22:42:24,623 Closing current connection to begin reconnect...
+2026-03-13 22:42:24,626 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 22:42:24,626 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 22:42:24,694 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 22:42:24,896 Got difference for channel 2226221671 updates
+2026-03-13 22:50:30,079 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 22:50:30,090 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 22:50:30,092 Closing current connection to begin reconnect...
+2026-03-13 22:50:30,096 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 22:50:30,099 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 22:50:30,175 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:05:30,460 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 23:05:30,474 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 23:05:30,479 Closing current connection to begin reconnect...
+2026-03-13 23:05:30,481 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 23:05:30,482 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:05:30,556 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:12:25,059 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 23:12:25,076 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 23:12:25,078 Closing current connection to begin reconnect...
+2026-03-13 23:12:25,080 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 23:12:25,081 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:12:25,149 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:20:30,788 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 23:20:30,793 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 23:20:30,807 Closing current connection to begin reconnect...
+2026-03-13 23:20:30,809 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 23:20:30,820 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:20:31,371 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:27:25,289 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 23:27:25,291 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 23:27:25,292 Closing current connection to begin reconnect...
+2026-03-13 23:27:25,294 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 23:27:25,295 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:27:25,356 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:35:31,613 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 23:35:31,628 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 23:35:31,631 Closing current connection to begin reconnect...
+2026-03-13 23:35:31,633 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 23:35:31,634 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:35:31,701 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:42:25,552 Server closed the connection: [Errno 104] Connection reset by peer
+2026-03-13 23:42:25,559 Connection closed while receiving data: [Errno 104] Connection reset by peer
+2026-03-13 23:42:25,560 Closing current connection to begin reconnect...
+2026-03-13 23:42:25,562 <class 'ConnectionResetError'> during disconnect: [Errno 104] Connection reset by peer
+2026-03-13 23:42:25,563 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:42:25,627 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:45:42,515 Logging into Kotak Neo...
+2026-03-13 23:45:42,702 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzQyNjYwMCwianRpIjoiZmJhZDE4ZjQtYzgzNS00NTEzLTk3NTYtZjgxNWU4NDQ5YWZjIiwiaWF0IjoxNzczNDI1NzQ0LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.BZbkwVMJsbJReLNqD8cVrZzzpTsSNftQ5Tpmq2L_lW2xHIyhSsNvmA29vc1LaIUUpRyeEtgCIpxVeySdoroGFQupgUa7FSryPJytuJi4Qa_qgWpchz6BUi9v3Amhc2Pdq6Im_ooJAzFMSXE1G_cBcpSdJlU3b3u4Lz5A8cErSWuSccHRjnRIUi0cBHTAnjL1wJYdshhvx--2hGKmTJgidK4CeBAXPU1SqnGTBG5z1nqtMgk1xQlEy2V5uyLueDJL5QUEyM4OYtD46kO5QTpAXSLpJVJQyEPvj3C64a0DiAQaDYBUR4PZj7KPICMhEpLtOh3ldDmU6NsNBVS8-RVP6g', 'sid': '2bd0c109-d3f2-4a5b-81e5-168caeee5aed', 'rid': 'a64c727f-5fcc-4f29-a5a6-8cc682a08604', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-13 23:45:42,925 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzM0MjY2MDAsImp0aSI6IjhiZDI1Njk0LWM4Y2UtNDNlOS1hYmI1LThiZmQwOWYwNDMyMSIsImlhdCI6MTc3MzQyNTc0NCwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.QRFxKEQsnhqLwwQqi5sukKsw0ycy-UrV0S_eJQwreu0nK0d4fPET253fS2zgdm3YndUqmeC5NQjn9gE1IZ_uVsJBgUuprdE5kQd9gXxFXG5fxJqYcPOeEYhCurETxLOZNLqlQOOhZ7_Vk6ptdncm_fNFY-nBFjuYl1ISKhkcg_s7F75FHOCtNuBUwUnS3L4AsjIe9CbR8xGraAkOtp2sKJAwGe7CSNzLVbIdn0LaN2pZhDHvMHcqDXmtJkHSdLc04-CmTvQnFzn7w9v9aAh4OQNYuV1plWfltexIvBK3a36FUriLkP9T3t5R4pOt_xHvL1ubKLewtmMrqOc_BSeG_A', 'sid': '14860686-739c-4899-8e92-256e7b1bdda1', 'rid': 'a64c727f-5fcc-4f29-a5a6-8cc682a08604', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-13 23:45:42,926 Kotak login done!
+2026-03-13 23:45:42,940 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:45:43,003 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:50:26,368 Logging into Kotak Neo...
+2026-03-13 23:50:26,577 Login:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJWaWV3Il0sImV4cCI6MTc3MzQyNjYwMCwianRpIjoiMGFjZGE3OGUtN2E1NS00NTY3LWI0OTEtZWM1NmYyOTk1NjE1IiwiaWF0IjoxNzczNDI2MDI4LCJpc3MiOiJsb2dpbi1zZXJ2aWNlIiwic3ViIjoiMDNkOTNmNWUtMmU4OC00ZTExLTk3ZjAtYmRmYmQ3ZmU3ZDk5IiwidWNjIjoiWUlLMFMiLCJuYXAiOiIiLCJ5Y2UiOiJlWVxcNiMpIDU9dFx1MDAwNFx1MDAwMFx1MDAwMGZcdTAwMDBcdTAwMTBiIiwiZmV0Y2hjYWNoaW5ncnVsZSI6MCwiY2F0ZWdvcmlzYXRpb24iOiIifQ.QhDPFu6_JCk6N9K1nvtRm7spnNFTZ2uqiXeUFZFsGHvgCt1K-mAUm_0l1dcLcSrOw8BoJgwTTVT_6rJu5AItajCSxCRcK0cFdbUzxuPDMdVw__o2xQAcWlsXijipnBpkiZj0X5z9eoVFH5PhTrlKKOorsXZ-5yoRyLGFlJBOD3o92Dg3XUAcgSgNJ6g62YCA7MkdkvAZzOoVKm30A7NMQpPwV9mBf4Mz6VJTUV7Ge6Cy-7Z9bSEAZ-wAPRzmZBcYSEAYgkirnW1ug1Et3t9TzWGzhbyoIJWW0WO3Th0zskwrrE752kCdrspQXic1Gn3ooBlxJjhY4cFZx9xJWvNk8w', 'sid': '873c415a-089d-460c-a56b-a2d09b0a92d8', 'rid': '02601e2d-6e83-49fc-8c3b-efb68d78e169', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'View', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0, 'tncAccepted': ''}}
+2026-03-13 23:50:26,771 Validate:{'data': {'token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJUcmFkZSJdLCJleHAiOjE3NzM0MjY2MDAsImp0aSI6IjA4NjhmOGU0LWY5M2EtNDQ1NS1iMjc2LTlkOTMzMjFhYzllYyIsImlhdCI6MTc3MzQyNjAyOCwiaXNzIjoibG9naW4tc2VydmljZSIsInN1YiI6IjAzZDkzZjVlLTJlODgtNGUxMS05N2YwLWJkZmJkN2ZlN2Q5OSIsInVjYyI6IllJSzBTIiwibmFwIjoiIiwieWNlIjoiZVlcXDYjKSA1PXRcdTAwMDRcdTAwMDBcdTAwMDBmXHUwMDAwXHUwMDEwYiIsImZldGNoY2FjaGluZ3J1bGUiOjAsImNhdGVnb3Jpc2F0aW9uIjoiIn0.nKjM38UsajsbpKFsnnhxvrtIop80ANpDWVhexFDQYVnEbrmSzGKy9bMKkC06RtRxuYwPcpz5p5WYOX1QwP7wTtpKVAWDh_zcj_1pOByFvNPy3Rae6tIn-avmDnbwHkFt0vb01UVTVD2HWRHYhbHA2Xt4stKwwWjOexyc8jVm0xRuJHn6y0JHBVn3k3YJyMCOMynsrkxJCaiMganoRcoMnpTPWw4yclztmZCyqhOo2G0fLL9SoXjdr6oy3zBnKs0TI54yCmHxbWqKx0m6Bjlap2feDLjc7-843gQThArBKQkwymmsqqxI6sRJPCi9ED2euk04dDhaoWWVwGIrrA_VHA', 'sid': 'f4f608b7-e083-4ce9-aa3a-bac7d4ac18c6', 'rid': '02601e2d-6e83-49fc-8c3b-efb68d78e169', 'baseUrl': 'https://e21.kotaksecurities.com', 'hsServerId': '', 'isUserPwdExpired': False, 'ucc': 'YIK0S', 'greetingName': 'JAYARAMAN', 'isTrialAccount': False, 'dataCenter': 'E21', 'derivativesRiskDisclosure': 'Risk Disclosure on Derivatives\n\nAs per a SEBI study dated 25 Jan 2023- \n• 9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.\n• On an average, loss makers registered net trading loss close to Rs.50,000.\n• Over and above the net trading losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.\n• Those making net trading profits, incurred between 15% to 50% of such profits as transaction cost.\n\nFor more information please check out : https://www.sebi.gov.in/reports-and-statistics/research/jan-2023/study-analysis-of-profit-and-loss-of-individual-traders-dealing-in-equity-fando-segment_67525.html', 'mfAccess': 1, 'dataCenterMap': None, 'dormancyStatus': 'A', 'asbaStatus': '', 'clientType': 'RI', 'isNRI': False, 'kId': 'BBNPR4495P', 'kType': 'Trade', 'status': 'success', 'incRange': 0, 'incUpdFlag': '', 'clientGroup': '', 'kraStatus': '', 'rcFlag': 0}}
+2026-03-13 23:50:26,771 Kotak login done!
+2026-03-13 23:50:26,786 Connecting to 91.108.56.139:443/TcpFull...
+2026-03-13 23:50:26,847 Connection to 91.108.56.139:443/TcpFull complete!
+2026-03-13 23:50:27,312 Telegram connected!
+2026-03-13 23:50:27,313 Listening for Kairos X signals...
+2026-03-13 23:50:27,313 Next Kotak re-login in 9h 9m

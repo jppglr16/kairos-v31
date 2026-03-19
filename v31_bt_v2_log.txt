@@ -1,0 +1,33 @@
+nohup: ignoring input
+
+=================================================================
+  KAIROS V31 BACKTEST V2 - FULL OPTIONS MODEL
+  Theta + IV Crush + Spread + Delta Entry
+  RR=1:2 | Break-even at 1R | 50% exit at 1R/2R
+  ATR > 0.35% | Signal from index
+  Capital: Rs.50,000
+=================================================================
+
+[V31] NIFTY... WR:33.3% Return:-150.6% Trades:6 BE:0 AvgCost:Rs.596
+
+[V31] BANKNIFTY... WR:50.0% Return:-286.9% Trades:28 BE:0 AvgCost:Rs.655
+
+[V31] SENSEX... WR:50.0% Return:-21.5% Trades:6 BE:0 AvgCost:Rs.480
+
+[V31] FINNIFTY... WR:50.0% Return:-108.9% Trades:24 BE:0 AvgCost:Rs.517
+
+[V31] MIDCPNIFTY... WR:22.2% Return:-237.1% Trades:36 BE:0 AvgCost:Rs.363
+
+[V31] CRUDEOIL... WR:71.4% Return:71.8% Trades:7 BE:0 AvgCost:Rs.482
+
+[V31] GOLDM... WR:0% Return:0.0% Trades:0 BE:0 AvgCost:Rs.0
+
+[V31] SILVERM... WR:50.0% Return:-19.8% Trades:4 BE:0 AvgCost:Rs.1074
+
+[V31] LT... WR:44.5% Return:-223.8% Trades:209 BE:0 AvgCost:Rs.580
+
+[V31] NTPC... WR:37.2% Return:-5089.2% Trades:446 BE:2 AvgCost:Rs.5348
+
+[V31] MARUTI... WR:34.3% Return:-600.3% Trades:283 BE:0 AvgCost:Rs.211
+
+[V31] BHARTIARTL... 
