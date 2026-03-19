@@ -4,3 +4,228 @@ nohup: ignoring input
 nohup: ignoring input
 [GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Max retries exceeded with url: /api/option-chain-indices?symbol=UNKNOWN (Caused by NameResolutionError("HTTPSConnection(host='www.nseindia.com', port=443): Failed to resolve 'www.nseindia.com' ([Errno 7] No address associated with hostname)"))
 [GAMMA] OC fetch error UNKNOWN: ('Connection aborted.', ConnectionAbortedError(103, 'Software caused connection abort'))
+nohup: ignoring input
+
+=================================================================
+  KAIROS V31 COMPLETE TRAINING PIPELINE
+  Signals → Mining → Meta Layer → ML → Warm Start
+=================================================================
+
+--- STEP 1: Collecting 3-year signals ---
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/kairos_kotak_bot/v31_trainer.py", line 516, in <module>
+    run_full_v31_training()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/home/kairos_kotak_bot/v31_trainer.py", line 468, in run_full_v31_training
+    signals=collect_v31_signals(symbol)
+  File "/data/data/com.termux/files/home/kairos_kotak_bot/v31_trainer.py", line 49, in collect_v31_signals
+    from v30_final_backtest import get_wyckoff
+  File "/data/data/com.termux/files/home/kairos_kotak_bot/v30_final_backtest.py", line 1, in <module>
+    from v30_rr_filter import apply_rr_filter
+ImportError: cannot import name 'apply_rr_filter' from 'v30_rr_filter' (/data/data/com.termux/files/home/kairos_kotak_bot/v30_rr_filter.py)
+nohup: ignoring input
+  File "/data/data/com.termux/files/home/kairos_kotak_bot/v31_trainer.py", line 50
+    def get_wyckoff(df):
+IndentationError: unexpected indent
+nohup: ignoring input
+  File "/data/data/com.termux/files/home/kairos_kotak_bot/v31_trainer.py", line 55
+    return 'RANGING'
+IndentationError: unexpected indent
+nohup: ignoring input
+nohup: ignoring input
+nohup: ignoring input
+nohup: ignoring input
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: HDFCBANK
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: ICICIBANK
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: SIEMENS
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: POLYCAB
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: BAYERCROP
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: SOLARINDS
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: APARINDS
+2026-03-20 01:27:12,616 [IM] Loaded saved instrument: MRF
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: ABBOTINDIA
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: PAGEIND
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: BAJAJAUTO
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: BRITANNIA
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-20 01:27:12,617 [IM] Loaded saved instrument: OFSS
+2026-03-20 01:27:12,617 Loaded 36 instruments
+2026-03-20 01:27:12,617 === V31 Fresh ML Training ===
+2026-03-20 01:27:12,617 Instruments: 36
+2026-03-20 01:27:12,617 Training NIFTY...
+2026-03-20 01:27:12,998 NIFTY: 96402 candles loaded
+2026-03-20 01:30:26,492 NIFTY: 9633 samples | WR=25.1%
+2026-03-20 01:30:36,031 NIFTY: Accuracy=74.5%
+2026-03-20 01:30:36,041 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-20 01:30:36,097 Training BANKNIFTY...
+2026-03-20 01:30:36,453 BANKNIFTY: 82815 candles loaded
+2026-03-20 01:33:19,677 BANKNIFTY: 8274 samples | WR=26.7%
+2026-03-20 01:33:26,993 BANKNIFTY: Accuracy=71.8%
+2026-03-20 01:33:27,009 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+2026-03-20 01:33:27,038 Training FINNIFTY...
+2026-03-20 01:33:27,360 FINNIFTY: 77758 candles loaded
+2026-03-20 01:36:09,767 FINNIFTY: 7768 samples | WR=26.0%
+2026-03-20 01:36:17,645 FINNIFTY: Accuracy=73.3%
+2026-03-20 01:36:17,662 FINNIFTY: Saved to ml_models/FINNIFTY_v31_ml.pkl ✅
+2026-03-20 01:36:17,688 Training MIDCPNIFTY...
+2026-03-20 01:36:17,931 MIDCPNIFTY: 58693 candles loaded
+2026-03-20 01:38:21,799 MIDCPNIFTY: 5862 samples | WR=21.6%
+2026-03-20 01:38:26,596 MIDCPNIFTY: Accuracy=77.6%
+2026-03-20 01:38:26,611 MIDCPNIFTY: Saved to ml_models/MIDCPNIFTY_v31_ml.pkl ✅
+2026-03-20 01:38:26,627 Training SENSEX...
+2026-03-20 01:38:26,958 SENSEX: 82882 candles loaded
+2026-03-20 01:42:26,025 SENSEX: 8281 samples | WR=28.0%
+2026-03-20 01:42:38,289 SENSEX: Accuracy=71.8%
+2026-03-20 01:42:38,308 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+2026-03-20 01:42:38,343 Training CRUDEOIL...
+2026-03-20 01:42:38,712 CRUDEOIL: 67492 candles loaded
+2026-03-20 01:46:16,880 CRUDEOIL: 6742 samples | WR=7.8%
+2026-03-20 01:46:25,817 CRUDEOIL: Accuracy=92.4%
+2026-03-20 01:46:25,829 CRUDEOIL: Saved to ml_models/CRUDEOIL_v31_ml.pkl ✅
+2026-03-20 01:46:25,864 Training GOLDM...
+2026-03-20 01:46:26,554 GOLDM: 127645 candles loaded
+2026-03-20 01:53:22,154 GOLDM: 12586 samples | WR=5.1%
+2026-03-20 01:53:42,056 GOLDM: Accuracy=94.2%
+2026-03-20 01:53:42,069 GOLDM: Saved to ml_models/GOLDM_v31_ml.pkl ✅
+2026-03-20 01:53:42,124 Training SILVERM...
+2026-03-20 01:53:42,840 SILVERM: 130120 candles loaded
+2026-03-20 02:00:41,833 SILVERM: 12952 samples | WR=3.0%
+2026-03-20 02:01:03,094 SILVERM: Accuracy=96.5%
+2026-03-20 02:01:03,107 SILVERM: Saved to ml_models/SILVERM_v31_ml.pkl ✅
+2026-03-20 02:01:03,164 Training NATURALGAS...
+2026-03-20 02:01:03,840 NATURALGAS: 135089 candles loaded
+2026-03-20 02:07:50,346 NATURALGAS: 13500 samples | WR=29.8%
+2026-03-20 02:08:10,205 NATURALGAS: Accuracy=71.0%
+2026-03-20 02:08:10,216 NATURALGAS: Saved to ml_models/NATURALGAS_v31_ml.pkl ✅
+2026-03-20 02:08:10,277 Training LT...
+2026-03-20 02:08:10,416 LT: 22374 candles loaded
+2026-03-20 02:09:22,182 LT: 2230 samples | WR=15.7%
+2026-03-20 02:09:25,345 LT: Accuracy=81.6%
+2026-03-20 02:09:25,357 LT: Saved to ml_models/LT_v31_ml.pkl ✅
+2026-03-20 02:09:25,369 Training NTPC...
+2026-03-20 02:09:25,485 NTPC: 18509 candles loaded
+2026-03-20 02:10:27,320 NTPC: 1843 samples | WR=39.1%
+2026-03-20 02:10:29,874 NTPC: Accuracy=56.9%
+2026-03-20 02:10:29,887 NTPC: Saved to ml_models/NTPC_v31_ml.pkl ✅
+2026-03-20 02:10:29,897 Training MARUTI...
+2026-03-20 02:10:30,039 MARUTI: 22373 candles loaded
+2026-03-20 02:11:42,293 MARUTI: 2230 samples | WR=18.7%
+2026-03-20 02:11:45,443 MARUTI: Accuracy=78.9%
+2026-03-20 02:11:45,581 MARUTI: Saved to ml_models/MARUTI_v31_ml.pkl ✅
+2026-03-20 02:11:45,593 Training BHARTIARTL...
+2026-03-20 02:11:45,724 BHARTIARTL: 22372 candles loaded
+2026-03-20 02:12:54,010 BHARTIARTL: 2230 samples | WR=15.9%
+2026-03-20 02:12:57,008 BHARTIARTL: Accuracy=82.3%
+2026-03-20 02:12:57,024 BHARTIARTL: Saved to ml_models/BHARTIARTL_v31_ml.pkl ✅
+2026-03-20 02:12:57,035 Training SBIN...
+2026-03-20 02:12:57,174 SBIN: 22372 candles loaded
+2026-03-20 02:14:06,704 SBIN: 2230 samples | WR=16.2%
+2026-03-20 02:14:09,727 SBIN: Accuracy=82.3%
+2026-03-20 02:14:09,743 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-20 02:14:09,755 Training TATAMOTORS...
+2026-03-20 02:14:09,979 TATAMOTORS: 22373 candles loaded
+2026-03-20 02:15:13,481 TATAMOTORS: 2230 samples | WR=34.5%
+2026-03-20 02:15:16,512 TATAMOTORS: Accuracy=66.6%
+2026-03-20 02:15:16,529 TATAMOTORS: Saved to ml_models/TATAMOTORS_v31_ml.pkl ✅
+2026-03-20 02:15:16,544 Training RELIANCE...
+2026-03-20 02:15:16,685 RELIANCE: 22372 candles loaded
+2026-03-20 02:16:20,154 RELIANCE: 2230 samples | WR=36.1%
+2026-03-20 02:16:23,216 RELIANCE: Accuracy=60.3%
+2026-03-20 02:16:23,232 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-20 02:16:23,244 Training HINDUNILVR...
+2026-03-20 02:16:23,381 HINDUNILVR: 22374 candles loaded
+2026-03-20 02:17:26,751 HINDUNILVR: 2230 samples | WR=39.1%
+2026-03-20 02:17:29,919 HINDUNILVR: Accuracy=58.7%
+2026-03-20 02:17:29,929 HINDUNILVR: Saved to ml_models/HINDUNILVR_v31_ml.pkl ✅
+2026-03-20 02:17:29,942 Training TCS...
+2026-03-20 02:17:30,084 TCS: 22372 candles loaded
+2026-03-20 02:18:34,821 TCS: 2230 samples | WR=39.5%
+2026-03-20 02:18:37,981 TCS: Accuracy=57.6%
+2026-03-20 02:18:37,992 TCS: Saved to ml_models/TCS_v31_ml.pkl ✅
+2026-03-20 02:18:38,003 Training TATASTEEL...
+2026-03-20 02:18:38,144 TATASTEEL: 22620 candles loaded
+2026-03-20 02:19:46,675 TATASTEEL: 2254 samples | WR=29.2%
+2026-03-20 02:19:49,858 TATASTEEL: Accuracy=67.2%
+2026-03-20 02:19:49,870 TATASTEEL: Saved to ml_models/TATASTEEL_v31_ml.pkl ✅
+2026-03-20 02:19:49,881 Training HDFCBANK...
+2026-03-20 02:19:49,882 HDFCBANK: No data!
+2026-03-20 02:19:49,882 Training ICICIBANK...
+2026-03-20 02:19:49,882 ICICIBANK: No data!
+2026-03-20 02:19:49,883 Training BAJFINANCE...
+2026-03-20 02:19:49,883 BAJFINANCE: No data!
+2026-03-20 02:19:49,883 Training SIEMENS...
+2026-03-20 02:19:50,030 SIEMENS: 25112 candles loaded
+2026-03-20 02:21:02,309 SIEMENS: 2504 samples | WR=36.5%
+2026-03-20 02:21:05,856 SIEMENS: Accuracy=61.3%
+2026-03-20 02:21:05,871 SIEMENS: Saved to ml_models/SIEMENS_v31_ml.pkl ✅
+2026-03-20 02:21:05,884 Training POLYCAB...
+2026-03-20 02:21:06,030 POLYCAB: 25112 candles loaded
+2026-03-20 02:22:20,016 POLYCAB: 2504 samples | WR=35.0%
+2026-03-20 02:22:23,594 POLYCAB: Accuracy=59.5%
+2026-03-20 02:22:23,641 POLYCAB: Saved to ml_models/POLYCAB_v31_ml.pkl ✅
+2026-03-20 02:22:23,653 Training BAYERCROP...
+2026-03-20 02:22:23,806 BAYERCROP: 24798 candles loaded
+2026-03-20 02:23:35,588 BAYERCROP: 2472 samples | WR=39.1%
+2026-03-20 02:23:39,029 BAYERCROP: Accuracy=55.4%
+2026-03-20 02:23:39,041 BAYERCROP: Saved to ml_models/BAYERCROP_v31_ml.pkl ✅
+2026-03-20 02:23:39,053 Training SOLARINDS...
+2026-03-20 02:23:39,203 SOLARINDS: 25108 candles loaded
+2026-03-20 02:24:56,744 SOLARINDS: 2503 samples | WR=22.9%
+2026-03-20 02:25:00,248 SOLARINDS: Accuracy=76.2%
+2026-03-20 02:25:00,263 SOLARINDS: Saved to ml_models/SOLARINDS_v31_ml.pkl ✅
+2026-03-20 02:25:00,276 Training TVSMOTOR...
+2026-03-20 02:25:00,425 TVSMOTOR: 25112 candles loaded
+2026-03-20 02:26:17,188 TVSMOTOR: 2504 samples | WR=24.5%
+2026-03-20 02:26:20,700 TVSMOTOR: Accuracy=73.1%
+2026-03-20 02:26:20,711 TVSMOTOR: Saved to ml_models/TVSMOTOR_v31_ml.pkl ✅
+2026-03-20 02:26:20,724 Training APARINDS...
+2026-03-20 02:26:20,874 APARINDS: 25075 candles loaded
+2026-03-20 02:27:36,152 APARINDS: 2500 samples | WR=26.0%
+2026-03-20 02:27:39,550 APARINDS: Accuracy=73.8%
+2026-03-20 02:27:39,567 APARINDS: Saved to ml_models/APARINDS_v31_ml.pkl ✅
+2026-03-20 02:27:39,579 Training MRF...
+2026-03-20 02:27:39,733 MRF: 25088 candles loaded
+2026-03-20 02:28:52,089 MRF: 2501 samples | WR=31.6%
+2026-03-20 02:28:55,484 MRF: Accuracy=66.1%
+2026-03-20 02:28:55,495 MRF: Saved to ml_models/MRF_v31_ml.pkl ✅
+2026-03-20 02:28:55,507 Training BOSCHLTD...
+2026-03-20 02:28:55,658 BOSCHLTD: 25106 candles loaded
+2026-03-20 02:30:09,158 BOSCHLTD: 2503 samples | WR=33.2%
+2026-03-20 02:30:12,566 BOSCHLTD: Accuracy=62.7%
+2026-03-20 02:30:12,586 BOSCHLTD: Saved to ml_models/BOSCHLTD_v31_ml.pkl ✅
+2026-03-20 02:30:12,599 Training ABBOTINDIA...
+2026-03-20 02:30:12,745 ABBOTINDIA: 25083 candles loaded
+2026-03-20 02:31:08,927 ABBOTINDIA: 2501 samples | WR=34.4%
+2026-03-20 02:31:11,227 ABBOTINDIA: Accuracy=68.1%
+2026-03-20 02:31:11,235 ABBOTINDIA: Saved to ml_models/ABBOTINDIA_v31_ml.pkl ✅
+2026-03-20 02:31:11,244 Training PAGEIND...
+2026-03-20 02:31:11,352 PAGEIND: 25111 candles loaded
+2026-03-20 02:31:57,945 PAGEIND: 2504 samples | WR=40.4%
+2026-03-20 02:32:00,254 PAGEIND: Accuracy=56.9%
+2026-03-20 02:32:00,262 PAGEIND: Saved to ml_models/PAGEIND_v31_ml.pkl ✅
+2026-03-20 02:32:00,271 Training BAJAJAUTO...
+2026-03-20 02:32:00,378 BAJAJAUTO: 25112 candles loaded
+2026-03-20 02:32:50,005 BAJAJAUTO: 2504 samples | WR=30.4%
+2026-03-20 02:32:52,410 BAJAJAUTO: Accuracy=69.1%
+2026-03-20 02:32:52,418 BAJAJAUTO: Saved to ml_models/BAJAJAUTO_v31_ml.pkl ✅
+2026-03-20 02:32:52,428 Training BRITANNIA...
+2026-03-20 02:32:52,535 BRITANNIA: 25112 candles loaded
+2026-03-20 02:33:40,147 BRITANNIA: 2504 samples | WR=35.0%
+2026-03-20 02:33:42,442 BRITANNIA: Accuracy=62.3%
+2026-03-20 02:33:42,450 BRITANNIA: Saved to ml_models/BRITANNIA_v31_ml.pkl ✅
+2026-03-20 02:33:42,460 Training APOLLOHOSP...
+2026-03-20 02:33:42,567 APOLLOHOSP: 25112 candles loaded
+2026-03-20 02:34:28,275 APOLLOHOSP: 2504 samples | WR=40.4%
+2026-03-20 02:34:30,567 APOLLOHOSP: Accuracy=55.1%
+2026-03-20 02:34:30,575 APOLLOHOSP: Saved to ml_models/APOLLOHOSP_v31_ml.pkl ✅
+2026-03-20 02:34:30,584 Training OFSS...
+2026-03-20 02:34:30,692 OFSS: 25112 candles loaded
+2026-03-20 02:35:18,451 OFSS: 2504 samples | WR=34.1%
+2026-03-20 02:35:20,748 OFSS: Accuracy=63.1%
+2026-03-20 02:35:20,756 OFSS: Saved to ml_models/OFSS_v31_ml.pkl ✅
+2026-03-20 02:35:20,765 === Training Complete ===
+2026-03-20 02:35:20,765 Success: 33/36
+2026-03-20 02:35:20,765 Failed: ['HDFCBANK', 'ICICIBANK', 'BAJFINANCE']

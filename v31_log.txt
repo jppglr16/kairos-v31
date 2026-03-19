@@ -21854,3 +21854,774 @@ SyntaxError: expected 'except' or 'finally' block
 2026-03-19 23:06:51,071 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
 2026-03-19 23:06:54,319 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
 2026-03-19 23:06:57,636 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:08:16,169 [V31] [V31] Loop iteration start
+2026-03-19 23:08:25,318 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:08:28,623 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:08:31,948 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:09:51,675 [V31] [V31] Loop iteration start
+2026-03-19 23:10:01,086 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:10:05,292 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:10:08,690 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:10:27,717 [V31] [SL] Best SL: FVG = 0.84 pts @ 294.96
+2026-03-19 23:10:27,725 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:0.8(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:10:27,725 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:0.8(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:10:27,817 [V31] [ADAPTIVE] NATURALGAS: ml=0.47(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:10:27,818 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:10:27,823 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.89
+2026-03-19 23:10:27,824 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:10:27,825 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:10:27,825 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:10:27,825 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.8, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.89), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:10:27,825 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:10:27,825 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:11:27,887 [V31] [V31] Loop iteration start
+2026-03-19 23:11:37,279 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:11:40,562 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:11:43,865 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:12:02,902 [V31] [SL] Best SL: FVG = 0.84 pts @ 294.96
+2026-03-19 23:12:02,919 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:0.8(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:12:02,919 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:0.8(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:12:03,081 [V31] [ADAPTIVE] NATURALGAS: ml=0.47(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:12:03,082 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:12:03,083 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.89
+2026-03-19 23:12:03,084 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:12:03,084 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:12:03,085 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:12:03,085 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.8, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.89), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:12:03,086 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:12:03,086 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:13:03,115 [V31] [V31] Loop iteration start
+2026-03-19 23:13:13,440 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:13:17,009 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+[E 260319 23:13:28 smartConnect:221] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/secure/angelbroking/historical/v1/getCandleData. Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '51:5d:f6:80:ad:eb', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IkoyMzQ2MTkiLCJyb2xlcyI6MCwidXNlcnR5cGUiOiJVU0VSIiwidG9rZW4iOiJleUpoYkdjaU9pSlNVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKMWMyVnlYM1I1Y0dVaU9pSmpiR2xsYm5RaUxDSjBiMnRsYmw5MGVYQmxJam9pZEhKaFpHVmZZV05qWlhOelgzUnZhMlZ1SWl3aVoyMWZhV1FpT2pFekxDSnpiM1Z5WTJVaU9pSXpJaXdpWkdWMmFXTmxYMmxrSWpvaVpHTXdNMll5T0dFdE56azJaQzB6WkRobExUZzFNR0l0T1RobVpUVXpOR014WkRZeklpd2lhMmxrSWpvaWRISmhaR1ZmYTJWNVgzWXlJaXdpYjIxdVpXMWhibUZuWlhKcFpDSTZNVE1zSW5CeWIyUjFZM1J6SWpwN0ltUmxiV0YwSWpwN0luTjBZWFIxY3lJNkltRmpkR2wyWlNKOUxDSnRaaUk2ZXlKemRHRjBkWE1pT2lKaFkzUnBkbVVpZlgwc0ltbHpjeUk2SW5SeVlXUmxYMnh2WjJsdVgzTmxjblpwWTJVaUxDSnpkV0lpT2lKS01qTTBOakU1SWl3aVpYaHdJam94TnpjME1ESTNNRE16TENKdVltWWlPakUzTnpNNU5EQTBOVE1zSW1saGRDSTZNVGMzTXprME1EUTFNeXdpYW5ScElqb2lZMk0xTVdOaFptVXRNR0ZqWlMwMFpHVTVMV0ptTnpjdFpEQmhOVE01WWpGa1pEaGhJaXdpVkc5clpXNGlPaUlpZlEueU1KWEJDYzYza3psRkpGY3d4Qy1vNUR2OWRHcmY4a29uYXRNVTBqeEdqSFFUZW83YVpjR3NEdDV0U0xLMEVsOTRuYU9aamNlc3QyY2tLdjljNVFLUkgyVnRvSXVMR3l0b3ZIRWY4ajJuRkV5dkhxTFpXOUY5eXlSdzVRYTZ1aHhpTXE4R3BpbHQxakdrbmZPSlNiUlAwR1NpSENkNVFqY0RqcnlGOHVCX1VZIiwiQVBJLUtFWSI6InBFT2FzMHZVIiwiWC1PTEQtQVBJLUtFWSI6ZmFsc2UsImlhdCI6MTc3Mzk0MDYzMywiZXhwIjoxNzczOTQ1MDAwfQ.CfquuGpYr2B9YqUGbOOO3cbPTfR0ipPwzMy7gRa4UwmR9GA08lQQH5S72AAOKQ6U6Yh31U0fI-SIGNsDzBq1uQ'}, Request: {'exchange': 'MCX', 'symboltoken': '457533', 'interval': 'FIVE_MINUTE', 'fromdate': '2026-03-19 09:00', 'todate': '2026-03-19 23:13'}, Response: HTTPSConnectionPool(host='apiconnect.angelone.in', port=443): Read timed out. (read timeout=7)
+2026-03-19 23:13:28,138 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:13:46,594 [V31] [SL] Best SL: FVG = 1.05 pts @ 294.95
+2026-03-19 23:13:46,604 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:1.0(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:13:46,604 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:1.0(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:13:46,687 [V31] [ADAPTIVE] NATURALGAS: ml=0.47(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:13:46,689 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:13:46,690 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:13:46,690 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:13:46,690 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:13:46,691 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:13:46,691 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 296.0, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:13:46,691 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:13:46,691 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:14:46,759 [V31] [V31] Loop iteration start
+2026-03-19 23:14:56,278 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:14:59,737 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:15:03,385 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:15:22,017 [V31] [SL] Best SL: FVG = 0.64 pts @ 294.96
+2026-03-19 23:15:22,029 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:1.0(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:15:22,030 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:1.0(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:15:22,125 [V31] [ADAPTIVE] NATURALGAS: ml=0.46(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:15:22,126 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:15:22,126 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.89
+2026-03-19 23:15:22,127 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:15:22,127 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:15:22,127 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:15:22,127 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.6, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.89), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:15:22,127 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:15:22,128 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:16:22,150 [V31] [V31] Loop iteration start
+2026-03-19 23:16:31,370 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:16:35,236 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:16:38,678 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:16:57,416 [V31] [SL] Best SL: FVG = 0.54 pts @ 294.96
+2026-03-19 23:16:57,427 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:1.1(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:16:57,428 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:1.1(FVG) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:16:57,536 [V31] [ADAPTIVE] NATURALGAS: ml=0.46(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:16:57,538 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:16:57,538 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:16:57,539 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:16:57,539 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:16:57,539 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:16:57,540 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.5, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:16:57,540 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:16:57,540 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:17:57,606 [V31] [V31] Loop iteration start
+2026-03-19 23:18:06,704 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:18:09,950 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:18:13,260 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:18:32,671 [V31] [SL] Best SL: OB = 2.14 pts @ 293.16
+2026-03-19 23:18:32,688 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:2.1(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:18:32,688 [V31] [V31] SIGNAL: NATURALGAS BUY Score:18 RR:1:3.0 SL:2.1(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:18:32,837 [V31] [ADAPTIVE] NATURALGAS: ml=0.45(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:18:32,839 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:18:32,840 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:18:32,841 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:18:32,841 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:18:32,841 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:18:32,841 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.3, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:18:32,841 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:18:32,841 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:19:32,850 [V31] [V31] Loop iteration start
+2026-03-19 23:19:42,019 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:19:45,291 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:19:48,549 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:20:08,598 [V31] [SL] Best SL: OB = 2.34 pts @ 292.86
+2026-03-19 23:20:08,608 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:2.3(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:20:08,608 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:2.3(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:20:08,697 [V31] [ADAPTIVE] NATURALGAS: ml=0.49(0.5) online=0.50(0.5) final=0.49
+2026-03-19 23:20:08,698 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:20:08,698 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.89
+2026-03-19 23:20:08,699 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:20:08,699 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:20:08,700 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:20:08,700 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.2, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.89), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:20:08,700 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:20:08,700 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:21:09,874 [V31] [V31] Loop iteration start
+2026-03-19 23:21:19,513 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:21:22,764 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:21:26,062 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:21:44,530 [V31] [SL] Best SL: OB = 0.84 pts @ 295.84
+2026-03-19 23:21:44,538 [V31] [V31] SIGNAL: NATURALGAS SELL Score:21 RR:1:3.0 SL:0.8(OB) Liq:EQUAL_HIGHS Gamma:0
+2026-03-19 23:21:44,538 [V31] [V31] SIGNAL: NATURALGAS SELL Score:21 RR:1:3.0 SL:0.8(OB) Liq:EQUAL_HIGHS Gamma:0
+2026-03-19 23:21:44,614 [V31] [ADAPTIVE] NATURALGAS: ml=0.46(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:21:44,616 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:21:44,616 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.89
+2026-03-19 23:21:44,617 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:21:44,617 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:21:44,617 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:21:44,617 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.0, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.89), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:21:44,617 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:21:44,617 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:22:44,661 [V31] [V31] Loop iteration start
+2026-03-19 23:22:53,788 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:22:57,838 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:23:01,148 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:23:23,872 [V31] [SL] Best SL: OB = 0.44 pts @ 295.84
+2026-03-19 23:23:23,883 [V31] [TRAP] BREAKDOWN TRAP at 295.2! Score:4
+2026-03-19 23:23:23,883 [V31] [V31] SIGNAL: NATURALGAS SELL Score:21 RR:1:3.0 SL:1.1(OB) Liq:EQUAL_HIGHS Gamma:0
+2026-03-19 23:23:23,883 [V31] [V31] SIGNAL: NATURALGAS SELL Score:21 RR:1:3.0 SL:1.1(OB) Liq:EQUAL_HIGHS Gamma:0
+2026-03-19 23:23:23,978 [V31] [ADAPTIVE] NATURALGAS: ml=0.46(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:23:23,980 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:23:23,980 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:23:23,981 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:23:23,981 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:23:23,981 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:23:23,981 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.4, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:23:23,981 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:23:23,982 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:24:24,049 [V31] [V31] Loop iteration start
+2026-03-19 23:24:33,154 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:24:36,921 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:24:40,245 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:24:59,207 [V31] [SL] Best SL: SWING_HIGH = 0.94 pts @ 296.44
+2026-03-19 23:24:59,215 [V31] [TRAP] BREAKDOWN TRAP at 295.2! Score:4
+2026-03-19 23:24:59,215 [V31] [V31] SIGNAL: NATURALGAS SELL Score:21 RR:1:3.0 SL:0.9(SWING_HIGH) Liq:EQUAL_HIGHS Gamma:0
+2026-03-19 23:24:59,215 [V31] [V31] SIGNAL: NATURALGAS SELL Score:21 RR:1:3.0 SL:0.9(SWING_HIGH) Liq:EQUAL_HIGHS Gamma:0
+2026-03-19 23:24:59,315 [V31] [ADAPTIVE] NATURALGAS: ml=0.45(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:24:59,316 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:24:59,317 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:24:59,318 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:24:59,318 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:24:59,318 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:24:59,318 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.5, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:24:59,318 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:24:59,319 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:25:59,383 [V31] [V31] Loop iteration start
+2026-03-19 23:26:08,546 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:26:12,007 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:26:15,289 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:26:37,414 [V31] [SL] Best SL: OB = 2.44 pts @ 292.86
+2026-03-19 23:26:37,421 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:2.4(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:26:37,422 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:2.4(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:26:37,496 [V31] [ADAPTIVE] NATURALGAS: ml=0.48(0.5) online=0.50(0.5) final=0.49
+2026-03-19 23:26:37,498 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:26:37,498 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.89
+2026-03-19 23:26:37,499 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:26:37,499 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:26:37,499 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:26:37,499 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.3, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.89), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:26:37,499 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:26:37,499 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:27:37,511 [V31] [V31] Loop iteration start
+2026-03-19 23:27:46,682 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:27:50,362 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:27:53,709 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:28:13,194 [V31] [SL] Best SL: OB = 1.94 pts @ 292.86
+2026-03-19 23:28:13,201 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:1.9(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:28:13,202 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:1.9(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:28:13,296 [V31] [ADAPTIVE] NATURALGAS: ml=0.47(0.5) online=0.50(0.5) final=0.49
+2026-03-19 23:28:13,298 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:28:13,298 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:28:13,299 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:28:13,299 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:28:13,299 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:28:13,299 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 294.8, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:28:13,299 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:28:13,299 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:29:13,351 [V31] [V31] Loop iteration start
+2026-03-19 23:29:22,494 [V31] [V31] CRUDEOIL skipped - 27d to expiry, need Rs.1.5L
+2026-03-19 23:29:25,837 [V31] [V31] GOLDM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:29:29,143 [V31] [V31] SILVERM skipped - 27d to expiry, need Rs.20,000
+2026-03-19 23:29:47,556 [V31] [SL] Best SL: OB = 2.14 pts @ 292.86
+2026-03-19 23:29:47,564 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:2.1(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:29:47,564 [V31] [V31] SIGNAL: NATURALGAS BUY Score:14 RR:1:3.0 SL:2.1(OB) Liq:EQUAL_LOWS Gamma:0
+2026-03-19 23:29:47,645 [V31] [ADAPTIVE] NATURALGAS: ml=0.47(0.5) online=0.50(0.5) final=0.48
+2026-03-19 23:29:47,646 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:29:47,646 [V31] [EXEC] NATURALGAS predicted slippage: Rs.0.30
+2026-03-19 23:29:47,647 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:29:47,647 [V31] [EXEC] NATURALGAS optimal size: 1 (kelly=0.25 unc=0.50)
+2026-03-19 23:29:47,647 [V31] [EXEC] NATURALGAS route: {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}
+2026-03-19 23:29:47,647 [V31] [EXEC] NATURALGAS optimized: {'order_type': 'MARKET', 'entry_price': 295.0, 'optimal_qty': 1, 'predicted_slippage': np.float64(0.3), 'saving': 0, 'route': {'exchange': 'MCX', 'product': 'INTRADAY', 'order_type': 'MARKET', 'duration': 'DAY'}, 'reason': 'EXPIRY_DAY'}
+2026-03-19 23:29:47,647 [V31] [EXEC] NATURALGAS order type: MARKET (EXPIRY_DAY)
+2026-03-19 23:29:47,647 [V31] [SM] NATURALGAS BLOCKED: Outside session (NATURALGAS)
+2026-03-19 23:30:40,461 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-19 23:30:40,462 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-19 23:30:40,462 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-19 23:30:40,462 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-19 23:30:40,463 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-19 23:30:40,466 [V31] [IM] Loaded saved instrument: BAYERCROP
+2026-03-19 23:30:40,466 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-19 23:30:40,466 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-19 23:30:40,466 [V31] [IM] Loaded saved instrument: APARINDS
+[I 260319 23:30:43 smartConnect:124] in pool
+2026-03-19 23:30:44,342 [V31] [ANGEL] MCX connected!
+2026-03-19 23:30:44,342 [V31] [V31] Angel MCX feed ready!
+[I 260319 23:30:47 smartConnect:124] in pool
+2026-03-19 23:30:47,828 [V31] [ANGEL] Connected!
+2026-03-19 23:30:47,828 [V31] [V31] Angel One trader ready!
+2026-03-19 23:30:47,839 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-19 23:30:47,840 [V31] ==================================================
+2026-03-19 23:30:47,840 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-19 23:30:47,840 [V31] ==================================================
+2026-03-19 23:30:48,122 [V31] Kotak connected!
+[I 260319 23:30:48 smartConnect:124] in pool
+2026-03-19 23:30:48,559 [V31] [V31] Real capital: Rs.50,000
+2026-03-19 23:30:48,564 [V31] Loading historical candles...
+2026-03-19 23:30:48,916 [V31]   NIFTY: 78138 candles loaded
+2026-03-19 23:30:49,470 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-19 23:30:50,162 [V31]   SENSEX: 64551 candles loaded
+2026-03-19 23:30:50,732 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-19 23:30:51,264 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-19 23:30:51,746 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-19 23:30:52,353 [V31]   GOLDM: 95882 candles loaded
+2026-03-19 23:30:53,023 [V31]   SILVERM: 98357 candles loaded
+2026-03-19 23:30:53,532 [V31]   LT: 59523 candles loaded
+2026-03-19 23:30:53,964 [V31]   NTPC: 55658 candles loaded
+2026-03-19 23:30:54,409 [V31]   MARUTI: 59520 candles loaded
+2026-03-19 23:30:54,866 [V31]   BHARTIARTL: 59518 candles loaded
+2026-03-19 23:30:55,316 [V31]   SBIN: 59520 candles loaded
+2026-03-19 23:30:55,761 [V31]   TATAMOTORS: 59447 candles loaded
+2026-03-19 23:30:56,201 [V31]   RELIANCE: 59414 candles loaded
+2026-03-19 23:30:56,645 [V31]   HINDUNILVR: 59446 candles loaded
+2026-03-19 23:30:57,092 [V31]   TCS: 59443 candles loaded
+2026-03-19 23:30:57,582 [V31]   TATASTEEL: 59584 candles loaded
+2026-03-19 23:30:58,217 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-19 23:30:58,488 [V31] [CACHE] Preloading all market data...
+2026-03-19 23:31:01,830 [V31] [CACHE] Preload complete!
+2026-03-19 23:31:01,830 [V31] [FEED] Live feed started!
+2026-03-19 23:31:01,830 [V31] [V31] LIVE! Websocket connected
+2026-03-19 23:31:02,628 [V31] [V31] Starting main scan loop...
+2026-03-19 23:31:02,628 [V31] [V31] Python version check OK
+2026-03-19 23:31:02,987 [V31] [V31] Market status: True MARKET_OPEN
+2026-03-19 23:31:02,987 [V31] [V31] Entering while loop...
+2026-03-19 23:31:02,987 [V31] [V31] Loop iteration start
+2026-03-19 23:32:03,050 [V31] [V31] Loop iteration start
+2026-03-19 23:33:03,111 [V31] [V31] Loop iteration start
+2026-03-19 23:34:03,169 [V31] [V31] Loop iteration start
+2026-03-19 23:35:03,189 [V31] [V31] Loop iteration start
+2026-03-19 23:36:03,225 [V31] [V31] Loop iteration start
+2026-03-19 23:37:03,253 [V31] [V31] Loop iteration start
+2026-03-19 23:38:03,317 [V31] [V31] Loop iteration start
+2026-03-19 23:39:03,377 [V31] [V31] Loop iteration start
+2026-03-19 23:40:03,438 [V31] [V31] Loop iteration start
+2026-03-19 23:41:03,499 [V31] [V31] Loop iteration start
+2026-03-19 23:42:03,557 [V31] [V31] Loop iteration start
+2026-03-19 23:43:03,617 [V31] [V31] Loop iteration start
+2026-03-19 23:44:03,666 [V31] [V31] Loop iteration start
+2026-03-19 23:45:03,726 [V31] [V31] Loop iteration start
+2026-03-19 23:46:03,737 [V31] [V31] Loop iteration start
+2026-03-19 23:47:03,803 [V31] [V31] Loop iteration start
+2026-03-19 23:48:03,855 [V31] [V31] Loop iteration start
+2026-03-19 23:49:03,913 [V31] [V31] Loop iteration start
+2026-03-19 23:50:03,918 [V31] [V31] Loop iteration start
+2026-03-19 23:51:03,977 [V31] [V31] Loop iteration start
+2026-03-19 23:52:04,039 [V31] [V31] Loop iteration start
+2026-03-19 23:53:09,182 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-19 23:53:09,182 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-19 23:53:09,182 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-19 23:53:09,182 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-19 23:53:09,182 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-19 23:53:09,182 [V31] [IM] Loaded saved instrument: BAYERCROP
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: APARINDS
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: MRF
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: ABBOTINDIA
+2026-03-19 23:53:09,183 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-19 23:53:09,184 [V31] [IM] Loaded saved instrument: BAJAJAUTO
+2026-03-19 23:53:09,186 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-19 23:53:09,186 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-19 23:53:09,187 [V31] [IM] Loaded saved instrument: OFSS
+[I 260319 23:53:11 smartConnect:124] in pool
+2026-03-19 23:53:12,291 [V31] [ANGEL] MCX connected!
+2026-03-19 23:53:12,291 [V31] [V31] Angel MCX feed ready!
+[I 260319 23:53:15 smartConnect:124] in pool
+2026-03-19 23:53:15,826 [V31] [ANGEL] Connected!
+2026-03-19 23:53:15,826 [V31] [V31] Angel One trader ready!
+2026-03-19 23:53:15,836 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-19 23:53:15,837 [V31] ==================================================
+2026-03-19 23:53:15,837 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-19 23:53:15,837 [V31] ==================================================
+2026-03-19 23:53:16,091 [V31] Kotak connected!
+[I 260319 23:53:16 smartConnect:124] in pool
+2026-03-19 23:53:16,474 [V31] [V31] Real capital: Rs.50,000
+2026-03-19 23:53:16,482 [V31] Loading historical candles...
+2026-03-19 23:53:16,820 [V31]   NIFTY: 78138 candles loaded
+2026-03-19 23:53:17,335 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-19 23:53:17,808 [V31]   SENSEX: 64551 candles loaded
+2026-03-19 23:53:18,256 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-19 23:53:18,706 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-19 23:53:19,163 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-19 23:53:19,752 [V31]   GOLDM: 95882 candles loaded
+2026-03-19 23:53:20,384 [V31]   SILVERM: 98357 candles loaded
+2026-03-19 23:53:20,883 [V31]   LT: 59523 candles loaded
+2026-03-19 23:53:21,748 [V31]   NTPC: 55658 candles loaded
+2026-03-19 23:53:22,538 [V31]   MARUTI: 59520 candles loaded
+2026-03-19 23:53:23,039 [V31]   BHARTIARTL: 59518 candles loaded
+2026-03-19 23:53:23,482 [V31]   SBIN: 59520 candles loaded
+2026-03-19 23:53:23,922 [V31]   TATAMOTORS: 59447 candles loaded
+2026-03-19 23:53:24,362 [V31]   RELIANCE: 59414 candles loaded
+2026-03-19 23:53:24,801 [V31]   HINDUNILVR: 59446 candles loaded
+2026-03-19 23:53:25,236 [V31]   TCS: 59443 candles loaded
+2026-03-19 23:53:25,723 [V31]   TATASTEEL: 59584 candles loaded
+2026-03-19 23:53:26,344 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-19 23:53:26,604 [V31] [CACHE] Preloading all market data...
+2026-03-19 23:53:29,872 [V31] [CACHE] Preload complete!
+2026-03-19 23:53:29,872 [V31] [FEED] Live feed started!
+2026-03-19 23:53:29,872 [V31] [V31] LIVE! Websocket connected
+2026-03-19 23:53:30,726 [V31] [V31] Starting main scan loop...
+2026-03-19 23:53:30,727 [V31] [V31] Python version check OK
+2026-03-19 23:53:30,978 [V31] [V31] Market status: True MARKET_OPEN
+2026-03-19 23:53:30,979 [V31] [V31] Entering while loop...
+2026-03-19 23:53:30,979 [V31] [V31] Loop iteration start
+2026-03-19 23:54:31,045 [V31] [V31] Loop iteration start
+2026-03-19 23:55:31,046 [V31] [V31] Loop iteration start
+2026-03-19 23:56:31,105 [V31] [V31] Loop iteration start
+2026-03-19 23:57:31,140 [V31] [V31] Loop iteration start
+2026-03-19 23:58:31,202 [V31] [V31] Loop iteration start
+2026-03-19 23:59:31,254 [V31] [V31] Loop iteration start
+2026-03-20 00:00:31,292 [V31] [V31] Loop iteration start
+2026-03-20 00:01:31,353 [V31] [V31] Loop iteration start
+2026-03-20 00:02:31,413 [V31] [V31] Loop iteration start
+2026-03-20 00:03:31,474 [V31] [V31] Loop iteration start
+2026-03-20 00:04:31,533 [V31] [V31] Loop iteration start
+2026-03-20 00:05:31,593 [V31] [V31] Loop iteration start
+2026-03-20 00:06:31,653 [V31] [V31] Loop iteration start
+2026-03-20 00:07:31,686 [V31] [V31] Loop iteration start
+2026-03-20 00:08:31,745 [V31] [V31] Loop iteration start
+2026-03-20 00:09:31,793 [V31] [V31] Loop iteration start
+2026-03-20 00:10:31,853 [V31] [V31] Loop iteration start
+2026-03-20 00:11:31,948 [V31] [V31] Loop iteration start
+2026-03-20 00:12:31,976 [V31] [V31] Loop iteration start
+2026-03-20 00:13:32,033 [V31] [V31] Loop iteration start
+2026-03-20 00:14:32,066 [V31] [V31] Loop iteration start
+2026-03-20 00:15:32,129 [V31] [V31] Loop iteration start
+2026-03-20 00:16:32,189 [V31] [V31] Loop iteration start
+2026-03-20 00:17:32,250 [V31] [V31] Loop iteration start
+2026-03-20 00:18:32,297 [V31] [V31] Loop iteration start
+2026-03-20 00:19:32,313 [V31] [V31] Loop iteration start
+2026-03-20 00:20:32,377 [V31] [V31] Loop iteration start
+2026-03-20 00:21:32,436 [V31] [V31] Loop iteration start
+2026-03-20 00:22:32,494 [V31] [V31] Loop iteration start
+2026-03-20 00:23:32,544 [V31] [V31] Loop iteration start
+2026-03-20 00:24:32,601 [V31] [V31] Loop iteration start
+2026-03-20 00:25:32,661 [V31] [V31] Loop iteration start
+2026-03-20 00:26:32,721 [V31] [V31] Loop iteration start
+2026-03-20 00:27:32,785 [V31] [V31] Loop iteration start
+2026-03-20 00:28:32,846 [V31] [V31] Loop iteration start
+2026-03-20 00:29:32,907 [V31] [V31] Loop iteration start
+2026-03-20 00:30:32,914 [V31] [V31] Loop iteration start
+2026-03-20 00:31:32,966 [V31] [V31] Loop iteration start
+2026-03-20 00:32:32,981 [V31] [V31] Loop iteration start
+2026-03-20 00:33:33,025 [V31] [V31] Loop iteration start
+2026-03-20 00:34:33,063 [V31] [V31] Loop iteration start
+2026-03-20 00:35:33,093 [V31] [V31] Loop iteration start
+2026-03-20 00:36:33,154 [V31] [V31] Loop iteration start
+2026-03-20 00:37:33,184 [V31] [V31] Loop iteration start
+2026-03-20 00:38:33,200 [V31] [V31] Loop iteration start
+2026-03-20 00:39:33,207 [V31] [V31] Loop iteration start
+2026-03-20 00:40:33,256 [V31] [V31] Loop iteration start
+2026-03-20 00:41:33,281 [V31] [V31] Loop iteration start
+2026-03-20 00:42:33,331 [V31] [V31] Loop iteration start
+2026-03-20 00:43:33,376 [V31] [V31] Loop iteration start
+2026-03-20 00:44:33,405 [V31] [V31] Loop iteration start
+2026-03-20 00:45:33,413 [V31] [V31] Loop iteration start
+2026-03-20 00:46:33,449 [V31] [V31] Loop iteration start
+2026-03-20 00:47:33,473 [V31] [V31] Loop iteration start
+2026-03-20 00:48:33,525 [V31] [V31] Loop iteration start
+2026-03-20 00:49:33,581 [V31] [V31] Loop iteration start
+2026-03-20 00:50:33,641 [V31] [V31] Loop iteration start
+2026-03-20 00:51:33,644 [V31] [V31] Loop iteration start
+2026-03-20 00:52:33,672 [V31] [V31] Loop iteration start
+2026-03-20 00:53:33,684 [V31] [V31] Loop iteration start
+2026-03-20 00:54:33,753 [V31] [V31] Loop iteration start
+2026-03-20 00:55:33,762 [V31] [V31] Loop iteration start
+2026-03-20 00:56:33,791 [V31] [V31] Loop iteration start
+2026-03-20 00:57:33,796 [V31] [V31] Loop iteration start
+2026-03-20 00:58:33,799 [V31] [V31] Loop iteration start
+2026-03-20 00:59:33,865 [V31] [V31] Loop iteration start
+2026-03-20 01:00:33,925 [V31] [V31] Loop iteration start
+2026-03-20 01:02:57,485 [V31] [V31] Loop iteration start
+2026-03-20 01:04:05,417 [V31] [V31] Loop iteration start
+2026-03-20 01:05:05,477 [V31] [V31] Loop iteration start
+2026-03-20 01:06:05,503 [V31] [V31] Loop iteration start
+2026-03-20 01:07:05,563 [V31] [V31] Loop iteration start
+2026-03-20 01:08:05,611 [V31] [V31] Loop iteration start
+2026-03-20 01:09:05,642 [V31] [V31] Loop iteration start
+2026-03-20 01:10:05,667 [V31] [V31] Loop iteration start
+2026-03-20 01:11:05,727 [V31] [V31] Loop iteration start
+2026-03-20 01:12:05,747 [V31] [V31] Loop iteration start
+2026-03-20 01:13:05,758 [V31] [V31] Loop iteration start
+2026-03-20 01:14:05,764 [V31] [V31] Loop iteration start
+2026-03-20 01:15:05,823 [V31] [V31] Loop iteration start
+2026-03-20 01:16:05,887 [V31] [V31] Loop iteration start
+2026-03-20 01:17:05,944 [V31] [V31] Loop iteration start
+2026-03-20 01:18:05,987 [V31] [V31] Loop iteration start
+2026-03-20 01:19:06,027 [V31] [V31] Loop iteration start
+2026-03-20 01:20:06,087 [V31] [V31] Loop iteration start
+2026-03-20 01:20:13,096 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-20 01:20:13,096 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: BAYERCROP
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: APARINDS
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: MRF
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: ABBOTINDIA
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: BAJAJAUTO
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-20 01:20:13,097 [V31] [IM] Loaded saved instrument: OFSS
+[I 260320 01:20:15 smartConnect:124] in pool
+2026-03-20 01:20:16,394 [V31] [ANGEL] MCX connected!
+2026-03-20 01:20:16,394 [V31] [V31] Angel MCX feed ready!
+[I 260320 01:20:19 smartConnect:124] in pool
+2026-03-20 01:20:19,851 [V31] [ANGEL] Connected!
+2026-03-20 01:20:19,851 [V31] [V31] Angel One trader ready!
+2026-03-20 01:20:19,864 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-20 01:20:19,865 [V31] ==================================================
+2026-03-20 01:20:19,865 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-20 01:20:19,865 [V31] ==================================================
+2026-03-20 01:20:20,172 [V31] Kotak connected!
+[I 260320 01:20:20 smartConnect:124] in pool
+2026-03-20 01:20:20,559 [V31] [V31] Real capital: Rs.50,000
+2026-03-20 01:20:20,574 [V31] Loading historical candles...
+2026-03-20 01:20:20,902 [V31]   NIFTY: 78138 candles loaded
+2026-03-20 01:20:21,391 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-20 01:20:21,836 [V31]   SENSEX: 64551 candles loaded
+2026-03-20 01:20:22,264 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-20 01:20:22,681 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-20 01:20:23,122 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-20 01:20:23,673 [V31]   GOLDM: 95882 candles loaded
+2026-03-20 01:20:24,276 [V31]   SILVERM: 98357 candles loaded
+2026-03-20 01:20:24,777 [V31]   LT: 59523 candles loaded
+2026-03-20 01:20:25,170 [V31]   NTPC: 55658 candles loaded
+2026-03-20 01:20:25,571 [V31]   MARUTI: 59520 candles loaded
+2026-03-20 01:20:25,996 [V31]   BHARTIARTL: 59518 candles loaded
+2026-03-20 01:20:26,406 [V31]   SBIN: 59520 candles loaded
+2026-03-20 01:20:26,820 [V31]   TATAMOTORS: 59447 candles loaded
+2026-03-20 01:20:27,237 [V31]   RELIANCE: 59414 candles loaded
+2026-03-20 01:20:27,659 [V31]   HINDUNILVR: 59446 candles loaded
+2026-03-20 01:20:28,074 [V31]   TCS: 59443 candles loaded
+2026-03-20 01:20:28,532 [V31]   TATASTEEL: 59584 candles loaded
+2026-03-20 01:20:29,129 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-20 01:20:29,370 [V31] [CACHE] Preloading all market data...
+2026-03-20 01:20:32,257 [V31] [CACHE] Preload complete!
+2026-03-20 01:20:32,257 [V31] [FEED] Live feed started!
+2026-03-20 01:20:32,258 [V31] [V31] LIVE! Websocket connected
+2026-03-20 01:20:33,048 [V31] [V31] Starting main scan loop...
+2026-03-20 01:20:33,048 [V31] [V31] Python version check OK
+2026-03-20 01:20:33,392 [V31] [V31] Market status: True MARKET_OPEN
+2026-03-20 01:20:33,392 [V31] [V31] Entering while loop...
+2026-03-20 01:20:33,392 [V31] [V31] Loop iteration start
+2026-03-20 01:21:33,467 [V31] [V31] Loop iteration start
+2026-03-20 01:22:05,707 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-20 01:22:05,707 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-20 01:22:05,707 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-20 01:22:05,707 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-20 01:22:05,707 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: BAYERCROP
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: APARINDS
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: MRF
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: ABBOTINDIA
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: BAJAJAUTO
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-20 01:22:05,708 [V31] [IM] Loaded saved instrument: OFSS
+[I 260320 01:22:09 smartConnect:124] in pool
+2026-03-20 01:22:09,563 [V31] [ANGEL] MCX connected!
+2026-03-20 01:22:09,563 [V31] [V31] Angel MCX feed ready!
+[I 260320 01:22:12 smartConnect:124] in pool
+2026-03-20 01:22:13,019 [V31] [ANGEL] Connected!
+2026-03-20 01:22:13,019 [V31] [V31] Angel One trader ready!
+2026-03-20 01:22:13,028 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-20 01:22:13,031 [V31] ==================================================
+2026-03-20 01:22:13,031 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-20 01:22:13,031 [V31] ==================================================
+2026-03-20 01:22:13,239 [V31] Kotak connected!
+[I 260320 01:22:13 smartConnect:124] in pool
+2026-03-20 01:22:13,644 [V31] [V31] Real capital: Rs.50,000
+2026-03-20 01:22:13,651 [V31] Loading historical candles...
+2026-03-20 01:22:14,013 [V31]   NIFTY: 78138 candles loaded
+2026-03-20 01:22:14,522 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-20 01:22:14,999 [V31]   SENSEX: 64551 candles loaded
+2026-03-20 01:22:15,477 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-20 01:22:15,893 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-20 01:22:16,337 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-20 01:22:16,891 [V31]   GOLDM: 95882 candles loaded
+2026-03-20 01:22:17,451 [V31]   SILVERM: 98357 candles loaded
+2026-03-20 01:22:17,903 [V31]   LT: 59523 candles loaded
+2026-03-20 01:22:18,263 [V31]   NTPC: 55658 candles loaded
+2026-03-20 01:22:18,609 [V31]   MARUTI: 59520 candles loaded
+2026-03-20 01:22:18,963 [V31]   BHARTIARTL: 59518 candles loaded
+2026-03-20 01:22:19,315 [V31]   SBIN: 59520 candles loaded
+2026-03-20 01:22:19,665 [V31]   TATAMOTORS: 59447 candles loaded
+2026-03-20 01:22:20,025 [V31]   RELIANCE: 59414 candles loaded
+2026-03-20 01:22:20,378 [V31]   HINDUNILVR: 59446 candles loaded
+2026-03-20 01:22:20,739 [V31]   TCS: 59443 candles loaded
+2026-03-20 01:22:21,139 [V31]   TATASTEEL: 59584 candles loaded
+2026-03-20 01:22:21,644 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-20 01:22:21,877 [V31] [CACHE] Preloading all market data...
+2026-03-20 01:22:24,605 [V31] [CACHE] Preload complete!
+2026-03-20 01:22:24,605 [V31] [FEED] Live feed started!
+2026-03-20 01:22:24,605 [V31] [V31] LIVE! Websocket connected
+2026-03-20 01:22:25,615 [V31] [V31] Starting main scan loop...
+2026-03-20 01:22:25,615 [V31] [V31] Python version check OK
+2026-03-20 01:22:25,883 [V31] [V31] Market status: True MARKET_OPEN
+2026-03-20 01:22:25,883 [V31] [V31] Entering while loop...
+2026-03-20 01:22:25,883 [V31] [V31] Loop iteration start
+2026-03-20 01:23:25,943 [V31] [V31] Loop iteration start
+2026-03-20 01:24:26,003 [V31] [V31] Loop iteration start
+2026-03-20 01:25:02,626 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: BAYERCROP
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-20 01:25:02,627 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-20 01:25:02,628 [V31] [IM] Loaded saved instrument: APARINDS
+2026-03-20 01:25:02,628 [V31] [IM] Loaded saved instrument: MRF
+2026-03-20 01:25:02,628 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-20 01:25:02,628 [V31] [IM] Loaded saved instrument: ABBOTINDIA
+2026-03-20 01:25:02,628 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-20 01:25:02,630 [V31] [IM] Loaded saved instrument: BAJAJAUTO
+2026-03-20 01:25:02,630 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-20 01:25:02,630 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-20 01:25:02,632 [V31] [IM] Loaded saved instrument: OFSS
+[I 260320 01:25:05 smartConnect:124] in pool
+2026-03-20 01:25:06,229 [V31] [ANGEL] MCX connected!
+2026-03-20 01:25:06,229 [V31] [V31] Angel MCX feed ready!
+[I 260320 01:25:09 smartConnect:124] in pool
+2026-03-20 01:25:09,804 [V31] [ANGEL] Connected!
+2026-03-20 01:25:09,804 [V31] [V31] Angel One trader ready!
+2026-03-20 01:25:09,808 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-20 01:25:09,809 [V31] ==================================================
+2026-03-20 01:25:09,809 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-20 01:25:09,809 [V31] ==================================================
+2026-03-20 01:25:10,040 [V31] Kotak connected!
+[I 260320 01:25:10 smartConnect:124] in pool
+2026-03-20 01:25:10,852 [V31] [V31] Real capital: Rs.50,000
+2026-03-20 01:25:10,855 [V31] Loading historical candles...
+2026-03-20 01:25:11,146 [V31]   NIFTY: 78138 candles loaded
+2026-03-20 01:25:11,665 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-20 01:25:12,169 [V31]   SENSEX: 64551 candles loaded
+2026-03-20 01:25:12,613 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-20 01:25:13,035 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-20 01:25:13,466 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-20 01:25:14,019 [V31]   GOLDM: 95882 candles loaded
+2026-03-20 01:25:14,602 [V31]   SILVERM: 98357 candles loaded
+2026-03-20 01:25:15,085 [V31]   LT: 59523 candles loaded
+2026-03-20 01:25:15,554 [V31]   NTPC: 55658 candles loaded
+2026-03-20 01:25:16,035 [V31]   MARUTI: 59520 candles loaded
+2026-03-20 01:25:16,475 [V31]   BHARTIARTL: 59518 candles loaded
+2026-03-20 01:25:17,008 [V31]   SBIN: 59520 candles loaded
+2026-03-20 01:25:17,440 [V31]   TATAMOTORS: 59447 candles loaded
+2026-03-20 01:25:17,859 [V31]   RELIANCE: 59414 candles loaded
+2026-03-20 01:25:18,278 [V31]   HINDUNILVR: 59446 candles loaded
+2026-03-20 01:25:18,700 [V31]   TCS: 59443 candles loaded
+2026-03-20 01:25:19,166 [V31]   TATASTEEL: 59584 candles loaded
+2026-03-20 01:25:19,772 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-20 01:25:20,028 [V31] [CACHE] Preloading all market data...
+2026-03-20 01:25:22,853 [V31] [CACHE] Preload complete!
+2026-03-20 01:25:22,854 [V31] [FEED] Live feed started!
+2026-03-20 01:25:22,854 [V31] [V31] LIVE! Websocket connected
+2026-03-20 01:25:23,783 [V31] [V31] Starting main scan loop...
+2026-03-20 01:25:23,783 [V31] [V31] Python version check OK
+2026-03-20 01:25:24,014 [V31] [V31] Market status: True MARKET_OPEN
+2026-03-20 01:25:24,014 [V31] [V31] Entering while loop...
+2026-03-20 01:25:24,014 [V31] [V31] Loop iteration start
+2026-03-20 01:26:24,030 [V31] [V31] Loop iteration start
+2026-03-20 01:27:24,087 [V31] [V31] Loop iteration start
+2026-03-20 01:28:24,119 [V31] [V31] Loop iteration start
+2026-03-20 01:29:24,188 [V31] [V31] Loop iteration start
+2026-03-20 01:30:24,251 [V31] [V31] Loop iteration start
+2026-03-20 01:31:24,267 [V31] [V31] Loop iteration start
+2026-03-20 01:32:24,328 [V31] [V31] Loop iteration start
+2026-03-20 01:33:24,337 [V31] [V31] Loop iteration start
+2026-03-20 01:34:24,396 [V31] [V31] Loop iteration start
+2026-03-20 01:35:24,405 [V31] [V31] Loop iteration start
+2026-03-20 01:36:24,437 [V31] [V31] Loop iteration start
+2026-03-20 01:37:24,439 [V31] [V31] Loop iteration start
+2026-03-20 01:38:24,442 [V31] [V31] Loop iteration start
+2026-03-20 01:39:24,503 [V31] [V31] Loop iteration start
+2026-03-20 01:40:24,563 [V31] [V31] Loop iteration start
+2026-03-20 01:41:24,599 [V31] [V31] Loop iteration start
+2026-03-20 01:42:24,661 [V31] [V31] Loop iteration start
+2026-03-20 01:43:24,719 [V31] [V31] Loop iteration start
+2026-03-20 01:44:24,780 [V31] [V31] Loop iteration start
+2026-03-20 01:45:24,842 [V31] [V31] Loop iteration start
+2026-03-20 01:46:24,853 [V31] [V31] Loop iteration start
+2026-03-20 01:47:24,910 [V31] [V31] Loop iteration start
+2026-03-20 01:48:24,972 [V31] [V31] Loop iteration start
+2026-03-20 01:49:25,008 [V31] [V31] Loop iteration start
+2026-03-20 01:50:25,060 [V31] [V31] Loop iteration start
+2026-03-20 01:51:25,121 [V31] [V31] Loop iteration start
+2026-03-20 01:52:25,180 [V31] [V31] Loop iteration start
+2026-03-20 01:53:25,241 [V31] [V31] Loop iteration start
+2026-03-20 01:54:25,301 [V31] [V31] Loop iteration start
+2026-03-20 01:55:25,360 [V31] [V31] Loop iteration start
+2026-03-20 01:56:25,420 [V31] [V31] Loop iteration start
+2026-03-20 01:57:25,474 [V31] [V31] Loop iteration start
+2026-03-20 01:58:25,509 [V31] [V31] Loop iteration start
+2026-03-20 01:59:25,567 [V31] [V31] Loop iteration start
+2026-03-20 02:00:25,627 [V31] [V31] Loop iteration start
+2026-03-20 02:01:25,687 [V31] [V31] Loop iteration start
+2026-03-20 02:02:25,749 [V31] [V31] Loop iteration start
+2026-03-20 02:03:25,771 [V31] [V31] Loop iteration start
+2026-03-20 02:04:25,833 [V31] [V31] Loop iteration start
+2026-03-20 02:05:25,895 [V31] [V31] Loop iteration start
+2026-03-20 02:06:25,923 [V31] [V31] Loop iteration start
+2026-03-20 02:07:25,939 [V31] [V31] Loop iteration start
+2026-03-20 02:08:25,970 [V31] [V31] Loop iteration start
+2026-03-20 02:09:26,021 [V31] [V31] Loop iteration start
+2026-03-20 02:10:26,080 [V31] [V31] Loop iteration start
+2026-03-20 02:11:26,134 [V31] [V31] Loop iteration start
+2026-03-20 02:12:26,195 [V31] [V31] Loop iteration start
+2026-03-20 02:13:26,259 [V31] [V31] Loop iteration start
+2026-03-20 02:14:26,300 [V31] [V31] Loop iteration start
+2026-03-20 02:15:26,335 [V31] [V31] Loop iteration start
+2026-03-20 02:16:26,390 [V31] [V31] Loop iteration start
+2026-03-20 02:17:26,425 [V31] [V31] Loop iteration start
+2026-03-20 02:18:26,488 [V31] [V31] Loop iteration start
+2026-03-20 02:19:26,519 [V31] [V31] Loop iteration start
+2026-03-20 02:20:26,581 [V31] [V31] Loop iteration start
+2026-03-20 02:21:26,643 [V31] [V31] Loop iteration start
+2026-03-20 02:22:26,695 [V31] [V31] Loop iteration start
+2026-03-20 02:23:26,744 [V31] [V31] Loop iteration start
+2026-03-20 02:24:26,802 [V31] [V31] Loop iteration start
+2026-03-20 02:25:26,831 [V31] [V31] Loop iteration start
+2026-03-20 02:26:26,847 [V31] [V31] Loop iteration start
+2026-03-20 02:27:26,879 [V31] [V31] Loop iteration start
+2026-03-20 02:28:26,927 [V31] [V31] Loop iteration start
+2026-03-20 02:29:26,931 [V31] [V31] Loop iteration start
+2026-03-20 02:30:26,993 [V31] [V31] Loop iteration start
+2026-03-20 02:31:27,055 [V31] [V31] Loop iteration start
+2026-03-20 02:32:27,111 [V31] [V31] Loop iteration start
+2026-03-20 02:33:27,173 [V31] [V31] Loop iteration start
+2026-03-20 02:34:27,231 [V31] [V31] Loop iteration start
+2026-03-20 02:35:27,291 [V31] [V31] Loop iteration start
+2026-03-20 02:36:27,351 [V31] [V31] Loop iteration start
+2026-03-20 02:37:27,411 [V31] [V31] Loop iteration start
+2026-03-20 02:38:27,471 [V31] [V31] Loop iteration start
+2026-03-20 02:39:27,531 [V31] [V31] Loop iteration start
+2026-03-20 02:40:27,591 [V31] [V31] Loop iteration start
+2026-03-20 02:41:27,652 [V31] [V31] Loop iteration start
+2026-03-20 02:42:27,661 [V31] [V31] Loop iteration start
+2026-03-20 02:43:27,719 [V31] [V31] Loop iteration start
+2026-03-20 02:44:27,779 [V31] [V31] Loop iteration start
+2026-03-20 02:45:27,840 [V31] [V31] Loop iteration start
+2026-03-20 02:46:27,901 [V31] [V31] Loop iteration start
+2026-03-20 02:47:27,959 [V31] [V31] Loop iteration start
+2026-03-20 02:48:28,020 [V31] [V31] Loop iteration start
+2026-03-20 02:49:28,087 [V31] [V31] Loop iteration start
+2026-03-20 02:50:28,147 [V31] [V31] Loop iteration start
+2026-03-20 02:51:28,207 [V31] [V31] Loop iteration start
+2026-03-20 02:52:28,267 [V31] [V31] Loop iteration start
+2026-03-20 02:53:28,328 [V31] [V31] Loop iteration start
+2026-03-20 02:54:28,387 [V31] [V31] Loop iteration start
+2026-03-20 02:55:28,394 [V31] [V31] Loop iteration start
+2026-03-20 02:56:28,434 [V31] [V31] Loop iteration start
+2026-03-20 02:57:28,491 [V31] [V31] Loop iteration start
+2026-03-20 02:58:28,553 [V31] [V31] Loop iteration start
+2026-03-20 02:59:28,611 [V31] [V31] Loop iteration start
+2026-03-20 03:00:28,671 [V31] [V31] Loop iteration start
+2026-03-20 03:01:28,731 [V31] [V31] Loop iteration start
+2026-03-20 03:02:28,791 [V31] [V31] Loop iteration start
+2026-03-20 03:03:28,815 [V31] [V31] Loop iteration start
+2026-03-20 03:04:28,876 [V31] [V31] Loop iteration start
+2026-03-20 03:05:28,935 [V31] [V31] Loop iteration start
+2026-03-20 03:06:28,951 [V31] [V31] Loop iteration start
+2026-03-20 03:07:29,011 [V31] [V31] Loop iteration start
+2026-03-20 03:08:29,015 [V31] [V31] Loop iteration start
+2026-03-20 03:09:29,076 [V31] [V31] Loop iteration start
+2026-03-20 03:10:29,135 [V31] [V31] Loop iteration start
+2026-03-20 03:11:29,195 [V31] [V31] Loop iteration start
+2026-03-20 03:12:29,256 [V31] [V31] Loop iteration start
+2026-03-20 03:13:29,317 [V31] [V31] Loop iteration start
+2026-03-20 03:14:29,378 [V31] [V31] Loop iteration start
+2026-03-20 03:15:29,439 [V31] [V31] Loop iteration start
+2026-03-20 03:16:29,499 [V31] [V31] Loop iteration start
+2026-03-20 03:17:29,559 [V31] [V31] Loop iteration start
+2026-03-20 03:18:29,585 [V31] [V31] Loop iteration start
+2026-03-20 03:19:29,643 [V31] [V31] Loop iteration start
+2026-03-20 03:20:29,703 [V31] [V31] Loop iteration start
+2026-03-20 03:21:29,764 [V31] [V31] Loop iteration start
+2026-03-20 03:22:29,823 [V31] [V31] Loop iteration start
+2026-03-20 03:23:29,884 [V31] [V31] Loop iteration start
+2026-03-20 03:24:29,945 [V31] [V31] Loop iteration start
+2026-03-20 03:25:30,006 [V31] [V31] Loop iteration start
+2026-03-20 03:26:30,067 [V31] [V31] Loop iteration start
+2026-03-20 03:27:30,127 [V31] [V31] Loop iteration start
+2026-03-20 03:28:30,134 [V31] [V31] Loop iteration start
+2026-03-20 03:29:30,191 [V31] [V31] Loop iteration start
+2026-03-20 03:30:30,251 [V31] [V31] Loop iteration start
+2026-03-20 03:31:30,312 [V31] [V31] Loop iteration start
+2026-03-20 03:32:30,371 [V31] [V31] Loop iteration start
+2026-03-20 03:33:30,431 [V31] [V31] Loop iteration start
+2026-03-20 03:34:30,492 [V31] [V31] Loop iteration start
+2026-03-20 03:35:30,553 [V31] [V31] Loop iteration start
+2026-03-20 03:36:30,572 [V31] [V31] Loop iteration start
+2026-03-20 03:37:30,631 [V31] [V31] Loop iteration start
+2026-03-20 03:38:30,692 [V31] [V31] Loop iteration start
+2026-03-20 03:39:30,753 [V31] [V31] Loop iteration start
+2026-03-20 03:40:30,814 [V31] [V31] Loop iteration start
+2026-03-20 03:41:30,875 [V31] [V31] Loop iteration start
+2026-03-20 03:42:30,936 [V31] [V31] Loop iteration start
+2026-03-20 03:43:30,997 [V31] [V31] Loop iteration start
+2026-03-20 03:44:31,055 [V31] [V31] Loop iteration start
+2026-03-20 03:45:31,116 [V31] [V31] Loop iteration start
+2026-03-20 03:46:31,177 [V31] [V31] Loop iteration start
+2026-03-20 03:47:31,239 [V31] [V31] Loop iteration start
+2026-03-20 03:48:31,300 [V31] [V31] Loop iteration start
+2026-03-20 03:49:31,359 [V31] [V31] Loop iteration start
+2026-03-20 03:50:31,419 [V31] [V31] Loop iteration start
+2026-03-20 03:51:31,479 [V31] [V31] Loop iteration start
+2026-03-20 03:52:31,540 [V31] [V31] Loop iteration start
+2026-03-20 03:53:31,601 [V31] [V31] Loop iteration start
+2026-03-20 03:54:31,662 [V31] [V31] Loop iteration start
+2026-03-20 03:55:31,723 [V31] [V31] Loop iteration start
+2026-03-20 03:56:31,783 [V31] [V31] Loop iteration start
+2026-03-20 03:57:31,843 [V31] [V31] Loop iteration start
+2026-03-20 03:58:31,903 [V31] [V31] Loop iteration start
+2026-03-20 03:59:31,964 [V31] [V31] Loop iteration start
+2026-03-20 04:00:32,023 [V31] [V31] Loop iteration start
+2026-03-20 04:01:32,083 [V31] [V31] Loop iteration start
+2026-03-20 04:02:32,144 [V31] [V31] Loop iteration start
+2026-03-20 04:03:32,205 [V31] [V31] Loop iteration start
+2026-03-20 04:04:32,266 [V31] [V31] Loop iteration start
+2026-03-20 04:05:32,327 [V31] [V31] Loop iteration start

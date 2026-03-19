@@ -1000,7 +1000,7 @@ async def main():
                             continue
 
                         # LOW AGREEMENT filter (disabled until training complete)
-                        if False:  # Disabled until training complete
+                        if _agr_pct<0.40:  # Re-enabled! 33 models trained!
                             _agree=[v.get('prob',0.5) for v in ens_details.values() if isinstance(v,dict)]
                             _agr_pct=sum(1 for p in _agree if p>0.5)/len(_agree) if _agree else 1.0
                             if _agr_pct<0.40:

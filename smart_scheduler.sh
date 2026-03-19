@@ -328,6 +328,15 @@ send(f'✅ Weekly Retrain Status
     # ============================================================
     # LOG ROTATION - Every day at 4AM
     # ============================================================
+    # GitHub auto-backup at 4:05 AM
+    if [ "$HHMM" = "04:05" ]; then
+        cd ~/kairos_kotak_bot
+        git add *.py *.sh *.json *.txt 2>/dev/null
+        git commit -m "Daily backup $(date +%Y%m%d_%H%M)" 2>/dev/null
+        git push origin main 2>/dev/null
+        log "GitHub backup done!"
+    fi
+
     if [ "$HHMM" = "04:00" ]; then
         log "Rotating logs..."
         python3 -c "

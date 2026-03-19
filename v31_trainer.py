@@ -5,26 +5,17 @@ from datetime import datetime
 import logging
 log=logging.getLogger(__name__)
 
-INSTRUMENTS={
-    'NIFTY':{'lot':75,'token':'99926000'},
-    'BANKNIFTY':{'lot':30,'token':'99926009'},
-    'SENSEX':{'lot':10,'token':'99919000'},
-    'FINNIFTY':{'lot':65,'token':'99926037'},
-    'MIDCPNIFTY':{'lot':120,'token':'99926074'},
-    'CRUDEOIL':{'lot':100,'token':'472790'},
-    'GOLDM':{'lot':10,'token':'477904'},
-    'SILVERM':{'lot':30,'token':'457533'},
-    'LT':{'lot':450,'token':'11483'},
-    'NTPC':{'lot':4500,'token':'11630'},
-    'MARUTI':{'lot':100,'token':'10999'},
-    'BHARTIARTL':{'lot':950,'token':'10604'},
-    'SBIN':{'lot':1500,'token':'3045'},
-    'TATAMOTORS':{'lot':1350,'token':'3456'},
-    'RELIANCE':{'lot':250,'token':'2885'},
-    'HINDUNILVR':{'lot':300,'token':'1394'},
-    'TCS':{'lot':150,'token':'11536'},
-    'TATASTEEL':{'lot':5500,'token':'3499'},
-}
+# Load from instrument manager (all 36 instruments!)
+try:
+    from v31_instrument_manager import INSTRUMENTS as _IM
+    INSTRUMENTS={k:{'lot':v['lot'],'token':v['token']} for k,v in _IM.items()}
+    log.info(f'Loaded {len(INSTRUMENTS)} instruments from manager')
+except:
+    INSTRUMENTS={
+        'NIFTY':{'lot':65,'token':'99926000'},
+        'BANKNIFTY':{'lot':30,'token':'99926009'},
+        'NATURALGAS':{'lot':1250,'token':'234230'},
+    }
 
 def load_data(symbol):
     all_candles=[]
@@ -48,6 +39,13 @@ def to_df(candles):
         df[col]=pd.to_numeric(df[col],errors='coerce')
     return df.dropna().reset_index(drop=True)
 
+def get_wyckoff(df):
+    c=df['close']
+    if len(c)<3:return 'RANGING'
+    if float(c.iloc[-1])>float(c.iloc[-3]):return 'MARKUP'
+    elif float(c.iloc[-1])<float(c.iloc[-3]):return 'MARKDOWN'
+    return 'RANGING'
+
 def collect_v31_signals(symbol):
     """
     Collect ALL V31 signals from 3 years:
@@ -55,7 +53,6 @@ def collect_v31_signals(symbol):
     """
     from v31_scoring import calc_v31_score
     from v31_strategy import get_market_regime,get_trend_v31
-    from v30_final_backtest import get_wyckoff
     from v30_rr_filter import find_tight_sl,find_best_target
 
     candles=load_data(symbol)

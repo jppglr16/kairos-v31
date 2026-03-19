@@ -114,3 +114,9 @@ python3: can't open file '/data/data/com.termux/files/home/kairos_kotak_bot/down
 [I 260319 21:00:02 smartConnect:124] in pool
 [I 260319 22:00:01 smartConnect:124] in pool
 [I 260319 23:00:12 smartConnect:124] in pool
+MCX summary sent!
+[I 260320 00:00:12 smartConnect:124] in pool
+[I 260320 01:00:26 smartConnect:124] in pool
+[I 260320 02:00:12 smartConnect:124] in pool
+[I 260320 03:00:26 smartConnect:124] in pool
+[I 260320 04:00:39 smartConnect:124] in pool
