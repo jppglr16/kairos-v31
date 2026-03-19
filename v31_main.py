@@ -51,6 +51,7 @@ TOKEN={'NIFTY':'99926000','BANKNIFTY':'99926009','SENSEX':'99919000',
 
 active_trades={}
 signal_cooldown={}  # Prevents duplicate signals
+used_zones={}  # {instrument_zone: timestamp} - persists across scans
 ENABLE_PATH_CD=True   # Enabled for paper trading!
 last_signals={}    # Strike+direction cooldown (30 min)
 last_prices={}     # Price distance filter
@@ -884,6 +885,19 @@ async def main():
                             log.debug(f'[V31] ST err: {_se}')
 
                     if not signal:continue
+
+                    # Zone dedup - same zone within 60 mins = skip
+                    _zone_key=f'{instrument}_{signal.get("sl_type","")}_{round(signal.get("sl_points",0),0)}'
+                    _zone_time=used_zones.get(_zone_key,0)
+                    _now_ts2=_time.time()
+                    if _now_ts2-_zone_time<3600:  # 1 hour zone lock
+                        log.info(f'[V31] {instrument} duplicate zone signal blocked ({_zone_key})')
+                        continue
+                    used_zones[_zone_key]=_now_ts2
+
+                    # Reset zones daily at midnight
+                    if datetime.now().hour==0 and datetime.now().minute<2:
+                        used_zones.clear()
 
                     log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')
 

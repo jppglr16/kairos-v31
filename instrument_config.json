@@ -70,5 +70,69 @@
     "step": 100,
     "exch_seg": "NFO",
     "type": "STOCK"
+  },
+  "MRF": {
+    "exchange": "NSE",
+    "token": "2277",
+    "lot": 10,
+    "step": 500,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "BOSCHLTD": {
+    "exchange": "NSE",
+    "token": "2181",
+    "lot": 25,
+    "step": 100,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "ABBOTINDIA": {
+    "exchange": "NSE",
+    "token": "17903",
+    "lot": 40,
+    "step": 100,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "PAGEIND": {
+    "exchange": "NSE",
+    "token": "14413",
+    "lot": 15,
+    "step": 100,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "BAJAJAUTO": {
+    "exchange": "NSE",
+    "token": "16669",
+    "lot": 75,
+    "step": 100,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "BRITANNIA": {
+    "exchange": "NSE",
+    "token": "547",
+    "lot": 100,
+    "step": 50,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "APOLLOHOSP": {
+    "exchange": "NSE",
+    "token": "157",
+    "lot": 125,
+    "step": 50,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "OFSS": {
+    "exchange": "NSE",
+    "token": "10738",
+    "lot": 50,
+    "step": 100,
+    "exch_seg": "NFO",
+    "type": "STOCK"
   }
 }
