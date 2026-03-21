@@ -117,6 +117,9 @@ class ExitMonitor:
                 elif ltp>=t1 and not pos.get('partial_exit'):
                     pnl=(ltp-entry)*qty*0.5
                     self._partial_exit(sym,pos,ltp,pnl)
+                # Update trailing SL
+                if pos.get('trail_active') and pos.get('partial_exit'):
+                    self._update_trailing_sl(sym,pos,ltp)
 
                 # Time exit: 3:15 PM for NSE options
                 elif self._is_time_exit(pos):
@@ -180,13 +183,41 @@ class ExitMonitor:
         except:pass
 
     def _partial_exit(self,sym,pos,exit_prem,pnl):
-        """Handle T1 partial exit"""
+        """Handle T1 partial exit with trailing SL"""
         inst=pos['instrument']
-        send(f'🎯 T1 Hit! Partial Exit!\n{inst}\nT1: Rs.{exit_prem}\nPartial P&L: Rs.{pnl:,.0f}\n🔄 Trailing remaining...')
+        entry=pos['entry_prem']
         pos['partial_exit']=True
-        pos['sl']=pos['entry_prem']  # Move SL to breakeven!
+        pos['sl']=entry  # Breakeven!
+        pos['trail_active']=True
+        pos['trail_high']=exit_prem
+        send(f'🎯 T1 Hit! {inst}\n'
+             f'Partial P&L: Rs.{pnl:,.0f}\n'
+             f'🛡️ SL→Breakeven Rs.{entry}\n'
+             f'🔄 Trailing SL active!')
         self.save_positions()
-        log.info(f'[EXIT] {inst} T1 hit - SL moved to breakeven {pos["entry_prem"]}')
+        log.info(f'[EXIT] {inst} T1 hit - SL=breakeven Rs.{entry}')
+
+    def _update_trailing_sl(self,sym,pos,current_prem):
+        """Update trailing SL as price moves up"""
+        if not pos.get('trail_active'):return
+        inst=pos['instrument']
+        entry=pos['entry_prem']
+        current_sl=pos['sl']
+        # Track highest price
+        if current_prem>pos.get('trail_high',0):
+            pos['trail_high']=current_prem
+        high=pos.get('trail_high',current_prem)
+        # Trail levels
+        new_sl=current_sl
+        if high>=entry*2.2:   new_sl=max(current_sl,round(entry*1.8))  # Lock +80%
+        elif high>=entry*1.8: new_sl=max(current_sl,round(entry*1.4))  # Lock +40%
+        elif high>=entry*1.5: new_sl=max(current_sl,entry)             # Breakeven
+        if new_sl>current_sl:
+            pos['sl']=new_sl
+            self.save_positions()
+            locked=round((new_sl-entry)/entry*100)
+            log.info(f'[TRAIL] {inst} SL Rs.{current_sl}→Rs.{new_sl} locked={locked}%')
+            send(f'📈 Trail SL Updated!\n{inst}\nNew SL: Rs.{new_sl}\nLocked: +{locked}%')
 
     def _is_time_exit(self,pos):
         """Check if time-based exit needed"""
