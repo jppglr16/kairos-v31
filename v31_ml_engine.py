@@ -94,34 +94,51 @@ def load_v31_model(symbol):
     ]
 
     best_model=None
-    best_acc=0
+    best_score=0
+    INDICES=['NIFTY','BANKNIFTY','FINNIFTY','MIDCPNIFTY','SENSEX']
 
     for f in candidates:
         if os.path.exists(f):
             try:
-                data=pickle.load(open(f,'rb'))
-                if not isinstance(data,dict):continue
-                acc=data.get('accuracy',0)
-                # Prefer recent 5-year models for indices
-                # (more relevant than 10-year)
-                INDICES=['NIFTY','BANKNIFTY','FINNIFTY',
-                         'MIDCPNIFTY','SENSEX']
+                raw=pickle.load(open(f,'rb'))
+
+                # Fix 1: Handle both dict and raw model objects
+                if isinstance(raw,dict):
+                    acc=raw.get('accuracy',0.5)
+                    model_obj=raw  # Keep full dict for scaler etc
+                else:
+                    acc=0.5  # Baseline for raw models
+                    model_obj={'model':raw,'accuracy':0.5,'scaler':None}
+
+                # Index quality filter
                 if symbol in INDICES and 'lgbm' in f and acc<0.65:
-                    log.debug(f'[ML] {symbol} skipping weak LGBM {acc:.1%}')
+                    log.debug(f'[ML] {symbol} skip weak LGBM {acc:.1%}')
                     continue
-                if acc>best_acc:
-                    best_acc=acc
-                    best_model=data
-                    log.debug(f'[ML] {symbol} candidate: {f} acc={acc:.1%}')
-            except:pass
+
+                # Fix 3: Priority scoring (not just accuracy)
+                score=acc
+                if 'v31' in f: score+=0.02  # Prefer V31 models
+                if 'lgbm' in f: score+=0.01  # Prefer LightGBM
+                if symbol not in INDICES and 'lgbm' in f:
+                    score+=0.02  # Extra boost for non-index LGBM
+
+                if score>best_score:
+                    best_score=score
+                    best_model=model_obj
+                    log.debug(f'[ML] {symbol} best: {os.path.basename(f)} acc={acc:.1%} score={score:.3f}')
+
+            except Exception as e:
+                log.debug(f'[ML] {symbol} load error {f}: {e}')
 
     if best_model:
-        log.debug(f'[ML] {symbol} using best model acc={best_acc:.1%}')
         return best_model
 
     # Fallback
     if os.path.exists('ml_models/NIFTY_model.pkl'):
-        try:return pickle.load(open('ml_models/NIFTY_model.pkl','rb'))
+        try:
+            raw=pickle.load(open('ml_models/NIFTY_model.pkl','rb'))
+            if isinstance(raw,dict):return raw
+            return {'model':raw,'accuracy':0.5,'scaler':None}
         except:pass
     return None
 
