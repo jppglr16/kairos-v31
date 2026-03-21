@@ -112,12 +112,17 @@ class SREngine:
         levels.update(self.find_prev_day_levels(df))
         return levels
 
-    def detect_retest(self,df,level,atr,lookback=10):
+    def detect_retest(self,df,level,atr,lookback=None):
         """
         Detect if price recently broke level and is retesting it
         Pattern: Break → Pullback → Retest = HUGE signal!
         """
         try:
+            # Fix 4: Adaptive lookback based on ATR
+            if lookback is None:
+                if atr>200:lookback=6    # High volatility = shorter
+                elif atr>50:lookback=10  # Normal
+                else:lookback=15         # Low vol = longer
             if len(df)<lookback+5:return False
             recent=df.tail(lookback)
             closes=[float(c) for c in recent['close']]
@@ -150,18 +155,36 @@ class SREngine:
             comments=[]
 
             # Check BUY signals
-            # Retest detection (HUGE boost!)
+            # Retest detection (with all fixes!)
             try:
-                for level_name in ['R1','S1','PDH','PDL','PP']:
+                base_score=signal.get('score',20)
+                vol_ratio=signal.get('volume_ratio',1.0)
+                retest_found=False  # Fix 3: only 1 retest boost!
+
+                for level_name in ['PDH','PDL','R1','S1','PP']:
+                    if retest_found:break  # Fix 3: stop after first!
                     level_val=levels.get(level_name,0)
-                    if level_val:
-                        retest=self.detect_retest(df,level_val,atr)
-                        if retest=='RETEST_SUPPORT' and action=='BUY':
-                            score_boost+=4
-                            comments.append(f'RETEST_SUPPORT {level_name}=+4!')
-                        elif retest=='RETEST_RESISTANCE' and action in ('SELL','PE'):
-                            score_boost+=4
-                            comments.append(f'RETEST_RESIST {level_name}=+4!')
+                    if not level_val:continue
+
+                    retest=self.detect_retest(df,level_val,atr)
+
+                    # Fix 2: Volume confirmation required!
+                    if not retest or vol_ratio<1.2:continue
+
+                    # Fix 1: Context-aware boost
+                    if base_score>20:
+                        retest_boost=3  # Strong signal = full boost
+                    else:
+                        retest_boost=2  # Weak signal = smaller boost
+
+                    if retest=='RETEST_SUPPORT' and action=='BUY':
+                        score_boost+=retest_boost
+                        comments.append(f'RETEST {level_name}(+{retest_boost})')
+                        retest_found=True
+                    elif retest=='RETEST_RESISTANCE' and action in ('SELL','PE'):
+                        score_boost+=retest_boost
+                        comments.append(f'RETEST {level_name}(+{retest_boost})')
+                        retest_found=True
             except:pass
 
             # Fix 1: Variable thresholds (strong levels = tighter range)
