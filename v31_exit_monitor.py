@@ -156,6 +156,11 @@ class ExitMonitor:
         # Record to trade log
         self._record_trade(pos,exit_prem,reason,pnl)
         pos['status']='CLOSED'
+        # Notify signal manager
+        try:
+            from v31_signal_manager import signal_manager
+            signal_manager.close_position(pos['instrument'])
+        except:pass
 
     def _partial_exit(self,sym,pos,exit_prem,pnl):
         """Handle T1 partial exit"""

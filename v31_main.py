@@ -55,7 +55,7 @@ used_zones={}  # {instrument_zone: timestamp} - persists across scans
 ENABLE_PATH_CD=True   # Enabled for paper trading!
 last_signals={}    # Strike+direction cooldown (30 min)
 last_prices={}     # Price distance filter
-used_zones=set()   # OB/FVG zone consumption
+# used_zones defined above as dict
 trades_today={}    # Max 2 signals per instrument per day
 
 # Angel One MCX feed
@@ -161,6 +161,17 @@ def get_angel_client():
         return None
 
 def load_candles(angel,instrument,tf=5):
+    import time as _lt
+    # Check cache first
+    from v31_data_cache import _cache
+    import time as _ct
+    _ck=f'{instrument}_{tf}'
+    if _ck in _cache:
+        _data,_ts=_cache[_ck]
+        if _ct.time()-_ts<60:
+            return _data
+    # Small delay to avoid rate limiting
+    _lt.sleep(0.3)
     try:
         import json,os,time
         all_candles=[]
@@ -189,6 +200,14 @@ def load_candles(angel,instrument,tf=5):
                 data=angel.getCandleData(params)
                 if data and data.get('data'):
                     all_candles.extend(data['data'])
+                    # Save to cache
+                    try:
+                        import time as _st
+                        from v31_data_cache import _cache
+                        _df_tmp=to_df(all_candles)
+                        if _df_tmp is not None:
+                            _cache[f'{instrument}_{tf}']=(_df_tmp,_st.time())
+                    except:pass
             except:pass
         if not all_candles:return None
         df=pd.DataFrame(all_candles)
@@ -796,14 +815,22 @@ async def main():
                     if not nse_open:continue
 
                 try:
-                    # Load candles
+                    # Load candles WITH CACHE (prevents rate limiting!)
+                    from v31_data_cache import get_candle_cached
+                    _inst=instrument
                     if instrument in MCX_INST and angel_mcx_feed:
-                        df5=angel_mcx_feed.get_candles(instrument,5)
-                        df15=angel_mcx_feed.get_candles(instrument,15)
+                        _feed=angel_mcx_feed
+                        df5=get_candle_cached(_inst,'FIVE_MINUTE',
+                            lambda i=_inst,f=_feed: f.get_candles(i,5))
+                        df15=get_candle_cached(_inst,'FIFTEEN_MINUTE',
+                            lambda i=_inst,f=_feed: f.get_candles(i,15))
                         df_daily=df15
                     else:
-                        df5=load_candles(angel,instrument,5)
-                        df15=load_candles(angel,instrument,15)
+                        _ang=angel
+                        df5=get_candle_cached(_inst,'FIVE_MINUTE',
+                            lambda i=_inst,a=_ang: load_candles(a,i,5))
+                        df15=get_candle_cached(_inst,'FIFTEEN_MINUTE',
+                            lambda i=_inst,a=_ang: load_candles(a,i,15))
                         df_daily=df15
 
                     if df5 is None or len(df5)<30:continue
@@ -1072,7 +1099,7 @@ async def main():
                     _lots=1  # Hard cap: 1 lot for safety!
                     _qty=_lots
 
-                    signal_cooldown[instrument]=_dt.datetime.now().timestamp()
+                    signal_cooldown[instrument]=datetime.now().timestamp()
                     signal['signal_time']=_time.time()
 
                     # Record in Signal Manager

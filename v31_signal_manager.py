@@ -42,7 +42,56 @@ class SignalManager:
         self.sell_lock_time={} # {instrument: datetime}
         self.last_trade_time={}# {instrument: datetime} cooldown
         self.date=None
+
+        # Position state manager
+        self.positions={}      # {instrument: {side,entry_price,status}}
+        self.last_exit_time={} # {instrument: datetime} post-exit cooldown
+
         self.load_state()
+
+    # ============================================================
+    # POSITION STATE MANAGER
+    # ============================================================
+    def has_active_position(self,inst):
+        """Check if instrument has open position"""
+        return inst in self.positions and self.positions[inst].get('status')=='OPEN'
+
+    def get_position_side(self,inst):
+        """Get current position side (CE/PE/BUY/SELL)"""
+        if self.has_active_position(inst):
+            return self.positions[inst].get('side')
+        return None
+
+    def open_position(self,inst,side,price):
+        """Record new position"""
+        self.positions[inst]={
+            'side':side,
+            'entry_price':price,
+            'status':'OPEN',
+            'open_time':datetime.now().isoformat()
+        }
+        log.info(f'[SM] Position opened: {inst} {side} @ Rs.{price}')
+
+    def close_position(self,inst):
+        """Close position and start cooldown"""
+        if inst in self.positions:
+            self.positions[inst]['status']='CLOSED'
+            self.last_exit_time[inst]=datetime.now()
+            log.info(f'[SM] Position closed: {inst}')
+
+    def cooldown_active(self,inst,secs=600):
+        """Check if post-exit cooldown active (10 mins)"""
+        if inst not in self.last_exit_time:return False
+        elapsed=(datetime.now()-self.last_exit_time[inst]).seconds
+        return elapsed<secs
+
+    def _is_opposite_side(self,current_side,new_direction):
+        """Check if new signal opposes current position"""
+        buy_types=('BUY','CE','CALL')
+        sell_types=('SELL','PE','PUT')
+        current_is_buy=current_side in buy_types or 'CE' in str(current_side)
+        new_is_buy=new_direction in buy_types
+        return current_is_buy != new_is_buy
 
     def load_state(self):
         try:
@@ -122,13 +171,113 @@ class SignalManager:
                 log.info(f'[SM] Auto-releasing sell lock for {instrument} after {elapsed}s')
                 self.release_sell_lock(instrument)
 
-    def can_trade(self,instrument,direction,score=18,strategy_type='DIRECT',atr=None):
+    def dynamic_hold_time(self,instrument,atr=None):
+        """Dynamic hold time based on volatility"""
+        try:
+            if atr is None:return 1800
+            if atr>2:  return 1200  # 20 min (high volatility)
+            elif atr>1:return 1800  # 30 min (normal)
+            else:      return 2400  # 40 min (slow market)
+        except:return 1800
+
+    def flip_score(self,instrument,direction,signal=None,score=0):
+        """
+        5-factor flip scoring system
+        Uses existing signal data - no extra API calls!
+        Returns: (allowed, flip_score, reason)
+        """
+        if signal is None:
+            return False,0,'No signal data'
+
+        fs=0
+        reasons=[]
+
+        # 1. Signal score quality (max 2pts)
+        if score>=29:
+            fs+=2; reasons.append(f'score={score}✅')
+        elif score>=27:
+            fs+=1; reasons.append(f'score={score}⚠️')
+        else:
+            reasons.append(f'score={score}❌')
+
+        # 2. SL type quality (max 2pts)
+        sl_type=signal.get('sl_type','')
+        if 'FVG' in sl_type:
+            fs+=2; reasons.append('FVG✅')
+        elif 'OB' in sl_type:
+            fs+=1; reasons.append('OB⚠️')
+        else:
+            reasons.append(f'{sl_type}❌')
+
+        # 3. Trend aligned (1pt)
+        if signal.get('trend_aligned',False):
+            fs+=1; reasons.append('trend✅')
+        else:
+            reasons.append('trend❌')
+
+        # 4. Market regime (max 2pts, min -1pt)
+        regime=signal.get('regime','RANGING')
+        if 'TRENDING' in regime:
+            fs+=2; reasons.append(f'{regime}✅')
+        elif 'RANGING' in regime:
+            fs-=1; reasons.append(f'{regime}❌')
+        else:
+            fs+=1; reasons.append(f'{regime}⚠️')
+
+        # 5. Liquidity sweep (1pt)
+        liq=signal.get('liq_type','')
+        if 'SWEEP' in liq:
+            fs+=1; reasons.append('SWEEP✅')
+        elif 'EQUAL' in liq:
+            fs+=0; reasons.append('EQUAL⚠️')
+
+        # Bonus: Gamma boost
+        if signal.get('gamma_boost',0)>0:
+            fs+=1; reasons.append('GAMMA✅')
+
+        allowed=fs>=5
+        reason=f'FlipScore:{fs}/8 [{",".join(reasons)}]'
+        log.info(f'[SM] {instrument} flip check: {reason}')
+        return allowed,fs,reason
+
+    # Keep for backward compatibility
+    def volume_spike(self,instrument,signal=None):
+        return signal is not None
+
+    def market_regime_ok(self,instrument,signal=None):
+        if signal is None:return False
+        return signal.get('regime','RANGING') not in ('RANGING','CHOPPY')
+
+    def mtf_aligned(self,instrument,direction,signal=None):
+        if signal is None:return False
+        return signal.get('trend_aligned',False)
+
+    def can_trade(self,instrument,direction,score=18,strategy_type='DIRECT',atr=None,signal=None):
         """
         7-step check in CORRECT order:
         1.Session 2.Cooldown 3.DailyCap 4.SellLock 5.DirFlip 6.Score 7.Limit
         """
         now=datetime.now()
         dir_key='SELL' if direction in SELL_TYPES else 'BUY'
+
+        # 0. POST-EXIT COOLDOWN
+        if self.cooldown_active(instrument):
+            return False,f'Post-exit cooldown active (10 mins)'
+
+        # 0b. POSITION CONFLICT CHECK
+        if self.has_active_position(instrument):
+            current_side=self.get_position_side(instrument)
+            is_opposite=self._is_opposite_side(current_side,dir_key)
+            if is_opposite:
+                if score>=27:
+                    # High score flip - close old position first
+                    log.info(f'[SM] {instrument} FLIP allowed (score={score}) closing {current_side}')
+                    self.close_position(instrument)
+                else:
+                    return False,f'Position conflict: {current_side} active, need score>=27 to flip (got {score})'
+            else:
+                # Same direction - check session limit normally
+                pass
 
         # 1. SESSION CHECK
         session=self._get_session(instrument)
@@ -198,6 +347,9 @@ class SignalManager:
 
         # ✅ Fix 5: Record for cooldown
         self.last_trade_time[instrument]=datetime.now()
+
+        # Open position tracker
+        self.open_position(instrument,dir_key,0)  # price updated by exit monitor
 
         total=self._get_daily_total(instrument)
         log.info(f'[SM] Recorded {instrument} {dir_key} in {session} '
