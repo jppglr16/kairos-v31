@@ -1105,7 +1105,17 @@ async def main():
                         _lots=get_lots_kelly(instrument,capital,_ml_p,_rr,_prem)
                     except:
                         _lots=get_lots(instrument,capital)
-                    _lots=1  # Hard cap: 1 lot for safety!
+                    # Smart lot allocation
+                    _lots=1  # Base = 1 lot
+                    try:
+                        from v31_capital_engine import capital_engine
+                        _smart_lots=capital_engine.get_lots(
+                            instrument,_lots,_score,capital)
+                        if _smart_lots==0:
+                            log.info(f'[CAP] {instrument} skipped - poor performer')
+                            continue
+                        _lots=_smart_lots
+                    except:pass
                     _qty=_lots
 
                     signal_cooldown[instrument]=datetime.now().timestamp()

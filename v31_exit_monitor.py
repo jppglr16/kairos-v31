@@ -183,6 +183,12 @@ class ExitMonitor:
             signal_manager.update_pnl(pnl)
         except:pass
 
+        # Update capital engine performance
+        try:
+            from v31_capital_engine import capital_engine
+            capital_engine.update(inst,pnl,pnl>0)
+        except:pass
+
     def _partial_exit(self,sym,pos,exit_prem,pnl):
         """Handle T1 partial exit with trailing SL"""
         inst=pos['instrument']
