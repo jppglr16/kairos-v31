@@ -10,21 +10,80 @@ class AngelOneTrader:
         self.obj=None
         self.connected=False
 
-    def connect(self):
+    def connect(self,retries=3):
+        """Connect with retry logic"""
+        for attempt in range(retries):
+            try:
+                import time
+                time.sleep(3)
+                self.obj=SmartConnect(api_key='pEOas0vU')
+                totp=pyotp.TOTP('R2T2F2BMP56U44O4OMOYJZTFJI').now()
+                data=self.obj.generateSession('J234619','1605',totp)
+                if data and data.get('status'):
+                    self.connected=True
+                    self._connect_time=datetime.now()
+                    self._refresh_token=data.get('data',{}).get('refreshToken','')
+                    log.info(f'[ANGEL] Connected! (attempt {attempt+1})')
+                    return True
+                log.warning(f'[ANGEL] Connect failed attempt {attempt+1}')
+            except Exception as e:
+                log.error(f'[ANGEL] Connect error attempt {attempt+1}: {e}')
+            time.sleep(5*(attempt+1))  # 5s, 10s, 15s backoff
+        log.error('[ANGEL] All connect attempts failed!')
+        return False
+
+    def is_connected(self):
+        """Heartbeat check"""
         try:
-            import time
-            time.sleep(3)  # Rate limit delay
-            self.obj=SmartConnect(api_key='pEOas0vU')
-            totp=pyotp.TOTP('R2T2F2BMP56U44O4OMOYJZTFJI').now()
-            data=self.obj.generateSession('J234619','1605',totp)
-            if data and data.get('status'):
-                self.connected=True
-                log.info('[ANGEL] Connected!')
+            if not self.connected or not self.obj:
+                return False
+            profile=self.obj.getProfile()
+            if profile and profile.get('status'):
                 return True
+            self.connected=False
             return False
+        except:
+            self.connected=False
+            return False
+
+    def refresh_session(self):
+        """Refresh token before expiry"""
+        try:
+            if hasattr(self,'_refresh_token') and self._refresh_token:
+                data=self.obj.generateToken(self._refresh_token)
+                if data and data.get('status'):
+                    log.info('[ANGEL] Token refreshed!')
+                    self._connect_time=datetime.now()
+                    return True
+            # Fall back to full reconnect
+            return self.reconnect()
         except Exception as e:
-            log.error(f'[ANGEL] Connect error: {e}')
-            return False
+            log.error(f'[ANGEL] Token refresh failed: {e}')
+            return self.reconnect()
+
+    def reconnect(self):
+        """Reconnect on failure"""
+        log.warning('[ANGEL] Reconnecting...')
+        self.connected=False
+        self.obj=None
+        time.sleep(5)
+        result=self.connect()
+        if result:
+            log.info('[ANGEL] Reconnected successfully!')
+        else:
+            log.error('[ANGEL] Reconnect failed!')
+        return result
+
+    def check_and_refresh(self):
+        """Auto-refresh every 6 hours"""
+        try:
+            if not hasattr(self,'_connect_time'):
+                return
+            hours=(datetime.now()-self._connect_time).seconds/3600
+            if hours>=6:
+                log.info(f'[ANGEL] Token age={hours:.1f}h, refreshing...')
+                self.refresh_session()
+        except:pass
 
     def get_capital(self):
         try:

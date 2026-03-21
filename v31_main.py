@@ -787,6 +787,15 @@ async def main():
                 await asyncio.sleep(60)
                 continue
 
+            # Auto-refresh Angel token every 6 hours
+            try:
+                if angel_trader and angel_trader.connected:
+                    angel_trader.check_and_refresh()
+                elif angel_trader:
+                    log.warning('[MAIN] Angel disconnected! Reconnecting...')
+                    angel_trader.reconnect()
+            except:pass
+
             # Refresh capital every hour
             import time as _time
             if _time.time()-_last_capital_refresh>3600:
