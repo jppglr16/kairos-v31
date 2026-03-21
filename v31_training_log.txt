@@ -456,3 +456,75 @@ Returning the number of logical cores instead. You can silence this warning by s
 2026-03-22 00:04:35,277 [LGBM] ICICIBANK: Saved ✅
 2026-03-22 00:04:35,353 [LGBM] Training BAJFINANCE...
 2026-03-22 00:04:35,655 [LGBM] BAJFINANCE: 73,988 candles
+2026-03-22 00:10:33,213 [LGBM] BAJFINANCE: 14782 samples WR=25.7%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:10:36,471 [LGBM] BAJFINANCE: Accuracy=73.3%
+2026-03-22 00:10:36,595 [LGBM] BAJFINANCE: Saved ✅
+2026-03-22 00:10:36,716 [LGBM] Training SIEMENS...
+2026-03-22 00:10:36,919 [LGBM] SIEMENS: 49,473 candles
+2026-03-22 00:14:09,714 [LGBM] SIEMENS: 9879 samples WR=26.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:14:13,476 [LGBM] SIEMENS: Accuracy=73.6%
+2026-03-22 00:14:13,600 [LGBM] SIEMENS: Saved ✅
+2026-03-22 00:14:13,627 [LGBM] Training POLYCAB...
+2026-03-22 00:14:13,791 [LGBM] POLYCAB: 35,042 candles
+2026-03-22 00:16:34,435 [LGBM] POLYCAB: 6993 samples WR=26.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:16:36,973 [LGBM] POLYCAB: Accuracy=71.6%
+2026-03-22 00:16:37,090 [LGBM] POLYCAB: Saved ✅
+2026-03-22 00:16:37,175 [LGBM] Training SOLARINDS...
+2026-03-22 00:16:37,368 [LGBM] SOLARINDS: 44,352 candles
+2026-03-22 00:20:40,280 [LGBM] SOLARINDS: 8853 samples WR=13.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:20:50,153 [LGBM] SOLARINDS: Accuracy=86.4%
+2026-03-22 00:20:50,310 [LGBM] SOLARINDS: Saved ✅
+2026-03-22 00:20:50,365 [LGBM] Training TVSMOTOR...
+2026-03-22 00:20:50,563 [LGBM] TVSMOTOR: 49,550 candles
+2026-03-22 00:25:07,009 [LGBM] TVSMOTOR: 9894 samples WR=14.3%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:25:13,290 [LGBM] TVSMOTOR: Accuracy=85.8%
+2026-03-22 00:25:13,389 [LGBM] TVSMOTOR: Saved ✅
+2026-03-22 00:25:13,444 [LGBM] Training BOSCHLTD...
+2026-03-22 00:25:13,650 [LGBM] BOSCHLTD: 49,534 candles
+2026-03-22 00:29:15,643 [LGBM] BOSCHLTD: 9891 samples WR=32.5%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:29:35,082 [LGBM] BOSCHLTD: Accuracy=66.1%
+2026-03-22 00:29:35,190 [LGBM] BOSCHLTD: Saved ✅
+2026-03-22 00:29:35,225 [LGBM] Training PAGEIND...
+2026-03-22 00:29:35,447 [LGBM] PAGEIND: 49,467 candles
+2026-03-22 00:33:34,267 [LGBM] PAGEIND: 9878 samples WR=39.5%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:33:37,480 [LGBM] PAGEIND: Accuracy=57.7%
+2026-03-22 00:33:37,541 [LGBM] PAGEIND: Saved ✅
+2026-03-22 00:33:37,565 [LGBM] Training BRITANNIA...
+2026-03-22 00:33:37,766 [LGBM] BRITANNIA: 49,549 candles
+2026-03-22 00:37:56,713 [LGBM] BRITANNIA: 9894 samples WR=32.2%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:38:06,277 [LGBM] BRITANNIA: Accuracy=65.5%
+2026-03-22 00:38:06,363 [LGBM] BRITANNIA: Saved ✅
+2026-03-22 00:38:06,465 [LGBM] Training APOLLOHOSP...
+2026-03-22 00:38:06,672 [LGBM] APOLLOHOSP: 49,549 candles
+2026-03-22 00:41:34,004 [LGBM] APOLLOHOSP: 9894 samples WR=30.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:41:38,713 [LGBM] APOLLOHOSP: Accuracy=68.5%
+2026-03-22 00:41:38,824 [LGBM] APOLLOHOSP: Saved ✅
+2026-03-22 00:41:38,886 [LGBM] Training OFSS...
+2026-03-22 00:41:39,065 [LGBM] OFSS: 44,567 candles
+2026-03-22 00:44:24,982 [LGBM] OFSS: 8898 samples WR=34.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:44:29,606 [LGBM] OFSS: Accuracy=63.1%
+2026-03-22 00:44:29,740 [LGBM] OFSS: Saved ✅
+2026-03-22 00:44:29,829 [LGBM] Training BAJAJ-AUTO...
+2026-03-22 00:44:29,834 [LGBM] BAJAJ-AUTO: No data!
+2026-03-22 00:44:29,834 Done! 31/32 trained
+2026-03-22 00:44:29,834 Failed: ['BAJAJ-AUTO']

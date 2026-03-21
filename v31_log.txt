@@ -33982,3 +33982,175 @@ IndentationError: unexpected indent
 2026-03-21 23:47:00,625 [V31] [V31] Entering while loop...
 2026-03-21 23:47:00,625 [V31] [V31] Loop iteration start
 2026-03-21 23:47:01,405 [V31] [V31] WEEKEND_Saturday - no trading
+2026-03-22 00:33:40,733 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 00:33:40,735 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 00:33:43 smartConnect:124] in pool
+2026-03-22 00:33:44,228 [V31] [ANGEL] MCX connected!
+2026-03-22 00:33:44,228 [V31] [V31] Angel MCX feed ready!
+[I 260322 00:33:47 smartConnect:124] in pool
+2026-03-22 00:33:47,948 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 00:33:47,948 [V31] [V31] Angel One trader ready!
+2026-03-22 00:33:47,959 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 00:33:47,959 [V31] ==================================================
+2026-03-22 00:33:47,959 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 00:33:47,959 [V31] ==================================================
+2026-03-22 00:33:48,269 [V31] Kotak connected!
+[I 260322 00:33:48 smartConnect:124] in pool
+2026-03-22 00:33:48,852 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 00:33:48,860 [V31] Loading historical candles...
+2026-03-22 00:33:49,194 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 00:33:49,841 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 00:33:50,430 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 00:33:51,007 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 00:33:51,816 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 00:33:52,422 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 00:33:53,180 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 00:33:54,509 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 00:33:56,021 [V31]   LT: 59543 candles loaded
+2026-03-22 00:33:56,840 [V31]   NTPC: 55675 candles loaded
+2026-03-22 00:33:57,387 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 00:33:58,003 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 00:33:58,687 [V31]   SBIN: 59554 candles loaded
+2026-03-22 00:33:59,333 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 00:33:59,899 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 00:34:00,432 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 00:34:00,973 [V31]   TCS: 59472 candles loaded
+2026-03-22 00:34:01,578 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 00:34:02,886 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 00:34:03,353 [V31] [CACHE] Preloading all market data...
+2026-03-22 00:34:09,608 [V31] [CACHE] Preload complete!
+2026-03-22 00:34:09,608 [V31] [FEED] Live feed started!
+2026-03-22 00:34:09,609 [V31] [V31] LIVE! Websocket connected
+2026-03-22 00:34:10,413 [V31] [V31] Starting main scan loop...
+2026-03-22 00:34:10,413 [V31] [V31] Python version check OK
+2026-03-22 00:34:10,423 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 00:34:10,424 [V31] [V31] Entering while loop...
+2026-03-22 00:34:10,424 [V31] [V31] Loop iteration start
+2026-03-22 00:34:11,273 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 00:37:19,097 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 00:37:19,098 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 00:37:19,098 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 00:37:19,098 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 00:37:19,098 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 00:37:19,098 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 00:37:19,098 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 00:37:19,099 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 00:37:19,099 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 00:37:19,099 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 00:37:19,099 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 00:37:19,099 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 00:37:19,099 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 00:37:22 smartConnect:124] in pool
+2026-03-22 00:37:22,466 [V31] [ANGEL] MCX connected!
+2026-03-22 00:37:22,466 [V31] [V31] Angel MCX feed ready!
+[I 260322 00:37:25 smartConnect:124] in pool
+2026-03-22 00:37:26,058 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 00:37:26,059 [V31] [V31] Angel One trader ready!
+2026-03-22 00:37:26,068 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 00:37:26,069 [V31] ==================================================
+2026-03-22 00:37:26,069 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 00:37:26,069 [V31] ==================================================
+2026-03-22 00:37:26,393 [V31] Kotak connected!
+[I 260322 00:37:26 smartConnect:124] in pool
+2026-03-22 00:37:27,117 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 00:37:27,138 [V31] Loading historical candles...
+2026-03-22 00:37:27,809 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 00:37:28,577 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 00:37:29,177 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 00:37:29,809 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 00:37:30,357 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 00:37:30,873 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 00:37:31,702 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 00:37:32,358 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 00:37:32,863 [V31]   LT: 59543 candles loaded
+2026-03-22 00:37:33,284 [V31]   NTPC: 55675 candles loaded
+2026-03-22 00:37:33,708 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 00:37:34,152 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 00:37:34,751 [V31]   SBIN: 59554 candles loaded
+2026-03-22 00:37:35,325 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 00:37:35,779 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 00:37:36,220 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 00:37:36,663 [V31]   TCS: 59472 candles loaded
+2026-03-22 00:37:37,283 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 00:37:38,186 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 00:37:38,459 [V31] [CACHE] Preloading all market data...
+2026-03-22 00:37:44,123 [V31] [CACHE] Preload complete!
+2026-03-22 00:37:44,124 [V31] [FEED] Live feed started!
+2026-03-22 00:37:44,125 [V31] [V31] LIVE! Websocket connected
+2026-03-22 00:37:44,933 [V31] [V31] Starting main scan loop...
+2026-03-22 00:37:44,933 [V31] [V31] Python version check OK
+2026-03-22 00:37:44,937 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 00:37:44,937 [V31] [V31] Entering while loop...
+2026-03-22 00:37:44,937 [V31] [V31] Loop iteration start
+2026-03-22 00:37:45,707 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 01:30:27,517 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 01:30:27,518 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 01:30:27,519 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 01:30:27,519 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 01:30:27,519 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 01:30:27,519 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 01:30:27,519 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 01:30:30 smartConnect:124] in pool
+2026-03-22 01:30:30,605 [V31] [ANGEL] MCX connected!
+2026-03-22 01:30:30,606 [V31] [V31] Angel MCX feed ready!
+[I 260322 01:30:33 smartConnect:124] in pool
+2026-03-22 01:30:34,707 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 01:30:34,709 [V31] [V31] Angel One trader ready!
+2026-03-22 01:30:34,734 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 01:30:34,735 [V31] ==================================================
+2026-03-22 01:30:34,736 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 01:30:34,736 [V31] ==================================================
+2026-03-22 01:30:35,361 [V31] Kotak connected!
+[I 260322 01:30:35 smartConnect:124] in pool
+2026-03-22 01:30:36,108 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 01:30:36,119 [V31] Loading historical candles...
+2026-03-22 01:30:36,469 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 01:30:37,037 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 01:30:37,728 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 01:30:38,158 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 01:30:38,586 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 01:30:39,031 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 01:30:39,573 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 01:30:40,164 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 01:30:40,645 [V31]   LT: 59543 candles loaded
+2026-03-22 01:30:41,040 [V31]   NTPC: 55675 candles loaded
+2026-03-22 01:30:41,434 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 01:30:41,846 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 01:30:42,257 [V31]   SBIN: 59554 candles loaded
+2026-03-22 01:30:42,669 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 01:30:43,090 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 01:30:43,492 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 01:30:43,901 [V31]   TCS: 59472 candles loaded
+2026-03-22 01:30:44,374 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 01:30:44,961 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 01:30:45,205 [V31] [CACHE] Preloading all market data...
+2026-03-22 01:30:48,293 [V31] [CACHE] Preload complete!
+2026-03-22 01:30:48,293 [V31] [FEED] Live feed started!
+2026-03-22 01:30:48,294 [V31] [V31] LIVE! Websocket connected
+2026-03-22 01:30:49,234 [V31] [V31] Starting main scan loop...
+2026-03-22 01:30:49,234 [V31] [V31] Python version check OK
+2026-03-22 01:30:49,237 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 01:30:49,237 [V31] [V31] Entering while loop...
+2026-03-22 01:30:49,237 [V31] [V31] Loop iteration start
+2026-03-22 01:30:49,954 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 02:36:31,618 [V31] [V31] Loop iteration start
+2026-03-22 02:36:31,631 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 03:36:31,668 [V31] [V31] Loop iteration start
+2026-03-22 03:36:31,669 [V31] [V31] WEEKEND_Sunday - no trading
