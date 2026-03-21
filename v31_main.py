@@ -819,6 +819,17 @@ async def main():
             except Exception as _ne:
                 log.debug(f'[NEWS] Filter error: {_ne}')
 
+            # News event filter
+            try:
+                from v31_news_filter import news_filter
+                _news_blocked,_news_reason,_resume=news_filter.check()
+                if _news_blocked:
+                    log.info(f'[NEWS] Trading blocked: {_news_reason}')
+                    await asyncio.sleep(300)  # Check again in 5 mins
+                    continue
+            except Exception as _ne:
+                log.debug(f'[NEWS] Filter error: {_ne}')
+
             # Internet + API health check
             try:
                 from v33_connection import conn_monitor
