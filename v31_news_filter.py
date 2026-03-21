@@ -7,6 +7,13 @@ import logging
 from datetime import datetime,date,timedelta
 log=logging.getLogger(__name__)
 
+# IST timezone (module level - faster!)
+try:
+    import pytz
+    IST=pytz.timezone('Asia/Kolkata')
+except:
+    IST=None
+
 # ============================================================
 # 2026 MAJOR MARKET EVENTS
 # ============================================================
@@ -75,13 +82,11 @@ class NewsFilter:
         except:pass
         self.last_check=datetime.now()
 
-        # Fix 2: Use IST timezone
-        try:
-            import pytz
-            IST=pytz.timezone('Asia/Kolkata')
-            now=datetime.now(IST).replace(tzinfo=None)
-        except:
-            now=datetime.now()  # Fallback
+        # Fix 2: Use IST timezone (keep timezone-aware!)
+        if IST:
+            now=datetime.now(IST)
+        else:
+            now=datetime.now()
         today=now.strftime('%Y-%m-%d')
 
         # Check major market events
@@ -110,8 +115,7 @@ class NewsFilter:
         if instrument and instrument in RESULT_DATES:
             if today in RESULT_DATES[instrument]:
                 log.info(f'[NEWS] {instrument} results today!')
-                self._alert(f'⚠️ {instrument} results today!
-Trading blocked for {instrument}')
+                self._alert(f'⚠️ {instrument} results today! Trading blocked')
                 self._last_result=(True,f'{instrument} results day',None)
                 return True,f'{instrument} results day',None
 
