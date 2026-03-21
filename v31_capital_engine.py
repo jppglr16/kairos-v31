@@ -116,17 +116,34 @@ class CapitalEngine:
             log.info(f'[CAP] {instrument} DRAWDOWN PROTECTION! PnL=Rs.{total_pnl:,.0f} → SKIP!')
             return 0
 
-        # Correlation filter - check open positions
+        # Correlation filter - allow max 2 per group
+        # Same direction needs score>=25, opposite always allowed
         try:
             from v31_exit_monitor import exit_monitor
             group=get_correlation_group(instrument)
             if group:
-                open_insts=[p['instrument'] for p in exit_monitor.positions.values()
-                           if p.get('status')=='OPEN']
-                corr_open=[i for i in open_insts if i in group and i!=instrument]
-                if corr_open:
-                    log.info(f'[CAP] {instrument} CORRELATION blocked! {corr_open} already open')
+                open_positions=[p for p in exit_monitor.positions.values()
+                               if p.get('status')=='OPEN']
+                corr_open=[p for p in open_positions
+                          if p.get('instrument') in group
+                          and p.get('instrument')!=instrument]
+
+                if len(corr_open)>=2:
+                    log.info(f'[CAP] {instrument} CORRELATION blocked! 2 already open in group')
                     return 0
+                elif len(corr_open)==1:
+                    # Check direction
+                    existing_dir=corr_open[0].get('direction','BUY')
+                    current_dir='SELL' if score<0 else 'BUY'  # Use signal direction
+                    if existing_dir!=current_dir:
+                        log.info(f'[CAP] {instrument} opposite direction - ALLOWED ✅')
+                        pass  # Allow opposite direction
+                    elif score>=25:
+                        log.info(f'[CAP] {instrument} same direction high score={score} - ALLOWED ✅')
+                        pass  # Allow if high score
+                    else:
+                        log.info(f'[CAP] {instrument} same direction low score={score} - BLOCKED!')
+                        return 0
         except:pass
 
         # Fix 5: Time decay
