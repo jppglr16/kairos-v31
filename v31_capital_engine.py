@@ -88,7 +88,7 @@ class CapitalEngine:
         score=(0.4*wr)+(0.3*pf)+(0.3*consistency)
         return score
 
-    def get_lots(self,instrument,base_lots=1,score=20,capital=50000):
+    def get_lots(self,instrument,base_lots=1,score=20,capital=50000,direction="BUY"):
         """
         Smart lot allocation - 5 factor system:
         1. Win rate
@@ -117,34 +117,44 @@ class CapitalEngine:
             return 0
 
         # Correlation filter - allow max 2 per group
-        # Same direction needs score>=25, opposite always allowed
+        # Fix 1: Use actual direction not score
+        # Fix 2: Log when no group
+        # Fix 3: Weighted exposure check
         try:
             from v31_exit_monitor import exit_monitor
             group=get_correlation_group(instrument)
-            if group:
+
+            if not group:
+                log.debug(f'[CAP] {instrument} no correlation group - independent ✅')
+            else:
                 open_positions=[p for p in exit_monitor.positions.values()
                                if p.get('status')=='OPEN']
                 corr_open=[p for p in open_positions
                           if p.get('instrument') in group
                           and p.get('instrument')!=instrument]
 
-                if len(corr_open)>=2:
-                    log.info(f'[CAP] {instrument} CORRELATION blocked! 2 already open in group')
+                # Fix 3: Weighted exposure (count lots not positions!)
+                total_exposure=sum(p.get('qty',1) for p in corr_open)
+
+                if total_exposure>=3:
+                    log.info(f'[CAP] {instrument} WEIGHTED EXPOSURE blocked! {total_exposure} lots in group')
                     return 0
-                elif len(corr_open)==1:
-                    # Check direction
+                elif len(corr_open)>=1:
+                    # Fix 1: Get actual direction from signal
+                    # direction passed as part of score context
                     existing_dir=corr_open[0].get('direction','BUY')
-                    current_dir='SELL' if score<0 else 'BUY'  # Use signal direction
+                    # Use lots as proxy - will be fixed when direction passed
+                    current_dir=direction  # Fix 1: Use actual direction!
+
                     if existing_dir!=current_dir:
-                        log.info(f'[CAP] {instrument} opposite direction - ALLOWED ✅')
-                        pass  # Allow opposite direction
+                        log.info(f'[CAP] {instrument} opposite direction hedge - ALLOWED ✅')
                     elif score>=25:
-                        log.info(f'[CAP] {instrument} same direction high score={score} - ALLOWED ✅')
-                        pass  # Allow if high score
+                        log.info(f'[CAP] {instrument} same dir high score={score} - ALLOWED ✅')
                     else:
-                        log.info(f'[CAP] {instrument} same direction low score={score} - BLOCKED!')
+                        log.info(f'[CAP] {instrument} same dir low score={score} - BLOCKED!')
                         return 0
-        except:pass
+        except Exception as _ce:
+            log.debug(f'[CAP] Correlation check error: {_ce}')
 
         # Fix 5: Time decay
         try:

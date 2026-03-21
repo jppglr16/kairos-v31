@@ -1131,7 +1131,8 @@ async def main():
                             log.info(f'[CAP] Global lot cap reached ({_open_lots}/{MAX_TOTAL_LOTS})')
                             continue
                         _smart_lots=capital_engine.get_lots(
-                            instrument,_lots,_score,capital)
+                            instrument,_lots,_score,capital,
+                            direction=_action)
                         if _smart_lots==0:
                             log.info(f'[CAP] {instrument} skipped - poor performer')
                             continue
