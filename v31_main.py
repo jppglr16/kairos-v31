@@ -808,6 +808,17 @@ async def main():
                     _last_capital_refresh=_time.time()
                 except:pass
 
+            # Internet + API health check
+            try:
+                from v33_connection import conn_monitor
+                _net_ok,_net_reason=conn_monitor.full_check()
+                if not _net_ok:
+                    log.warning(f'[NET] Skipping cycle: {_net_reason}')
+                    await asyncio.sleep(30)
+                    continue
+            except Exception as _ne:
+                log.debug(f'[NET] Check error: {_ne}')
+
             for inst_idx,instrument in enumerate(INSTRUMENTS):
                 if inst_idx>0:
                     import time as _sleep_time
