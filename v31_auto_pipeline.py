@@ -71,28 +71,57 @@ def step1_download_candles():
         log.error(f'Step 1 failed: {e}')
         return 0
 
+def _model_score(data):
+    """
+    Champion vs Challenger scoring
+    Score = 0.4*accuracy + 0.4*win_rate + 0.2*consistency
+    Better than accuracy alone!
+    """
+    if not isinstance(data,dict):return 0
+    acc=data.get('accuracy',0)
+    wr=data.get('win_rate',acc)  # fallback to accuracy
+    consistency=data.get('consistency',0.5)
+    score=(0.4*acc)+(0.4*wr)+(0.2*consistency)
+    return score
+
 def _keep_best_model(sym,new_model_path,model_type='gbm'):
-    """Keep best model - compare accuracy"""
-    import pickle
+    """
+    Champion vs Challenger model selection
+    Keep model with better trading score!
+    """
+    import pickle,shutil
     old_path=f'ml_models/{sym}_model.pkl' if model_type=='gbm' else f'ml_models/{sym}_v31_lgbm.pkl'
     try:
+        new_data=pickle.load(open(new_model_path,'rb'))
+        new_acc=new_data.get('accuracy',0) if isinstance(new_data,dict) else 0
+
+        # Auto delete if accuracy too low
+        if new_acc<0.45:
+            os.remove(new_model_path)
+            log.warning(f'  {sym}: New model too weak ({new_acc:.1%}<45%) - DELETED!')
+            return False
+
         if os.path.exists(old_path):
             old_data=pickle.load(open(old_path,'rb'))
-            new_data=pickle.load(open(new_model_path,'rb'))
-            old_acc=old_data.get('accuracy',0) if isinstance(old_data,dict) else 0
-            new_acc=new_data.get('accuracy',0) if isinstance(new_data,dict) else 0
-            if new_acc>=old_acc:
-                import shutil
+            old_score=_model_score(old_data)
+            new_score=_model_score(new_data)
+
+            if new_score>=old_score:
                 shutil.copy(new_model_path,old_path)
-                log.info(f'  {sym}: New model better ({new_acc:.1%}>{old_acc:.1%}) ✅')
+                log.info(f'  {sym}: Challenger wins! ({new_score:.3f}>{old_score:.3f}) ✅')
                 return True
             else:
                 os.remove(new_model_path)
-                log.info(f'  {sym}: Old model better ({old_acc:.1%}>{new_acc:.1%}) keeping old')
+                log.info(f'  {sym}: Champion retained ({old_score:.3f}>{new_score:.3f})')
                 return False
-    except:
-        pass
-    return True
+        else:
+            # No existing model - use new one
+            shutil.copy(new_model_path,old_path)
+            log.info(f'  {sym}: First model saved ({new_acc:.1%}) ✅')
+            return True
+    except Exception as e:
+        log.warning(f'  {sym}: Model selection error: {e}')
+        return True
 
 def step2_train_gbm():
     """Train GBM models with versioning"""
