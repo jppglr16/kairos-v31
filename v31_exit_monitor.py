@@ -155,6 +155,23 @@ class ExitMonitor:
 
         # Record to trade log
         self._record_trade(pos,exit_prem,reason,pnl)
+
+        # Record exit in Trade Journal
+        try:
+            from v31_trade_journal import trade_journal
+            _tid=pos.get('trade_id','')
+            if _tid:
+                trade_journal.record_exit(_tid,exit_prem,reason)
+            else:
+                # Find by instrument+date
+                from datetime import datetime
+                _date=datetime.now().strftime('%Y-%m-%d')
+                for t in reversed(trade_journal.trades):
+                    if t['instrument']==inst and t['date']==_date and t['status']=='OPEN':
+                        trade_journal.record_exit(t['id'],exit_prem,reason)
+                        break
+        except Exception as _je:
+            log.debug(f'[JOURNAL] Exit error: {_je}')
         pos['status']='CLOSED'
         # Notify signal manager
         try:
