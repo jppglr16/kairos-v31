@@ -968,6 +968,24 @@ async def main():
                     if datetime.now().hour==0 and datetime.now().minute<2:
                         used_zones.clear()
 
+                    # S/R quality check
+                    try:
+                        from v31_support_resistance import sr_engine
+                        _price=float(signal.get('price',0))
+                        _sr_boost,_sr_levels,_sr_comment=sr_engine.check_signal_quality(
+                            signal,df5,_price)
+                        signal['sr_boost']=_sr_boost
+                        signal['sr_comment']=_sr_comment
+                        # Add boost to score
+                        if _sr_boost>0:
+                            signal['score']=signal.get('score',0)+_sr_boost
+                            log.info(f'[SR] {instrument} score boosted +{_sr_boost} ({_sr_comment})')
+                        elif _sr_boost<0:
+                            signal['score']=signal.get('score',0)+_sr_boost
+                            log.info(f'[SR] {instrument} score reduced {_sr_boost} ({_sr_comment})')
+                    except Exception as _sre:
+                        log.debug(f'[SR] Error: {_sre}')
+
                     log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')
 
                     # Expiry safety
