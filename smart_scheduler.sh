@@ -165,15 +165,32 @@ send('⚠️ V31 was stopped!\nRestarted automatically!\nMarket ready!')
     fi
 
     # ============================================================
-    # 11:32 PM - Daily P&L Report (Trade Journal)
+    # 11:32 PM - Daily P&L Report (Trading days only!)
     # ============================================================
     if [ "$HHMM" = "23:32" ]; then
-        log "Sending daily P&L report..."
-        python3 -c "
+        # Only send on weekdays (Mon-Fri)
+        DAY=$(date +%u)  # 1=Mon 7=Sun
+        if [ "$DAY" -le "5" ]; then
+            # Check if NSE holiday
+            IS_HOLIDAY=$(python3 -c "
+from v31_holidays import is_nse_holiday
+from datetime import date
+h,r=is_nse_holiday(date.today())
+print('YES' if h else 'NO')
+" 2>/dev/null)
+            if [ "$IS_HOLIDAY" = "NO" ]; then
+                log "Sending daily P&L report..."
+                python3 -c "
 from v31_trade_journal import trade_journal
 trade_journal.send_daily_report()
 " >> daily_download_log.txt 2>&1
-        log "Daily P&L report sent!"
+                log "Daily P&L report sent!"
+            else
+                log "NSE Holiday - skipping P&L report"
+            fi
+        else
+            log "Weekend - skipping P&L report"
+        fi
     fi
 
     # ============================================================
