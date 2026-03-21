@@ -21,7 +21,8 @@ class ConnectionMonitor:
             self.fail_count=0
             if not self.last_ok:
                 log.info('[NET] Connection restored ✅')
-                self._send_alert('✅ Internet restored! Trading resumed!')
+                self.recovered_at=time.time()  # Record recovery time
+                self._send_alert('✅ Internet restored! Waiting 60s before trading...')
                 self.alert_sent=False
             self.last_ok=True
             return True
@@ -45,10 +46,18 @@ class ConnectionMonitor:
             return False
 
     def full_check(self):
-        """Full connectivity check"""
+        """Full connectivity check with recovery cooldown"""
         internet=self.check()
         if not internet:
             return False,'No internet'
+
+        # Recovery cooldown - wait 60s after reconnect
+        if hasattr(self,'recovered_at'):
+            elapsed=time.time()-self.recovered_at
+            if elapsed<60:
+                remaining=int(60-elapsed)
+                log.info(f'[NET] Recovery cooldown: {remaining}s remaining')
+                return False,f'Recovery cooldown ({remaining}s)'
         angel=self.check_angel()
         if not angel:
             log.warning('[NET] Angel One disconnected! Reconnecting...')

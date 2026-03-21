@@ -5,6 +5,40 @@ from datetime import datetime
 
 log=logging.getLogger(__name__)
 
+def retry_api(func,attempts=3,delay=2):
+    """Retry API call with backoff"""
+    for i in range(attempts):
+        try:
+            result=func()
+            if result:return result
+        except Exception as e:
+            log.warning(f'[RETRY] Attempt {i+1}/{attempts} failed: {e}')
+            if i<attempts-1:
+                time.sleep(delay*(i+1))
+    return None
+
+def verify_order(obj,order_id,max_wait=60):
+    """Verify order status after placement"""
+    import time as _t
+    log.info(f'[VERIFY] Checking order {order_id}...')
+    for attempt in range(6):  # Check every 10 secs for 60 secs
+        try:
+            _t.sleep(10)
+            book=obj.orderBook()
+            if book and book.get('data'):
+                for order in book['data']:
+                    if str(order.get('orderid'))==str(order_id):
+                        status=order.get('status','').upper()
+                        log.info(f'[VERIFY] Order {order_id}: {status}')
+                        if status=='COMPLETE':
+                            return True,'COMPLETE'
+                        elif status in ('REJECTED','CANCELLED'):
+                            return False,status
+                        # Still pending - continue waiting
+        except Exception as e:
+            log.warning(f'[VERIFY] Check error: {e}')
+    return False,'TIMEOUT'
+
 class AngelOneTrader:
     def __init__(self):
         self.obj=None

@@ -1208,6 +1208,22 @@ async def main():
                                 order_id=place_trade_angel(signal,_qty,capital,instrument,angel_trader)
                                 if order_id:
                                     log.info(f'[ANGEL] Order placed! ID:{order_id}')
+                                    # Verify order filled
+                                    try:
+                                        from v31_angel_trader import verify_order
+                                        _filled,_status=verify_order(
+                                            angel_trader.obj,order_id)
+                                        if _filled:
+                                            log.info(f'[ANGEL] Order FILLED! ✅')
+                                        else:
+                                            log.warning(f'[ANGEL] Order {_status}! Retrying...')
+                                            # Retry once
+                                            order_id2=place_trade_angel(
+                                                signal,_qty,capital,instrument,angel_trader)
+                                            if order_id2:
+                                                log.info(f'[ANGEL] Retry order placed: {order_id2}')
+                                    except Exception as _ve:
+                                        log.debug(f'[ANGEL] Verify error: {_ve}')
                                 else:
                                     log.warning(f'[ANGEL] Order failed for {instrument}')
                             else:
