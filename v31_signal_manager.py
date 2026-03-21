@@ -339,6 +339,10 @@ class SignalManager:
         if not self.trading_enabled:
             return False,'Trading disabled'
 
+        # 0c. TRADE COUNT LIMIT
+        if self.trade_count>=self.max_trades_per_day:
+            return False,f'Max trades reached ({self.trade_count}/{self.max_trades_per_day})'
+
         # 0. POST-EXIT COOLDOWN
         if self.cooldown_active(instrument):
             return False,f'Post-exit cooldown active (5 mins)'
@@ -437,7 +441,7 @@ class SignalManager:
 
         # Increment trade count
         self.trade_count+=1
-        log.info(f'[RM] Trade count: {self.trade_count}/{MAX_DAILY_TRADES}')
+        log.info(f'[RM] Trade count: {self.trade_count}/{self.max_trades_per_day}')
 
         # Open position tracker
         self.open_position(instrument,dir_key,0)  # price updated by exit monitor
