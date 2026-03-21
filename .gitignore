@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.zip
+logs/
+kairos_training.zip
+ml_models_trained.zip
