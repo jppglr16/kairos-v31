@@ -13,6 +13,9 @@ for f in all_pkls:
     inst=os.path.basename(f).split('_')[0]
     trained.add(inst)
 models=list(trained)
+# Count v31_ml models specifically
+v31_models=[f for f in all_pkls if "_model.pkl" in f or "_v31_ml.pkl" in f]
+v31_count=len(set(os.path.basename(f).split("_")[0] for f in v31_models))
 opts=load_all_options()
 
 open_pos=[]
@@ -68,7 +71,7 @@ lines=[
     ("OK" if mcx_ok else "CLOSED") + " MCX Today",
     "",
     "SYSTEM:",
-    f"ML Models: {len(models)}/22",
+    f"ML Models: {{v31_count}}/32",
     f"Options Cache: {len(opts):,}",
     f"Capital: Rs.{margin:,.0f}",
     f"Open Positions: {len(open_pos)}",
