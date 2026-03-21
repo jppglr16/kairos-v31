@@ -1109,12 +1109,23 @@ async def main():
                     _lots=1  # Base = 1 lot
                     try:
                         from v31_capital_engine import capital_engine
+                        from v31_exit_monitor import exit_monitor
+                        # Global lot cap
+                        MAX_TOTAL_LOTS=5
+                        _open_lots=sum(
+                            p.get('qty',1) for p in exit_monitor.positions.values()
+                            if p.get('status')=='OPEN'
+                        )
+                        if _open_lots>=MAX_TOTAL_LOTS:
+                            log.info(f'[CAP] Global lot cap reached ({_open_lots}/{MAX_TOTAL_LOTS})')
+                            continue
                         _smart_lots=capital_engine.get_lots(
                             instrument,_lots,_score,capital)
                         if _smart_lots==0:
                             log.info(f'[CAP] {instrument} skipped - poor performer')
                             continue
-                        _lots=_smart_lots
+                        # Ensure global cap not exceeded
+                        _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
                     except:pass
                     _qty=_lots
 

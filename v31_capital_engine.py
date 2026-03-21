@@ -71,34 +71,58 @@ class CapitalEngine:
         score=(0.4*wr)+(0.3*pf)+(0.3*consistency)
         return score
 
-    def get_lots(self,instrument,base_lots,score=20,capital=50000):
+    def get_lots(self,instrument,base_lots=1,score=20,capital=50000):
         """
-        Smart lot allocation based on performance
-        Returns: recommended lots
+        Smart lot allocation - 5 factor system:
+        1. Win rate
+        2. PnL profitability
+        3. Drawdown protection
+        4. Sample size scaling
+        5. Time decay
         """
-        risk=self.risk_score(instrument)
-        trades=self.perf.get(instrument,{}).get('trades',0)
+        p=self.perf.get(instrument,{})
+        trades=p.get('trades',0)
+        total_pnl=p.get('total_pnl',0)
 
-        # Not enough data → use base lots
+        # Fix 3: Scale by sample size
         if trades<10:
-            log.debug(f'[CAP] {instrument}: insufficient data ({trades} trades), using base={base_lots}')
-            return base_lots
+            scale=trades/10 if trades>0 else 0
+            scaled=max(1,int(base_lots*scale)) if trades>=5 else base_lots
+            log.debug(f'[CAP] {instrument}: {trades} trades, scale={scale:.1f}, lots={scaled}')
+            return scaled
 
         wr=self.win_rate(instrument)
+        avg_pnl=total_pnl/max(trades,1)
 
-        # Allocation rules:
-        if wr>=0.65:
-            lots=min(base_lots*2,2)  # Best performers: 2 lots max
-            log.info(f'[CAP] {instrument} HIGH performer WR={wr:.0%} → {lots} lots')
-        elif wr>=0.55:
-            lots=base_lots  # Good: normal lots
-            log.info(f'[CAP] {instrument} GOOD performer WR={wr:.0%} → {lots} lots')
+        # Fix 2: Drawdown protection
+        if total_pnl<-2000:
+            log.info(f'[CAP] {instrument} DRAWDOWN PROTECTION! PnL=Rs.{total_pnl:,.0f} → SKIP!')
+            return 0
+
+        # Fix 5: Time decay
+        try:
+            last=p.get('last_updated','')
+            if last:
+                from datetime import datetime
+                age=(datetime.now()-datetime.fromisoformat(last)).days
+                if age>7:
+                    log.info(f'[CAP] {instrument} stale data ({age}d) → reduce confidence')
+                    wr=wr*0.8  # Reduce effective WR by 20%
+        except:pass
+
+        # Fix 1: Combine WR + PnL
+        if wr>=0.65 and avg_pnl>0:
+            lots=min(base_lots*2,2)
+            log.info(f'[CAP] {instrument} HIGH: WR={wr:.0%} avg=Rs.{avg_pnl:.0f} → {lots} lots')
+        elif wr>=0.55 and avg_pnl>0:
+            lots=base_lots
+            log.info(f'[CAP] {instrument} GOOD: WR={wr:.0%} avg=Rs.{avg_pnl:.0f} → {lots} lots')
         elif wr>=0.45:
-            lots=max(base_lots-1,1)  # Average: reduce
-            log.info(f'[CAP] {instrument} AVG performer WR={wr:.0%} → {lots} lots')
+            lots=max(base_lots-1,1)
+            log.info(f'[CAP] {instrument} AVG: WR={wr:.0%} → {lots} lots')
         else:
-            lots=0  # Poor: skip!
-            log.info(f'[CAP] {instrument} POOR performer WR={wr:.0%} → SKIP!')
+            lots=0
+            log.info(f'[CAP] {instrument} POOR: WR={wr:.0%} → SKIP!')
 
         return lots
 
