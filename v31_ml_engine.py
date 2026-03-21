@@ -104,23 +104,33 @@ def load_v31_model(symbol):
 
                 # Fix 1: Handle both dict and raw model objects
                 if isinstance(raw,dict):
-                    acc=raw.get('accuracy',0.5)
-                    model_obj=raw  # Keep full dict for scaler etc
+                    # Fix 2: Safer accuracy baseline
+                    acc=raw.get('accuracy')
+                    if acc is None:acc=0.45  # Safer than 0.5
+                    model_obj=raw
                 else:
-                    acc=0.5  # Baseline for raw models
-                    model_obj={'model':raw,'accuracy':0.5,'scaler':None}
+                    acc=0.45  # Raw model = unknown accuracy
+                    model_obj={'model':raw,'accuracy':0.45,'scaler':None}
 
                 # Index quality filter
                 if symbol in INDICES and 'lgbm' in f and acc<0.65:
                     log.debug(f'[ML] {symbol} skip weak LGBM {acc:.1%}')
                     continue
 
-                # Fix 3: Priority scoring (not just accuracy)
+                # Fix 3: Priority scoring with freshness
                 score=acc
-                if 'v31' in f: score+=0.02  # Prefer V31 models
+                if 'v31' in f: score+=0.02   # Prefer V31 models
                 if 'lgbm' in f: score+=0.01  # Prefer LightGBM
                 if symbol not in INDICES and 'lgbm' in f:
                     score+=0.02  # Extra boost for non-index LGBM
+                # Freshness boost (recent models preferred)
+                try:
+                    import time as _t
+                    age_days=(_t.time()-os.path.getmtime(f))/86400
+                    if age_days<7:   score+=0.02  # Very fresh (<1 week)
+                    elif age_days<30:score+=0.01  # Recent (<1 month)
+                    log.debug(f'[ML] {os.path.basename(f)} age={age_days:.0f}d')
+                except:pass
 
                 if score>best_score:
                     best_score=score
@@ -146,11 +156,31 @@ def get_v31_ml_prob(symbol,features,regime='TRENDING'):
     try:
         data=load_v31_model(symbol)
         if not data:return 0.5
-        model=data['model'];scaler=data['scaler']
-        n=model.n_features_in_
+
+        # Fix: Safe model extraction
+        if isinstance(data,dict):
+            model=data.get('model',data)
+            scaler=data.get('scaler',None)
+        else:
+            model=data
+            scaler=None
+
+        # Prepare features
+        n=getattr(model,'n_features_in_',
+                  getattr(model,'num_feature',len(features)))
         f=features[:n] if len(features)>=n else features+[0]*(n-len(features))
-        return float(model.predict_proba(scaler.transform([f]))[0][1])
-    except:return 0.5
+
+        # Apply scaler if available
+        if scaler is not None:
+            f=scaler.transform([f])
+        else:
+            f=[f]
+
+        prob=float(model.predict_proba(f)[0][1])
+        return prob
+    except Exception as e:
+        log.debug(f'[ML] {symbol} predict error: {e}')
+        return 0.5
 
 def train_v31_model(symbol,features_list,labels):
     try:
