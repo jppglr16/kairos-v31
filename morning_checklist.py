@@ -15,7 +15,8 @@ for f in all_pkls:
 models=list(trained)
 # Count v31_ml models specifically
 v31_models=[f for f in all_pkls if "_model.pkl" in f or "_v31_ml.pkl" in f]
-v31_count=len(set(os.path.basename(f).split("_")[0] for f in v31_models))
+from v31_instrument_manager import INSTRUMENTS as _INST
+v31_count=len([i for i in set(os.path.basename(f).split("_")[0] for f in v31_models) if i in _INST])
 opts=load_all_options()
 
 open_pos=[]
