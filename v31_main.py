@@ -989,16 +989,24 @@ async def main():
                     # Quality filter: RR + Score combined
                     _rr=signal.get('rr_ratio',0)
                     _sig_score=signal.get('score',0)
+                    _atr=signal.get('atr',100)
+                    _regime=signal.get('regime','RANGING')
 
-                    # Fix 5: Combined quality score
+                    # Adaptive threshold based on volatility
+                    _is_low_vol=_atr<50 or 'RANGING' in _regime
+                    _quality_thresh=35 if _is_low_vol else 40
+                    _rr_thresh=1.2 if _is_low_vol else 1.5
+
                     _quality=_rr*_sig_score
 
-                    if _rr<1.5:
-                        log.info(f'[V31] {instrument} RR too low ({_rr:.1f}<1.5) - SKIP!')
+                    if _rr<_rr_thresh:
+                        log.info(f'[V31] {instrument} RR too low ({_rr:.1f}<{_rr_thresh}) - SKIP!')
                         continue
-                    elif _quality<40:  # e.g. RR=1.5 needs score>=27
-                        log.info(f'[V31] {instrument} quality too low (RR={_rr:.1f}×score={_sig_score}={_quality:.0f}<40) - SKIP!')
+                    elif _quality<_quality_thresh:
+                        log.info(f'[V31] {instrument} quality low ({_quality:.0f}<{_quality_thresh}) - SKIP!')
                         continue
+                    else:
+                        log.info(f'[V31] {instrument} quality OK: RR={_rr:.1f} score={_sig_score} quality={_quality:.0f} thresh={_quality_thresh}')
 
                     log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')
 
