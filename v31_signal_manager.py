@@ -47,6 +47,16 @@ class SignalManager:
         self.positions={}      # {instrument: {side,entry_price,status}}
         self.last_exit_time={} # {instrument: datetime} post-exit cooldown
 
+        # Portfolio Risk Engine
+        self.daily_loss=0
+        self.max_daily_loss=-3000   # Rs.3000 max daily loss
+        self.trade_count=0
+        self.trading_enabled=True
+        self.kill_switch=False
+
+        # AI Trade Manager stats
+        self.stats={'wins':0,'losses':0}
+
         self.load_state()
 
     # ============================================================
@@ -171,6 +181,59 @@ class SignalManager:
                 log.info(f'[SM] Auto-releasing sell lock for {instrument} after {elapsed}s')
                 self.release_sell_lock(instrument)
 
+    # ============================================================
+    # PORTFOLIO RISK ENGINE
+    # ============================================================
+    def win_rate(self):
+        """Calculate current win rate"""
+        total=self.stats['wins']+self.stats['losses']
+        if total==0:return 0.5
+        return self.stats['wins']/total
+
+    def get_adaptive_flip_score(self):
+        """Adjust flip threshold based on performance"""
+        wr=self.win_rate()
+        if wr<0.40:  return 32  # Losing → very strict
+        elif wr>0.60:return 27  # Winning → aggressive
+        else:        return 29  # Normal
+
+    def get_lot_size(self,score):
+        """Dynamic lot sizing based on signal score"""
+        if score>=30: return 2  # High confidence = 2 lots
+        elif score>=25:return 1  # Normal = 1 lot
+        else:          return 0  # Skip weak signals
+
+    def update_pnl(self,pnl):
+        """Update daily P&L and stats"""
+        self.daily_loss+=pnl
+        if pnl>0:
+            self.stats['wins']+=1
+        else:
+            self.stats['losses']+=1
+        log.info(f'[RM] Daily P&L: Rs.{self.daily_loss:,.0f} '
+                f'WR={self.win_rate():.0%} '
+                f'W:{self.stats["wins"]} L:{self.stats["losses"]}')
+        # Alert if near limit
+        if self.daily_loss<=self.max_daily_loss*0.7:
+            try:
+                from v31_notify import send
+                send(f'⚠️ Risk Alert!
+'
+                     f'Daily loss: Rs.{self.daily_loss:,.0f}
+'
+                     f'Limit: Rs.{self.max_daily_loss:,.0f}
+'
+                     f'Trading will stop at limit!')
+            except:pass
+
+    def reset_daily(self):
+        """Reset daily counters at market open"""
+        self.daily_loss=0
+        self.trade_count=0
+        self.trading_enabled=True
+        self.stats={'wins':0,'losses':0}
+        log.info('[RM] Daily reset! Trading enabled.')
+
     def dynamic_hold_time(self,instrument,atr=None):
         """Dynamic hold time based on volatility"""
         try:
@@ -259,6 +322,25 @@ class SignalManager:
         """
         now=datetime.now()
         dir_key='SELL' if direction in SELL_TYPES else 'BUY'
+
+        # 0. KILL SWITCH
+        if self.kill_switch:
+            return False,'System paused (kill switch active)'
+
+        # 0a. DAILY LOSS LIMIT
+        if self.daily_loss<=self.max_daily_loss:
+            self.trading_enabled=False
+            try:
+                from v31_notify import send
+                send(f'🚨 Daily loss limit hit!\n'
+                     f'Loss: Rs.{self.daily_loss:,.0f}\n'
+                     f'Trading STOPPED for today!')
+            except:pass
+            return False,f'Daily loss limit hit (Rs.{self.daily_loss:,.0f})'
+
+        # 0b. TRADING ENABLED CHECK
+        if not self.trading_enabled:
+            return False,'Trading disabled'
 
         # 0. POST-EXIT COOLDOWN
         if self.cooldown_active(instrument):
@@ -355,6 +437,10 @@ class SignalManager:
 
         # ✅ Fix 5: Record for cooldown
         self.last_trade_time[instrument]=datetime.now()
+
+        # Increment trade count
+        self.trade_count+=1
+        log.info(f'[RM] Trade count: {self.trade_count}/{MAX_DAILY_TRADES}')
 
         # Open position tracker
         self.open_position(instrument,dir_key,0)  # price updated by exit monitor

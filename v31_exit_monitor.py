@@ -176,10 +176,11 @@ class ExitMonitor:
         except Exception as _je:
             log.debug(f'[JOURNAL] Exit error: {_je}')
         pos['status']='CLOSED'
-        # Notify signal manager
+        # Notify signal manager + update P&L
         try:
             from v31_signal_manager import signal_manager
             signal_manager.close_position(pos['instrument'])
+            signal_manager.update_pnl(pnl)
         except:pass
 
     def _partial_exit(self,sym,pos,exit_prem,pnl):
