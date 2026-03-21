@@ -156,13 +156,7 @@ send('⚠️ V31 was stopped!\nRestarted automatically!\nMarket ready!')
     fi
 
     # ============================================================
-    # 3:32 PM - NSE Daily Summary
-    # ============================================================
-    if [ "$HHMM" = "15:32" ]; then
-        log "Sending NSE daily summary..."
-        python3 ~/kairos_kotak_bot/send_nse_summary.py >> daily_download_log.txt 2>&1
-        log "NSE summary sent!"
-    fi
+    # 3:32 PM - NSE Daily Summary DISABLED (using P&L report instead)
 
     # ============================================================
     # 11:32 PM - Daily P&L Report (Trading days only!)
