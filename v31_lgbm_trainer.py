@@ -17,17 +17,24 @@ except:
 
 def load_data(symbol):
     all_candles=[]
-    p=f'historical_data/{symbol}_5year_5min.json'
-    if os.path.exists(p):
-        all_candles=json.load(open(p))
-    p2=f'historical_data/{symbol}_2015_2020_5min.json'
-    if os.path.exists(p2):
-        all_candles=json.load(open(p2))+all_candles
+    # Handle hyphen in symbol name
+    sym_clean=symbol.replace('-','')
+    for sym in [symbol,sym_clean]:
+        p=f'historical_data/{sym}_5year_5min.json'
+        if os.path.exists(p):
+            all_candles=json.load(open(p))
+            break
+    for sym in [symbol,sym_clean]:
+        p2=f'historical_data/{sym}_2015_2020_5min.json'
+        if os.path.exists(p2):
+            all_candles=json.load(open(p2))+all_candles
+            break
     if not all_candles:
-        for year in range(2016,2026):
-            p=f'historical_data/{symbol}_{year}_5min.json'
-            if os.path.exists(p):
-                all_candles.extend(json.load(open(p)))
+        for sym in [symbol,sym_clean]:
+            for year in range(2016,2026):
+                p=f'historical_data/{sym}_{year}_5min.json'
+                if os.path.exists(p):
+                    all_candles.extend(json.load(open(p)))
     return all_candles
 
 def to_df(candles):
