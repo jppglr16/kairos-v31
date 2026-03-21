@@ -50,6 +50,7 @@ class SignalManager:
         # Portfolio Risk Engine
         self.daily_loss=0
         self.max_daily_loss=-7000   # Rs.3000 max daily loss
+        self.max_trades_per_day=8
         self.trade_count=0
         self.trading_enabled=True
         self.kill_switch=False
