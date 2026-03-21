@@ -12,30 +12,31 @@ log=logging.getLogger(__name__)
 # ============================================================
 MARKET_EVENTS={
     # RBI Policy dates 2026
-    '2026-04-09': {'event':'RBI Policy','block_mins':60,'impact':'HIGH'},
-    '2026-06-06': {'event':'RBI Policy','block_mins':60,'impact':'HIGH'},
-    '2026-08-06': {'event':'RBI Policy','block_mins':60,'impact':'HIGH'},
-    '2026-10-08': {'event':'RBI Policy','block_mins':60,'impact':'HIGH'},
-    '2026-12-05': {'event':'RBI Policy','block_mins':60,'impact':'HIGH'},
+    # RBI Policy 2026 (10:00 AM IST)
+    '2026-04-09': {'event':'RBI Policy','time':'10:00','block_mins':60,'impact':'HIGH'},
+    '2026-06-06': {'event':'RBI Policy','time':'10:00','block_mins':60,'impact':'HIGH'},
+    '2026-08-06': {'event':'RBI Policy','time':'10:00','block_mins':60,'impact':'HIGH'},
+    '2026-10-08': {'event':'RBI Policy','time':'10:00','block_mins':60,'impact':'HIGH'},
+    '2026-12-05': {'event':'RBI Policy','time':'10:00','block_mins':60,'impact':'HIGH'},
 
-    # Union Budget 2026
-    '2026-02-01': {'event':'Union Budget','block_mins':120,'impact':'EXTREME'},
+    # Union Budget (09:00 AM IST)
+    '2026-02-01': {'event':'Union Budget','time':'09:00','block_mins':120,'impact':'EXTREME'},
 
-    # US Fed meetings (affect Indian markets)
-    '2026-01-29': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-03-19': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-05-07': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-06-18': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-07-30': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-09-17': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-11-05': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
-    '2026-12-17': {'event':'US Fed Meeting','block_mins':30,'impact':'MEDIUM'},
+    # US Fed (11:30 PM IST = after market)
+    '2026-01-29': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-03-19': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-05-07': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-06-18': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-07-30': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-09-17': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-11-05': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-12-17': {'event':'US Fed Meeting','time':'23:30','block_mins':30,'impact':'MEDIUM'},
 
-    # India CPI/WPI data (usually 2nd week of month)
-    '2026-01-13': {'event':'CPI Data','block_mins':30,'impact':'MEDIUM'},
-    '2026-02-12': {'event':'CPI Data','block_mins':30,'impact':'MEDIUM'},
-    '2026-03-12': {'event':'CPI Data','block_mins':30,'impact':'MEDIUM'},
-    '2026-04-14': {'event':'CPI Data','block_mins':30,'impact':'MEDIUM'},
+    # CPI Data (05:30 PM IST)
+    '2026-01-13': {'event':'CPI Data','time':'17:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-02-12': {'event':'CPI Data','time':'17:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-03-12': {'event':'CPI Data','time':'17:30','block_mins':30,'impact':'MEDIUM'},
+    '2026-04-14': {'event':'CPI Data','time':'17:30','block_mins':30,'impact':'MEDIUM'},
 }
 
 # Quarterly results season (block all small caps)
@@ -56,14 +57,31 @@ RESULT_DATES={
 
 class NewsFilter:
     def __init__(self):
-        self.alerted=set()  # Track sent alerts
+        self.alerted=set()
+        self.last_check=None
+        self._last_result=(False,'No events',None)
 
     def check(self,instrument=None):
         """
         Check if trading should be blocked due to news event
         Returns: (blocked, reason, resume_time)
         """
-        now=datetime.now()
+        # Fix 4: Throttle - cache result for 60 seconds
+        try:
+            if self.last_check:
+                elapsed=(datetime.now()-self.last_check).seconds
+                if elapsed<60:
+                    return self._last_result
+        except:pass
+        self.last_check=datetime.now()
+
+        # Fix 2: Use IST timezone
+        try:
+            import pytz
+            IST=pytz.timezone('Asia/Kolkata')
+            now=datetime.now(IST).replace(tzinfo=None)
+        except:
+            now=datetime.now()  # Fallback
         today=now.strftime('%Y-%m-%d')
 
         # Check major market events
@@ -92,6 +110,9 @@ class NewsFilter:
         if instrument and instrument in RESULT_DATES:
             if today in RESULT_DATES[instrument]:
                 log.info(f'[NEWS] {instrument} results today!')
+                self._alert(f'⚠️ {instrument} results today!
+Trading blocked for {instrument}')
+                self._last_result=(True,f'{instrument} results day',None)
                 return True,f'{instrument} results day',None
 
         # Check results season for individual stocks
@@ -105,6 +126,7 @@ class NewsFilter:
                         if now.hour>=14:  # Block after 2 PM in results season
                             log.debug(f'[NEWS] {instrument} results season caution')
 
+        self._last_result=(False,'No events',None)
         return False,'No events',None
 
     def _alert(self,msg):
