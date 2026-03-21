@@ -231,6 +231,33 @@ def step5_accuracy_report():
         log.error(f'Step 5 failed: {e}')
         return {}
 
+def _safety_check():
+    """Pipeline safety lock - prevent training on bad data"""
+    issues=[]
+    # Check 1: Minimum data files
+    data_count=len(glob.glob('historical_data/*.json'))
+    if data_count<10:
+        issues.append(f'Too few data files: {data_count}')
+    # Check 2: Internet
+    try:
+        import urllib.request
+        urllib.request.urlopen('https://www.google.com',timeout=5)
+    except:
+        issues.append('No internet!')
+    # Check 3: Angel connection
+    try:
+        from v31_angel_trader import angel_trader
+        if not angel_trader.connected:
+            issues.append('Angel not connected!')
+    except:
+        issues.append('Angel trader error!')
+    if issues:
+        log.error(f'Safety FAILED: {issues}')
+        send_telegram('Pipeline Safety FAILED!\n'+' | '.join(issues))
+        return False
+    log.info('Safety check passed ✅')
+    return True
+
 def run_pipeline():
     """Run full training pipeline"""
     start=datetime.now()
