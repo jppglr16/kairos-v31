@@ -112,6 +112,31 @@ class SREngine:
         levels.update(self.find_prev_day_levels(df))
         return levels
 
+    def detect_retest(self,df,level,atr,lookback=10):
+        """
+        Detect if price recently broke level and is retesting it
+        Pattern: Break → Pullback → Retest = HUGE signal!
+        """
+        try:
+            if len(df)<lookback+5:return False
+            recent=df.tail(lookback)
+            closes=[float(c) for c in recent['close']]
+
+            # Check if price broke level in last lookback candles
+            broke_above=any(c>level+(atr*0.2) for c in closes[:-3])
+            broke_below=any(c<level-(atr*0.2) for c in closes[:-3])
+
+            current=closes[-1]
+            near_level=abs(current-level)<atr*0.5
+
+            if broke_above and near_level and current>level:
+                return 'RETEST_SUPPORT'  # Break up, now retesting as support
+            if broke_below and near_level and current<level:
+                return 'RETEST_RESISTANCE'  # Break down, retesting as resistance
+
+            return False
+        except:return False
+
     def check_signal_quality(self,signal,df,price):
         """
         Check if signal aligns with S/R levels
@@ -125,6 +150,20 @@ class SREngine:
             comments=[]
 
             # Check BUY signals
+            # Retest detection (HUGE boost!)
+            try:
+                for level_name in ['R1','S1','PDH','PDL','PP']:
+                    level_val=levels.get(level_name,0)
+                    if level_val:
+                        retest=self.detect_retest(df,level_val,atr)
+                        if retest=='RETEST_SUPPORT' and action=='BUY':
+                            score_boost+=4
+                            comments.append(f'RETEST_SUPPORT {level_name}=+4!')
+                        elif retest=='RETEST_RESISTANCE' and action in ('SELL','PE'):
+                            score_boost+=4
+                            comments.append(f'RETEST_RESIST {level_name}=+4!')
+            except:pass
+
             # Fix 1: Variable thresholds (strong levels = tighter range)
             LEVEL_THRESHOLDS={
                 'PDH':atr*0.8,'PDL':atr*0.8,   # Strong = tight
@@ -154,12 +193,20 @@ class SREngine:
                     level_val=levels.get(level_name,0)
                     thresh=LEVEL_THRESHOLDS.get(level_name,atr)
                     if level_val and abs(price-level_val)<thresh:
-                        # Breakout detection!
+                        # Breakout detection with buffer!
                         vol_ratio=signal.get('volume_ratio',1.0)
-                        if price>level_val and vol_ratio>1.5:
-                            # Price BROKE resistance with volume!
-                            score_boost+=weight+1
-                            comments.append(f'BREAKOUT {level_name}={level_val:.0f}(+{weight+1})')
+                        vol_thresh=signal.get('vol_threshold',1.5)
+                        # Fix 1: Real breakout = price > level + 20% ATR buffer
+                        is_breakout=price>level_val+(atr*0.2)
+                        has_volume=vol_ratio>vol_thresh
+                        if is_breakout and has_volume:
+                            # STRONG breakout with volume!
+                            score_boost+=weight+2
+                            comments.append(f'BREAKOUT {level_name}={level_val:.0f}(+{weight+2})')
+                        elif is_breakout:
+                            # Breakout without volume (weak)
+                            score_boost+=weight
+                            comments.append(f'weak_break {level_name}(+{weight})')
                         else:
                             score_boost-=weight
                             comments.append(f'resist {level_name}(-{weight})')
