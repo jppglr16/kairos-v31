@@ -125,6 +125,16 @@ class SREngine:
             comments=[]
 
             # Check BUY signals
+            # Fix 1: Variable thresholds (strong levels = tighter range)
+            LEVEL_THRESHOLDS={
+                'PDH':atr*0.8,'PDL':atr*0.8,   # Strong = tight
+                'R1':atr,'R2':atr,               # Normal
+                'S1':atr,'S2':atr,
+                'PP':atr,
+                'round_resistance':atr*1.2,      # Weak = loose
+                'round_support':atr*1.2,
+            }
+
             # Fix 2: Weighted levels (stronger levels = more weight)
             SUPPORT_WEIGHTS={'PDL':3,'S1':2,'S2':2,'PP':2,'round_support':1}
             RESIST_WEIGHTS={'PDH':3,'R1':2,'R2':2,'PP':2,'round_resistance':1}
@@ -134,16 +144,25 @@ class SREngine:
                 # Near support = good BUY!
                 for level_name,weight in SUPPORT_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
-                    if level_val and abs(price-level_val)<atr:
+                    thresh=LEVEL_THRESHOLDS.get(level_name,atr)
+                    if level_val and abs(price-level_val)<thresh:
                         score_boost+=weight
                         comments.append(f'{level_name}={level_val:.0f}(+{weight})')
 
-                # Near resistance = bad BUY!
+                # Near resistance = bad BUY (unless breakout!)
                 for level_name,weight in RESIST_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
-                    if level_val and abs(price-level_val)<atr:
-                        score_boost-=weight
-                        comments.append(f'resist {level_name}(-{weight})')
+                    thresh=LEVEL_THRESHOLDS.get(level_name,atr)
+                    if level_val and abs(price-level_val)<thresh:
+                        # Breakout detection!
+                        vol_ratio=signal.get('volume_ratio',1.0)
+                        if price>level_val and vol_ratio>1.5:
+                            # Price BROKE resistance with volume!
+                            score_boost+=weight+1
+                            comments.append(f'BREAKOUT {level_name}={level_val:.0f}(+{weight+1})')
+                        else:
+                            score_boost-=weight
+                            comments.append(f'resist {level_name}(-{weight})')
 
                 # Swing lows
                 for sl in levels.get('swing_lows',[]):
@@ -155,14 +174,22 @@ class SREngine:
                 # Near resistance = good SELL!
                 for level_name,weight in RESIST_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
-                    if level_val and abs(price-level_val)<atr:
-                        score_boost+=weight
-                        comments.append(f'{level_name}={level_val:.0f}(+{weight})')
+                    thresh=LEVEL_THRESHOLDS.get(level_name,atr)
+                    if level_val and abs(price-level_val)<thresh:
+                        # Rejection detection!
+                        if price<=level_val:
+                            # Price REJECTED at resistance!
+                            score_boost+=weight+1
+                            comments.append(f'REJECTION {level_name}={level_val:.0f}(+{weight+1})')
+                        else:
+                            score_boost+=weight
+                            comments.append(f'{level_name}={level_val:.0f}(+{weight})')
 
                 # Near support = bad SELL!
                 for level_name,weight in SUPPORT_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
-                    if level_val and abs(price-level_val)<atr:
+                    thresh=LEVEL_THRESHOLDS.get(level_name,atr)
+                    if level_val and abs(price-level_val)<thresh:
                         score_boost-=weight
                         comments.append(f'support {level_name}(-{weight})')
 
