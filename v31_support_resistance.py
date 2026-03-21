@@ -112,6 +112,23 @@ class SREngine:
         levels.update(self.find_prev_day_levels(df))
         return levels
 
+    def count_retests(self,df,level,atr,lookback=30):
+        """Count how many times price retested a level"""
+        try:
+            recent=df.tail(lookback)
+            closes=[float(c) for c in recent['close']]
+            count=0
+            near=False
+            for c in closes:
+                if abs(c-level)<atr*0.3:
+                    if not near:
+                        count+=1
+                        near=True
+                else:
+                    near=False
+            return count
+        except:return 0
+
     def detect_retest(self,df,level,atr,lookback=None):
         """
         Detect if price recently broke level and is retesting it
@@ -132,7 +149,7 @@ class SREngine:
             broke_below=any(c<level-(atr*0.2) for c in closes[:-3])
 
             current=closes[-1]
-            near_level=abs(current-level)<atr*0.5
+            near_level=abs(current-level)<atr*0.3  # Tighter!
 
             if broke_above and near_level and current>level:
                 return 'RETEST_SUPPORT'  # Break up, now retesting as support
@@ -171,19 +188,35 @@ class SREngine:
                     # Fix 2: Volume confirmation required!
                     if not retest or vol_ratio<1.2:continue
 
-                    # Fix 1: Context-aware boost
+                    # Fix 1+3: Context-aware + retest count
+                    retest_count=self.count_retests(df,level_val,atr)
                     if base_score>20:
-                        retest_boost=3  # Strong signal = full boost
+                        retest_boost=3
                     else:
-                        retest_boost=2  # Weak signal = smaller boost
+                        retest_boost=2
+                    # Fix 3: Weaken on multiple retests
+                    if retest_count>=3:
+                        retest_boost=max(retest_boost-1,1)
+                        comments.append(f'weak_retest#{retest_count}')
+                    elif retest_count==1:
+                        retest_boost=min(retest_boost+1,4)
+                        comments.append(f'fresh_retest!')
 
+                    regime=signal.get('regime','')
+
+                    # Fix 2: Trend alignment
                     if retest=='RETEST_SUPPORT' and action=='BUY':
-                        score_boost+=retest_boost
-                        comments.append(f'RETEST {level_name}(+{retest_boost})')
+                        # Extra boost if trend aligned!
+                        trend_aligned='UP' in regime or 'BULL' in regime
+                        final_boost=retest_boost+(1 if trend_aligned else 0)
+                        score_boost+=final_boost
+                        comments.append(f'RETEST {level_name}(+{final_boost}{"↑" if trend_aligned else ""})')
                         retest_found=True
                     elif retest=='RETEST_RESISTANCE' and action in ('SELL','PE'):
-                        score_boost+=retest_boost
-                        comments.append(f'RETEST {level_name}(+{retest_boost})')
+                        trend_aligned='DOWN' in regime or 'BEAR' in regime
+                        final_boost=retest_boost+(1 if trend_aligned else 0)
+                        score_boost+=final_boost
+                        comments.append(f'RETEST {level_name}(+{final_boost}{"↓" if trend_aligned else ""})')
                         retest_found=True
             except:pass
 
