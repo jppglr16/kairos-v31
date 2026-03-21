@@ -165,12 +165,41 @@ send('⚠️ V31 was stopped!\nRestarted automatically!\nMarket ready!')
     fi
 
     # ============================================================
-    # 11:32 PM - MCX Daily Summary
+    # 11:32 PM - Daily P&L Report (Trade Journal)
     # ============================================================
     if [ "$HHMM" = "23:32" ]; then
-        log "Sending MCX daily summary..."
-        python3 ~/kairos_kotak_bot/send_mcx_summary.py >> daily_download_log.txt 2>&1
-        log "MCX summary sent!"
+        log "Sending daily P&L report..."
+        python3 -c "
+from v31_trade_journal import trade_journal
+trade_journal.send_daily_report()
+" >> daily_download_log.txt 2>&1
+        log "Daily P&L report sent!"
+    fi
+
+    # ============================================================
+    # 11:34 PM - Weekly P&L (Fridays only)
+    # ============================================================
+    if [ "$HHMM" = "23:34" ] && [ "$(date +%u)" = "5" ]; then
+        log "Sending weekly P&L report..."
+        python3 -c "
+from v31_trade_journal import trade_journal
+from v31_notify import send
+weekly=trade_journal.get_weekly_pnl()
+if weekly:
+    msg='📊 Weekly P&L Summary
+━━━━━━━━━━━━━━━
+'
+    total=0
+    for d in weekly:
+        e='✅' if d['pnl']>0 else '❌'
+        msg+=f'{e} {d["date"]}: Rs.{d["pnl"]:,.0f} ({d["wins"]}/{d["trades"]} WR:{d["wr"]}%)
+'
+        total+=d['pnl']
+    msg+=f'━━━━━━━━━━━━━━━
+💰 Weekly Total: Rs.{total:,.0f}'
+    send(msg)
+" >> daily_download_log.txt 2>&1
+        log "Weekly P&L sent!"
     fi
 
         # ============================================================
