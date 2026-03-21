@@ -79,8 +79,8 @@ class SignalManager:
             self.last_exit_time[inst]=datetime.now()
             log.info(f'[SM] Position closed: {inst}')
 
-    def cooldown_active(self,inst,secs=600):
-        """Check if post-exit cooldown active (10 mins)"""
+    def cooldown_active(self,inst,secs=300):
+        """Check if post-exit cooldown active (5 mins)"""
         if inst not in self.last_exit_time:return False
         elapsed=(datetime.now()-self.last_exit_time[inst]).seconds
         return elapsed<secs
@@ -262,7 +262,7 @@ class SignalManager:
 
         # 0. POST-EXIT COOLDOWN
         if self.cooldown_active(instrument):
-            return False,f'Post-exit cooldown active (10 mins)'
+            return False,f'Post-exit cooldown active (5 mins)'
 
         # 0b. POSITION CONFLICT CHECK
         if self.has_active_position(instrument):
@@ -284,11 +284,19 @@ class SignalManager:
         if not session:
             return False,f'Outside session ({instrument})'
 
-        # 2. COOLDOWN CHECK
+        # 2. COOLDOWN CHECK (trade cooldown)
         if instrument in self.last_trade_time:
             elapsed=(now-self.last_trade_time[instrument]).seconds
             if elapsed<COOLDOWN_SECS:
                 return False,f'Cooldown: {COOLDOWN_SECS-elapsed}s remaining'
+
+        # 2b. POST-EXIT COOLDOWN (after early exit/loss protection)
+        if instrument in self.last_exit_time:
+            _exit_elapsed=(now-self.last_exit_time[instrument]).seconds
+            _exit_cooldown=300  # 5 mins after early exit
+            if _exit_elapsed<_exit_cooldown:
+                _remaining=_exit_cooldown-_exit_elapsed
+                return False,f'Post-exit cooldown: {_remaining}s remaining'
 
         # 3. DAILY CAP
         if self._get_daily_total(instrument)>=MAX_DAILY_TRADES:
