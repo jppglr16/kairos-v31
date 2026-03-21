@@ -986,10 +986,18 @@ async def main():
                     except Exception as _sre:
                         log.debug(f'[SR] Error: {_sre}')
 
-                    # Minimum RR filter - skip if RR < 1:1.5
+                    # Quality filter: RR + Score combined
                     _rr=signal.get('rr_ratio',0)
+                    _sig_score=signal.get('score',0)
+
+                    # Fix 5: Combined quality score
+                    _quality=_rr*_sig_score
+
                     if _rr<1.5:
                         log.info(f'[V31] {instrument} RR too low ({_rr:.1f}<1.5) - SKIP!')
+                        continue
+                    elif _quality<40:  # e.g. RR=1.5 needs score>=27
+                        log.info(f'[V31] {instrument} quality too low (RR={_rr:.1f}×score={_sig_score}={_quality:.0f}<40) - SKIP!')
                         continue
 
                     log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')

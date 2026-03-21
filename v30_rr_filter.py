@@ -193,10 +193,11 @@ def find_best_target(df5, df15, action, entry, sl_points, atr, is_trending=True)
                                     targets.append((rr,level_val))
             except:pass
 
-            # RR-based fallback
-            for rr in [3.0, 5.0, 8.0]:
-                t = entry + sl_points * rr
-                targets.append((rr, t))
+            # Fix 1: Fallback ONLY if no S/R targets found
+            if not targets:
+                for rr in [2.0,3.0,5.0]:
+                    t=entry+sl_points*rr
+                    targets.append((rr,t))
 
         else:  # SELL
             # Swing lows as targets
