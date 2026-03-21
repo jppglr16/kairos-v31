@@ -164,6 +164,35 @@ def find_best_target(df5, df15, action, entry, sl_points, atr, is_trending=True)
                         if MIN_RR <= rr <= MAX_RR:
                             targets.append((rr, t))
 
+            # S/R based targets (most accurate!)
+            try:
+                from v31_support_resistance import sr_engine
+                price=float(df5['close'].iloc[-1])
+                atr_val=float((df5['high']-df5['low']).tail(14).mean())
+                levels=sr_engine.get_all_levels(df5,price)
+
+                if action=='BUY':
+                    # Use resistance levels as targets
+                    for level_name in ['R1','R2','PDH','round_resistance']:
+                        level_val=levels.get(level_name,0)
+                        if level_val and level_val>entry:
+                            dist=level_val-entry
+                            if dist>0:
+                                rr=dist/sl_points
+                                if rr>=1.0:
+                                    targets.append((rr,level_val))
+                else:
+                    # Use support levels as targets
+                    for level_name in ['S1','S2','PDL','round_support']:
+                        level_val=levels.get(level_name,0)
+                        if level_val and level_val<entry:
+                            dist=entry-level_val
+                            if dist>0:
+                                rr=dist/sl_points
+                                if rr>=1.0:
+                                    targets.append((rr,level_val))
+            except:pass
+
             # RR-based fallback
             for rr in [3.0, 5.0, 8.0]:
                 t = entry + sl_points * rr

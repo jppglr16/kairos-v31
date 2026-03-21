@@ -986,6 +986,12 @@ async def main():
                     except Exception as _sre:
                         log.debug(f'[SR] Error: {_sre}')
 
+                    # Minimum RR filter - skip if RR < 1:1.5
+                    _rr=signal.get('rr_ratio',0)
+                    if _rr<1.5:
+                        log.info(f'[V31] {instrument} RR too low ({_rr:.1f}<1.5) - SKIP!')
+                        continue
+
                     log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')
 
                     # Expiry safety
