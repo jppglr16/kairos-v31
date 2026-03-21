@@ -9,6 +9,23 @@ log=logging.getLogger(__name__)
 
 PERF_FILE='instrument_performance.json'
 
+# Correlated instrument groups
+# Only 1 trade allowed per group!
+CORRELATION_GROUPS=[
+    ['NIFTY','BANKNIFTY','FINNIFTY','MIDCPNIFTY','SENSEX'],  # NSE Indices
+    ['CRUDEOIL','NATURALGAS'],  # Energy MCX
+    ['GOLDM','SILVERM'],  # Precious metals
+    ['SBIN','HDFCBANK','ICICIBANK','BAJFINANCE'],  # Banking stocks
+    ['TCS','RELIANCE','BHARTIARTL'],  # Large cap stocks
+]
+
+def get_correlation_group(instrument):
+    """Get correlation group for instrument"""
+    for group in CORRELATION_GROUPS:
+        if instrument in group:
+            return group
+    return None
+
 class CapitalEngine:
     def __init__(self):
         self.perf={}  # {instrument: {wins,losses,pnl,trades}}
@@ -98,6 +115,19 @@ class CapitalEngine:
         if total_pnl<-2000:
             log.info(f'[CAP] {instrument} DRAWDOWN PROTECTION! PnL=Rs.{total_pnl:,.0f} → SKIP!')
             return 0
+
+        # Correlation filter - check open positions
+        try:
+            from v31_exit_monitor import exit_monitor
+            group=get_correlation_group(instrument)
+            if group:
+                open_insts=[p['instrument'] for p in exit_monitor.positions.values()
+                           if p.get('status')=='OPEN']
+                corr_open=[i for i in open_insts if i in group and i!=instrument]
+                if corr_open:
+                    log.info(f'[CAP] {instrument} CORRELATION blocked! {corr_open} already open')
+                    return 0
+        except:pass
 
         # Fix 5: Time decay
         try:
