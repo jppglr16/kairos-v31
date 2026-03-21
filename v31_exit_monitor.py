@@ -41,8 +41,12 @@ class ExitMonitor:
         opt_type='CE' if action=='BUY' else 'PE'
 
         # SL and targets from signal
-        sl=round(prem*0.40)          # SL at -40%
-        t1=round(prem*1.50)          # T1 at +50%
+        # Adaptive SL based on premium size
+        if prem<=15:   sl_pct=0.25
+        elif prem<=30: sl_pct=0.30
+        else:          sl_pct=0.40
+        sl=max(round(prem*sl_pct),1)
+        t1=round(prem*1.60)          # T1 at +60%
         t2=round(prem*2.50)          # T2 at +150%
 
         pos={
