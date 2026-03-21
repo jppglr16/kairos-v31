@@ -39,14 +39,6 @@
     "exch_seg": "NFO",
     "type": "STOCK"
   },
-  "BAYERCROP": {
-    "exchange": "NSE",
-    "token": "17927",
-    "lot": 50,
-    "step": 50,
-    "exch_seg": "NFO",
-    "type": "STOCK"
-  },
   "SOLARINDS": {
     "exchange": "NSE",
     "token": "13332",
@@ -63,22 +55,6 @@
     "exch_seg": "NFO",
     "type": "STOCK"
   },
-  "APARINDS": {
-    "exchange": "NSE",
-    "token": "11491",
-    "lot": 75,
-    "step": 100,
-    "exch_seg": "NFO",
-    "type": "STOCK"
-  },
-  "MRF": {
-    "exchange": "NSE",
-    "token": "2277",
-    "lot": 10,
-    "step": 500,
-    "exch_seg": "NFO",
-    "type": "STOCK"
-  },
   "BOSCHLTD": {
     "exchange": "NSE",
     "token": "2181",
@@ -87,26 +63,10 @@
     "exch_seg": "NFO",
     "type": "STOCK"
   },
-  "ABBOTINDIA": {
-    "exchange": "NSE",
-    "token": "17903",
-    "lot": 40,
-    "step": 100,
-    "exch_seg": "NFO",
-    "type": "STOCK"
-  },
   "PAGEIND": {
     "exchange": "NSE",
     "token": "14413",
     "lot": 15,
-    "step": 100,
-    "exch_seg": "NFO",
-    "type": "STOCK"
-  },
-  "BAJAJAUTO": {
-    "exchange": "NSE",
-    "token": "16669",
-    "lot": 75,
     "step": 100,
     "exch_seg": "NFO",
     "type": "STOCK"
@@ -131,6 +91,14 @@
     "exchange": "NSE",
     "token": "10738",
     "lot": 50,
+    "step": 100,
+    "exch_seg": "NFO",
+    "type": "STOCK"
+  },
+  "BAJAJ-AUTO": {
+    "exchange": "NSE",
+    "token": "16669",
+    "lot": 75,
     "step": 100,
     "exch_seg": "NFO",
     "type": "STOCK"

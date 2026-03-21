@@ -25,7 +25,7 @@ INSTRUMENTS={
 
     # NSE STOCKS
     'LT':        {'exchange':'NSE','token':'11483', 'lot':450,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
-    'NTPC':      {'exchange':'NSE','token':'11630', 'lot':4500, 'step':5,  'exch_seg':'NFO','type':'STOCK'},
+    'NTPC':      {'exchange':'NSE','token':'11630', 'lot':900, 'step':5,  'exch_seg':'NFO','type':'STOCK'},
     'MARUTI':    {'exchange':'NSE','token':'10999', 'lot':100,  'step':100,'exch_seg':'NFO','type':'STOCK'},
     'BHARTIARTL':{'exchange':'NSE','token':'10604', 'lot':950,  'step':20, 'exch_seg':'NFO','type':'STOCK'},
     'SBIN':      {'exchange':'NSE','token':'3045',  'lot':1500, 'step':5,  'exch_seg':'NFO','type':'STOCK'},

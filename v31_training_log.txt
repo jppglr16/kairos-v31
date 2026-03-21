@@ -229,3 +229,230 @@ nohup: ignoring input
 2026-03-20 02:35:20,765 === Training Complete ===
 2026-03-20 02:35:20,765 Success: 33/36
 2026-03-20 02:35:20,765 Failed: ['HDFCBANK', 'ICICIBANK', 'BAJFINANCE']
+Removed 36 old models for retrain
+nohup: ignoring input
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: HDFCBANK
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: ICICIBANK
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: SIEMENS
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: POLYCAB
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: SOLARINDS
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: PAGEIND
+2026-03-21 22:21:37,852 [IM] Loaded saved instrument: BRITANNIA
+2026-03-21 22:21:37,853 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-21 22:21:37,853 [IM] Loaded saved instrument: OFSS
+2026-03-21 22:21:37,853 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-21 22:21:37,853 Loaded 32 instruments
+2026-03-21 22:21:37,853 Training HDFCBANK...
+2026-03-21 22:21:38,031 HDFCBANK: 49550 candles loaded
+2026-03-21 22:23:17,357 HDFCBANK: 4947 samples | WR=33.9%
+2026-03-21 22:23:21,543 HDFCBANK: Accuracy=65.8%
+2026-03-21 22:23:21,550 HDFCBANK: Saved to ml_models/HDFCBANK_v31_ml.pkl ✅
+2026-03-21 22:23:21,569 Training ICICIBANK...
+2026-03-21 22:23:21,774 ICICIBANK: 49550 candles loaded
+nohup: ignoring input
+2026-03-21 22:27:25,749 [IM] Loaded saved instrument: HDFCBANK
+2026-03-21 22:27:25,749 [IM] Loaded saved instrument: ICICIBANK
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: SIEMENS
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: POLYCAB
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: SOLARINDS
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: PAGEIND
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: BRITANNIA
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: OFSS
+2026-03-21 22:27:25,750 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-21 22:27:25,750 Loaded 32 instruments
+2026-03-21 22:27:25,750 Training ICICIBANK...
+2026-03-21 22:27:25,937 ICICIBANK: 49550 candles loaded
+2026-03-21 22:29:13,966 ICICIBANK: 4947 samples | WR=33.6%
+2026-03-21 22:29:19,358 ICICIBANK: Accuracy=64.5%
+2026-03-21 22:29:19,367 ICICIBANK: Saved to ml_models/ICICIBANK_v31_ml.pkl ✅
+2026-03-21 22:29:19,387 Training BAJFINANCE...
+2026-03-21 22:29:19,601 BAJFINANCE: 49550 candles loaded
+2026-03-21 22:31:19,476 BAJFINANCE: 4947 samples | WR=29.6%
+2026-03-21 22:31:24,761 BAJFINANCE: Accuracy=69.2%
+2026-03-21 22:31:24,770 BAJFINANCE: Saved to ml_models/BAJFINANCE_v31_ml.pkl ✅
+2026-03-21 22:31:24,788 Training BAJAJ-AUTO...
+2026-03-21 22:31:24,788 BAJAJ-AUTO: No data!
+Training ICICIBANK...
+ICICIBANK: OK=True
+Training BAJFINANCE...
+BAJFINANCE: OK=True
+Training BAJAJ-AUTO...
+BAJAJ-AUTO: OK=False
+Done!
+nohup: ignoring input
+2026-03-21 22:56:47,749 [IM] Loaded saved instrument: HDFCBANK
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: ICICIBANK
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: SIEMENS
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: POLYCAB
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: SOLARINDS
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: PAGEIND
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: BRITANNIA
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: OFSS
+2026-03-21 22:56:47,750 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-21 22:56:47,751 === V31 LightGBM Training ===
+2026-03-21 22:56:47,751 [LGBM] Training NIFTY...
+2026-03-21 22:56:47,868 [LGBM] NIFTY: 29,858 candles
+2026-03-21 22:58:31,980 [LGBM] NIFTY: 5956 samples WR=37.6%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+unsupported platform: android
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/joblib/externals/loky/backend/context.py", line 251, in _count_physical_cores
+    raise NotImplementedError(f"unsupported platform: {sys.platform}")
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 22:58:35,473 [LGBM] NIFTY: Accuracy=57.6%
+2026-03-21 22:58:35,637 [LGBM] NIFTY: Saved ✅
+2026-03-21 22:58:35,638 [LGBM] Training BANKNIFTY...
+2026-03-21 22:58:35,791 [LGBM] BANKNIFTY: 29,858 candles
+2026-03-21 23:00:46,989 [LGBM] BANKNIFTY: 5956 samples WR=33.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:00:50,777 [LGBM] BANKNIFTY: Accuracy=60.9%
+2026-03-21 23:00:50,832 [LGBM] BANKNIFTY: Saved ✅
+2026-03-21 23:00:50,843 [LGBM] Training FINNIFTY...
+2026-03-21 23:00:50,956 [LGBM] FINNIFTY: 26,620 candles
+2026-03-21 23:02:54,425 [LGBM] FINNIFTY: 5308 samples WR=33.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:02:57,249 [LGBM] FINNIFTY: Accuracy=64.0%
+2026-03-21 23:02:57,299 [LGBM] FINNIFTY: Saved ✅
+2026-03-21 23:02:57,317 [LGBM] Training MIDCPNIFTY...
+2026-03-21 23:02:57,588 [LGBM] MIDCPNIFTY: 58,693 candles
+2026-03-21 23:08:01,711 [LGBM] MIDCPNIFTY: 11723 samples WR=21.4%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:08:08,425 [LGBM] MIDCPNIFTY: Accuracy=77.7%
+2026-03-21 23:08:08,490 [LGBM] MIDCPNIFTY: Saved ✅
+2026-03-21 23:08:08,510 [LGBM] Training SENSEX...
+2026-03-21 23:08:08,649 [LGBM] SENSEX: 25,015 candles
+2026-03-21 23:09:53,574 [LGBM] SENSEX: 4981 samples WR=37.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:10:00,103 [LGBM] SENSEX: Accuracy=58.0%
+2026-03-21 23:10:00,230 [LGBM] SENSEX: Saved ✅
+2026-03-21 23:10:00,244 [LGBM] Training CRUDEOIL...
+2026-03-21 23:10:00,514 [LGBM] CRUDEOIL: 67,492 candles
+2026-03-21 23:15:59,967 [LGBM] CRUDEOIL: 13483 samples WR=7.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:16:11,356 [LGBM] CRUDEOIL: Accuracy=91.7%
+2026-03-21 23:16:11,591 [LGBM] CRUDEOIL: Saved ✅
+2026-03-21 23:16:11,638 [LGBM] Training GOLDM...
+2026-03-21 23:16:11,803 [LGBM] GOLDM: 40,000 candles
+2026-03-21 23:19:16,893 [LGBM] GOLDM: 7983 samples WR=34.0%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:19:20,979 [LGBM] GOLDM: Accuracy=63.7%
+2026-03-21 23:19:21,088 [LGBM] GOLDM: Saved ✅
+2026-03-21 23:19:21,109 [LGBM] Training SILVERM...
+2026-03-21 23:19:21,747 [LGBM] SILVERM: 130,120 candles
+2026-03-21 23:30:00,891 [LGBM] SILVERM: 25891 samples WR=3.1%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:30:13,774 [LGBM] SILVERM: Accuracy=97.0%
+2026-03-21 23:30:13,979 [LGBM] SILVERM: Saved ✅
+2026-03-21 23:30:14,024 [LGBM] Training NATURALGAS...
+2026-03-21 23:30:14,198 [LGBM] NATURALGAS: 40,000 candles
+2026-03-21 23:33:11,214 [LGBM] NATURALGAS: 7984 samples WR=40.6%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:33:13,658 [LGBM] NATURALGAS: Accuracy=55.2%
+2026-03-21 23:33:13,792 [LGBM] NATURALGAS: Saved ✅
+2026-03-21 23:33:13,855 [LGBM] Training LT...
+2026-03-21 23:33:14,005 [LGBM] LT: 24,438 candles
+2026-03-21 23:35:07,244 [LGBM] LT: 4872 samples WR=38.0%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:35:13,163 [LGBM] LT: Accuracy=58.2%
+2026-03-21 23:35:13,245 [LGBM] LT: Saved ✅
+2026-03-21 23:35:13,265 [LGBM] Training NTPC...
+2026-03-21 23:35:13,368 [LGBM] NTPC: 24,363 candles
+2026-03-21 23:36:53,344 [LGBM] NTPC: 4857 samples WR=41.4%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:37:05,254 [LGBM] NTPC: Accuracy=53.8%
+2026-03-21 23:37:05,439 [LGBM] NTPC: Saved ✅
+2026-03-21 23:37:05,475 [LGBM] Training MARUTI...
+2026-03-21 23:37:05,619 [LGBM] MARUTI: 24,438 candles
+2026-03-21 23:39:14,787 [LGBM] MARUTI: 4872 samples WR=39.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:39:19,315 [LGBM] MARUTI: Accuracy=56.1%
+2026-03-21 23:39:19,369 [LGBM] MARUTI: Saved ✅
+2026-03-21 23:39:19,385 [LGBM] Training BHARTIARTL...
+2026-03-21 23:39:19,485 [LGBM] BHARTIARTL: 24,438 candles
+2026-03-21 23:40:57,623 [LGBM] BHARTIARTL: 4872 samples WR=39.6%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:40:59,484 [LGBM] BHARTIARTL: Accuracy=54.3%
+2026-03-21 23:40:59,593 [LGBM] BHARTIARTL: Saved ✅
+2026-03-21 23:40:59,649 [LGBM] Training SBIN...
+2026-03-21 23:40:59,773 [LGBM] SBIN: 24,438 candles
+2026-03-21 23:42:48,563 [LGBM] SBIN: 4872 samples WR=42.3%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:42:55,549 [LGBM] SBIN: Accuracy=51.3%
+2026-03-21 23:42:55,713 [LGBM] SBIN: Saved ✅
+2026-03-21 23:42:55,736 [LGBM] Training TATAMOTORS...
+2026-03-21 23:42:55,852 [LGBM] TATAMOTORS: 24,438 candles
+2026-03-21 23:44:49,265 [LGBM] TATAMOTORS: 4872 samples WR=43.2%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:44:51,847 [LGBM] TATAMOTORS: Accuracy=49.8%
+2026-03-21 23:44:51,895 [LGBM] TATAMOTORS: Saved ✅
+2026-03-21 23:44:51,925 [LGBM] Training RELIANCE...
+2026-03-21 23:44:52,056 [LGBM] RELIANCE: 24,438 candles
+2026-03-21 23:47:04,812 [LGBM] RELIANCE: 4872 samples WR=31.5%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:47:11,462 [LGBM] RELIANCE: Accuracy=65.8%
+2026-03-21 23:47:12,069 [LGBM] RELIANCE: Saved ✅
+2026-03-21 23:47:12,113 [LGBM] Training HINDUNILVR...
+2026-03-21 23:47:12,294 [LGBM] HINDUNILVR: 24,516 candles
+2026-03-21 23:48:57,662 [LGBM] HINDUNILVR: 4888 samples WR=33.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:49:11,105 [LGBM] HINDUNILVR: Accuracy=61.9%
+2026-03-21 23:49:11,313 [LGBM] HINDUNILVR: Saved ✅
+2026-03-21 23:49:11,425 [LGBM] Training TCS...
+2026-03-21 23:49:11,617 [LGBM] TCS: 24,438 candles
+2026-03-21 23:51:01,760 [LGBM] TCS: 4872 samples WR=33.0%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:51:09,321 [LGBM] TCS: Accuracy=61.9%
+2026-03-21 23:51:09,420 [LGBM] TCS: Saved ✅
+2026-03-21 23:51:09,476 [LGBM] Training TATASTEEL...
+2026-03-21 23:51:09,625 [LGBM] TATASTEEL: 24,581 candles
+2026-03-21 23:52:53,246 [LGBM] TATASTEEL: 4901 samples WR=31.7%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:52:58,006 [LGBM] TATASTEEL: Accuracy=64.1%
+2026-03-21 23:52:58,078 [LGBM] TATASTEEL: Saved ✅
+2026-03-21 23:52:58,105 [LGBM] Training HDFCBANK...
+2026-03-21 23:52:58,400 [LGBM] HDFCBANK: 73,988 candles
+2026-03-21 23:58:07,217 [LGBM] HDFCBANK: 14782 samples WR=32.2%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-21 23:58:16,660 [LGBM] HDFCBANK: Accuracy=67.0%
+2026-03-21 23:58:16,751 [LGBM] HDFCBANK: Saved ✅
+2026-03-21 23:58:16,862 [LGBM] Training ICICIBANK...
+2026-03-21 23:58:17,184 [LGBM] ICICIBANK: 73,988 candles
+2026-03-22 00:04:25,821 [LGBM] ICICIBANK: 14782 samples WR=30.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 00:04:35,187 [LGBM] ICICIBANK: Accuracy=68.9%
+2026-03-22 00:04:35,277 [LGBM] ICICIBANK: Saved ✅
+2026-03-22 00:04:35,353 [LGBM] Training BAJFINANCE...
+2026-03-22 00:04:35,655 [LGBM] BAJFINANCE: 73,988 candles

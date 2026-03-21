@@ -120,3 +120,58 @@ MCX summary sent!
 [I 260320 02:00:12 smartConnect:124] in pool
 [I 260320 03:00:26 smartConnect:124] in pool
 [I 260320 04:00:39 smartConnect:124] in pool
+[I 260320 05:00:52 smartConnect:124] in pool
+[I 260320 06:00:06 smartConnect:124] in pool
+[08:30] Updating options master...
+Old: 130541 | New: 133425
+Added: 3460 | Expired removed: 0
+Valid but removed: 576
+Done! Options master updated!
+Engine cache refreshed!
+[I 260320 09:00:48 smartConnect:124] in pool
+[I 260320 11:00:34 smartConnect:124] in pool
+[I 260320 12:00:15 smartConnect:124] in pool
+[I 260320 13:00:53 smartConnect:124] in pool
+[I 260320 14:00:27 smartConnect:124] in pool
+[I 260320 15:00:35 smartConnect:124] in pool
+NSE summary sent!
+[I 260320 18:00:52 smartConnect:124] in pool
+[I 260320 19:00:47 smartConnect:124] in pool
+[I 260320 20:00:31 smartConnect:124] in pool
+[I 260320 21:00:34 smartConnect:124] in pool
+[I 260320 22:00:52 smartConnect:124] in pool
+[I 260320 23:00:03 smartConnect:124] in pool
+MCX summary sent!
+[I 260321 06:00:31 smartConnect:124] in pool
+[I 260321 08:00:13 smartConnect:124] in pool
+[08:30] Updating options master...
+Old: 133425 | New: 133954
+Added: 529 | Expired removed: 0
+Valid but removed: 0
+Done! Options master updated!
+Engine cache refreshed!
+[I 260321 10:00:41 smartConnect:124] in pool
+[I 260321 11:00:57 smartConnect:124] in pool
+[I 260321 13:01:15 smartConnect:124] in pool
+[I 260321 14:00:50 smartConnect:124] in pool
+[I 260321 15:00:34 smartConnect:124] in pool
+NSE summary sent!
+[I 260321 15:35:48 smartConnect:124] in pool
+LT: +20 candles
+NTPC: +17 candles
+MARUTI: +16 candles
+BHARTIARTL: +17 candles
+SBIN: +34 candles
+TATAMOTORS: +20 candles
+RELIANCE: +36 candles
+HINDUNILVR: +17 candles
+TCS: +29 candles
+TATASTEEL: +27 candles
+Done! Updated 10/18
+[I 260321 16:01:10 smartConnect:124] in pool
+[I 260321 18:00:26 smartConnect:124] in pool
+[I 260321 19:00:47 smartConnect:124] in pool
+[I 260321 21:00:56 smartConnect:124] in pool
+[I 260321 22:00:29 smartConnect:124] in pool
+[I 260321 23:01:02 smartConnect:124] in pool
+[I 260322 00:00:41 smartConnect:124] in pool

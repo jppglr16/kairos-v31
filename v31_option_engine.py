@@ -43,7 +43,7 @@ CONFIG={
     'BOSCHLTD':  {'seg':'NFO','step':100},
     'ABBOTINDIA':{'seg':'NFO','step':100},
     'PAGEIND':   {'seg':'NFO','step':100},
-    'BAJAJAUTO': {'seg':'NFO','step':100},
+    'BAJAJ-AUTO': {'seg':'NFO','step':100},
     'BRITANNIA': {'seg':'NFO','step':50},
     'APOLLOHOSP':{'seg':'NFO','step':50},
     'OFSS':      {'seg':'NFO','step':100},

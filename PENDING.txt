@@ -1,0 +1,19 @@
+V31 PENDING ITEMS - $(date +%Y-%m-%d)
+
+CRITICAL:
+[ ] Add Angel One funds Rs.50k+
+[ ] Paper trade 1 week (Mon-Fri)
+[ ] XGBoost on Colab this week
+
+THIS WEEK:
+[ ] Internet reconnect in V31
+[ ] News event filter
+[ ] Score calibration (after paper data)
+
+NEXT MONTH:
+[ ] Instrument ranking
+[ ] OI data integration
+[ ] IV Rank filter
+[ ] Live feedback loop (V32)
+[ ] Multi-leg strategies
+[ ] Profit factor metrics
