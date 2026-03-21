@@ -83,15 +83,46 @@ def extract_v31_features(df5,df15,action,regime,
         log.error(f'[V31 ML] Features error: {e}')
         return None
 
+# Best model per instrument (use highest accuracy)
 def load_v31_model(symbol):
-    for f in [
-        f'ml_models/{symbol}_v31_model.pkl',
-        f'ml_models/{symbol}_model.pkl',
-        'ml_models/NIFTY_model.pkl'
-    ]:
+    """Smart model selection - loads best accuracy model"""
+    candidates=[
+        f'ml_models/{symbol}_v31_lgbm.pkl',  # LightGBM
+        f'ml_models/{symbol}_v31_ml.pkl',    # GBM (Colab)
+        f'ml_models/{symbol}_v31_model.pkl', # GBM local
+        f'ml_models/{symbol}_model.pkl',     # Old GBM
+    ]
+
+    best_model=None
+    best_acc=0
+
+    for f in candidates:
         if os.path.exists(f):
-            try:return pickle.load(open(f,'rb'))
+            try:
+                data=pickle.load(open(f,'rb'))
+                if not isinstance(data,dict):continue
+                acc=data.get('accuracy',0)
+                # Prefer recent 5-year models for indices
+                # (more relevant than 10-year)
+                INDICES=['NIFTY','BANKNIFTY','FINNIFTY',
+                         'MIDCPNIFTY','SENSEX']
+                if symbol in INDICES and 'lgbm' in f and acc<0.65:
+                    log.debug(f'[ML] {symbol} skipping weak LGBM {acc:.1%}')
+                    continue
+                if acc>best_acc:
+                    best_acc=acc
+                    best_model=data
+                    log.debug(f'[ML] {symbol} candidate: {f} acc={acc:.1%}')
             except:pass
+
+    if best_model:
+        log.debug(f'[ML] {symbol} using best model acc={best_acc:.1%}')
+        return best_model
+
+    # Fallback
+    if os.path.exists('ml_models/NIFTY_model.pkl'):
+        try:return pickle.load(open('ml_models/NIFTY_model.pkl','rb'))
+        except:pass
     return None
 
 def get_v31_ml_prob(symbol,features,regime='TRENDING'):
