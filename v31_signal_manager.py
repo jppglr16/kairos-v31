@@ -49,7 +49,7 @@ class SignalManager:
 
         # Portfolio Risk Engine
         self.daily_loss=0
-        self.max_daily_loss=-3000   # Rs.3000 max daily loss
+        self.max_daily_loss=-7000   # Rs.3000 max daily loss
         self.trade_count=0
         self.trading_enabled=True
         self.kill_switch=False
@@ -217,13 +217,10 @@ class SignalManager:
         if self.daily_loss<=self.max_daily_loss*0.7:
             try:
                 from v31_notify import send
-                send(f'⚠️ Risk Alert!
-'
-                     f'Daily loss: Rs.{self.daily_loss:,.0f}
-'
-                     f'Limit: Rs.{self.max_daily_loss:,.0f}
-'
-                     f'Trading will stop at limit!')
+                send(f'⚠️ Risk Alert! Daily loss: Rs.{self.daily_loss:,.0f} / Limit: Rs.{self.max_daily_loss:,.0f}')
+
+
+
             except:pass
 
     def reset_daily(self):
