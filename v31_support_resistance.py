@@ -84,9 +84,10 @@ class SREngine:
     def find_prev_day_levels(self,df):
         """Previous day high/low/close"""
         try:
-            # Group by day
-            df['date']=pd.to_datetime(df['time']).dt.date
-            days=df.groupby('date').agg(
+            # Fix 5: Use copy to prevent mutation
+            df_temp=df.copy()
+            df_temp['date']=pd.to_datetime(df_temp['time']).dt.date
+            days=df_temp.groupby('date').agg(
                 high=('high','max'),
                 low=('low','min'),
                 close=('close','last')
@@ -124,52 +125,67 @@ class SREngine:
             comments=[]
 
             # Check BUY signals
+            # Fix 2: Weighted levels (stronger levels = more weight)
+            SUPPORT_WEIGHTS={'PDL':3,'S1':2,'S2':2,'PP':2,'round_support':1}
+            RESIST_WEIGHTS={'PDH':3,'R1':2,'R2':2,'PP':2,'round_resistance':1}
+            SWING_WEIGHT=2
+
             if action=='BUY':
                 # Near support = good BUY!
-                for level_name in ['S1','S2','PP','PDL',
-                                   'round_support']:
+                for level_name,weight in SUPPORT_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
                     if level_val and abs(price-level_val)<atr:
-                        score_boost+=3
-                        comments.append(f'Near {level_name}={level_val:.0f}')
+                        score_boost+=weight
+                        comments.append(f'{level_name}={level_val:.0f}(+{weight})')
 
                 # Near resistance = bad BUY!
-                for level_name in ['R1','R2','PDH',
-                                   'round_resistance']:
+                for level_name,weight in RESIST_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
                     if level_val and abs(price-level_val)<atr:
-                        score_boost-=2
-                        comments.append(f'Near resistance {level_name}')
+                        score_boost-=weight
+                        comments.append(f'resist {level_name}(-{weight})')
 
-                # Swing lows nearby = strong support!
+                # Swing lows
                 for sl in levels.get('swing_lows',[]):
                     if abs(price-sl)<atr*1.5:
-                        score_boost+=2
-                        comments.append(f'Swing low={sl:.0f}')
+                        score_boost+=SWING_WEIGHT
+                        comments.append(f'swing_low={sl:.0f}')
 
-            # Check SELL signals
             else:
                 # Near resistance = good SELL!
-                for level_name in ['R1','R2','PP','PDH',
-                                   'round_resistance']:
+                for level_name,weight in RESIST_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
                     if level_val and abs(price-level_val)<atr:
-                        score_boost+=3
-                        comments.append(f'Near {level_name}={level_val:.0f}')
+                        score_boost+=weight
+                        comments.append(f'{level_name}={level_val:.0f}(+{weight})')
 
                 # Near support = bad SELL!
-                for level_name in ['S1','S2','PDL',
-                                   'round_support']:
+                for level_name,weight in SUPPORT_WEIGHTS.items():
                     level_val=levels.get(level_name,0)
                     if level_val and abs(price-level_val)<atr:
-                        score_boost-=2
-                        comments.append(f'Near support {level_name}')
+                        score_boost-=weight
+                        comments.append(f'support {level_name}(-{weight})')
 
-                # Swing highs nearby = strong resistance!
+                # Swing highs
                 for sh in levels.get('swing_highs',[]):
                     if abs(price-sh)<atr*1.5:
-                        score_boost+=2
-                        comments.append(f'Swing high={sh:.0f}')
+                        score_boost+=SWING_WEIGHT
+                        comments.append(f'swing_high={sh:.0f}')
+
+            # Fix 1: Cap boost to prevent distortion
+            score_boost=max(min(score_boost,5),-5)
+
+            # Fix 3: Trend context filter
+            trend=signal.get('regime','')
+            if 'DOWN' in trend and action=='BUY':
+                score_boost-=2
+                comments.append('downtrend penalty')
+            elif 'UP' in trend and action in ('SELL','PE'):
+                score_boost-=2
+                comments.append('uptrend penalty')
+
+            # Re-cap after trend adjustment
+            score_boost=max(min(score_boost,5),-5)
 
             comment=', '.join(comments) if comments else 'No S/R nearby'
             log.info(f'[SR] {signal.get("instrument","")} '
