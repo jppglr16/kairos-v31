@@ -636,14 +636,37 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
         # Entry timing filter (last candle direction)
         last=df5.iloc[-1]
         last_bullish=float(last['close'])>float(last['open'])
+        weak_entry=False
         if action=='BUY' and not last_bullish:
             log.debug(f'[V31] {instrument} BUY on bearish candle - weak entry')
-            score-=2  # Penalty not block
+            score-=2
+            weak_entry=True
         elif action=='SELL' and last_bullish:
             log.debug(f'[V31] {instrument} SELL on bullish candle - weak entry')
             score-=2
+            weak_entry=True
 
-        score=max(score,0)  # No negative scores
+        score=max(score,0)
+
+        # Fix 1: Recompute score_pct AFTER penalties!
+        score_pct=score/30
+
+        # Fix 2: Smoother lot scaling
+        if score_pct>0.85:
+            suggested_lots=3  # Very high conviction!
+        elif score_pct>0.70:
+            suggested_lots=2
+        elif score_pct>0.55:
+            suggested_lots=1
+        else:
+            log.debug(f"[V31] {instrument} weak score {score:.0f}/30 skip")
+            return None
+
+        # Fix 3: Weak entry reduces lots too!
+        if weak_entry:
+            suggested_lots=max(1,suggested_lots-1)
+            log.debug(f'[V31] {instrument} weak entry: lots reduced to {suggested_lots}')
+
         log.debug(f"[V31] {instrument} score={score}/30 ({score_pct:.0%}) lots={suggested_lots}")
 
         # STEP 8: Smart SL from structure
