@@ -441,8 +441,8 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
         # Time filter - NSE hours only for NSE, MCX has different hours
         MCX_INST=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
         if instrument not in MCX_INST:
-            if h<10 or h>14:return None
-            if h==12:return None  # Avoid lunch
+            if h<9 or h>15:return None
+            if 12<=h<13:return None  # Avoid lunch only
 
         c=df5['close'];hi=df5['high'];lo=df5['low'];v=df5['volume']
         atr=float((hi-lo).tail(14).mean())
@@ -452,13 +452,17 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
 
         # Volatility check
         avg_atr=float((hi-lo).rolling(20).mean().iloc[-1])
-        if atr<avg_atr*0.7:
-            log.debug(f'[V31] {instrument} low volatility skip')
+        vol_ratio=atr/max(avg_atr,0.001)  # Fix 4: reusable metric!
+        if vol_ratio<0.75:
+            log.debug(f'[V31] {instrument} low volatility ({vol_ratio:.2f}) skip')
             return None
 
         # STEP 1: Market Regime
         regime,regime_atr=get_market_regime(df5,df15,df_daily)
-        if regime=='VOLATILE':return None  # Skip volatile
+        # Fix 2: Volatile = scalp mode, not skip!
+        strategy_mode='SCALP' if regime=='VOLATILE' else 'NORMAL'
+        if regime=='VOLATILE':
+            log.debug(f'[V31] {instrument} VOLATILE regime - SCALP mode')
 
         # STEP 2: Trend Alignment
         trend5=get_trend_v31(df5)
@@ -475,6 +479,7 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             action=None
 
         # STEP 3: Liquidity Sweep (MANDATORY)
+        liq_score_adj=0
         if action:
             has_liq,liq_type,liq_level=detect_liquidity_sweep_v31(df5,action,atr)
             if not has_liq:
@@ -483,7 +488,15 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
                     opp='SELL' if action=='BUY' else 'BUY'
                     has_liq,liq_type,liq_level=detect_liquidity_sweep_v31(df5,opp,atr)
                     if has_liq:action=opp
-                if not has_liq:return None
+                if not has_liq:
+                    # Fix 3: Soft penalty not hard block!
+                    liq_score_adj=-3
+                    has_liq=False
+                    liq_type='NONE'
+                    liq_level=current
+                    log.debug(f'[V31] {instrument} no liq sweep, -3 penalty')
+            else:
+                liq_score_adj=+3  # Bonus for sweep confirmation!
         else:
             # Ranging: try both directions
             has_liq_b,liq_type_b,liq_level_b=detect_liquidity_sweep_v31(df5,'BUY',atr)
@@ -491,6 +504,21 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             if has_liq_b:action='BUY';has_liq=True;liq_type=liq_type_b;liq_level=liq_level_b
             elif has_liq_s:action='SELL';has_liq=True;liq_type=liq_type_s;liq_level=liq_level_s
             else:return None
+
+        # Fix 1: Trend alignment - SEPARATE variable!
+        trend_score_adj=0
+        if action=='BUY':
+            if trend5=='UP' and trend15=='UP':
+                trend_score_adj+=2  # Aligned bonus!
+            elif trend5!='UP' or trend15!='UP':
+                trend_score_adj-=2  # Misaligned penalty!
+                log.debug(f'[V31] {instrument} BUY misaligned 5m={trend5} 15m={trend15}')
+        elif action=='SELL':
+            if trend5=='DOWN' and trend15=='DOWN':
+                trend_score_adj+=2
+            elif trend5!='DOWN' or trend15!='DOWN':
+                trend_score_adj-=2
+                log.debug(f'[V31] {instrument} SELL misaligned 5m={trend5} 15m={trend15}')
 
         # STEP 4: Imbalance - FVG or OB (at least one MANDATORY)
         has_fvg,fvg_data=detect_fvg_v31(df5,action,atr)
@@ -533,56 +561,49 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
         except Exception as e:
             log.debug(f'[V31] Gamma error: {e}')
 
-        # STEP 7: Score calculation
-        score=0
-        MCX_INSTRUMENTS=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
+        # STEP 7: Structured Score Calculation
+        score_components={
+            "base":5,  # Base for valid signal
+            "fvg":4 if has_fvg else 0,
+            "ob":3 if has_ob else 0,
+            "trend":4 if trend_aligned else 0,
+            "liquidity":locals().get("liq_score_adj",0),
+            "trend_adj":locals().get("trend_score_adj",0),
+        }
+
+        score=sum(score_components.values())
+        MCX_INSTRUMENTS=["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
         is_mcx=instrument in MCX_INSTRUMENTS
 
-        # Mandatory components
-        score+=5  # Liquidity sweep
-        if has_fvg:score+=4
-        if has_ob:score+=3
-        if trend_aligned:score+=4
-
-        # Optional components
-        if trend5==trend15:score+=2      # Multi-TF aligned
-        if trend_daily==trend5:score+=2  # Daily aligned too
+        # Multi-TF alignment bonus
+        if trend5==trend15:score+=2
+        if trend_daily==trend5:score+=2
 
         if not is_mcx:
-            score+=gamma_boost           # Gamma only for NSE
+            score+=gamma_boost
 
         # Session scoring
         if is_mcx:
-            # MCX best hours = evening
-            if 21<=h<=23:score+=4        # US market open!
-            elif 18<=h<=21:score+=3      # US pre-market
-            elif 9<=h<=11:score+=2       # Morning MCX
-            # ATR% bonus
+            if 21<=h<=23:score+=4
+            elif 18<=h<=21:score+=3
+            elif 9<=h<=11:score+=2
             atr_pct=atr/current*100 if current>0 else 0
             if atr_pct>0.5:score+=3
             elif atr_pct>0.3:score+=2
             elif atr_pct>0.2:score+=1
         else:
-            # NSE session scoring
             if h==10 or h==11:score+=3
             elif h==13 or h==14:score+=2
+            elif 9<=h<10:score+=2  # Morning bonus!
 
         # VWAP
         try:
             vwap=float((c*v).sum()/v.sum())
-            if action=='BUY' and current>vwap:score+=2
-            elif action=='SELL' and current<vwap:score+=2
+            if action=="BUY" and current>vwap:score+=2
+            elif action=="SELL" and current<vwap:score+=2
         except:pass
 
-        # Per-instrument score threshold (auto-tuned!)
-        try:
-            from v31_score_tuner import get_threshold
-            min_score=get_threshold(instrument)
-        except:
-            min_score=13 if is_mcx else 15
-
-        if score<min_score:
-            return None
+        log.debug(f"[V31] {instrument} score_components={score_components} total={score}")
 
         # STEP 8: Smart SL from structure
         from v30_rr_filter import find_tight_sl,find_best_target
