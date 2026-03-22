@@ -29,27 +29,26 @@ except:
 # LOAD DATA
 # ============================================================
 def load_data(symbol):
-    """Load historical candles for symbol"""
-    paths=[
-        f'historical_data/{symbol}_5year_5min.json',
-        f'historical_data/{symbol}_2024_5min.json',
-        f'historical_data/{symbol}_2023_5min.json',
-    ]
-    # Try yearly files
+    """Load historical candles - scans all matching files"""
+    import os,json as _json
     all_candles=[]
-    for year in [2021,2022,2023,2024,2025]:
-        for token_try in [symbol,'']:
-            p=f'historical_data/{symbol}_{year}_5min.json'
-            if os.path.exists(p):
-                all_candles.extend(json.load(open(p)))
-                break
-
-    # Try 5-year file
-    if not all_candles:
-        p=f'historical_data/{symbol}_5year_5min.json'
-        if os.path.exists(p):
-            all_candles=json.load(open(p))
-
+    try:
+        all_files=os.listdir("historical_data")
+        matching=sorted([f for f in all_files
+                  if f.startswith(f"{symbol}_")
+                  and f.endswith("_5min.json")])
+        for fname in matching:
+            fpath=f"historical_data/{fname}"
+            try:
+                data=_json.load(open(fpath))
+                all_candles.extend(data)
+            except:pass
+        if all_candles:
+            unique={}
+            for c in all_candles:
+                unique[c[0]]=c
+            all_candles=sorted(unique.values(),key=lambda x:x[0])
+    except:pass
     return all_candles
 
 def to_df(candles):

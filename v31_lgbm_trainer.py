@@ -16,25 +16,28 @@ except:
     INSTRUMENTS={'NIFTY':{'lot':65}}
 
 def load_data(symbol):
+    """Load all historical candles for symbol"""
+    import os,json as _json
     all_candles=[]
-    # Handle hyphen in symbol name
-    sym_clean=symbol.replace('-','')
-    for sym in [symbol,sym_clean]:
-        p=f'historical_data/{sym}_5year_5min.json'
-        if os.path.exists(p):
-            all_candles=json.load(open(p))
-            break
-    for sym in [symbol,sym_clean]:
-        p2=f'historical_data/{sym}_2015_2020_5min.json'
-        if os.path.exists(p2):
-            all_candles=json.load(open(p2))+all_candles
-            break
-    if not all_candles:
-        for sym in [symbol,sym_clean]:
-            for year in range(2016,2026):
-                p=f'historical_data/{sym}_{year}_5min.json'
-                if os.path.exists(p):
-                    all_candles.extend(json.load(open(p)))
+    try:
+        all_files=os.listdir("historical_data")
+        sym_clean=symbol.replace("-","")
+        matching=[]
+        for f in all_files:
+            if (f.startswith(f"{symbol}_") or f.startswith(f"{sym_clean}_")) and f.endswith("_5min.json"):
+                matching.append(f)
+        for fname in sorted(matching):
+            fpath=f"historical_data/{fname}"
+            try:
+                data=_json.load(open(fpath))
+                all_candles.extend(data)
+            except:pass
+        if all_candles:
+            unique={}
+            for c in all_candles:
+                unique[c[0]]=c
+            all_candles=sorted(unique.values(),key=lambda x:x[0])
+    except:pass
     return all_candles
 
 def to_df(candles):
