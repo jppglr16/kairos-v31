@@ -152,6 +152,38 @@ def extract_features(df, idx):
             price_pos>0.7,
             price_pos<0.3,
         ]
+        # S/R Features (7 new!)
+        try:
+            from v31_support_resistance import sr_engine
+            _price=float(c.iloc[-1])
+            _hl=window["high"]-window["low"]
+            _hc=(window["high"]-window["close"].shift()).abs()
+            _lc=(window["low"]-window["close"].shift()).abs()
+            import pandas as _pd
+            _tr=_pd.concat([_hl,_hc,_lc],axis=1).max(axis=1)
+            _atr_raw=_tr.rolling(14).mean().iloc[-1]
+            if __import__("pandas").isna(_atr_raw):
+                _atr_raw=float((_hl).tail(14).mean())
+            _atr=max(float(_atr_raw),1e-6)
+            _levels=sr_engine.get_all_levels(window,_price)
+            _r1=_levels.get("R1",_price+_atr)
+            _s1=_levels.get("S1",_price-_atr)
+            _pdh=_levels.get("PDH",_price+_atr)
+            _pdl=_levels.get("PDL",_price-_atr)
+            _pp=_levels.get("PP",_price)
+            _rr=_levels.get("round_resistance",_price+_atr)
+            _rs=_levels.get("round_support",_price-_atr)
+            _dr1=max(min((_r1-_price)/_atr,5.0),-5.0)
+            _ds1=max(min((_price-_s1)/_atr,5.0),-5.0)
+            _dpdh=max(min((_pdh-_price)/_atr,5.0),-5.0)
+            _dpdl=max(min((_price-_pdl)/_atr,5.0),-5.0)
+            _app=1.0 if _price>_pp else 0.0
+            _nr=1.0 if abs(_price-_rr)<_atr or abs(_price-_rs)<_atr else 0.0
+            _bz=1.0 if (_price>_r1 or _price<_s1) else 0.0
+            features.extend([_dr1,_ds1,_dpdh,_dpdl,_app,_nr,_bz])
+        except:
+            features.extend([1.0,1.0,1.0,1.0,0.5,0.0,0.0])
+
         return [float(f) if not np.isnan(float(f)) else 0 for f in features]
     except:
         return None
