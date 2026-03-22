@@ -9,27 +9,31 @@ log=logging.getLogger(__name__)
 
 def get_brokerage(instrument,lots=1,is_options=True):
     """
-    Dynamic brokerage calculation
-    Angel One: Rs.20 flat per order
+    Dynamic brokerage - Angel One
+    Fix 5: Better STT + MCX charges
     """
     MCX=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
-    # Angel One flat fee
-    entry_charge=20  # Rs.20 per order
-    exit_charge=20   # Rs.20 per order
-    # STT (options: 0.05% on sell side only)
-    # Exchange charges ~0.05%
-    # GST 18% on brokerage
-    brokerage=(entry_charge+exit_charge)*1.18  # With GST
-    # Approximate STT+exchange
-    if is_options:
-        stt=0  # STT on options = 0 on buy side
-        exchange=10  # Approx exchange charges
+    is_mcx=instrument in MCX
+
+    # Angel One flat Rs.20 per order
+    brokerage=(20+20)*1.18  # Entry+Exit with GST=Rs.47.2
+
+    if is_mcx:
+        # MCX charges different
+        exchange=lots*5  # Per lot exchange
+        stt=0  # No STT on MCX
+        sebi=2  # SEBI charges
+    elif is_options:
+        # NSE Options
+        exchange=lots*3  # Per lot NSE
+        stt=0  # STT only on sell side
+        sebi=2
     else:
+        exchange=lots*5
         stt=20
-        exchange=15
-    total=brokerage+stt+exchange
-    # Scale with lots (exchange charges scale)
-    total+=lots*2  # Small per-lot charge
+        sebi=2
+
+    total=brokerage+exchange+stt+sebi
     return round(total,2)
 
 class ExecutionTracker:
@@ -104,7 +108,11 @@ class ExecutionTracker:
                 if actual_fill and actual_fill!=entry_price:
                     slippage=abs(actual_fill-entry_price)
                     t['slippage']=slippage
-                    log.info(f'[EXEC] Slippage detected: {slippage:.2f}')
+                    # Fix 3: Track slippage cost!
+                    lot_size=t.get('lot_size',1)
+                    lots=t.get('lots',1)
+                    t['slippage_cost']=round(slippage*lot_size*lots,2)
+                    log.info(f'[EXEC] Slippage: {slippage:.2f} cost=Rs.{t["slippage_cost"]}')
                 self._save()
                 log.info(f'[EXEC] {t["instrument"]} EXECUTED @ {entry_price}')
                 return
@@ -125,6 +133,8 @@ class ExecutionTracker:
             if t['id']==trade_id:
                 entry=t.get('entry_price',0) or 0
                 raw_pnl=(exit_price-entry)*lot_size*qty_exited
+                if t.get('action')=='SELL':
+                    raw_pnl=-raw_pnl  # Fix 1: SELL direction!
                 charges=get_brokerage(t['instrument'],qty_exited)
                 partial_pnl=round(raw_pnl-charges,2)
                 t['partial_exits']=t.get('partial_exits',[])+[{
@@ -150,7 +160,9 @@ class ExecutionTracker:
                 if charges is None:
                     charges=get_brokerage(t['instrument'],lots)
                 entry=t.get('entry_price',0) or 0
-                raw_pnl=(exit_price-entry)*lot_size*lots
+                # Fix 2: Use remaining qty!
+                remaining=t.get('qty_remaining',lots)
+                raw_pnl=(exit_price-entry)*lot_size*remaining
                 if t.get('action')=='SELL':
                     raw_pnl=-raw_pnl
                 # Add partial profits
@@ -163,20 +175,43 @@ class ExecutionTracker:
                 return
 
     def check_time_exits(self):
-        """Fix 3: Warn about open trades near close"""
+        """Fix 4: Warn + flag for auto exit near close"""
         from datetime import datetime
         now=datetime.now()
+        today=datetime.now().strftime('%Y-%m-%d')
+        open_trades=[t for t in self.data['trades']
+                    if t['time'].startswith(today)
+                    and t['status'] in ['EXECUTED','PLACED']]
+
+        if not open_trades:return []
+
+        # 2:45 PM warning
         if now.hour==14 and now.minute>=45:
-            today=datetime.now().strftime('%Y-%m-%d')
-            open_trades=[t for t in self.data['trades']
-                        if t['time'].startswith(today)
-                        and t['status'] in ['EXECUTED','PLACED']]
-            if open_trades:
-                log.warning(f'[EXEC] ⚠️ {len(open_trades)} trades still open near close!')
-                for t in open_trades:
-                    log.warning(f'[EXEC] Open: {t["instrument"]} {t["action"]}')
-                return open_trades
-        return []
+            log.warning(f'[EXEC] ⚠️ {len(open_trades)} trades open near close!')
+            for t in open_trades:
+                log.warning(f'[EXEC] Open: {t["instrument"]} {t["action"]}')
+                t['needs_exit']=True  # Flag for auto exit!
+            self._save()
+            # Send Telegram alert!
+            try:
+                from v31_notify import send
+                msg=f'⚠️ {len(open_trades)} trades still open!
+'
+                msg+='
+'.join([f'{t["instrument"]} {t["action"]}' for t in open_trades])
+                msg+='
+Please exit before 3:15 PM!'
+                send(msg)
+            except:pass
+
+        # 2:50 PM auto-exit flag
+        if now.hour==14 and now.minute>=50:
+            for t in open_trades:
+                t['force_exit']=True
+            self._save()
+            log.warning(f'[EXEC] 🚨 FORCE EXIT flagged for {len(open_trades)} trades!')
+
+        return open_trades
 
     def daily_report(self):
         """Generate daily execution report"""
