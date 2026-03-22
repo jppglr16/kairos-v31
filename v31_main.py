@@ -808,13 +808,19 @@ async def main():
                     _last_capital_refresh=_time.time()
                 except:pass
 
-            # VIX filter
+            # VIX filter + strategy mode
             try:
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
+                _strategy_mode=vix_engine.get_strategy_mode()
+                log.info(f'[VIX] Mode={_strategy_mode}')
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
-                    await asyncio.sleep(60)  # Fix 5: 1 min not 5!
+                    await asyncio.sleep(60)
+                    continue
+                if _strategy_mode=='NO_TRADE':
+                    log.info(f'[VIX] NO_TRADE mode - skipping cycle')
+                    await asyncio.sleep(60)
                     continue
             except Exception as _ve:
                 log.debug(f'[VIX] Error: {_ve}')
@@ -830,13 +836,19 @@ async def main():
             except Exception as _ne:
                 log.debug(f'[NEWS] Filter error: {_ne}')
 
-            # VIX filter
+            # VIX filter + strategy mode
             try:
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
+                _strategy_mode=vix_engine.get_strategy_mode()
+                log.info(f'[VIX] Mode={_strategy_mode}')
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
-                    await asyncio.sleep(60)  # Fix 5: 1 min not 5!
+                    await asyncio.sleep(60)
+                    continue
+                if _strategy_mode=='NO_TRADE':
+                    log.info(f'[VIX] NO_TRADE mode - skipping cycle')
+                    await asyncio.sleep(60)
                     continue
             except Exception as _ve:
                 log.debug(f'[VIX] Error: {_ve}')
@@ -1001,17 +1013,22 @@ async def main():
                         if _vix_val and 'vix_adjusted' not in signal:
                             _hour=__import__('datetime').datetime.now().hour
 
-                            # Fix 2+4: Spike = hard block
+                            # Fix 2+4: Spike handling
                             if 'SPIKE' in str(_vix_regime):
                                 if _hour<10:
-                                    # Early spike = often fake!
-                                    log.info(f'[VIX] Early spike ignored (hour={_hour})')
+                                    log.info(f'[VIX] Early spike ignored!')
                                 else:
-                                    # Real spike = block!
+                                    # Fix 3: Smart skip
                                     signal['score']=signal.get('score',0)-5
-                                    signal['blocked_reason']='VIX SPIKE'
-                                    signal['skip']=True
-                                    log.warning(f'[VIX] SPIKE block! score-5')
+                                    # Only skip if score drops below threshold
+                                    _threshold=40  # quality threshold
+                                    _quality=signal.get('score',0)*signal.get('rr_ratio',1)
+                                    if _quality<_threshold:
+                                        signal['blocked_reason']='VIX SPIKE'
+                                        signal['skip']=True
+                                        log.warning(f'[VIX] SPIKE: weak signal blocked')
+                                    else:
+                                        log.info(f'[VIX] SPIKE: strong signal survives! Q={_quality:.0f}')
 
                             # Fix 3: Only adjust if key exists
                             elif _vix_val>20:

@@ -43,10 +43,11 @@ class VIXEngine:
         except:pass
 
     def _save_prev_vix(self,vix):
-        """Save VIX to file for persistence"""
+        """Save VIX to file - safe write"""
         try:
             import json
-            json.dump({'prev_vix':vix},open('vix_state.json','w'))
+            with open('vix_state.json','w') as f:
+                json.dump({'prev_vix':vix,'last_vix':vix},f)
         except:pass
 
     def get_vix(self):
@@ -135,6 +136,21 @@ class VIXEngine:
         if vix<10:
             return True,f'VIX low ({vix:.1f}) - avoid buying only'
         return True,f'VIX={vix:.1f} OK'
+
+    def get_strategy_mode(self):
+        """
+        Strategy Switching Engine based on VIX
+        Returns recommended trading mode
+        """
+        vix=self.get_vix()
+        regime,_=self.get_regime()
+
+        if vix is None:return 'NORMAL'
+        if 'SPIKE' in str(regime):return 'NO_TRADE'
+        if vix<12:return 'SELL_PREMIUM'
+        if vix<20:return 'TREND_BUY'    # Best!
+        if vix<25:return 'SCALP'
+        return 'DEFENSIVE'
 
 # Global instance
 vix_engine=VIXEngine()
