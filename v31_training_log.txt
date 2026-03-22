@@ -528,3 +528,1425 @@ Returning the number of logical cores instead. You can silence this warning by s
 2026-03-22 00:44:29,834 [LGBM] BAJAJ-AUTO: No data!
 2026-03-22 00:44:29,834 Done! 31/32 trained
 2026-03-22 00:44:29,834 Failed: ['BAJAJ-AUTO']
+nohup: ignoring input
+[I 260322 06:52:29 smartConnect:124] in pool
+EICHERMOT: 5025 candles saved!
+SHREECEM: 5022 candles saved!
+CUMMINSIND: 5025 candles saved!
+ABB: 5025 candles saved!
+DIVISLAB: 5025 candles saved!
+HEROMOTOCO: 5025 candles saved!
+INDIGO: 5025 candles saved!
+TATAELXSI: 5025 candles saved!
+AMBER: 5025 candles saved!
+ALKEM: 5025 candles saved!
+TORNTPHARM: 5025 candles saved!
+KEI: 5025 candles saved!
+BANKEX: No data!
+Download complete!
+nohup: ignoring input
+2026-03-22 06:55:27,616 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 06:55:27,616 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 06:55:27,616 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: OFSS
+2026-03-22 06:55:27,617 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 06:55:27,617 Loaded 45 instruments
+2026-03-22 06:55:27,709 Training EICHERMOT...
+2026-03-22 06:55:27,710 EICHERMOT: No data!
+2026-03-22 06:55:27,710 [LGBM] Training EICHERMOT...
+2026-03-22 06:55:27,711 [LGBM] EICHERMOT: No data!
+2026-03-22 06:55:27,711 Training SHREECEM...
+2026-03-22 06:55:27,711 SHREECEM: No data!
+2026-03-22 06:55:27,711 [LGBM] Training SHREECEM...
+2026-03-22 06:55:27,711 [LGBM] SHREECEM: No data!
+2026-03-22 06:55:27,711 Training CUMMINSIND...
+2026-03-22 06:55:27,711 CUMMINSIND: No data!
+2026-03-22 06:55:27,711 [LGBM] Training CUMMINSIND...
+2026-03-22 06:55:27,712 [LGBM] CUMMINSIND: No data!
+2026-03-22 06:55:27,712 Training ABB...
+2026-03-22 06:55:27,712 ABB: No data!
+2026-03-22 06:55:27,712 [LGBM] Training ABB...
+2026-03-22 06:55:27,712 [LGBM] ABB: No data!
+2026-03-22 06:55:27,712 Training DIVISLAB...
+2026-03-22 06:55:27,712 DIVISLAB: No data!
+2026-03-22 06:55:27,712 [LGBM] Training DIVISLAB...
+2026-03-22 06:55:27,713 [LGBM] DIVISLAB: No data!
+2026-03-22 06:55:27,713 Training HEROMOTOCO...
+2026-03-22 06:55:27,713 HEROMOTOCO: No data!
+2026-03-22 06:55:27,713 [LGBM] Training HEROMOTOCO...
+2026-03-22 06:55:27,713 [LGBM] HEROMOTOCO: No data!
+2026-03-22 06:55:27,713 Training INDIGO...
+2026-03-22 06:55:27,713 INDIGO: No data!
+2026-03-22 06:55:27,713 [LGBM] Training INDIGO...
+2026-03-22 06:55:27,713 [LGBM] INDIGO: No data!
+2026-03-22 06:55:27,714 Training TATAELXSI...
+2026-03-22 06:55:27,714 TATAELXSI: No data!
+2026-03-22 06:55:27,714 [LGBM] Training TATAELXSI...
+2026-03-22 06:55:27,714 [LGBM] TATAELXSI: No data!
+2026-03-22 06:55:27,714 Training AMBER...
+2026-03-22 06:55:27,714 AMBER: No data!
+2026-03-22 06:55:27,714 [LGBM] Training AMBER...
+2026-03-22 06:55:27,714 [LGBM] AMBER: No data!
+2026-03-22 06:55:27,714 Training ALKEM...
+2026-03-22 06:55:27,715 ALKEM: No data!
+2026-03-22 06:55:27,715 [LGBM] Training ALKEM...
+2026-03-22 06:55:27,715 [LGBM] ALKEM: No data!
+2026-03-22 06:55:27,715 Training TORNTPHARM...
+2026-03-22 06:55:27,715 TORNTPHARM: No data!
+2026-03-22 06:55:27,715 [LGBM] Training TORNTPHARM...
+2026-03-22 06:55:27,715 [LGBM] TORNTPHARM: No data!
+2026-03-22 06:55:27,715 Training KEI...
+2026-03-22 06:55:27,715 KEI: No data!
+2026-03-22 06:55:27,715 [LGBM] Training KEI...
+2026-03-22 06:55:27,716 [LGBM] KEI: No data!
+Training EICHERMOT...
+EICHERMOT: GBM=False LGBM=False
+Training SHREECEM...
+SHREECEM: GBM=False LGBM=False
+Training CUMMINSIND...
+CUMMINSIND: GBM=False LGBM=False
+Training ABB...
+ABB: GBM=False LGBM=False
+Training DIVISLAB...
+DIVISLAB: GBM=False LGBM=False
+Training HEROMOTOCO...
+HEROMOTOCO: GBM=False LGBM=False
+Training INDIGO...
+INDIGO: GBM=False LGBM=False
+Training TATAELXSI...
+TATAELXSI: GBM=False LGBM=False
+Training AMBER...
+AMBER: GBM=False LGBM=False
+Training ALKEM...
+ALKEM: GBM=False LGBM=False
+Training TORNTPHARM...
+TORNTPHARM: GBM=False LGBM=False
+Training KEI...
+KEI: GBM=False LGBM=False
+All done!
+nohup: ignoring input
+[I 260322 06:56:50 smartConnect:124] in pool
+EICHERMOT: 4887 candles saved!
+SHREECEM: 4884 candles saved!
+CUMMINSIND: 4887 candles saved!
+ABB: 4887 candles saved!
+DIVISLAB: 4887 candles saved!
+HEROMOTOCO: 4887 candles saved!
+INDIGO: 4887 candles saved!
+TATAELXSI: 4887 candles saved!
+AMBER: 4885 candles saved!
+ALKEM: 4887 candles saved!
+TORNTPHARM: 4887 candles saved!
+KEI: 4887 candles saved!
+Done!
+nohup: ignoring input
+[I 260322 07:02:43 smartConnect:124] in pool
+EICHERMOT: 4965 candles (2015-2019)
+SHREECEM: 4956 candles (2015-2019)
+CUMMINSIND: 4964 candles (2015-2019)
+ABB: 4927 candles (2015-2019)
+DIVISLAB: 4964 candles (2015-2019)
+HEROMOTOCO: 4965 candles (2015-2019)
+INDIGO: 4965 candles (2015-2019)
+TATAELXSI: 4965 candles (2015-2019)
+AMBER: 4768 candles (2015-2019)
+ALKEM: 4868 candles (2015-2019)
+TORNTPHARM: 4963 candles (2015-2019)
+KEI: 4964 candles (2015-2019)
+Done!
+nohup: ignoring input
+2026-03-22 07:09:20,683 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 07:09:20,683 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: OFSS
+2026-03-22 07:09:20,684 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 07:09:20,684 Loaded 45 instruments
+2026-03-22 07:09:20,779 Training EICHERMOT...
+2026-03-22 07:09:20,779 EICHERMOT: No data!
+2026-03-22 07:09:20,779 [LGBM] Training EICHERMOT...
+2026-03-22 07:09:20,779 [LGBM] EICHERMOT: No data!
+2026-03-22 07:09:20,780 Training SHREECEM...
+2026-03-22 07:09:20,780 SHREECEM: No data!
+2026-03-22 07:09:20,780 [LGBM] Training SHREECEM...
+2026-03-22 07:09:20,780 [LGBM] SHREECEM: No data!
+2026-03-22 07:09:20,780 Training CUMMINSIND...
+2026-03-22 07:09:20,780 CUMMINSIND: No data!
+2026-03-22 07:09:20,780 [LGBM] Training CUMMINSIND...
+2026-03-22 07:09:20,781 [LGBM] CUMMINSIND: No data!
+2026-03-22 07:09:20,781 Training ABB...
+2026-03-22 07:09:20,781 ABB: No data!
+2026-03-22 07:09:20,781 [LGBM] Training ABB...
+2026-03-22 07:09:20,781 [LGBM] ABB: No data!
+2026-03-22 07:09:20,781 Training DIVISLAB...
+2026-03-22 07:09:20,781 DIVISLAB: No data!
+2026-03-22 07:09:20,781 [LGBM] Training DIVISLAB...
+2026-03-22 07:09:20,782 [LGBM] DIVISLAB: No data!
+2026-03-22 07:09:20,782 Training HEROMOTOCO...
+2026-03-22 07:09:20,782 HEROMOTOCO: No data!
+2026-03-22 07:09:20,782 [LGBM] Training HEROMOTOCO...
+2026-03-22 07:09:20,782 [LGBM] HEROMOTOCO: No data!
+2026-03-22 07:09:20,782 Training INDIGO...
+2026-03-22 07:09:20,782 INDIGO: No data!
+2026-03-22 07:09:20,782 [LGBM] Training INDIGO...
+2026-03-22 07:09:20,782 [LGBM] INDIGO: No data!
+2026-03-22 07:09:20,783 Training TATAELXSI...
+2026-03-22 07:09:20,783 TATAELXSI: No data!
+2026-03-22 07:09:20,783 [LGBM] Training TATAELXSI...
+2026-03-22 07:09:20,783 [LGBM] TATAELXSI: No data!
+2026-03-22 07:09:20,783 Training AMBER...
+2026-03-22 07:09:20,783 AMBER: No data!
+2026-03-22 07:09:20,783 [LGBM] Training AMBER...
+2026-03-22 07:09:20,783 [LGBM] AMBER: No data!
+2026-03-22 07:09:20,783 Training ALKEM...
+2026-03-22 07:09:20,784 ALKEM: No data!
+2026-03-22 07:09:20,784 [LGBM] Training ALKEM...
+2026-03-22 07:09:20,784 [LGBM] ALKEM: No data!
+2026-03-22 07:09:20,784 Training TORNTPHARM...
+2026-03-22 07:09:20,784 TORNTPHARM: No data!
+2026-03-22 07:09:20,784 [LGBM] Training TORNTPHARM...
+2026-03-22 07:09:20,784 [LGBM] TORNTPHARM: No data!
+2026-03-22 07:09:20,784 Training KEI...
+2026-03-22 07:09:20,785 KEI: No data!
+2026-03-22 07:09:20,785 [LGBM] Training KEI...
+2026-03-22 07:09:20,785 [LGBM] KEI: No data!
+=== Training EICHERMOT ===
+EICHERMOT GBM: False
+EICHERMOT LGBM: False
+=== Training SHREECEM ===
+SHREECEM GBM: False
+SHREECEM LGBM: False
+=== Training CUMMINSIND ===
+CUMMINSIND GBM: False
+CUMMINSIND LGBM: False
+=== Training ABB ===
+ABB GBM: False
+ABB LGBM: False
+=== Training DIVISLAB ===
+DIVISLAB GBM: False
+DIVISLAB LGBM: False
+=== Training HEROMOTOCO ===
+HEROMOTOCO GBM: False
+HEROMOTOCO LGBM: False
+=== Training INDIGO ===
+INDIGO GBM: False
+INDIGO LGBM: False
+=== Training TATAELXSI ===
+TATAELXSI GBM: False
+TATAELXSI LGBM: False
+=== Training AMBER ===
+AMBER GBM: False
+AMBER LGBM: False
+=== Training ALKEM ===
+ALKEM GBM: False
+ALKEM LGBM: False
+=== Training TORNTPHARM ===
+TORNTPHARM GBM: False
+TORNTPHARM LGBM: False
+=== Training KEI ===
+KEI GBM: False
+KEI LGBM: False
+ALL DONE!
+nohup: ignoring input
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 07:23:51,915 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 07:23:51,916 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 07:23:51,916 [IM] Loaded saved instrument: OFSS
+2026-03-22 07:23:51,916 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 07:23:51,916 Loaded 44 instruments
+2026-03-22 07:23:52,013 Training EICHERMOT...
+2026-03-22 07:23:52,078 EICHERMOT: 14877 candles loaded
+2026-03-22 07:24:16,941 EICHERMOT: 1480 samples | WR=23.9%
+2026-03-22 07:24:18,118 EICHERMOT: Accuracy=72.6%
+2026-03-22 07:24:18,131 EICHERMOT: Saved to ml_models/EICHERMOT_v31_ml.pkl ✅
+2026-03-22 07:24:18,136 [LGBM] Training EICHERMOT...
+2026-03-22 07:24:18,136 [LGBM] EICHERMOT: No data!
+2026-03-22 07:24:18,136 Training SHREECEM...
+2026-03-22 07:24:18,287 SHREECEM: 14862 candles loaded
+2026-03-22 07:24:45,212 SHREECEM: 1479 samples | WR=38.1%
+2026-03-22 07:24:46,386 SHREECEM: Accuracy=57.1%
+2026-03-22 07:24:46,393 SHREECEM: Saved to ml_models/SHREECEM_v31_ml.pkl ✅
+2026-03-22 07:24:46,397 [LGBM] Training SHREECEM...
+2026-03-22 07:24:46,398 [LGBM] SHREECEM: No data!
+2026-03-22 07:24:46,398 Training CUMMINSIND...
+2026-03-22 07:24:46,465 CUMMINSIND: 14876 candles loaded
+2026-03-22 07:25:14,005 CUMMINSIND: 1480 samples | WR=15.2%
+2026-03-22 07:25:15,203 CUMMINSIND: Accuracy=85.8%
+2026-03-22 07:25:15,210 CUMMINSIND: Saved to ml_models/CUMMINSIND_v31_ml.pkl ✅
+2026-03-22 07:25:15,215 [LGBM] Training CUMMINSIND...
+2026-03-22 07:25:15,215 [LGBM] CUMMINSIND: No data!
+2026-03-22 07:25:15,215 Training ABB...
+2026-03-22 07:25:15,296 ABB: 14839 candles loaded
+2026-03-22 07:25:41,575 ABB: 1476 samples | WR=22.5%
+2026-03-22 07:25:42,750 ABB: Accuracy=73.0%
+2026-03-22 07:25:42,757 ABB: Saved to ml_models/ABB_v31_ml.pkl ✅
+2026-03-22 07:25:42,762 [LGBM] Training ABB...
+2026-03-22 07:25:42,762 [LGBM] ABB: No data!
+2026-03-22 07:25:42,762 Training DIVISLAB...
+2026-03-22 07:25:42,848 DIVISLAB: 14876 candles loaded
+2026-03-22 07:26:09,234 DIVISLAB: 1480 samples | WR=22.1%
+2026-03-22 07:26:10,407 DIVISLAB: Accuracy=77.4%
+2026-03-22 07:26:10,413 DIVISLAB: Saved to ml_models/DIVISLAB_v31_ml.pkl ✅
+2026-03-22 07:26:10,418 [LGBM] Training DIVISLAB...
+2026-03-22 07:26:10,418 [LGBM] DIVISLAB: No data!
+2026-03-22 07:26:10,419 Training HEROMOTOCO...
+2026-03-22 07:26:10,504 HEROMOTOCO: 14877 candles loaded
+2026-03-22 07:26:40,782 HEROMOTOCO: 1480 samples | WR=24.7%
+2026-03-22 07:26:42,000 HEROMOTOCO: Accuracy=74.0%
+2026-03-22 07:26:42,007 HEROMOTOCO: Saved to ml_models/HEROMOTOCO_v31_ml.pkl ✅
+2026-03-22 07:26:42,011 [LGBM] Training HEROMOTOCO...
+2026-03-22 07:26:42,012 [LGBM] HEROMOTOCO: No data!
+2026-03-22 07:26:42,012 Training INDIGO...
+2026-03-22 07:26:42,147 INDIGO: 14877 candles loaded
+2026-03-22 07:27:08,837 INDIGO: 1480 samples | WR=28.8%
+2026-03-22 07:27:10,048 INDIGO: Accuracy=66.6%
+2026-03-22 07:27:10,055 INDIGO: Saved to ml_models/INDIGO_v31_ml.pkl ✅
+2026-03-22 07:27:10,061 [LGBM] Training INDIGO...
+2026-03-22 07:27:10,061 [LGBM] INDIGO: No data!
+2026-03-22 07:27:10,061 Training TATAELXSI...
+2026-03-22 07:27:10,133 TATAELXSI: 14877 candles loaded
+2026-03-22 07:27:43,182 TATAELXSI: 1480 samples | WR=26.8%
+2026-03-22 07:27:44,835 TATAELXSI: Accuracy=69.9%
+2026-03-22 07:27:44,849 TATAELXSI: Saved to ml_models/TATAELXSI_v31_ml.pkl ✅
+2026-03-22 07:27:44,854 [LGBM] Training TATAELXSI...
+2026-03-22 07:27:44,855 [LGBM] TATAELXSI: No data!
+2026-03-22 07:27:44,855 Training AMBER...
+2026-03-22 07:27:44,926 AMBER: 14678 candles loaded
+2026-03-22 07:28:14,767 AMBER: 1460 samples | WR=20.7%
+2026-03-22 07:28:16,044 AMBER: Accuracy=75.3%
+2026-03-22 07:28:16,056 AMBER: Saved to ml_models/AMBER_v31_ml.pkl ✅
+2026-03-22 07:28:16,060 [LGBM] Training AMBER...
+2026-03-22 07:28:16,068 [LGBM] AMBER: No data!
+2026-03-22 07:28:16,068 Training ALKEM...
+2026-03-22 07:28:16,137 ALKEM: 14780 candles loaded
+2026-03-22 07:28:43,387 ALKEM: 1470 samples | WR=29.1%
+2026-03-22 07:28:44,679 ALKEM: Accuracy=67.3%
+2026-03-22 07:28:44,685 ALKEM: Saved to ml_models/ALKEM_v31_ml.pkl ✅
+2026-03-22 07:28:44,691 [LGBM] Training ALKEM...
+2026-03-22 07:28:44,691 [LGBM] ALKEM: No data!
+2026-03-22 07:28:44,691 Training TORNTPHARM...
+2026-03-22 07:28:44,771 TORNTPHARM: 14875 candles loaded
+2026-03-22 07:29:13,234 TORNTPHARM: 1480 samples | WR=20.6%
+2026-03-22 07:29:14,509 TORNTPHARM: Accuracy=78.0%
+2026-03-22 07:29:14,520 TORNTPHARM: Saved to ml_models/TORNTPHARM_v31_ml.pkl ✅
+2026-03-22 07:29:14,526 [LGBM] Training TORNTPHARM...
+2026-03-22 07:29:14,526 [LGBM] TORNTPHARM: No data!
+2026-03-22 07:29:14,526 Training KEI...
+2026-03-22 07:29:14,615 KEI: 14876 candles loaded
+2026-03-22 07:29:43,697 KEI: 1480 samples | WR=21.7%
+2026-03-22 07:29:44,863 KEI: Accuracy=78.0%
+2026-03-22 07:29:44,870 KEI: Saved to ml_models/KEI_v31_ml.pkl ✅
+2026-03-22 07:29:44,875 [LGBM] Training KEI...
+2026-03-22 07:29:44,876 [LGBM] KEI: No data!
+=== EICHERMOT ===
+EICHERMOT: GBM=True LGBM=False
+=== SHREECEM ===
+SHREECEM: GBM=True LGBM=False
+=== CUMMINSIND ===
+CUMMINSIND: GBM=True LGBM=False
+=== ABB ===
+ABB: GBM=True LGBM=False
+=== DIVISLAB ===
+DIVISLAB: GBM=True LGBM=False
+=== HEROMOTOCO ===
+HEROMOTOCO: GBM=True LGBM=False
+=== INDIGO ===
+INDIGO: GBM=True LGBM=False
+=== TATAELXSI ===
+TATAELXSI: GBM=True LGBM=False
+=== AMBER ===
+AMBER: GBM=True LGBM=False
+=== ALKEM ===
+ALKEM: GBM=True LGBM=False
+=== TORNTPHARM ===
+TORNTPHARM: GBM=True LGBM=False
+=== KEI ===
+KEI: GBM=True LGBM=False
+ALL DONE!
+nohup: ignoring input
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: OFSS
+2026-03-22 07:31:16,088 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 07:31:16,089 [LGBM] Training EICHERMOT...
+2026-03-22 07:31:16,145 [LGBM] EICHERMOT: 14,877 candles
+2026-03-22 07:32:13,956 [LGBM] EICHERMOT: 2960 samples WR=24.4%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+unsupported platform: android
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/joblib/externals/loky/backend/context.py", line 251, in _count_physical_cores
+    raise NotImplementedError(f"unsupported platform: {sys.platform}")
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:32:18,424 [LGBM] EICHERMOT: Accuracy=74.3%
+2026-03-22 07:32:18,487 [LGBM] EICHERMOT: Saved ✅
+2026-03-22 07:32:18,487 [LGBM] Training SHREECEM...
+2026-03-22 07:32:18,565 [LGBM] SHREECEM: 14,862 candles
+2026-03-22 07:33:08,840 [LGBM] SHREECEM: 2957 samples WR=37.6%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:33:10,353 [LGBM] SHREECEM: Accuracy=57.6%
+2026-03-22 07:33:10,464 [LGBM] SHREECEM: Saved ✅
+2026-03-22 07:33:10,494 [LGBM] Training CUMMINSIND...
+2026-03-22 07:33:10,566 [LGBM] CUMMINSIND: 14,876 candles
+2026-03-22 07:34:05,717 [LGBM] CUMMINSIND: 2960 samples WR=14.7%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:34:07,347 [LGBM] CUMMINSIND: Accuracy=85.0%
+2026-03-22 07:34:07,406 [LGBM] CUMMINSIND: Saved ✅
+2026-03-22 07:34:07,440 [LGBM] Training ABB...
+2026-03-22 07:34:07,512 [LGBM] ABB: 14,839 candles
+2026-03-22 07:35:23,418 [LGBM] ABB: 2952 samples WR=22.4%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:35:39,821 [LGBM] ABB: Accuracy=75.0%
+2026-03-22 07:35:40,047 [LGBM] ABB: Saved ✅
+2026-03-22 07:35:40,070 [LGBM] Training DIVISLAB...
+2026-03-22 07:35:40,234 [LGBM] DIVISLAB: 14,876 candles
+2026-03-22 07:36:58,465 [LGBM] DIVISLAB: 2960 samples WR=22.5%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:37:03,883 [LGBM] DIVISLAB: Accuracy=74.7%
+2026-03-22 07:37:04,043 [LGBM] DIVISLAB: Saved ✅
+2026-03-22 07:37:04,060 [LGBM] Training HEROMOTOCO...
+2026-03-22 07:37:04,155 [LGBM] HEROMOTOCO: 14,877 candles
+2026-03-22 07:38:32,041 [LGBM] HEROMOTOCO: 2960 samples WR=25.2%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:38:44,480 [LGBM] HEROMOTOCO: Accuracy=74.3%
+2026-03-22 07:38:44,633 [LGBM] HEROMOTOCO: Saved ✅
+2026-03-22 07:38:44,688 [LGBM] Training INDIGO...
+2026-03-22 07:38:44,889 [LGBM] INDIGO: 14,877 candles
+2026-03-22 07:39:51,814 [LGBM] INDIGO: 2960 samples WR=29.0%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:39:54,782 [LGBM] INDIGO: Accuracy=65.7%
+2026-03-22 07:39:54,834 [LGBM] INDIGO: Saved ✅
+2026-03-22 07:39:54,840 [LGBM] Training TATAELXSI...
+2026-03-22 07:39:54,917 [LGBM] TATAELXSI: 14,877 candles
+2026-03-22 07:40:52,803 [LGBM] TATAELXSI: 2960 samples WR=26.8%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:40:54,694 [LGBM] TATAELXSI: Accuracy=70.4%
+2026-03-22 07:40:54,779 [LGBM] TATAELXSI: Saved ✅
+2026-03-22 07:40:54,815 [LGBM] Training AMBER...
+2026-03-22 07:40:54,893 [LGBM] AMBER: 14,678 candles
+2026-03-22 07:41:50,162 [LGBM] AMBER: 2920 samples WR=21.2%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:41:53,555 [LGBM] AMBER: Accuracy=75.2%
+2026-03-22 07:41:53,607 [LGBM] AMBER: Saved ✅
+2026-03-22 07:41:53,614 [LGBM] Training ALKEM...
+2026-03-22 07:41:53,692 [LGBM] ALKEM: 14,780 candles
+2026-03-22 07:42:58,313 [LGBM] ALKEM: 2940 samples WR=28.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:43:00,676 [LGBM] ALKEM: Accuracy=63.3%
+2026-03-22 07:43:00,784 [LGBM] ALKEM: Saved ✅
+2026-03-22 07:43:00,816 [LGBM] Training TORNTPHARM...
+2026-03-22 07:43:00,892 [LGBM] TORNTPHARM: 14,875 candles
+2026-03-22 07:44:03,997 [LGBM] TORNTPHARM: 2959 samples WR=20.9%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:44:06,442 [LGBM] TORNTPHARM: Accuracy=75.5%
+2026-03-22 07:44:06,496 [LGBM] TORNTPHARM: Saved ✅
+2026-03-22 07:44:06,519 [LGBM] Training KEI...
+2026-03-22 07:44:06,590 [LGBM] KEI: 14,876 candles
+2026-03-22 07:45:09,995 [LGBM] KEI: 2960 samples WR=22.3%
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+2026-03-22 07:45:13,700 [LGBM] KEI: Accuracy=75.8%
+2026-03-22 07:45:13,760 [LGBM] KEI: Saved ✅
+EICHERMOT: LGBM=True
+SHREECEM: LGBM=True
+CUMMINSIND: LGBM=True
+ABB: LGBM=True
+DIVISLAB: LGBM=True
+HEROMOTOCO: LGBM=True
+INDIGO: LGBM=True
+TATAELXSI: LGBM=True
+AMBER: LGBM=True
+ALKEM: LGBM=True
+TORNTPHARM: LGBM=True
+KEI: LGBM=True
+LGBM ALL DONE!
+nohup: ignoring input
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 08:03:12,743 [IM] Loaded saved instrument: OFSS
+2026-03-22 08:03:12,744 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 08:03:12,744 Loaded 44 instruments
+2026-03-22 08:03:12,744 Training NIFTY...
+2026-03-22 08:03:13,226 NIFTY: 126445 candles loaded
+nohup: ignoring input
+2026-03-22 08:08:08,072 NIFTY: 12637 samples | WR=28.1%
+2026-03-22 08:08:11,569 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 08:08:11,569 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 08:08:11,569 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: OFSS
+2026-03-22 08:08:11,570 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 08:08:11,570 Loaded 44 instruments
+2026-03-22 08:08:11,570 Training NIFTY...
+2026-03-22 08:08:13,162 NIFTY: 126445 candles loaded
+2026-03-22 08:08:32,614 NIFTY: Accuracy=72.0%
+2026-03-22 08:08:32,626 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 08:08:32,711 Training BANKNIFTY...
+2026-03-22 08:08:33,356 BANKNIFTY: 112859 candles loaded
+2026-03-22 08:13:15,974 BANKNIFTY: 11278 samples | WR=27.5%
+2026-03-22 08:13:31,711 BANKNIFTY: Accuracy=72.7%
+2026-03-22 08:13:31,725 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+2026-03-22 08:13:31,867 Training FINNIFTY...
+2026-03-22 08:13:32,351 FINNIFTY: 104564 candles loaded
+2026-03-22 08:19:10,100 FINNIFTY: 10449 samples | WR=27.0%
+2026-03-22 08:19:21,097 FINNIFTY: Accuracy=72.2%
+2026-03-22 08:19:21,114 FINNIFTY: Saved to ml_models/FINNIFTY_v31_ml.pkl ✅
+2026-03-22 08:19:21,177 Training MIDCPNIFTY...
+2026-03-22 08:19:21,471 MIDCPNIFTY: 58879 candles loaded
+2026-03-22 08:21:17,255 MIDCPNIFTY: 5880 samples | WR=27.3%
+2026-03-22 08:21:22,999 MIDCPNIFTY: Accuracy=71.3%
+2026-03-22 08:21:23,012 MIDCPNIFTY: Saved to ml_models/MIDCPNIFTY_v31_ml.pkl ✅
+2026-03-22 08:21:23,030 Training SENSEX...
+2026-03-22 08:21:23,554 SENSEX: 108083 candles loaded
+2026-03-22 08:25:35,733 SENSEX: 10798 samples | WR=26.8%
+2026-03-22 08:25:47,066 SENSEX: Accuracy=73.7%
+2026-03-22 08:25:47,081 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+2026-03-22 08:25:47,113 Training CRUDEOIL...
+2026-03-22 08:25:47,440 CRUDEOIL: 67687 candles loaded
+2026-03-22 08:28:47,138 CRUDEOIL: 6761 samples | WR=7.9%
+2026-03-22 08:28:56,294 CRUDEOIL: Accuracy=92.0%
+2026-03-22 08:28:56,311 CRUDEOIL: Saved to ml_models/CRUDEOIL_v31_ml.pkl ✅
+2026-03-22 08:28:56,341 Training GOLDM...
+2026-03-22 08:28:57,410 GOLDM: 167841 candles loaded
+[GAMMA] OC fetch error UNKNOWN: ('Connection aborted.', ConnectionAbortedError(103, 'Software caused connection abort'))
+[GAMMA] OC fetch error UNKNOWN: ('Connection aborted.', ConnectionAbortedError(103, 'Software caused connection abort'))
+2026-03-22 09:01:29,268 GOLDM: 16605 samples | WR=2.4%
+2026-03-22 09:02:26,058 GOLDM: Accuracy=97.3%
+2026-03-22 09:02:26,083 GOLDM: Saved to ml_models/GOLDM_v31_ml.pkl ✅
+2026-03-22 09:02:26,387 Training SILVERM...
+2026-03-22 09:02:27,125 SILVERM: 130315 candles loaded
+2026-03-22 09:06:42,780 NIFTY: 12637 samples | WR=28.1%
+2026-03-22 09:07:16,224 NIFTY: Accuracy=71.7%
+2026-03-22 09:07:16,248 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 09:07:16,536 Training BANKNIFTY...
+2026-03-22 09:07:17,308 BANKNIFTY: 112859 candles loaded
+2026-03-22 09:17:18,203 SILVERM: 12972 samples | WR=3.0%
+2026-03-22 09:17:47,029 SILVERM: Accuracy=96.6%
+2026-03-22 09:17:47,046 SILVERM: Saved to ml_models/SILVERM_v31_ml.pkl ✅
+2026-03-22 09:17:47,127 Training NATURALGAS...
+2026-03-22 09:17:48,001 NATURALGAS: 175166 candles loaded
+2026-03-22 09:37:56,862 NATURALGAS: 17508 samples | WR=30.8%
+2026-03-22 09:38:19,137 NATURALGAS: Accuracy=69.0%
+2026-03-22 09:38:19,154 NATURALGAS: Saved to ml_models/NATURALGAS_v31_ml.pkl ✅
+2026-03-22 09:38:19,265 Training LT...
+2026-03-22 09:38:19,577 LT: 47017 candles loaded
+2026-03-22 09:41:19,031 LT: 4694 samples | WR=9.5%
+2026-03-22 09:41:24,231 LT: Accuracy=90.9%
+2026-03-22 09:41:24,242 LT: Saved to ml_models/LT_v31_ml.pkl ✅
+2026-03-22 09:41:24,270 Training NTPC...
+2026-03-22 09:41:24,577 NTPC: 43114 candles loaded
+nohup: ignoring input
+2026-03-22 09:42:35,573 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 09:42:35,574 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 09:42:35,574 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 09:42:35,574 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 09:42:35,574 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: OFSS
+2026-03-22 09:42:35,575 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 09:42:35,575 Loaded 44 instruments
+2026-03-22 09:42:35,575 Training NIFTY...
+2026-03-22 09:42:36,222 NIFTY: 126445 candles loaded
+2026-03-22 09:43:17,867 NTPC: 4304 samples | WR=11.7%
+2026-03-22 09:43:22,064 NTPC: Accuracy=87.8%
+2026-03-22 09:43:22,085 NTPC: Saved to ml_models/NTPC_v31_ml.pkl ✅
+2026-03-22 09:43:22,117 Training MARUTI...
+2026-03-22 09:43:22,507 MARUTI: 47014 candles loaded
+2026-03-22 09:45:22,948 MARUTI: 4694 samples | WR=19.0%
+2026-03-22 09:45:27,835 MARUTI: Accuracy=77.0%
+2026-03-22 09:45:27,851 MARUTI: Saved to ml_models/MARUTI_v31_ml.pkl ✅
+2026-03-22 09:45:27,868 Training BHARTIARTL...
+2026-03-22 09:45:28,231 BHARTIARTL: 47014 candles loaded
+2026-03-22 09:49:10,027 BHARTIARTL: 4694 samples | WR=8.9%
+2026-03-22 09:49:15,611 BHARTIARTL: Accuracy=91.9%
+2026-03-22 09:49:15,627 BHARTIARTL: Saved to ml_models/BHARTIARTL_v31_ml.pkl ✅
+2026-03-22 09:49:15,645 Training SBIN...
+2026-03-22 09:49:15,933 SBIN: 47031 candles loaded
+2026-03-22 09:51:30,361 SBIN: 4696 samples | WR=0.3%
+2026-03-22 09:51:35,673 SBIN: Accuracy=99.8%
+2026-03-22 09:51:35,687 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-22 09:51:35,707 Training TATAMOTORS...
+2026-03-22 09:51:36,064 TATAMOTORS: 46943 candles loaded
+2026-03-22 09:53:54,846 BANKNIFTY: 11278 samples | WR=27.5%
+2026-03-22 09:54:08,774 TATAMOTORS: 4687 samples | WR=23.2%
+2026-03-22 09:54:10,300 BANKNIFTY: Accuracy=72.5%
+2026-03-22 09:54:10,319 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+2026-03-22 09:54:10,515 Training FINNIFTY...
+2026-03-22 09:54:11,093 FINNIFTY: 104564 candles loaded
+2026-03-22 09:54:13,774 TATAMOTORS: Accuracy=72.6%
+2026-03-22 09:54:13,782 TATAMOTORS: Saved to ml_models/TATAMOTORS_v31_ml.pkl ✅
+2026-03-22 09:54:13,804 Training RELIANCE...
+2026-03-22 09:54:14,048 RELIANCE: 46958 candles loaded
+2026-03-22 09:55:53,159 RELIANCE: 4688 samples | WR=0.3%
+2026-03-22 09:55:57,508 RELIANCE: Accuracy=99.1%
+2026-03-22 09:55:57,519 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-22 09:55:57,535 Training HINDUNILVR...
+2026-03-22 09:55:57,764 HINDUNILVR: 47019 candles loaded
+2026-03-22 09:57:31,292 HINDUNILVR: 4694 samples | WR=32.2%
+2026-03-22 09:57:39,860 HINDUNILVR: Accuracy=65.8%
+2026-03-22 09:57:39,878 HINDUNILVR: Saved to ml_models/HINDUNILVR_v31_ml.pkl ✅
+2026-03-22 09:57:39,912 Training TCS...
+2026-03-22 09:57:40,352 TCS: 46951 candles loaded
+2026-03-22 10:00:07,425 TCS: 4688 samples | WR=9.0%
+2026-03-22 10:00:13,186 TCS: Accuracy=91.6%
+2026-03-22 10:00:13,194 TCS: Saved to ml_models/TCS_v31_ml.pkl ✅
+2026-03-22 10:00:13,211 Training TATASTEEL...
+2026-03-22 10:00:13,434 TATASTEEL: 47340 candles loaded
+2026-03-22 10:03:09,470 TATASTEEL: 4726 samples | WR=22.9%
+2026-03-22 10:03:13,801 TATASTEEL: Accuracy=74.7%
+2026-03-22 10:03:13,814 TATASTEEL: Saved to ml_models/TATASTEEL_v31_ml.pkl ✅
+2026-03-22 10:03:13,834 Training EICHERMOT...
+2026-03-22 10:03:13,919 EICHERMOT: 14877 candles loaded
+2026-03-22 10:03:44,724 EICHERMOT: 1480 samples | WR=23.9%
+2026-03-22 10:03:46,161 EICHERMOT: Accuracy=72.6%
+2026-03-22 10:03:46,169 EICHERMOT: Saved to ml_models/EICHERMOT_v31_ml.pkl ✅
+2026-03-22 10:03:46,175 Training SHREECEM...
+2026-03-22 10:03:46,270 SHREECEM: 14862 candles loaded
+2026-03-22 10:04:49,925 SHREECEM: 1479 samples | WR=38.1%
+2026-03-22 10:04:52,116 SHREECEM: Accuracy=57.1%
+2026-03-22 10:04:52,129 SHREECEM: Saved to ml_models/SHREECEM_v31_ml.pkl ✅
+2026-03-22 10:04:52,135 Training CUMMINSIND...
+2026-03-22 10:04:52,220 CUMMINSIND: 14876 candles loaded
+2026-03-22 10:05:28,378 CUMMINSIND: 1480 samples | WR=15.2%
+2026-03-22 10:05:29,755 CUMMINSIND: Accuracy=85.8%
+2026-03-22 10:05:29,768 CUMMINSIND: Saved to ml_models/CUMMINSIND_v31_ml.pkl ✅
+2026-03-22 10:05:29,774 Training ABB...
+2026-03-22 10:05:29,862 ABB: 14839 candles loaded
+2026-03-22 10:06:13,288 ABB: 1476 samples | WR=22.5%
+2026-03-22 10:06:15,373 ABB: Accuracy=73.0%
+2026-03-22 10:06:15,384 ABB: Saved to ml_models/ABB_v31_ml.pkl ✅
+2026-03-22 10:06:15,390 Training DIVISLAB...
+2026-03-22 10:06:15,495 DIVISLAB: 14876 candles loaded
+2026-03-22 10:06:58,227 DIVISLAB: 1480 samples | WR=22.1%
+2026-03-22 10:07:00,094 DIVISLAB: Accuracy=77.4%
+2026-03-22 10:07:00,106 DIVISLAB: Saved to ml_models/DIVISLAB_v31_ml.pkl ✅
+2026-03-22 10:07:00,112 Training HEROMOTOCO...
+2026-03-22 10:07:00,197 HEROMOTOCO: 14877 candles loaded
+2026-03-22 10:07:37,594 HEROMOTOCO: 1480 samples | WR=24.7%
+2026-03-22 10:07:38,987 HEROMOTOCO: Accuracy=74.0%
+2026-03-22 10:07:38,999 HEROMOTOCO: Saved to ml_models/HEROMOTOCO_v31_ml.pkl ✅
+2026-03-22 10:07:39,004 Training INDIGO...
+2026-03-22 10:07:39,085 INDIGO: 14877 candles loaded
+2026-03-22 10:08:31,228 INDIGO: 1480 samples | WR=28.8%
+2026-03-22 10:08:33,086 INDIGO: Accuracy=66.6%
+2026-03-22 10:08:33,097 INDIGO: Saved to ml_models/INDIGO_v31_ml.pkl ✅
+2026-03-22 10:08:33,104 Training TATAELXSI...
+2026-03-22 10:08:33,198 TATAELXSI: 14877 candles loaded
+2026-03-22 10:09:16,876 TATAELXSI: 1480 samples | WR=26.8%
+2026-03-22 10:09:18,517 TATAELXSI: Accuracy=69.9%
+2026-03-22 10:09:18,529 TATAELXSI: Saved to ml_models/TATAELXSI_v31_ml.pkl ✅
+2026-03-22 10:09:18,535 Training AMBER...
+2026-03-22 10:09:18,618 AMBER: 14678 candles loaded
+2026-03-22 10:09:57,281 AMBER: 1460 samples | WR=20.7%
+2026-03-22 10:09:59,524 AMBER: Accuracy=75.3%
+2026-03-22 10:09:59,537 AMBER: Saved to ml_models/AMBER_v31_ml.pkl ✅
+2026-03-22 10:09:59,543 Training ALKEM...
+2026-03-22 10:09:59,670 ALKEM: 14780 candles loaded
+2026-03-22 10:10:49,860 ALKEM: 1470 samples | WR=29.1%
+2026-03-22 10:10:52,548 ALKEM: Accuracy=67.3%
+2026-03-22 10:10:52,556 ALKEM: Saved to ml_models/ALKEM_v31_ml.pkl ✅
+2026-03-22 10:10:52,563 Training TORNTPHARM...
+2026-03-22 10:10:52,640 TORNTPHARM: 14875 candles loaded
+2026-03-22 10:11:22,602 TORNTPHARM: 1480 samples | WR=20.6%
+2026-03-22 10:11:23,953 TORNTPHARM: Accuracy=78.0%
+2026-03-22 10:11:23,964 TORNTPHARM: Saved to ml_models/TORNTPHARM_v31_ml.pkl ✅
+2026-03-22 10:11:23,970 Training KEI...
+2026-03-22 10:11:24,050 KEI: 14876 candles loaded
+2026-03-22 10:11:53,219 KEI: 1480 samples | WR=21.7%
+2026-03-22 10:11:54,568 KEI: Accuracy=78.0%
+2026-03-22 10:11:54,578 KEI: Saved to ml_models/KEI_v31_ml.pkl ✅
+2026-03-22 10:11:54,584 Training HDFCBANK...
+2026-03-22 10:11:54,929 HDFCBANK: 49550 candles loaded
+2026-03-22 10:13:31,515 HDFCBANK: 4947 samples | WR=33.9%
+2026-03-22 10:13:36,025 HDFCBANK: Accuracy=65.8%
+2026-03-22 10:13:36,038 HDFCBANK: Saved to ml_models/HDFCBANK_v31_ml.pkl ✅
+2026-03-22 10:13:36,053 Training ICICIBANK...
+2026-03-22 10:13:36,352 ICICIBANK: 49550 candles loaded
+2026-03-22 10:14:17,942 NIFTY: 12637 samples | WR=28.1%
+2026-03-22 10:15:31,565 FINNIFTY: 10449 samples | WR=27.0%
+2026-03-22 10:15:44,753 ICICIBANK: 4947 samples | WR=33.6%
+2026-03-22 10:15:51,244 ICICIBANK: Accuracy=64.5%
+2026-03-22 10:15:51,258 ICICIBANK: Saved to ml_models/ICICIBANK_v31_ml.pkl ✅
+2026-03-22 10:15:51,285 Training BAJFINANCE...
+2026-03-22 10:15:51,606 BAJFINANCE: 49550 candles loaded
+2026-03-22 10:15:53,459 FINNIFTY: Accuracy=72.2%
+2026-03-22 10:15:53,471 FINNIFTY: Saved to ml_models/FINNIFTY_v31_ml.pkl ✅
+2026-03-22 10:15:53,639 Training MIDCPNIFTY...
+2026-03-22 10:15:53,915 MIDCPNIFTY: 58879 candles loaded
+2026-03-22 10:17:15,601 NIFTY: Accuracy=71.0%
+2026-03-22 10:17:15,655 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 10:17:15,869 Training BANKNIFTY...
+2026-03-22 10:17:16,478 BANKNIFTY: 112859 candles loaded
+2026-03-22 10:19:59,044 BAJFINANCE: 4947 samples | WR=29.6%
+2026-03-22 10:20:09,711 BAJFINANCE: Accuracy=69.2%
+2026-03-22 10:20:09,725 BAJFINANCE: Saved to ml_models/BAJFINANCE_v31_ml.pkl ✅
+2026-03-22 10:20:09,773 Training SIEMENS...
+2026-03-22 10:20:10,019 SIEMENS: 49473 candles loaded
+2026-03-22 10:22:20,794 SIEMENS: 4940 samples | WR=25.4%
+2026-03-22 10:22:24,778 SIEMENS: Accuracy=73.9%
+2026-03-22 10:22:24,786 SIEMENS: Saved to ml_models/SIEMENS_v31_ml.pkl ✅
+2026-03-22 10:22:24,800 Training POLYCAB...
+2026-03-22 10:22:24,950 POLYCAB: 35042 candles loaded
+2026-03-22 10:23:25,240 POLYCAB: 3497 samples | WR=26.1%
+2026-03-22 10:23:27,937 POLYCAB: Accuracy=74.3%
+2026-03-22 10:23:27,948 POLYCAB: Saved to ml_models/POLYCAB_v31_ml.pkl ✅
+2026-03-22 10:23:27,959 Training SOLARINDS...
+2026-03-22 10:23:28,148 SOLARINDS: 44352 candles loaded
+2026-03-22 10:24:48,625 SOLARINDS: 4427 samples | WR=12.9%
+2026-03-22 10:24:51,973 SOLARINDS: Accuracy=87.7%
+2026-03-22 10:24:51,987 SOLARINDS: Saved to ml_models/SOLARINDS_v31_ml.pkl ✅
+2026-03-22 10:24:52,000 Training TVSMOTOR...
+2026-03-22 10:24:52,204 TVSMOTOR: 49550 candles loaded
+2026-03-22 10:26:21,951 TVSMOTOR: 4947 samples | WR=14.3%
+2026-03-22 10:26:25,856 TVSMOTOR: Accuracy=85.8%
+2026-03-22 10:26:25,868 TVSMOTOR: Saved to ml_models/TVSMOTOR_v31_ml.pkl ✅
+2026-03-22 10:26:25,882 Training BOSCHLTD...
+2026-03-22 10:26:26,094 BOSCHLTD: 49534 candles loaded
+2026-03-22 10:28:53,257 BOSCHLTD: 4946 samples | WR=32.3%
+2026-03-22 10:28:57,703 BOSCHLTD: Accuracy=64.4%
+2026-03-22 10:28:57,712 BOSCHLTD: Saved to ml_models/BOSCHLTD_v31_ml.pkl ✅
+2026-03-22 10:28:57,733 Training PAGEIND...
+2026-03-22 10:28:57,963 PAGEIND: 49467 candles loaded
+2026-03-22 10:30:29,149 PAGEIND: 4939 samples | WR=39.8%
+2026-03-22 10:30:33,383 PAGEIND: Accuracy=57.3%
+2026-03-22 10:30:33,395 PAGEIND: Saved to ml_models/PAGEIND_v31_ml.pkl ✅
+2026-03-22 10:30:33,413 Training BRITANNIA...
+2026-03-22 10:30:33,633 BRITANNIA: 49549 candles loaded
+2026-03-22 10:32:37,066 BRITANNIA: 4947 samples | WR=32.4%
+2026-03-22 10:32:44,825 BRITANNIA: Accuracy=64.7%
+2026-03-22 10:32:44,839 BRITANNIA: Saved to ml_models/BRITANNIA_v31_ml.pkl ✅
+2026-03-22 10:32:44,854 Training APOLLOHOSP...
+2026-03-22 10:32:45,080 APOLLOHOSP: 49549 candles loaded
+2026-03-22 10:32:57,739 MIDCPNIFTY: 5880 samples | WR=27.3%
+2026-03-22 10:33:06,575 MIDCPNIFTY: Accuracy=71.0%
+2026-03-22 10:33:06,619 MIDCPNIFTY: Saved to ml_models/MIDCPNIFTY_v31_ml.pkl ✅
+2026-03-22 10:33:06,666 Training SENSEX...
+2026-03-22 10:33:07,328 SENSEX: 108083 candles loaded
+2026-03-22 10:35:59,202 APOLLOHOSP: 4947 samples | WR=29.7%
+2026-03-22 10:36:03,567 APOLLOHOSP: Accuracy=68.9%
+2026-03-22 10:36:03,582 APOLLOHOSP: Saved to ml_models/APOLLOHOSP_v31_ml.pkl ✅
+2026-03-22 10:36:03,618 Training OFSS...
+2026-03-22 10:36:03,818 OFSS: 44567 candles loaded
+2026-03-22 10:37:16,453 BANKNIFTY: 11278 samples | WR=27.5%
+2026-03-22 10:38:40,170 OFSS: 4449 samples | WR=34.7%
+2026-03-22 10:38:44,110 OFSS: Accuracy=64.8%
+2026-03-22 10:38:44,124 OFSS: Saved to ml_models/OFSS_v31_ml.pkl ✅
+2026-03-22 10:38:44,139 Training BAJAJ-AUTO...
+2026-03-22 10:38:44,147 BAJAJ-AUTO: No data!
+✅ NIFTY
+✅ BANKNIFTY
+✅ FINNIFTY
+✅ MIDCPNIFTY
+✅ SENSEX
+✅ CRUDEOIL
+✅ GOLDM
+✅ SILVERM
+✅ NATURALGAS
+✅ LT
+✅ NTPC
+✅ MARUTI
+✅ BHARTIARTL
+✅ SBIN
+✅ TATAMOTORS
+✅ RELIANCE
+✅ HINDUNILVR
+✅ TCS
+✅ TATASTEEL
+✅ EICHERMOT
+✅ SHREECEM
+✅ CUMMINSIND
+✅ ABB
+✅ DIVISLAB
+✅ HEROMOTOCO
+✅ INDIGO
+✅ TATAELXSI
+✅ AMBER
+✅ ALKEM
+✅ TORNTPHARM
+✅ KEI
+✅ HDFCBANK
+✅ ICICIBANK
+✅ BAJFINANCE
+✅ SIEMENS
+✅ POLYCAB
+✅ SOLARINDS
+✅ TVSMOTOR
+✅ BOSCHLTD
+✅ PAGEIND
+✅ BRITANNIA
+✅ APOLLOHOSP
+✅ OFSS
+❌ BAJAJ-AUTO
+Done! 43/44
+Failed: ['BAJAJ-AUTO']
+2026-03-22 10:39:25,894 BANKNIFTY: Accuracy=71.6%
+2026-03-22 10:39:25,935 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+2026-03-22 10:39:26,091 Training FINNIFTY...
+2026-03-22 10:39:26,588 FINNIFTY: 104564 candles loaded
+nohup: ignoring input
+2026-03-22 10:44:42,832 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: OFSS
+2026-03-22 10:44:42,833 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 10:44:42,833 Loaded 44 instruments
+2026-03-22 10:44:42,834 Training SBIN...
+2026-03-22 10:44:43,097 SBIN: 47031 candles loaded
+2026-03-22 10:54:53,436 SBIN: 4696 samples | WR=0.3%
+2026-03-22 10:55:20,307 SBIN: Accuracy=99.9%
+2026-03-22 10:55:20,349 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-22 10:55:20,383 Training RELIANCE...
+2026-03-22 10:55:20,607 RELIANCE: 46958 candles loaded
+2026-03-22 10:57:46,110 FINNIFTY: 10449 samples | WR=27.0%
+2026-03-22 10:58:38,082 SENSEX: 10798 samples | WR=26.8%
+2026-03-22 10:59:05,758 SENSEX: Accuracy=73.2%
+2026-03-22 10:59:05,773 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+2026-03-22 10:59:06,047 Training CRUDEOIL...
+2026-03-22 10:59:06,480 CRUDEOIL: 67687 candles loaded
+2026-03-22 10:59:48,105 FINNIFTY: Accuracy=71.1%
+2026-03-22 10:59:48,163 FINNIFTY: Saved to ml_models/FINNIFTY_v31_ml.pkl ✅
+2026-03-22 10:59:48,298 Training MIDCPNIFTY...
+2026-03-22 10:59:48,576 MIDCPNIFTY: 58879 candles loaded
+nohup: ignoring input
+2026-03-22 11:00:09,148 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 11:00:09,149 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: OFSS
+2026-03-22 11:00:09,150 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 11:00:09,150 Loaded 44 instruments
+2026-03-22 11:00:09,150 Training SBIN...
+2026-03-22 11:00:09,462 SBIN: 47031 candles loaded
+2026-03-22 11:05:06,360 RELIANCE: 4688 samples | WR=0.3%
+2026-03-22 11:05:35,485 RELIANCE: Accuracy=99.6%
+2026-03-22 11:05:35,533 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-22 11:05:35,612 Training TCS...
+2026-03-22 11:05:35,871 TCS: 46951 candles loaded
+2026-03-22 11:12:40,091 TCS: 4688 samples | WR=9.0%
+2026-03-22 11:13:19,502 TCS: Accuracy=91.3%
+2026-03-22 11:13:19,555 TCS: Saved to ml_models/TCS_v31_ml.pkl ✅
+SBIN: True
+RELIANCE: True
+TCS: True
+Done!
+2026-03-22 11:13:21,274 SBIN: 4696 samples | WR=0.3%
+2026-03-22 11:13:59,491 SBIN: Accuracy=99.9%
+2026-03-22 11:13:59,553 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-22 11:13:59,654 Training RELIANCE...
+2026-03-22 11:13:59,950 RELIANCE: 46958 candles loaded
+2026-03-22 11:15:10,816 MIDCPNIFTY: 5880 samples | WR=27.3%
+nohup: ignoring input
+2026-03-22 11:15:35,760 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: OFSS
+2026-03-22 11:15:35,761 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 11:15:35,762 Loaded 44 instruments
+2026-03-22 11:15:35,762 Training SBIN...
+2026-03-22 11:15:36,019 SBIN: 47031 candles loaded
+2026-03-22 11:16:37,355 MIDCPNIFTY: Accuracy=70.1%
+2026-03-22 11:16:37,399 MIDCPNIFTY: Saved to ml_models/MIDCPNIFTY_v31_ml.pkl ✅
+2026-03-22 11:16:37,482 Training SENSEX...
+2026-03-22 11:16:38,218 SENSEX: 108083 candles loaded
+2026-03-22 11:24:19,711 CRUDEOIL: 6761 samples | WR=7.9%
+2026-03-22 11:24:28,507 CRUDEOIL: Accuracy=91.9%
+2026-03-22 11:24:28,522 CRUDEOIL: Saved to ml_models/CRUDEOIL_v31_ml.pkl ✅
+2026-03-22 11:24:28,565 Training GOLDM...
+2026-03-22 11:24:29,609 GOLDM: 167841 candles loaded
+2026-03-22 11:26:22,024 RELIANCE: 4688 samples | WR=0.3%
+2026-03-22 11:28:20,978 RELIANCE: Accuracy=99.6%
+2026-03-22 11:28:21,304 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-22 11:28:21,430 Training TCS...
+2026-03-22 11:28:21,670 TCS: 46951 candles loaded
+2026-03-22 11:30:38,456 SBIN: 4696 samples | WR=0.3%
+nohup: ignoring input
+2026-03-22 11:31:13,755 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: OFSS
+2026-03-22 11:31:13,756 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 11:31:13,757 Loaded 44 instruments
+2026-03-22 11:31:13,757 Training NIFTY...
+2026-03-22 11:31:14,422 NIFTY: 126445 candles loaded
+2026-03-22 11:31:23,631 SBIN: Accuracy=99.9%
+2026-03-22 11:31:23,670 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-22 11:31:23,733 Training RELIANCE...
+2026-03-22 11:31:23,971 RELIANCE: 46958 candles loaded
+2026-03-22 11:44:10,234 TCS: 4688 samples | WR=9.0%
+2026-03-22 11:45:27,677 TCS: Accuracy=91.3%
+2026-03-22 11:45:27,741 TCS: Saved to ml_models/TCS_v31_ml.pkl ✅
+SBIN: True
+RELIANCE: True
+TCS: True
+Done!
+2026-03-22 11:46:45,227 RELIANCE: 4688 samples | WR=0.3%
+2026-03-22 11:47:21,658 RELIANCE: Accuracy=99.6%
+2026-03-22 11:47:21,715 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-22 11:47:21,783 Training TCS...
+2026-03-22 11:47:22,067 TCS: 46951 candles loaded
+2026-03-22 11:47:42,061 SENSEX: 10798 samples | WR=26.8%
+2026-03-22 11:50:49,693 SENSEX: Accuracy=72.0%
+2026-03-22 11:50:49,740 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+2026-03-22 11:50:49,938 Training CRUDEOIL...
+2026-03-22 11:50:50,282 CRUDEOIL: 67687 candles loaded
+2026-03-22 12:00:13,184 TCS: 4688 samples | WR=9.0%
+2026-03-22 12:01:22,878 TCS: Accuracy=91.3%
+2026-03-22 12:01:22,920 TCS: Saved to ml_models/TCS_v31_ml.pkl ✅
+2026-03-22 12:01:22,978 Training LT...
+2026-03-22 12:01:23,194 LT: 47017 candles loaded
+2026-03-22 12:10:16,663 CRUDEOIL: 6761 samples | WR=7.9%
+2026-03-22 12:11:28,684 CRUDEOIL: Accuracy=92.1%
+2026-03-22 12:11:28,739 CRUDEOIL: Saved to ml_models/CRUDEOIL_v31_ml.pkl ✅
+2026-03-22 12:11:28,858 Training GOLDM...
+2026-03-22 12:11:29,920 GOLDM: 167841 candles loaded
+2026-03-22 12:15:59,889 NIFTY: 12637 samples | WR=5.5%
+2026-03-22 12:18:18,845 NIFTY: Accuracy=93.6%
+2026-03-22 12:18:18,902 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 12:18:19,128 Training BANKNIFTY...
+2026-03-22 12:18:20,240 BANKNIFTY: 112859 candles loaded
+2026-03-22 12:22:16,667 LT: 4694 samples | WR=9.5%
+2026-03-22 12:23:15,371 LT: Accuracy=90.7%
+2026-03-22 12:23:15,427 LT: Saved to ml_models/LT_v31_ml.pkl ✅
+2026-03-22 12:23:15,519 Training NTPC...
+2026-03-22 12:23:15,768 NTPC: 43114 candles loaded
+2026-03-22 12:23:25,272 GOLDM: 16605 samples | WR=2.4%
+2026-03-22 12:24:56,224 GOLDM: Accuracy=97.1%
+2026-03-22 12:24:56,244 GOLDM: Saved to ml_models/GOLDM_v31_ml.pkl ✅
+2026-03-22 12:24:56,804 Training SILVERM...
+2026-03-22 12:24:57,746 SILVERM: 130315 candles loaded
+2026-03-22 12:37:21,603 NTPC: 4304 samples | WR=11.7%
+2026-03-22 12:37:52,110 NTPC: Accuracy=87.5%
+2026-03-22 12:37:52,162 NTPC: Saved to ml_models/NTPC_v31_ml.pkl ✅
+2026-03-22 12:37:52,199 Training BHARTIARTL...
+2026-03-22 12:37:52,440 BHARTIARTL: 47014 candles loaded
+2026-03-22 12:49:14,055 BANKNIFTY: 11278 samples | WR=11.6%
+2026-03-22 12:51:17,668 BANKNIFTY: Accuracy=89.1%
+2026-03-22 12:51:17,731 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+2026-03-22 12:51:17,975 Training FINNIFTY...
+2026-03-22 12:51:18,587 FINNIFTY: 104564 candles loaded
+2026-03-22 12:53:03,170 BHARTIARTL: 4694 samples | WR=8.9%
+2026-03-22 12:53:46,656 BHARTIARTL: Accuracy=92.3%
+2026-03-22 12:53:46,710 BHARTIARTL: Saved to ml_models/BHARTIARTL_v31_ml.pkl ✅
+SBIN: True
+RELIANCE: True
+TCS: True
+LT: True
+NTPC: True
+BHARTIARTL: True
+Done!
+nohup: ignoring input
+2026-03-22 12:59:49,766 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 12:59:49,766 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 12:59:49,766 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: OFSS
+2026-03-22 12:59:49,767 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 12:59:49,767 Loaded 44 instruments
+2026-03-22 12:59:49,767 Training NIFTY...
+2026-03-22 12:59:50,423 NIFTY: 126445 candles loaded
+2026-03-22 13:03:11,943 GOLDM: 16605 samples | WR=2.4%
+2026-03-22 13:05:55,706 GOLDM: Accuracy=97.0%
+2026-03-22 13:05:55,777 GOLDM: Saved to ml_models/GOLDM_v31_ml.pkl ✅
+2026-03-22 13:05:56,088 Training SILVERM...
+2026-03-22 13:05:56,829 SILVERM: 130315 candles loaded
+2026-03-22 13:09:39,139 SILVERM: 12972 samples | WR=3.0%
+2026-03-22 13:10:51,208 SILVERM: Accuracy=96.5%
+2026-03-22 13:10:51,224 SILVERM: Saved to ml_models/SILVERM_v31_ml.pkl ✅
+2026-03-22 13:10:51,591 Training NATURALGAS...
+2026-03-22 13:10:52,794 NATURALGAS: 175166 candles loaded
+2026-03-22 13:18:22,073 FINNIFTY: 10449 samples | WR=10.0%
+2026-03-22 13:20:25,655 FINNIFTY: Accuracy=89.2%
+2026-03-22 13:20:25,702 FINNIFTY: Saved to ml_models/FINNIFTY_v31_ml.pkl ✅
+2026-03-22 13:20:25,864 Training MIDCPNIFTY...
+2026-03-22 13:20:26,200 MIDCPNIFTY: 58879 candles loaded
+2026-03-22 13:34:14,587 NIFTY: 12637 samples | WR=37.8%
+2026-03-22 13:36:21,316 NIFTY: Accuracy=59.4%
+2026-03-22 13:36:21,381 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 13:36:21,640 Training BANKNIFTY...
+2026-03-22 13:36:22,390 BANKNIFTY: 112859 candles loaded
+2026-03-22 13:40:45,908 MIDCPNIFTY: 5880 samples | WR=10.9%
+2026-03-22 13:42:15,689 MIDCPNIFTY: Accuracy=88.9%
+2026-03-22 13:42:15,755 MIDCPNIFTY: Saved to ml_models/MIDCPNIFTY_v31_ml.pkl ✅
+2026-03-22 13:42:15,867 Training SENSEX...
+2026-03-22 13:42:16,712 SENSEX: 108083 candles loaded
+2026-03-22 13:44:25,293 SILVERM: 12972 samples | WR=3.0%
+2026-03-22 13:52:20,507 SILVERM: Accuracy=96.7%
+2026-03-22 13:52:20,689 SILVERM: Saved to ml_models/SILVERM_v31_ml.pkl ✅
+2026-03-22 13:52:21,341 Training NATURALGAS...
+2026-03-22 13:52:22,978 NATURALGAS: 175166 candles loaded
+2026-03-22 14:07:50,968 BANKNIFTY: 11278 samples | WR=38.3%
+2026-03-22 14:09:59,275 BANKNIFTY: Accuracy=58.1%
+2026-03-22 14:09:59,349 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+2026-03-22 14:09:59,611 Training FINNIFTY...
+2026-03-22 14:10:00,318 FINNIFTY: 104564 candles loaded
+2026-03-22 14:17:10,117 SENSEX: 10798 samples | WR=6.0%
+2026-03-22 14:17:32,766 NATURALGAS: 17508 samples | WR=30.8%
+2026-03-22 14:18:46,675 NATURALGAS: Accuracy=69.1%
+2026-03-22 14:18:46,700 NATURALGAS: Saved to ml_models/NATURALGAS_v31_ml.pkl ✅
+2026-03-22 14:18:47,082 Training LT...
+2026-03-22 14:18:47,405 LT: 47017 candles loaded
+2026-03-22 14:21:24,301 SENSEX: Accuracy=93.8%
+2026-03-22 14:21:24,468 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+2026-03-22 14:21:25,077 Training CRUDEOIL...
+2026-03-22 14:21:25,527 CRUDEOIL: 67687 candles loaded
+2026-03-22 14:41:49,838 FINNIFTY: 10449 samples | WR=38.1%
+2026-03-22 14:43:35,884 FINNIFTY: Accuracy=59.8%
+2026-03-22 14:43:35,951 FINNIFTY: Saved to ml_models/FINNIFTY_v31_ml.pkl ✅
+2026-03-22 14:43:36,149 Training MIDCPNIFTY...
+2026-03-22 14:43:36,560 MIDCPNIFTY: 58879 candles loaded
+2026-03-22 14:54:18,484 MIDCPNIFTY: 5880 samples | WR=39.4%
+2026-03-22 14:55:17,881 MIDCPNIFTY: Accuracy=55.8%
+2026-03-22 14:55:17,943 MIDCPNIFTY: Saved to ml_models/MIDCPNIFTY_v31_ml.pkl ✅
+2026-03-22 14:55:17,971 Training SENSEX...
+2026-03-22 14:55:18,716 SENSEX: 108083 candles loaded
+2026-03-22 15:10:46,012 SENSEX: 10798 samples | WR=38.2%
+2026-03-22 15:12:06,702 SENSEX: Accuracy=58.6%
+2026-03-22 15:12:06,748 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+2026-03-22 15:12:06,846 Training CRUDEOIL...
+2026-03-22 15:12:07,166 CRUDEOIL: 67687 candles loaded
+2026-03-22 15:22:07,377 CRUDEOIL: 6761 samples | WR=38.9%
+2026-03-22 15:26:28,740 CRUDEOIL: Accuracy=58.8%
+2026-03-22 15:26:28,798 CRUDEOIL: Saved to ml_models/CRUDEOIL_v31_ml.pkl ✅
+2026-03-22 15:26:28,880 Training GOLDM...
+2026-03-22 15:26:29,752 GOLDM: 167841 candles loaded
+[GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Read timed out. (read timeout=10)
+2026-03-22 17:03:57,323 GOLDM: 16605 samples | WR=16.4%
+[GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Read timed out. (read timeout=10)
+2026-03-22 17:09:56,163 GOLDM: Accuracy=83.5%
+2026-03-22 17:09:58,228 GOLDM: Saved to ml_models/GOLDM_v31_ml.pkl ✅
+2026-03-22 17:09:58,474 Training SILVERM...
+2026-03-22 17:09:59,413 SILVERM: 130315 candles loaded
+2026-03-22 18:14:34,439 SILVERM: 12972 samples | WR=13.5%
+[GAMMA] OC fetch error UNKNOWN: ('Connection aborted.', ConnectionAbortedError(103, 'Software caused connection abort'))
+2026-03-22 18:24:34,526 SILVERM: Accuracy=85.5%
+2026-03-22 18:24:34,598 SILVERM: Saved to ml_models/SILVERM_v31_ml.pkl ✅
+2026-03-22 18:24:34,819 Training NATURALGAS...
+2026-03-22 18:24:35,750 NATURALGAS: 175166 candles loaded
+2026-03-22 19:48:27,382 NATURALGAS: 17508 samples | WR=39.6%
+2026-03-22 19:51:33,632 NATURALGAS: Accuracy=59.1%
+2026-03-22 19:51:33,705 NATURALGAS: Saved to ml_models/NATURALGAS_v31_ml.pkl ✅
+2026-03-22 19:51:34,138 Training LT...
+2026-03-22 19:51:34,488 LT: 47017 candles loaded
+2026-03-22 20:03:40,519 LT: 4694 samples | WR=37.0%
+2026-03-22 20:04:22,854 LT: Accuracy=59.1%
+2026-03-22 20:04:22,900 LT: Saved to ml_models/LT_v31_ml.pkl ✅
+2026-03-22 20:04:22,964 Training NTPC...
+2026-03-22 20:04:23,177 NTPC: 43114 candles loaded
+2026-03-22 20:10:29,913 NTPC: 4304 samples | WR=38.5%
+2026-03-22 20:11:01,886 NTPC: Accuracy=54.6%
+2026-03-22 20:11:01,983 NTPC: Saved to ml_models/NTPC_v31_ml.pkl ✅
+2026-03-22 20:11:01,999 Training MARUTI...
+2026-03-22 20:11:02,482 MARUTI: 47014 candles loaded
+nohup: ignoring input
+2026-03-22 20:12:13,624 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: OFSS
+2026-03-22 20:12:13,625 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 20:12:13,625 Loaded 44 instruments
+2026-03-22 20:12:13,626 Training NIFTY...
+2026-03-22 20:13:17,393 NIFTY: Resampled to 15-min (42161 candles)
+2026-03-22 20:13:17,393 NIFTY: 42161 candles loaded
+2026-03-22 20:18:41,967 NIFTY: 4209 samples | WR=40.2%
+2026-03-22 20:19:16,018 NIFTY: Accuracy=58.4%
+2026-03-22 20:19:16,074 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 20:19:16,121 Training BANKNIFTY...
+2026-03-22 20:20:04,141 BANKNIFTY: Resampled to 15-min (37633 candles)
+2026-03-22 20:20:04,142 BANKNIFTY: 37633 candles loaded
+2026-03-22 20:20:17,841 MARUTI: 4694 samples | WR=40.5%
+2026-03-22 20:21:13,673 MARUTI: Accuracy=52.8%
+2026-03-22 20:21:13,726 MARUTI: Saved to ml_models/MARUTI_v31_ml.pkl ✅
+2026-03-22 20:21:13,763 Training BHARTIARTL...
+2026-03-22 20:21:14,049 BHARTIARTL: 47014 candles loaded
+2026-03-22 20:25:08,948 BANKNIFTY: 3756 samples | WR=40.4%
+2026-03-22 20:25:50,097 BANKNIFTY: Accuracy=56.4%
+2026-03-22 20:25:50,143 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+NIFTY: True
+BANKNIFTY: True
+Done!
+2026-03-22 20:29:55,091 BHARTIARTL: 4694 samples | WR=36.8%
+2026-03-22 20:30:34,330 BHARTIARTL: Accuracy=60.9%
+2026-03-22 20:30:34,382 BHARTIARTL: Saved to ml_models/BHARTIARTL_v31_ml.pkl ✅
+2026-03-22 20:30:34,406 Training SBIN...
+2026-03-22 20:30:34,783 SBIN: 47031 candles loaded
+nohup: ignoring input
+2026-03-22 20:33:52,919 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 20:33:52,919 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: OFSS
+2026-03-22 20:33:52,920 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 20:33:52,920 Loaded 44 instruments
+2026-03-22 20:33:52,920 Training NIFTY...
+2026-03-22 20:33:53,566 NIFTY: 126445 candles loaded
+2026-03-22 20:38:49,060 SBIN: 4696 samples | WR=33.5%
+2026-03-22 20:39:19,173 SBIN: Accuracy=64.8%
+2026-03-22 20:39:19,230 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-22 20:39:19,251 Training TATAMOTORS...
+2026-03-22 20:39:19,498 TATAMOTORS: 46943 candles loaded
+2026-03-22 20:49:49,451 TATAMOTORS: 4687 samples | WR=40.0%
+2026-03-22 20:50:36,177 TATAMOTORS: Accuracy=53.6%
+2026-03-22 20:50:36,241 TATAMOTORS: Saved to ml_models/TATAMOTORS_v31_ml.pkl ✅
+2026-03-22 20:50:36,262 Training RELIANCE...
+2026-03-22 20:50:36,512 RELIANCE: 46958 candles loaded
+2026-03-22 21:00:16,947 RELIANCE: 4688 samples | WR=30.2%
+2026-03-22 21:00:29,905 NIFTY: 12637 samples | WR=37.8%
+2026-03-22 21:00:49,923 RELIANCE: Accuracy=65.9%
+2026-03-22 21:00:49,963 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-22 21:00:49,994 Training HINDUNILVR...
+2026-03-22 21:00:50,234 HINDUNILVR: 47019 candles loaded
+2026-03-22 21:03:05,690 NIFTY: Accuracy=59.4%
+2026-03-22 21:03:05,736 NIFTY: Saved to ml_models/NIFTY_v31_ml.pkl ✅
+2026-03-22 21:03:05,914 Training BANKNIFTY...
+2026-03-22 21:03:06,492 BANKNIFTY: 112859 candles loaded
+2026-03-22 21:11:29,631 HINDUNILVR: 4694 samples | WR=37.4%
+2026-03-22 21:12:20,901 HINDUNILVR: Accuracy=59.3%
+2026-03-22 21:12:20,944 HINDUNILVR: Saved to ml_models/HINDUNILVR_v31_ml.pkl ✅
+2026-03-22 21:12:20,974 Training TCS...
+2026-03-22 21:12:21,212 TCS: 46951 candles loaded
+2026-03-22 21:22:06,427 TCS: 4688 samples | WR=35.9%
+2026-03-22 21:22:39,981 TCS: Accuracy=60.8%
+2026-03-22 21:22:40,032 TCS: Saved to ml_models/TCS_v31_ml.pkl ✅
+2026-03-22 21:22:40,053 Training TATASTEEL...
+2026-03-22 21:22:40,365 TATASTEEL: 47340 candles loaded
+2026-03-22 21:29:10,561 TATASTEEL: 4726 samples | WR=38.7%
+2026-03-22 21:29:52,304 TATASTEEL: Accuracy=57.6%
+2026-03-22 21:29:52,350 TATASTEEL: Saved to ml_models/TATASTEEL_v31_ml.pkl ✅
+2026-03-22 21:29:52,371 Training EICHERMOT...
+2026-03-22 21:29:52,496 EICHERMOT: 14877 candles loaded
+2026-03-22 21:32:14,496 BANKNIFTY: 11278 samples | WR=38.3%
+2026-03-22 21:32:16,522 EICHERMOT: 1480 samples | WR=38.9%
+2026-03-22 21:32:26,591 EICHERMOT: Accuracy=50.7%
+2026-03-22 21:32:26,641 EICHERMOT: Saved to ml_models/EICHERMOT_v31_ml.pkl ✅
+2026-03-22 21:32:26,650 Training SHREECEM...
+2026-03-22 21:32:26,757 SHREECEM: 14862 candles loaded
+2026-03-22 21:34:37,682 SHREECEM: 1479 samples | WR=37.5%
+2026-03-22 21:34:50,595 SHREECEM: Accuracy=53.7%
+2026-03-22 21:34:50,640 SHREECEM: Saved to ml_models/SHREECEM_v31_ml.pkl ✅
+2026-03-22 21:34:50,647 Training CUMMINSIND...
+2026-03-22 21:34:50,729 CUMMINSIND: 14876 candles loaded
+2026-03-22 21:34:53,082 BANKNIFTY: Accuracy=58.1%
+2026-03-22 21:34:53,216 BANKNIFTY: Saved to ml_models/BANKNIFTY_v31_ml.pkl ✅
+NIFTY: True
+BANKNIFTY: True
+Done!
+2026-03-22 21:37:29,291 CUMMINSIND: 1480 samples | WR=38.5%
+2026-03-22 21:37:41,317 CUMMINSIND: Accuracy=51.4%
+2026-03-22 21:37:41,382 CUMMINSIND: Saved to ml_models/CUMMINSIND_v31_ml.pkl ✅
+2026-03-22 21:37:41,390 Training ABB...
+2026-03-22 21:37:41,478 ABB: 14839 candles loaded
+2026-03-22 21:39:44,343 ABB: 1476 samples | WR=36.8%
+2026-03-22 21:39:56,656 ABB: Accuracy=56.8%
+2026-03-22 21:39:56,704 ABB: Saved to ml_models/ABB_v31_ml.pkl ✅
+2026-03-22 21:39:56,711 Training DIVISLAB...
+2026-03-22 21:39:56,797 DIVISLAB: 14876 candles loaded
+2026-03-22 21:42:27,407 DIVISLAB: 1480 samples | WR=38.2%
+2026-03-22 21:42:39,683 DIVISLAB: Accuracy=51.7%
+2026-03-22 21:42:39,758 DIVISLAB: Saved to ml_models/DIVISLAB_v31_ml.pkl ✅
+2026-03-22 21:42:39,772 Training HEROMOTOCO...
+2026-03-22 21:42:39,886 HEROMOTOCO: 14877 candles loaded
+2026-03-22 21:45:04,955 HEROMOTOCO: 1480 samples | WR=41.4%
+2026-03-22 21:45:17,014 HEROMOTOCO: Accuracy=52.4%
+2026-03-22 21:45:17,055 HEROMOTOCO: Saved to ml_models/HEROMOTOCO_v31_ml.pkl ✅
+2026-03-22 21:45:17,062 Training INDIGO...
+2026-03-22 21:45:17,205 INDIGO: 14877 candles loaded
+2026-03-22 21:47:50,905 INDIGO: 1480 samples | WR=38.0%
+2026-03-22 21:48:06,274 INDIGO: Accuracy=56.8%
+2026-03-22 21:48:06,343 INDIGO: Saved to ml_models/INDIGO_v31_ml.pkl ✅
+2026-03-22 21:48:06,359 Training TATAELXSI...
+2026-03-22 21:48:06,490 TATAELXSI: 14877 candles loaded
+2026-03-22 21:50:59,859 TATAELXSI: 1480 samples | WR=38.4%
+2026-03-22 21:51:12,753 TATAELXSI: Accuracy=56.4%
+2026-03-22 21:51:12,799 TATAELXSI: Saved to ml_models/TATAELXSI_v31_ml.pkl ✅
+2026-03-22 21:51:12,808 Training AMBER...
+2026-03-22 21:51:12,917 AMBER: 14678 candles loaded
+2026-03-22 21:53:56,354 AMBER: 1460 samples | WR=37.5%
+2026-03-22 21:54:09,320 AMBER: Accuracy=56.8%
+2026-03-22 21:54:09,375 AMBER: Saved to ml_models/AMBER_v31_ml.pkl ✅
+2026-03-22 21:54:09,384 Training ALKEM...
+2026-03-22 21:54:09,490 ALKEM: 14780 candles loaded
+2026-03-22 21:56:40,447 ALKEM: 1470 samples | WR=37.6%
+2026-03-22 21:56:51,929 ALKEM: Accuracy=55.1%
+2026-03-22 21:56:51,981 ALKEM: Saved to ml_models/ALKEM_v31_ml.pkl ✅
+2026-03-22 21:56:51,988 Training TORNTPHARM...
+2026-03-22 21:56:52,085 TORNTPHARM: 14875 candles loaded
+2026-03-22 21:58:54,952 TORNTPHARM: 1480 samples | WR=37.0%
+2026-03-22 21:59:04,741 TORNTPHARM: Accuracy=59.5%
+2026-03-22 21:59:04,779 TORNTPHARM: Saved to ml_models/TORNTPHARM_v31_ml.pkl ✅
+2026-03-22 21:59:04,786 Training KEI...
+2026-03-22 21:59:04,868 KEI: 14876 candles loaded
+Removed 48 old models for retrain
+2026-03-22 22:01:43,834 KEI: 1480 samples | WR=38.6%
+2026-03-22 22:02:03,628 KEI: Accuracy=55.7%
+2026-03-22 22:02:03,678 KEI: Saved to ml_models/KEI_v31_ml.pkl ✅
+2026-03-22 22:02:03,694 Training HDFCBANK...
+2026-03-22 22:02:04,321 HDFCBANK: 49550 candles loaded
+2026-03-22 22:11:43,843 HDFCBANK: 4947 samples | WR=38.7%
+2026-03-22 22:12:31,879 HDFCBANK: Accuracy=58.8%
+2026-03-22 22:12:31,935 HDFCBANK: Saved to ml_models/HDFCBANK_v31_ml.pkl ✅
+2026-03-22 22:12:31,977 Training ICICIBANK...
+2026-03-22 22:12:32,360 ICICIBANK: 49550 candles loaded
+2026-03-22 22:20:36,461 ICICIBANK: 4947 samples | WR=38.4%
+2026-03-22 22:21:12,588 ICICIBANK: Accuracy=58.0%
+2026-03-22 22:21:12,632 ICICIBANK: Saved to ml_models/ICICIBANK_v31_ml.pkl ✅
+2026-03-22 22:21:12,670 Training BAJFINANCE...
+2026-03-22 22:21:12,981 BAJFINANCE: 49550 candles loaded
+2026-03-22 22:29:12,337 BAJFINANCE: 4947 samples | WR=38.9%
+2026-03-22 22:29:54,036 BAJFINANCE: Accuracy=55.8%
+2026-03-22 22:29:54,077 BAJFINANCE: Saved to ml_models/BAJFINANCE_v31_ml.pkl ✅
+2026-03-22 22:29:54,138 Training SIEMENS...
+2026-03-22 22:29:54,371 SIEMENS: 49473 candles loaded
+2026-03-22 22:39:08,749 SIEMENS: 4940 samples | WR=39.1%
+2026-03-22 22:39:44,208 SIEMENS: Accuracy=56.7%
+2026-03-22 22:39:44,286 SIEMENS: Saved to ml_models/SIEMENS_v31_ml.pkl ✅
+2026-03-22 22:39:44,407 Training POLYCAB...
+2026-03-22 22:39:44,886 POLYCAB: 35042 candles loaded
+nohup: ignoring input
+2026-03-22 22:42:06,574 [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: SIEMENS
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: POLYCAB
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: PAGEIND
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: OFSS
+2026-03-22 22:42:06,575 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-22 22:42:06,576 Loaded 44 instruments
+2026-03-22 22:42:06,576 Training SENSEX...
+2026-03-22 22:42:07,167 SENSEX: 108083 candles loaded
+2026-03-22 22:47:00,239 POLYCAB: 3497 samples | WR=37.1%
+2026-03-22 22:47:22,916 POLYCAB: Accuracy=57.1%
+2026-03-22 22:47:22,980 POLYCAB: Saved to ml_models/POLYCAB_v31_ml.pkl ✅
+2026-03-22 22:47:23,024 Training SOLARINDS...
+2026-03-22 22:47:23,242 SOLARINDS: 44352 candles loaded
+2026-03-22 22:54:13,462 SOLARINDS: 4427 samples | WR=36.1%
+2026-03-22 22:55:00,169 SOLARINDS: Accuracy=59.9%
+2026-03-22 22:55:00,218 SOLARINDS: Saved to ml_models/SOLARINDS_v31_ml.pkl ✅
+2026-03-22 22:55:00,246 Training TVSMOTOR...
+2026-03-22 22:55:00,483 TVSMOTOR: 49550 candles loaded
+2026-03-22 23:03:47,147 TVSMOTOR: 4947 samples | WR=37.4%
+2026-03-22 23:04:20,822 TVSMOTOR: Accuracy=58.8%
+2026-03-22 23:04:20,870 TVSMOTOR: Saved to ml_models/TVSMOTOR_v31_ml.pkl ✅
+2026-03-22 23:04:20,896 Training BOSCHLTD...
+2026-03-22 23:04:21,138 BOSCHLTD: 49534 candles loaded
+2026-03-22 23:07:16,405 SENSEX: 10798 samples | WR=38.2%
+2026-03-22 23:09:28,969 SENSEX: Accuracy=58.6%
+2026-03-22 23:09:29,036 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+Retraining SENSEX...
+SENSEX: True
+2026-03-22 23:13:02,173 BOSCHLTD: 4946 samples | WR=38.7%
+2026-03-22 23:13:42,454 BOSCHLTD: Accuracy=56.5%
+2026-03-22 23:13:42,499 BOSCHLTD: Saved to ml_models/BOSCHLTD_v31_ml.pkl ✅
+2026-03-22 23:13:42,521 Training PAGEIND...
+2026-03-22 23:13:42,760 PAGEIND: 49467 candles loaded
+2026-03-22 23:21:01,909 PAGEIND: 4939 samples | WR=38.6%
+2026-03-22 23:21:49,251 PAGEIND: Accuracy=56.8%
+2026-03-22 23:21:49,288 PAGEIND: Saved to ml_models/PAGEIND_v31_ml.pkl ✅
+2026-03-22 23:21:49,305 Training BRITANNIA...
+2026-03-22 23:21:49,543 BRITANNIA: 49549 candles loaded
+2026-03-22 23:30:03,270 BRITANNIA: 4947 samples | WR=38.3%
+2026-03-22 23:30:46,830 BRITANNIA: Accuracy=56.9%
+2026-03-22 23:30:46,950 BRITANNIA: Saved to ml_models/BRITANNIA_v31_ml.pkl ✅
+2026-03-22 23:30:46,991 Training APOLLOHOSP...
+2026-03-22 23:30:47,290 APOLLOHOSP: 49549 candles loaded
+2026-03-22 23:37:35,197 APOLLOHOSP: 4947 samples | WR=38.2%
+2026-03-22 23:38:08,191 APOLLOHOSP: Accuracy=58.2%
+2026-03-22 23:38:08,239 APOLLOHOSP: Saved to ml_models/APOLLOHOSP_v31_ml.pkl ✅
+2026-03-22 23:38:08,265 Training OFSS...
+2026-03-22 23:38:08,494 OFSS: 44567 candles loaded
+2026-03-22 23:43:15,360 OFSS: 4449 samples | WR=37.4%
+2026-03-22 23:43:43,898 OFSS: Accuracy=61.3%
+2026-03-22 23:43:43,940 OFSS: Saved to ml_models/OFSS_v31_ml.pkl ✅
+2026-03-22 23:43:43,956 Training BAJAJ-AUTO...
+2026-03-22 23:43:44,197 BAJAJ-AUTO: 49550 candles loaded
+2026-03-22 23:49:30,809 BAJAJ-AUTO: 4947 samples | WR=39.8%
+2026-03-22 23:50:03,058 BAJAJ-AUTO: Accuracy=56.4%
+2026-03-22 23:50:03,106 BAJAJ-AUTO: Saved to ml_models/BAJAJ-AUTO_v31_ml.pkl ✅
+✅ NIFTY
+✅ BANKNIFTY
+✅ FINNIFTY
+✅ MIDCPNIFTY
+✅ SENSEX
+✅ CRUDEOIL
+✅ GOLDM
+✅ SILVERM
+✅ NATURALGAS
+✅ LT
+✅ NTPC
+✅ MARUTI
+✅ BHARTIARTL
+✅ SBIN
+✅ TATAMOTORS
+✅ RELIANCE
+✅ HINDUNILVR
+✅ TCS
+✅ TATASTEEL
+✅ EICHERMOT
+✅ SHREECEM
+✅ CUMMINSIND
+✅ ABB
+✅ DIVISLAB
+✅ HEROMOTOCO
+✅ INDIGO
+✅ TATAELXSI
+✅ AMBER
+✅ ALKEM
+✅ TORNTPHARM
+✅ KEI
+✅ HDFCBANK
+✅ ICICIBANK
+✅ BAJFINANCE
+✅ SIEMENS
+✅ POLYCAB
+✅ SOLARINDS
+✅ TVSMOTOR
+✅ BOSCHLTD
+✅ PAGEIND
+✅ BRITANNIA
+✅ APOLLOHOSP
+✅ OFSS
+✅ BAJAJ-AUTO
+DONE 44/44
+nohup: ignoring input
+2026-03-23 00:12:08,779 [IM] Loaded saved instrument: HDFCBANK
+2026-03-23 00:12:08,779 [IM] Loaded saved instrument: ICICIBANK
+2026-03-23 00:12:08,779 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: SIEMENS
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: POLYCAB
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: SOLARINDS
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: PAGEIND
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: BRITANNIA
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: OFSS
+2026-03-23 00:12:08,780 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-23 00:12:08,780 Loaded 44 instruments
+2026-03-23 00:12:08,780 Training SENSEX...
+2026-03-23 00:12:09,313 SENSEX: 108083 candles loaded
+2026-03-23 00:32:19,475 SENSEX: 10798 samples | WR=38.2%
+2026-03-23 00:34:16,058 SENSEX: Accuracy=58.6%
+2026-03-23 00:34:16,126 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
+SENSEX: True
+[GAMMA] OC fetch error UNKNOWN: ('Connection aborted.', ConnectionAbortedError(103, 'Software caused connection abort'))

@@ -179,3 +179,29 @@ Done! Updated 10/18
 [I 260322 02:00:33 smartConnect:124] in pool
 [I 260322 03:00:24 smartConnect:124] in pool
 [I 260322 04:00:35 smartConnect:124] in pool
+[I 260322 05:00:47 smartConnect:124] in pool
+[I 260322 06:00:47 smartConnect:124] in pool
+[I 260322 07:00:11 smartConnect:124] in pool
+[I 260322 08:00:44 smartConnect:124] in pool
+[I 260322 09:00:25 smartConnect:124] in pool
+[I 260322 10:00:11 smartConnect:124] in pool
+[I 260322 11:00:10 smartConnect:124] in pool
+[I 260322 12:00:26 smartConnect:124] in pool
+[I 260322 13:00:09 smartConnect:124] in pool
+[I 260322 14:00:35 smartConnect:124] in pool
+[I 260322 15:00:58 smartConnect:124] in pool
+[I 260322 20:00:25 smartConnect:124] in pool
+[I 260322 21:00:42 smartConnect:124] in pool
+[I 260322 22:00:33 smartConnect:124] in pool
+[I 260322 23:00:36 smartConnect:124] in pool
+[I 260323 00:00:49 smartConnect:124] in pool
+[I 260323 01:00:27 smartConnect:124] in pool
+[E 260323 02:00:48 smartConnect:78] Exception while retriving IP Address,using local host IP address: HTTPSConnectionPool(host='api.ipify.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='api.ipify.org', port=443): Failed to resolve 'api.ipify.org' ([Errno 7] No address associated with hostname)"))
+[I 260323 02:00:48 smartConnect:124] in pool
+[E 260323 02:00:48 smartConnect:221] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/auth/angelbroking/user/v1/loginByPassword. Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '33:78:1f:7a:92:22', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'clientcode': 'J234619', 'password': '1605', 'totp': '349712'}, Response: HTTPSConnectionPool(host='apiconnect.angelone.in', port=443): Max retries exceeded with url: /rest/auth/angelbroking/user/v1/loginByPassword (Caused by NameResolutionError("HTTPSConnection(host='apiconnect.angelone.in', port=443): Failed to resolve 'apiconnect.angelone.in' ([Errno 7] No address associated with hostname)"))
+[E 260323 03:00:02 smartConnect:78] Exception while retriving IP Address,using local host IP address: HTTPSConnectionPool(host='api.ipify.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='api.ipify.org', port=443): Failed to resolve 'api.ipify.org' ([Errno 7] No address associated with hostname)"))
+[I 260323 03:00:02 smartConnect:124] in pool
+[E 260323 03:00:02 smartConnect:221] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/auth/angelbroking/user/v1/loginByPassword. Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': '43:cb:e2:12:f0:43', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'clientcode': 'J234619', 'password': '1605', 'totp': '016441'}, Response: HTTPSConnectionPool(host='apiconnect.angelone.in', port=443): Max retries exceeded with url: /rest/auth/angelbroking/user/v1/loginByPassword (Caused by NameResolutionError("HTTPSConnection(host='apiconnect.angelone.in', port=443): Failed to resolve 'apiconnect.angelone.in' ([Errno 7] No address associated with hostname)"))
+[E 260323 04:00:17 smartConnect:78] Exception while retriving IP Address,using local host IP address: HTTPSConnectionPool(host='api.ipify.org', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='api.ipify.org', port=443): Failed to resolve 'api.ipify.org' ([Errno 7] No address associated with hostname)"))
+[I 260323 04:00:17 smartConnect:124] in pool
+[E 260323 04:00:17 smartConnect:221] Error occurred while making a POST request to https://apiconnect.angelone.in/rest/auth/angelbroking/user/v1/loginByPassword. Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': 'dd:70:6c:ce:88:8e', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB'}, Request: {'clientcode': 'J234619', 'password': '1605', 'totp': '770464'}, Response: HTTPSConnectionPool(host='apiconnect.angelone.in', port=443): Max retries exceeded with url: /rest/auth/angelbroking/user/v1/loginByPassword (Caused by NameResolutionError("HTTPSConnection(host='apiconnect.angelone.in', port=443): Failed to resolve 'apiconnect.angelone.in' ([Errno 7] No address associated with hostname)"))

@@ -34154,3 +34154,520 @@ IndentationError: unexpected indent
 2026-03-22 02:36:31,631 [V31] [V31] WEEKEND_Sunday - no trading
 2026-03-22 03:36:31,668 [V31] [V31] Loop iteration start
 2026-03-22 03:36:31,669 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 04:36:31,770 [V31] [V31] Loop iteration start
+2026-03-22 04:36:31,770 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 05:36:31,871 [V31] [V31] Loop iteration start
+2026-03-22 05:36:31,876 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 05:55:45,274 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 05:55:45,275 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 05:55:48 smartConnect:124] in pool
+2026-03-22 05:55:48,835 [V31] [ANGEL] MCX connected!
+2026-03-22 05:55:48,835 [V31] [V31] Angel MCX feed ready!
+[I 260322 05:55:51 smartConnect:124] in pool
+2026-03-22 05:55:52,215 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 05:55:52,215 [V31] [V31] Angel One trader ready!
+2026-03-22 05:55:52,218 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 05:55:52,219 [V31] ==================================================
+2026-03-22 05:55:52,219 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 05:55:52,219 [V31] ==================================================
+2026-03-22 05:55:52,546 [V31] Kotak connected!
+[I 260322 05:55:52 smartConnect:124] in pool
+2026-03-22 05:55:52,986 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 05:55:52,992 [V31] Loading historical candles...
+2026-03-22 05:55:53,330 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 05:55:53,935 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 05:55:54,397 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 05:55:54,818 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 05:55:55,249 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 05:55:55,673 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 05:55:56,240 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 05:55:56,830 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 05:55:57,296 [V31]   LT: 59543 candles loaded
+2026-03-22 05:55:57,687 [V31]   NTPC: 55675 candles loaded
+2026-03-22 05:55:58,083 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 05:55:58,493 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 05:55:58,899 [V31]   SBIN: 59554 candles loaded
+2026-03-22 05:55:59,308 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 05:55:59,730 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 05:56:00,148 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 05:56:00,559 [V31]   TCS: 59472 candles loaded
+2026-03-22 05:56:01,037 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 05:56:01,628 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 05:56:01,891 [V31] [CACHE] Preloading all market data...
+2026-03-22 05:56:05,408 [V31] [CACHE] Preload complete!
+2026-03-22 05:56:05,408 [V31] [FEED] Live feed started!
+2026-03-22 05:56:05,408 [V31] [V31] LIVE! Websocket connected
+2026-03-22 05:56:06,188 [V31] [V31] Starting main scan loop...
+2026-03-22 05:56:06,188 [V31] [V31] Python version check OK
+2026-03-22 05:56:06,191 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 05:56:06,191 [V31] [V31] Entering while loop...
+2026-03-22 05:56:06,192 [V31] [V31] Loop iteration start
+2026-03-22 05:56:06,927 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 06:58:21,055 [V31] [V31] Loop iteration start
+2026-03-22 06:58:21,065 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 07:45:39,351 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 07:45:39,352 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 07:45:39,352 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 07:45:39,352 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 07:45:39,352 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 07:45:39,352 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 07:45:39,353 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 07:45:42 smartConnect:124] in pool
+2026-03-22 07:45:42,550 [V31] [ANGEL] MCX connected!
+2026-03-22 07:45:42,550 [V31] [V31] Angel MCX feed ready!
+[I 260322 07:45:45 smartConnect:124] in pool
+2026-03-22 07:45:45,984 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 07:45:45,984 [V31] [V31] Angel One trader ready!
+2026-03-22 07:45:45,992 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 07:45:45,993 [V31] ==================================================
+2026-03-22 07:45:45,993 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 07:45:45,993 [V31] ==================================================
+2026-03-22 07:45:46,227 [V31] Kotak connected!
+[I 260322 07:45:46 smartConnect:124] in pool
+2026-03-22 07:45:46,425 [V31] Angel login error: Couldn't parse the JSON response received from the server: b'Access denied because of exceeding access rate'
+2026-03-22 07:45:46,433 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 07:45:46,448 [V31] Loading historical candles...
+2026-03-22 07:45:47,179 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 07:45:48,098 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 07:45:48,710 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 07:45:49,134 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 07:45:49,577 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 07:45:50,048 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 07:45:50,655 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 07:45:51,258 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 07:45:51,726 [V31]   LT: 59543 candles loaded
+2026-03-22 07:45:52,116 [V31]   NTPC: 55675 candles loaded
+2026-03-22 07:45:52,511 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 07:45:52,887 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 07:45:53,296 [V31]   SBIN: 59554 candles loaded
+2026-03-22 07:45:53,703 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 07:45:54,117 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 07:45:54,529 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 07:45:54,933 [V31]   TCS: 59472 candles loaded
+2026-03-22 07:45:55,388 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 07:45:55,975 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 07:45:56,225 [V31] [CACHE] Preloading all market data...
+2026-03-22 07:46:00,198 [V31] [CACHE] Preload complete!
+2026-03-22 07:46:00,200 [V31] [FEED] Live feed started!
+2026-03-22 07:46:00,200 [V31] [V31] LIVE! Websocket connected
+2026-03-22 07:46:00,993 [V31] [V31] Starting main scan loop...
+2026-03-22 07:46:00,993 [V31] [V31] Python version check OK
+2026-03-22 07:46:00,998 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 07:46:00,999 [V31] [V31] Entering while loop...
+2026-03-22 07:46:00,999 [V31] [V31] Loop iteration start
+2026-03-22 07:46:01,712 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 09:15:53,879 [V31] [V31] Loop iteration start
+2026-03-22 09:15:53,884 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 09:42:01,252 [V31] [V31] Daily reset done!
+2026-03-22 10:28:47,350 [V31] [V31] Loop iteration start
+2026-03-22 10:28:47,355 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 11:28:47,418 [V31] [V31] Loop iteration start
+2026-03-22 11:28:47,423 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 11:43:57,849 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 11:43:57,850 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 11:43:57,851 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 11:44:00 smartConnect:124] in pool
+2026-03-22 11:44:01,257 [V31] [ANGEL] MCX connected!
+2026-03-22 11:44:01,258 [V31] [V31] Angel MCX feed ready!
+[I 260322 11:44:04 smartConnect:124] in pool
+2026-03-22 11:44:05,033 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 11:44:05,033 [V31] [V31] Angel One trader ready!
+2026-03-22 11:44:05,045 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 11:44:05,046 [V31] ==================================================
+2026-03-22 11:44:05,046 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 11:44:05,046 [V31] ==================================================
+2026-03-22 11:44:05,374 [V31] Kotak connected!
+[I 260322 11:44:05 smartConnect:124] in pool
+2026-03-22 11:44:05,954 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 11:44:05,964 [V31] Loading historical candles...
+2026-03-22 11:44:06,314 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 11:44:06,908 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 11:44:07,409 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 11:44:08,009 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 11:44:09,283 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 11:44:09,859 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 11:44:10,921 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 11:44:12,414 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 11:44:13,229 [V31]   LT: 59543 candles loaded
+2026-03-22 11:44:14,136 [V31]   NTPC: 55675 candles loaded
+2026-03-22 11:44:14,705 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 11:44:15,250 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 11:44:16,301 [V31]   SBIN: 59554 candles loaded
+2026-03-22 11:44:17,308 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 11:44:18,965 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 11:44:19,642 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 11:44:20,603 [V31]   TCS: 59472 candles loaded
+2026-03-22 11:44:21,360 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 11:44:22,414 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 11:44:22,809 [V31] [CACHE] Preloading all market data...
+2026-03-22 11:44:27,927 [V31] [CACHE] Preload complete!
+2026-03-22 11:44:27,927 [V31] [FEED] Live feed started!
+2026-03-22 11:44:27,928 [V31] [V31] LIVE! Websocket connected
+2026-03-22 11:44:28,720 [V31] [V31] Starting main scan loop...
+2026-03-22 11:44:28,720 [V31] [V31] Python version check OK
+2026-03-22 11:44:28,729 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 11:44:28,729 [V31] [V31] Entering while loop...
+2026-03-22 11:44:28,729 [V31] [V31] Loop iteration start
+2026-03-22 11:44:29,503 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 12:46:17,082 [V31] [V31] Loop iteration start
+2026-03-22 12:46:17,098 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 13:46:17,213 [V31] [V31] Loop iteration start
+2026-03-22 13:46:17,219 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 14:52:23,973 [V31] [V31] Loop iteration start
+2026-03-22 14:52:23,985 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 16:53:48,211 [V31] [V31] Loop iteration start
+2026-03-22 16:53:48,216 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 19:46:52,231 [V31] [V31] Loop iteration start
+2026-03-22 19:46:52,239 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 20:48:16,234 [V31] [V31] Loop iteration start
+2026-03-22 20:48:16,241 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 21:17:21,605 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 21:17:21,609 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 21:17:21,609 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 21:17:21,609 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 21:17:21,609 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 21:17:21,609 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 21:17:21,609 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 21:17:21,610 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 21:17:21,610 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 21:17:21,610 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 21:17:21,610 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 21:17:21,610 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 21:17:21,610 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 21:17:24 smartConnect:124] in pool
+2026-03-22 21:17:29,510 [V31] [ANGEL] MCX connected!
+2026-03-22 21:17:29,510 [V31] [V31] Angel MCX feed ready!
+[I 260322 21:17:32 smartConnect:124] in pool
+2026-03-22 21:17:33,119 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 21:17:33,120 [V31] [V31] Angel One trader ready!
+2026-03-22 21:17:33,128 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 21:17:33,129 [V31] ==================================================
+2026-03-22 21:17:33,129 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 21:17:33,129 [V31] ==================================================
+2026-03-22 21:17:33,582 [V31] Kotak connected!
+[I 260322 21:17:33 smartConnect:124] in pool
+2026-03-22 21:17:34,221 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 21:17:34,232 [V31] Loading historical candles...
+2026-03-22 21:17:34,664 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 21:17:35,394 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 21:17:35,912 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 21:17:36,754 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 21:17:37,213 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 21:17:37,676 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 21:17:38,267 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 21:17:38,922 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 21:17:39,419 [V31]   LT: 59543 candles loaded
+2026-03-22 21:17:39,844 [V31]   NTPC: 55675 candles loaded
+2026-03-22 21:17:40,265 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 21:17:40,704 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 21:17:41,136 [V31]   SBIN: 59554 candles loaded
+2026-03-22 21:17:41,579 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 21:17:42,033 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 21:17:42,475 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 21:17:42,918 [V31]   TCS: 59472 candles loaded
+2026-03-22 21:17:43,410 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 21:17:44,033 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 21:17:44,310 [V31] [CACHE] Preloading all market data...
+2026-03-22 21:17:49,878 [V31] [CACHE] Preload complete!
+2026-03-22 21:17:49,878 [V31] [FEED] Live feed started!
+2026-03-22 21:17:49,879 [V31] [V31] LIVE! Websocket connected
+2026-03-22 21:17:51,368 [V31] [V31] Starting main scan loop...
+2026-03-22 21:17:51,368 [V31] [V31] Python version check OK
+2026-03-22 21:17:51,371 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 21:17:51,371 [V31] [V31] Entering while loop...
+2026-03-22 21:17:51,371 [V31] [V31] Loop iteration start
+2026-03-22 21:17:52,233 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 22:17:52,265 [V31] [V31] Loop iteration start
+2026-03-22 22:17:52,277 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 22:37:30,166 [V31] [IM] Loaded saved instrument: HDFCBANK
+2026-03-22 22:37:30,166 [V31] [IM] Loaded saved instrument: ICICIBANK
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: BAJFINANCE
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: SIEMENS
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: POLYCAB
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: SOLARINDS
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: TVSMOTOR
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: BOSCHLTD
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: PAGEIND
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: BRITANNIA
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: OFSS
+2026-03-22 22:37:30,167 [V31] [IM] Loaded saved instrument: BAJAJ-AUTO
+[I 260322 22:37:33 smartConnect:124] in pool
+2026-03-22 22:37:33,630 [V31] [ANGEL] MCX connected!
+2026-03-22 22:37:33,630 [V31] [V31] Angel MCX feed ready!
+[I 260322 22:37:36 smartConnect:124] in pool
+2026-03-22 22:37:37,225 [V31] [ANGEL] Connected! (attempt 1)
+2026-03-22 22:37:37,225 [V31] [V31] Angel One trader ready!
+2026-03-22 22:37:37,231 [V31] [V31] Lot sizes updated: {'NIFTY': 65, 'BANKNIFTY': 30, 'SENSEX': 20, 'FINNIFTY': 60, 'MIDCPNIFTY': 120, 'CRUDEOIL': 100, 'GOLDM': 10, 'SILVERM': 30, 'LT': 450, 'NTPC': 4500, 'MARUTI': 100, 'BHARTIARTL': 950, 'SBIN': 1500, 'TATAMOTORS': 1350, 'RELIANCE': 250, 'HINDUNILVR': 300, 'TCS': 150, 'TATASTEEL': 5500, 'NATURALGAS': 1250}
+2026-03-22 22:37:37,233 [V31] ==================================================
+2026-03-22 22:37:37,233 [V31]   KAIROS V31 - GAMMA WALL + SMC SYSTEM
+2026-03-22 22:37:37,233 [V31] ==================================================
+2026-03-22 22:37:37,711 [V31] Kotak connected!
+[I 260322 22:37:37 smartConnect:124] in pool
+2026-03-22 22:37:38,298 [V31] [V31] Real capital: Rs.50,000
+2026-03-22 22:37:38,305 [V31] Loading historical candles...
+2026-03-22 22:37:38,704 [V31]   NIFTY: 78138 candles loaded
+2026-03-22 22:37:39,976 [V31]   BANKNIFTY: 64551 candles loaded
+2026-03-22 22:37:41,823 [V31]   SENSEX: 64551 candles loaded
+2026-03-22 22:37:42,597 [V31]   FINNIFTY: 59494 candles loaded
+2026-03-22 22:37:43,301 [V31]   MIDCPNIFTY: 58918 candles loaded
+2026-03-22 22:37:43,845 [V31]   CRUDEOIL: 67729 candles loaded
+2026-03-22 22:37:44,527 [V31]   GOLDM: 95882 candles loaded
+2026-03-22 22:37:45,300 [V31]   SILVERM: 98357 candles loaded
+2026-03-22 22:37:45,924 [V31]   LT: 59543 candles loaded
+2026-03-22 22:37:46,498 [V31]   NTPC: 55675 candles loaded
+2026-03-22 22:37:47,025 [V31]   MARUTI: 59536 candles loaded
+2026-03-22 22:37:47,561 [V31]   BHARTIARTL: 59535 candles loaded
+2026-03-22 22:37:48,096 [V31]   SBIN: 59554 candles loaded
+2026-03-22 22:37:48,628 [V31]   TATAMOTORS: 59467 candles loaded
+2026-03-22 22:37:49,163 [V31]   RELIANCE: 59450 candles loaded
+2026-03-22 22:37:49,696 [V31]   HINDUNILVR: 59463 candles loaded
+2026-03-22 22:37:50,224 [V31]   TCS: 59472 candles loaded
+2026-03-22 22:37:50,818 [V31]   TATASTEEL: 59611 candles loaded
+2026-03-22 22:37:51,583 [V31]   NATURALGAS: 111089 candles loaded
+2026-03-22 22:37:51,918 [V31] [CACHE] Preloading all market data...
+2026-03-22 22:37:58,780 [V31] [CACHE] Preload complete!
+2026-03-22 22:37:58,787 [V31] [FEED] Live feed started!
+2026-03-22 22:37:58,788 [V31] [V31] LIVE! Websocket connected
+2026-03-22 22:38:00,662 [V31] [V31] Starting main scan loop...
+2026-03-22 22:38:00,662 [V31] [V31] Python version check OK
+2026-03-22 22:38:00,675 [V31] [V31] Market status: False WEEKEND_Sunday
+2026-03-22 22:38:00,675 [V31] [V31] Entering while loop...
+2026-03-22 22:38:00,675 [V31] [V31] Loop iteration start
+2026-03-22 22:38:01,561 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-22 23:38:01,614 [V31] [V31] Loop iteration start
+2026-03-22 23:38:01,620 [V31] [V31] WEEKEND_Sunday - no trading
+2026-03-23 00:38:27,224 [V31] [V31] Loop iteration start
+2026-03-23 00:39:27,804 [V31] [V31] Loop iteration start
+2026-03-23 00:40:27,863 [V31] [V31] Loop iteration start
+2026-03-23 00:41:27,923 [V31] [V31] Loop iteration start
+2026-03-23 00:42:27,940 [V31] [V31] Loop iteration start
+2026-03-23 00:43:27,999 [V31] [V31] Loop iteration start
+2026-03-23 00:44:28,008 [V31] [V31] Loop iteration start
+2026-03-23 00:45:28,067 [V31] [V31] Loop iteration start
+2026-03-23 00:46:28,070 [V31] [V31] Loop iteration start
+2026-03-23 00:47:28,127 [V31] [V31] Loop iteration start
+2026-03-23 00:48:28,132 [V31] [V31] Loop iteration start
+2026-03-23 00:49:28,191 [V31] [V31] Loop iteration start
+2026-03-23 00:50:28,251 [V31] [V31] Loop iteration start
+2026-03-23 00:51:28,279 [V31] [V31] Loop iteration start
+2026-03-23 00:52:28,339 [V31] [V31] Loop iteration start
+2026-03-23 00:53:28,399 [V31] [V31] Loop iteration start
+2026-03-23 00:54:28,460 [V31] [V31] Loop iteration start
+2026-03-23 00:55:28,498 [V31] [V31] Loop iteration start
+2026-03-23 00:56:28,526 [V31] [V31] Loop iteration start
+2026-03-23 00:57:28,547 [V31] [V31] Loop iteration start
+2026-03-23 00:58:28,579 [V31] [V31] Loop iteration start
+2026-03-23 00:59:28,600 [V31] [V31] Loop iteration start
+2026-03-23 01:00:28,659 [V31] [V31] Loop iteration start
+2026-03-23 01:01:28,719 [V31] [V31] Loop iteration start
+2026-03-23 01:02:28,779 [V31] [V31] Loop iteration start
+2026-03-23 01:03:28,839 [V31] [V31] Loop iteration start
+2026-03-23 01:04:28,871 [V31] [V31] Loop iteration start
+2026-03-23 01:05:28,931 [V31] [V31] Loop iteration start
+2026-03-23 01:06:28,959 [V31] [V31] Loop iteration start
+2026-03-23 01:07:29,019 [V31] [V31] Loop iteration start
+2026-03-23 01:08:29,066 [V31] [V31] Loop iteration start
+2026-03-23 01:09:29,127 [V31] [V31] Loop iteration start
+2026-03-23 01:10:29,130 [V31] [V31] Loop iteration start
+2026-03-23 01:11:29,187 [V31] [V31] Loop iteration start
+2026-03-23 01:12:29,249 [V31] [V31] Loop iteration start
+2026-03-23 01:13:29,251 [V31] [V31] Loop iteration start
+2026-03-23 01:14:29,281 [V31] [V31] Loop iteration start
+2026-03-23 01:15:29,310 [V31] [V31] Loop iteration start
+2026-03-23 01:16:29,367 [V31] [V31] Loop iteration start
+2026-03-23 01:17:29,427 [V31] [V31] Loop iteration start
+2026-03-23 01:18:29,450 [V31] [V31] Loop iteration start
+2026-03-23 01:19:29,484 [V31] [V31] Loop iteration start
+2026-03-23 01:20:29,543 [V31] [V31] Loop iteration start
+2026-03-23 01:21:29,546 [V31] [V31] Loop iteration start
+2026-03-23 01:22:29,555 [V31] [V31] Loop iteration start
+2026-03-23 01:23:29,574 [V31] [V31] Loop iteration start
+2026-03-23 01:24:29,608 [V31] [V31] Loop iteration start
+2026-03-23 01:25:29,642 [V31] [V31] Loop iteration start
+2026-03-23 01:26:29,703 [V31] [V31] Loop iteration start
+2026-03-23 01:27:29,711 [V31] [V31] Loop iteration start
+2026-03-23 01:28:29,748 [V31] [V31] Loop iteration start
+2026-03-23 01:29:29,788 [V31] [V31] Loop iteration start
+2026-03-23 01:30:29,847 [V31] [V31] Loop iteration start
+2026-03-23 01:31:29,907 [V31] [V31] Loop iteration start
+2026-03-23 01:32:29,967 [V31] [V31] Loop iteration start
+2026-03-23 01:33:30,003 [V31] [V31] Loop iteration start
+2026-03-23 01:34:30,063 [V31] [V31] Loop iteration start
+2026-03-23 01:35:30,067 [V31] [V31] Loop iteration start
+2026-03-23 01:36:30,127 [V31] [V31] Loop iteration start
+2026-03-23 01:37:30,187 [V31] [V31] Loop iteration start
+2026-03-23 01:38:30,199 [V31] [V31] Loop iteration start
+2026-03-23 01:39:30,260 [V31] [V31] Loop iteration start
+2026-03-23 01:40:30,320 [V31] [V31] Loop iteration start
+2026-03-23 01:41:30,381 [V31] [V31] Loop iteration start
+2026-03-23 01:42:30,439 [V31] [V31] Loop iteration start
+2026-03-23 01:43:30,500 [V31] [V31] Loop iteration start
+2026-03-23 01:44:30,559 [V31] [V31] Loop iteration start
+2026-03-23 01:45:30,619 [V31] [V31] Loop iteration start
+2026-03-23 01:46:30,679 [V31] [V31] Loop iteration start
+2026-03-23 01:47:30,740 [V31] [V31] Loop iteration start
+2026-03-23 01:48:30,801 [V31] [V31] Loop iteration start
+2026-03-23 01:49:30,862 [V31] [V31] Loop iteration start
+2026-03-23 01:50:30,923 [V31] [V31] Loop iteration start
+2026-03-23 01:51:40,763 [V31] [V31] Loop iteration start
+2026-03-23 01:52:40,824 [V31] [V31] Loop iteration start
+2026-03-23 01:53:40,885 [V31] [V31] Loop iteration start
+2026-03-23 01:54:40,944 [V31] [V31] Loop iteration start
+2026-03-23 01:55:40,997 [V31] [V31] Loop iteration start
+2026-03-23 01:56:41,016 [V31] [V31] Loop iteration start
+2026-03-23 01:57:41,076 [V31] [V31] Loop iteration start
+2026-03-23 01:58:41,138 [V31] [V31] Loop iteration start
+2026-03-23 01:59:41,181 [V31] [V31] Loop iteration start
+2026-03-23 02:00:41,244 [V31] [V31] Loop iteration start
+2026-03-23 02:01:41,305 [V31] [V31] Loop iteration start
+2026-03-23 02:02:41,364 [V31] [V31] Loop iteration start
+2026-03-23 02:03:41,424 [V31] [V31] Loop iteration start
+2026-03-23 02:04:41,442 [V31] [V31] Loop iteration start
+2026-03-23 02:05:41,500 [V31] [V31] Loop iteration start
+2026-03-23 02:06:41,530 [V31] [V31] Loop iteration start
+2026-03-23 02:07:41,588 [V31] [V31] Loop iteration start
+2026-03-23 02:08:41,601 [V31] [V31] Loop iteration start
+2026-03-23 02:09:41,658 [V31] [V31] Loop iteration start
+2026-03-23 02:10:41,716 [V31] [V31] Loop iteration start
+2026-03-23 02:11:41,745 [V31] [V31] Loop iteration start
+2026-03-23 02:12:41,807 [V31] [V31] Loop iteration start
+2026-03-23 02:13:41,840 [V31] [V31] Loop iteration start
+2026-03-23 02:14:41,900 [V31] [V31] Loop iteration start
+2026-03-23 02:15:41,960 [V31] [V31] Loop iteration start
+2026-03-23 02:16:42,020 [V31] [V31] Loop iteration start
+2026-03-23 02:17:42,082 [V31] [V31] Loop iteration start
+2026-03-23 02:18:42,140 [V31] [V31] Loop iteration start
+2026-03-23 02:19:42,196 [V31] [V31] Loop iteration start
+2026-03-23 02:20:42,208 [V31] [V31] Loop iteration start
+2026-03-23 02:21:42,268 [V31] [V31] Loop iteration start
+2026-03-23 02:22:42,286 [V31] [V31] Loop iteration start
+2026-03-23 02:23:42,348 [V31] [V31] Loop iteration start
+2026-03-23 02:24:42,376 [V31] [V31] Loop iteration start
+2026-03-23 02:25:42,436 [V31] [V31] Loop iteration start
+2026-03-23 02:26:42,492 [V31] [V31] Loop iteration start
+2026-03-23 02:27:42,553 [V31] [V31] Loop iteration start
+2026-03-23 02:28:42,612 [V31] [V31] Loop iteration start
+2026-03-23 02:29:42,630 [V31] [V31] Loop iteration start
+2026-03-23 02:30:42,692 [V31] [V31] Loop iteration start
+2026-03-23 02:31:42,752 [V31] [V31] Loop iteration start
+2026-03-23 02:32:42,792 [V31] [V31] Loop iteration start
+2026-03-23 02:33:42,806 [V31] [V31] Loop iteration start
+2026-03-23 02:34:42,864 [V31] [V31] Loop iteration start
+2026-03-23 02:35:42,924 [V31] [V31] Loop iteration start
+2026-03-23 02:36:42,984 [V31] [V31] Loop iteration start
+2026-03-23 02:37:42,988 [V31] [V31] Loop iteration start
+2026-03-23 02:38:43,048 [V31] [V31] Loop iteration start
+2026-03-23 02:39:43,110 [V31] [V31] Loop iteration start
+2026-03-23 02:40:43,172 [V31] [V31] Loop iteration start
+2026-03-23 02:41:43,234 [V31] [V31] Loop iteration start
+2026-03-23 02:42:43,236 [V31] [V31] Loop iteration start
+2026-03-23 02:43:43,256 [V31] [V31] Loop iteration start
+2026-03-23 02:44:43,295 [V31] [V31] Loop iteration start
+2026-03-23 02:45:43,352 [V31] [V31] Loop iteration start
+2026-03-23 02:46:43,362 [V31] [V31] Loop iteration start
+2026-03-23 02:47:43,424 [V31] [V31] Loop iteration start
+2026-03-23 02:48:43,486 [V31] [V31] Loop iteration start
+2026-03-23 02:49:43,490 [V31] [V31] Loop iteration start
+2026-03-23 02:50:43,548 [V31] [V31] Loop iteration start
+2026-03-23 02:51:43,576 [V31] [V31] Loop iteration start
+2026-03-23 02:52:43,638 [V31] [V31] Loop iteration start
+2026-03-23 02:53:43,700 [V31] [V31] Loop iteration start
+2026-03-23 02:54:43,730 [V31] [V31] Loop iteration start
+2026-03-23 02:55:43,788 [V31] [V31] Loop iteration start
+2026-03-23 02:56:43,850 [V31] [V31] Loop iteration start
+2026-03-23 02:57:43,872 [V31] [V31] Loop iteration start
+2026-03-23 02:58:43,932 [V31] [V31] Loop iteration start
+2026-03-23 02:59:43,989 [V31] [V31] Loop iteration start
+2026-03-23 03:00:43,991 [V31] [V31] Loop iteration start
+2026-03-23 03:01:44,048 [V31] [V31] Loop iteration start
+2026-03-23 03:02:44,098 [V31] [V31] Loop iteration start
+2026-03-23 03:03:44,156 [V31] [V31] Loop iteration start
+2026-03-23 03:04:44,218 [V31] [V31] Loop iteration start
+2026-03-23 03:05:44,224 [V31] [V31] Loop iteration start
+2026-03-23 03:06:44,250 [V31] [V31] Loop iteration start
+2026-03-23 03:07:44,308 [V31] [V31] Loop iteration start
+2026-03-23 03:08:44,368 [V31] [V31] Loop iteration start
+2026-03-23 03:09:44,428 [V31] [V31] Loop iteration start
+2026-03-23 03:10:44,465 [V31] [V31] Loop iteration start
+2026-03-23 03:11:44,526 [V31] [V31] Loop iteration start
+2026-03-23 03:12:44,584 [V31] [V31] Loop iteration start
+2026-03-23 03:13:44,587 [V31] [V31] Loop iteration start
+2026-03-23 03:14:44,648 [V31] [V31] Loop iteration start
+2026-03-23 03:15:44,708 [V31] [V31] Loop iteration start
+2026-03-23 03:16:44,767 [V31] [V31] Loop iteration start
+2026-03-23 03:17:44,828 [V31] [V31] Loop iteration start
+2026-03-23 03:18:44,888 [V31] [V31] Loop iteration start
+2026-03-23 03:19:44,950 [V31] [V31] Loop iteration start
+2026-03-23 03:20:44,966 [V31] [V31] Loop iteration start
+2026-03-23 03:21:45,028 [V31] [V31] Loop iteration start
+2026-03-23 03:22:45,087 [V31] [V31] Loop iteration start
+2026-03-23 03:23:45,148 [V31] [V31] Loop iteration start
+2026-03-23 03:24:45,208 [V31] [V31] Loop iteration start
+2026-03-23 03:25:45,268 [V31] [V31] Loop iteration start
+2026-03-23 03:26:45,330 [V31] [V31] Loop iteration start
+2026-03-23 03:27:45,346 [V31] [V31] Loop iteration start
+2026-03-23 03:28:45,398 [V31] [V31] Loop iteration start
+2026-03-23 03:29:45,456 [V31] [V31] Loop iteration start
+2026-03-23 03:30:45,516 [V31] [V31] Loop iteration start
+2026-03-23 03:31:45,576 [V31] [V31] Loop iteration start
+2026-03-23 03:32:45,638 [V31] [V31] Loop iteration start
+2026-03-23 03:33:45,688 [V31] [V31] Loop iteration start
+2026-03-23 03:34:45,748 [V31] [V31] Loop iteration start
+2026-03-23 03:35:45,812 [V31] [V31] Loop iteration start
+2026-03-23 03:36:45,872 [V31] [V31] Loop iteration start
+2026-03-23 03:37:45,910 [V31] [V31] Loop iteration start
+2026-03-23 03:38:45,922 [V31] [V31] Loop iteration start
+2026-03-23 03:39:45,980 [V31] [V31] Loop iteration start
+2026-03-23 03:40:45,983 [V31] [V31] Loop iteration start
+2026-03-23 03:41:46,052 [V31] [V31] Loop iteration start
+2026-03-23 03:42:46,112 [V31] [V31] Loop iteration start
+2026-03-23 03:43:46,172 [V31] [V31] Loop iteration start
+2026-03-23 03:44:46,204 [V31] [V31] Loop iteration start
+2026-03-23 03:45:46,264 [V31] [V31] Loop iteration start
+2026-03-23 03:46:46,324 [V31] [V31] Loop iteration start
+2026-03-23 03:47:46,384 [V31] [V31] Loop iteration start
+2026-03-23 03:48:46,444 [V31] [V31] Loop iteration start
+2026-03-23 03:49:46,504 [V31] [V31] Loop iteration start
+2026-03-23 03:50:46,564 [V31] [V31] Loop iteration start
+2026-03-23 03:51:46,624 [V31] [V31] Loop iteration start
+2026-03-23 03:52:46,684 [V31] [V31] Loop iteration start
+2026-03-23 03:53:46,724 [V31] [V31] Loop iteration start
+2026-03-23 03:54:46,784 [V31] [V31] Loop iteration start
+2026-03-23 03:55:46,846 [V31] [V31] Loop iteration start
+2026-03-23 03:56:46,908 [V31] [V31] Loop iteration start
+2026-03-23 03:57:46,969 [V31] [V31] Loop iteration start
+2026-03-23 03:58:47,030 [V31] [V31] Loop iteration start
+2026-03-23 03:59:47,096 [V31] [V31] Loop iteration start
+2026-03-23 04:00:47,147 [V31] [V31] Loop iteration start
+2026-03-23 04:01:47,208 [V31] [V31] Loop iteration start
+2026-03-23 04:02:47,268 [V31] [V31] Loop iteration start
+2026-03-23 04:03:47,287 [V31] [V31] Loop iteration start
+2026-03-23 04:04:47,290 [V31] [V31] Loop iteration start

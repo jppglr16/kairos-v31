@@ -1,0 +1,45 @@
+{
+  "trades": [
+    {
+      "id": "NIFTY_20260322_232939",
+      "time": "2026-03-22T23:29:39.746776",
+      "instrument": "NIFTY",
+      "action": "BUY",
+      "score": 25,
+      "path": "A_SMART",
+      "lots": 1,
+      "status": "WIN",
+      "order_id": "ORD123",
+      "entry_price": 23450,
+      "exit_price": 23600,
+      "pnl": 11170,
+      "fail_reason": null
+    },
+    {
+      "id": "SENSEX_20260322_233335",
+      "time": "2026-03-22T23:33:35.016638",
+      "instrument": "SENSEX",
+      "action": "BUY",
+      "score": 26,
+      "path": "A_SMART",
+      "lots": 2,
+      "status": "WIN",
+      "order_id": "ORD456",
+      "entry_price": 75010,
+      "exit_price": 75200,
+      "pnl": 2881.6,
+      "fail_reason": null,
+      "signal_price": 75000,
+      "slippage": 10,
+      "partial_exits": [
+        {
+          "price": 75120,
+          "qty": 1,
+          "pnl": 1040.8
+        }
+      ],
+      "qty_remaining": 1,
+      "partial_pnl": 1040.8
+    }
+  ]
+}
