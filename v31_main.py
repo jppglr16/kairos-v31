@@ -971,12 +971,21 @@ async def main():
                     # OI/PCR signal boost
                     try:
                         from v31_oi_pcr import oi_pcr
+                        from v31_oi_logger import oi_logger
                         _price=float(signal.get('price',0))
                         _action=signal.get('action','BUY')
                         _oi_boost=oi_pcr.score_signal(instrument,_action,_price)
                         if _oi_boost!=0:
                             signal['score']=signal.get('score',0)+_oi_boost
                             log.info(f'[OI] {instrument} score boost={_oi_boost:+d}')
+                        # Visual log
+                        _pcr,_atm,_sig=oi_pcr.get_pcr(instrument)
+                        _ce,_pe=oi_pcr.get_oi_levels(instrument)
+                        _mp=oi_pcr.get_max_pain(instrument)
+                        oi_logger.log_signal(
+                            instrument,_action,_price,
+                            _oi_boost,_pcr,_atm,_sig,
+                            _mp,_ce,_pe)
                     except Exception as _oe:
                         log.debug(f'[OI] Error: {_oe}')
 
