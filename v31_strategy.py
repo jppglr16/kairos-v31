@@ -246,179 +246,76 @@ def get_trend_v31(df):
 
 
 def vwap_rejection_signal(df5,instrument,atr):
-    """Path B: VWAP rejection signal"""
+    """Path B: VWAP rejection signal (clean production version)"""
     try:
-        if len(df5)<3:return None
+        if len(df5)<5:return None
+
         close=df5['close']
         high=df5['high']
         low=df5['low']
         volume=df5['volume'] if 'volume' in df5.columns else None
 
-        # Calculate VWAP
-        if volume is not None and volume.sum()>0:
+        # Rolling VWAP (last 20 candles - realistic!)
+        if volume is not None and float(volume.tail(20).sum())>0:
             typical=(high+low+close)/3
-            vwap=float((typical*volume).sum()/volume.sum())
+            vwap=float((typical.tail(20)*volume.tail(20)).sum()/volume.tail(20).sum())
         else:
-            vwap=float((high+low+close).mean()/3)
+            vwap=float((high.tail(20)+low.tail(20)+close.tail(20)).mean()/3)
 
         price=float(close.iloc[-1])
         prev_price=float(close.iloc[-2])
-        prev_prev=float(close.iloc[-3])
 
-        # Noise filter
-        if abs(price-vwap)<0.2*atr:
+        # Noise filter (0.3 ATR minimum distance)
+        if abs(price-vwap)<0.3*atr:
             return None
 
-        # Bullish rejection: price crosses above VWAP
+        score=14
+
+        # BUY: VWAP Reclaim
         if prev_price<vwap and price>vwap:
-            # Confirmation: previous candle touched VWAP
-            if low.iloc[-1]<=vwap*1.001:
-                score=14  # Base score for VWAP signal
-                # Bonus: strong candle
-                if close.iloc[-1]>close.iloc[-2]:score+=2
-                # Bonus: volume confirmation
+            if float(low.iloc[-1])<vwap:
+                if float(close.iloc[-1])>float(close.iloc[-2]):
+                    score+=2
                 if volume is not None:
-                    if float(volume.iloc[-1])>float(volume.iloc[-5:-1].mean())*1.2:
+                    vol_avg=float(volume.iloc[-5:-1].mean())
+                    if vol_avg>0 and float(volume.iloc[-1])>vol_avg*1.3:
                         score+=2
                 return {
-                    'instrument':instrument,
-                    'action':'BUY',
-                    'option_type':'CE',
-                    'price':price,
-                    'vwap':vwap,
-                    'sl_points':round(atr*1.5,2),
-                    'sl_type':'VWAP_ATR',
+                    'instrument':instrument,'action':'BUY',
+                    'option_type':'CE','price':price,'vwap':vwap,
+                    'sl_points':round(atr*1.5,2),'sl_type':'VWAP_ATR',
                     'target1':round(price+atr*2,2),
                     'target2':round(price+atr*4,2),
-                    'rr_ratio':2.0,
-                    'score':score,
-                    'regime':'VWAP_REJECT',
-                    'liq_type':'VWAP_CROSS',
-                    'imbalance_type':'VWAP_BUY',
-                    'path':'B',
-                    'atr':atr,
-                    'version':'V31'
+                    'rr_ratio':2.0,'score':score,
+                    'regime':'VWAP_REJECT','liq_type':'VWAP_CROSS',
+                    'imbalance_type':'VWAP_BUY','path':'B',
+                    'atr':atr,'version':'V31'
                 }
 
-        # Bearish rejection: price crosses below VWAP
+        # SELL: VWAP Breakdown
         if prev_price>vwap and price<vwap:
-            if high.iloc[-1]>=vwap*0.999:
-                score=14
-                if close.iloc[-1]<close.iloc[-2]:score+=2
+            if float(high.iloc[-1])>vwap:
+                if float(close.iloc[-1])<float(close.iloc[-2]):
+                    score+=2
                 if volume is not None:
-                    if float(volume.iloc[-1])>float(volume.iloc[-5:-1].mean())*1.2:
+                    vol_avg=float(volume.iloc[-5:-1].mean())
+                    if vol_avg>0 and float(volume.iloc[-1])>vol_avg*1.3:
                         score+=2
                 return {
-                    'instrument':instrument,
-                    'action':'SELL',
-                    'option_type':'PE',
-                    'price':price,
-                    'vwap':vwap,
-                    'sl_points':round(atr*1.5,2),
-                    'sl_type':'VWAP_ATR',
+                    'instrument':instrument,'action':'SELL',
+                    'option_type':'PE','price':price,'vwap':vwap,
+                    'sl_points':round(atr*1.5,2),'sl_type':'VWAP_ATR',
                     'target1':round(price-atr*2,2),
                     'target2':round(price-atr*4,2),
-                    'rr_ratio':2.0,
-                    'score':score,
-                    'regime':'VWAP_REJECT',
-                    'liq_type':'VWAP_CROSS',
-                    'imbalance_type':'VWAP_SELL',
-                    'path':'B',
-                    'atr':atr,
-                    'version':'V31'
+                    'rr_ratio':2.0,'score':score,
+                    'regime':'VWAP_REJECT','liq_type':'VWAP_CROSS',
+                    'imbalance_type':'VWAP_SELL','path':'B',
+                    'atr':atr,'version':'V31'
                 }
+
     except Exception as e:
-        pass
+        log.error(f'[PathB] {instrument}: {e}')
     return None
-
-
-
-def vwap_rejection_signal(df5,instrument,atr):
-    """Path B: VWAP rejection signal"""
-    try:
-        if len(df5)<3:return None
-        close=df5['close']
-        high=df5['high']
-        low=df5['low']
-        volume=df5['volume'] if 'volume' in df5.columns else None
-
-        # Calculate VWAP
-        if volume is not None and volume.sum()>0:
-            typical=(high+low+close)/3
-            vwap=float((typical*volume).sum()/volume.sum())
-        else:
-            vwap=float((high+low+close).mean()/3)
-
-        price=float(close.iloc[-1])
-        prev_price=float(close.iloc[-2])
-        prev_prev=float(close.iloc[-3])
-
-        # Noise filter
-        if abs(price-vwap)<0.2*atr:
-            return None
-
-        # Bullish rejection: price crosses above VWAP
-        if prev_price<vwap and price>vwap:
-            # Confirmation: previous candle touched VWAP
-            if low.iloc[-1]<=vwap*1.001:
-                score=14  # Base score for VWAP signal
-                # Bonus: strong candle
-                if close.iloc[-1]>close.iloc[-2]:score+=2
-                # Bonus: volume confirmation
-                if volume is not None:
-                    if float(volume.iloc[-1])>float(volume.iloc[-5:-1].mean())*1.2:
-                        score+=2
-                return {
-                    'instrument':instrument,
-                    'action':'BUY',
-                    'option_type':'CE',
-                    'price':price,
-                    'vwap':vwap,
-                    'sl_points':round(atr*1.5,2),
-                    'sl_type':'VWAP_ATR',
-                    'target1':round(price+atr*2,2),
-                    'target2':round(price+atr*4,2),
-                    'rr_ratio':2.0,
-                    'score':score,
-                    'regime':'VWAP_REJECT',
-                    'liq_type':'VWAP_CROSS',
-                    'imbalance_type':'VWAP_BUY',
-                    'path':'B',
-                    'atr':atr,
-                    'version':'V31'
-                }
-
-        # Bearish rejection: price crosses below VWAP
-        if prev_price>vwap and price<vwap:
-            if high.iloc[-1]>=vwap*0.999:
-                score=14
-                if close.iloc[-1]<close.iloc[-2]:score+=2
-                if volume is not None:
-                    if float(volume.iloc[-1])>float(volume.iloc[-5:-1].mean())*1.2:
-                        score+=2
-                return {
-                    'instrument':instrument,
-                    'action':'SELL',
-                    'option_type':'PE',
-                    'price':price,
-                    'vwap':vwap,
-                    'sl_points':round(atr*1.5,2),
-                    'sl_type':'VWAP_ATR',
-                    'target1':round(price-atr*2,2),
-                    'target2':round(price-atr*4,2),
-                    'rr_ratio':2.0,
-                    'score':score,
-                    'regime':'VWAP_REJECT',
-                    'liq_type':'VWAP_CROSS',
-                    'imbalance_type':'VWAP_SELL',
-                    'path':'B',
-                    'atr':atr,
-                    'version':'V31'
-                }
-    except Exception as e:
-        pass
-    return None
-
 
 def generate_v31_signal(df5,df15,df_daily,instrument,capital,
                          feed=None,client=None):
