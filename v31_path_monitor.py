@@ -34,7 +34,8 @@ def monitor():
         total=safe_int(run(f"grep 'FINAL' v31_log.txt | grep '{path}' | wc -l"))
         wins=safe_int(run(f"grep 'TARGET HIT' v31_log.txt | grep '{path}' | wc -l"))
         losses=safe_int(run(f"grep 'SL HIT' v31_log.txt | grep '{path}' | wc -l"))
-        wr=f'{wins/total*100:.0f}%' if total>0 else 'N/A'
+        closed=wins+losses
+        wr=f'{wins/closed*100:.0f}%' if closed>0 else 'N/A'
         bar='█'*min(total,15)
         print(f'  {path:<15} {total:>8} {wins:>6} {losses:>7} {wr:>6} {bar}')
 
@@ -76,10 +77,17 @@ def monitor():
     total_wins=safe_int(run("grep 'TARGET HIT' v31_log.txt | wc -l"))
     total_loss=safe_int(run("grep 'SL HIT' v31_log.txt | wc -l"))
     approved=safe_int(run("grep 'APPROVED' v31_log.txt | wc -l"))
-    overall_wr=f'{total_wins/(total_wins+total_loss)*100:.1f}%' if (total_wins+total_loss)>0 else 'N/A'
+    executed=safe_int(run("grep 'ORDER PLACED\|order.*placed\|COMPLETE' v31_log.txt | wc -l"))
+    failed=safe_int(run("grep 'ORDER FAILED\|REJECTED.*order\|order.*REJECTED' v31_log.txt | wc -l"))
+    _closed=total_wins+total_loss
+    overall_wr=f'{total_wins/_closed*100:.1f}%' if _closed>0 else 'N/A (no closed trades yet)'
     print(f'\n📊 Overall Summary:')
     print(f'  Signals generated: {total_sigs}')
     print(f'  Trades approved:   {approved}')
+    print(f'  Orders executed:   {executed}')
+    print(f'  Orders failed:     {failed}')
+    if approved>0 and executed<approved:
+        print(f'  ⚠️ Gap: {approved-executed} approved but not executed!')
     print(f'  Wins:              {total_wins}')
     print(f'  Losses:            {total_loss}')
     print(f'  Live Win Rate:     {overall_wr}')
@@ -92,7 +100,7 @@ def monitor():
 
     # 8. Best instrument
     print('\n📊 Top Instruments:')
-    inst_data=run("grep 'FINAL' v31_log.txt | grep -o '[A-Z]*' | sort | uniq -c | sort -rn | head -5")
+    inst_data=run("grep 'FINAL' v31_log.txt | grep -oE '\\b[A-Z]{3,10}\\b' | grep -vE 'FINAL|BUY|SELL|VIA|PATH|SCORE|LOG|INFO' | sort | uniq -c | sort -rn | head -5")
     if inst_data:print(inst_data)
 
     print('\n'+'='*55)
