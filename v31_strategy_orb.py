@@ -39,11 +39,16 @@ def orb_signal(df5,instrument,capital):
             if not (9<=h<=10):return None
             orb_candles=3  # 15 mins
 
-        # Get today candles
+        # Get today candles (safe copy!)
         import pandas as pd
-        df5['date']=pd.to_datetime(df5['time']).dt.date
+        df_temp=df5.copy()  # Fix 1: don't mutate!
         today=datetime.now().date()
-        df_today=df5[pd.to_datetime(df5['time']).dt.date==today].reset_index(drop=True)
+        # Fix 2: safe time column
+        if 'time' in df_temp.columns:
+            df_temp['date']=pd.to_datetime(df_temp['time']).dt.date
+        else:
+            df_temp['date']=df_temp.index.date
+        df_today=df_temp[df_temp['date']==today].reset_index(drop=True)
 
         if len(df_today)<orb_candles+1:return None
 
@@ -71,12 +76,22 @@ def orb_signal(df5,instrument,capital):
 
         score=14
 
+        # Fix 3: Trend filter for better accuracy
+        try:
+            from v31_strategy import get_trend_v31
+            _trend=get_trend_v31(df5)
+        except:
+            _trend='NEUTRAL'
+
         # BUY Breakout
         if current_close>orb_high:
             strength=current_close-orb_high
             if strength>atr*0.3:score+=3
             elif strength>atr*0.15:score+=2
             if vol_confirm:score+=2
+            # Trend alignment bonus
+            if _trend=='UP':score+=2
+            elif _trend=='DOWN':score-=2
             if score<15:return None
             log.info(f'[ORB] {instrument} BUY breakout! score={score}')
             return {
@@ -97,6 +112,9 @@ def orb_signal(df5,instrument,capital):
             if strength>atr*0.3:score+=3
             elif strength>atr*0.15:score+=2
             if vol_confirm:score+=2
+            # Trend alignment bonus
+            if _trend=='DOWN':score+=2
+            elif _trend=='UP':score-=2
             if score<15:return None
             log.info(f'[ORB] {instrument} SELL breakdown! score={score}')
             return {

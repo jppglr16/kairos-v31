@@ -960,6 +960,7 @@ async def main():
 
                     # Generate signal (Path A)
                     from v31_strategy import generate_v31_signal,notify_v31_signal
+                    _prev_signal=None
                     signal=generate_v31_signal(
                         df5,df15,df_daily,
                         instrument,capital,feed,kotak
@@ -982,6 +983,15 @@ async def main():
                         try:
                             from v31_strategy_orb import orb_signal
                             signal=orb_signal(df5,instrument,capital)
+                            # Signal conflict check!
+                            if signal and _prev_signal:
+                                if signal.get('action')!=_prev_signal.get('action'):
+                                    # Conflict! Use higher score
+                                    if signal.get('score',0)>_prev_signal.get('score',0):
+                                        log.info(f'[CONFLICT] {instrument} ORB wins over Path A')
+                                    else:
+                                        signal=_prev_signal
+                                        log.info(f'[CONFLICT] {instrument} Path A wins over ORB')
                             if signal:
                                 signal['timestamp']=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                                 log.info(f'[V31] {instrument} PATH C ORB Score:{signal["score"]}')
