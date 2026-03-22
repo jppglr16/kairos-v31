@@ -127,7 +127,10 @@ class VIXEngine:
 
         # Add trend boost
         trend=self.get_trend()
-        if trend=='RISING':boost-=1
+        if 'SPIKE_DOWN' in str(regime):
+            boost-=2  # Fix 4: IV crush override!
+            log.info('[VIX] SPIKE_DOWN: trend optimism overridden!')
+        elif trend=='RISING':boost-=1
         elif trend=='FALLING':boost+=1
 
         log.info(f'[VIX] {vix:.1f} regime={regime} trend={trend} boost={boost:+d}')

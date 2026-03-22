@@ -808,12 +808,18 @@ async def main():
                     _last_capital_refresh=_time.time()
                 except:pass
 
-            # VIX filter + strategy mode
+            # VIX filter + strategy mode (cached once per cycle!)
             try:
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
-                _strategy_mode=vix_engine.get_strategy_mode()
-                log.info(f'[VIX] Mode={_strategy_mode} Trend={vix_engine.get_trend()}')
+                # Fix 2: Cache all VIX data once!
+                _vix_data={
+                    'mode':vix_engine.get_strategy_mode(),
+                    'trend':vix_engine.get_trend(),
+                    'vix':vix_engine._vix
+                }
+                _strategy_mode=_vix_data['mode']
+                log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
                     await asyncio.sleep(60)
@@ -836,12 +842,18 @@ async def main():
             except Exception as _ne:
                 log.debug(f'[NEWS] Filter error: {_ne}')
 
-            # VIX filter + strategy mode
+            # VIX filter + strategy mode (cached once per cycle!)
             try:
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
-                _strategy_mode=vix_engine.get_strategy_mode()
-                log.info(f'[VIX] Mode={_strategy_mode} Trend={vix_engine.get_trend()}')
+                # Fix 2: Cache all VIX data once!
+                _vix_data={
+                    'mode':vix_engine.get_strategy_mode(),
+                    'trend':vix_engine.get_trend(),
+                    'vix':vix_engine._vix
+                }
+                _strategy_mode=_vix_data['mode']
+                log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
                     await asyncio.sleep(60)
@@ -1006,13 +1018,14 @@ async def main():
                     try:
                         from v31_vix import vix_engine
                         _vix_boost,_vix_regime,_vix_val=vix_engine.score_signal()
-                        _s_mode=vix_engine.get_strategy_mode()
+                        _s_mode=_vix_data.get('mode','NORMAL')
                         signal['strategy_mode']=_s_mode
 
                         # Fix 1: Mode influences signals!
                         if _s_mode=='SELL_PREMIUM':
                             signal['score']=signal.get('score',0)-2
-                            log.info(f'[VIX] SELL_PREMIUM mode: score -2')
+                            signal['avoid_buy']=True  # Fix 3: flag for future selling!
+                            log.info(f'[VIX] SELL_PREMIUM mode: score -2, avoid_buy=True')
                         elif _s_mode=='SCALP':
                             if 't1_pct' in signal:
                                 signal['t1_pct']*=0.7
