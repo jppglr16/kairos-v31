@@ -65,8 +65,8 @@ def monitor():
         'Wrong regime': "grep 'not suitable for VWAP' v31_log.txt | wc -l",
         'Narrow ORB':   "grep 'narrow range skip' v31_log.txt | wc -l",
         'VIX blocked':  "grep 'Trading blocked' v31_log.txt | wc -l",
-        'News blocked': "grep 'NEWS.*blocked\|blocked.*NEWS' v31_log.txt | wc -l",
-        'Low quality':  "grep 'quality low\|weak score' v31_log.txt | wc -l",
+        'News blocked': "grep -E 'NEWS.*blocked|blocked.*NEWS' v31_log.txt | wc -l",
+        'Low quality':  "grep -E 'quality low|weak score' v31_log.txt | wc -l",
     }
     for name,cmd in filters.items():
         n=safe_int(run(cmd))
@@ -77,8 +77,8 @@ def monitor():
     total_wins=safe_int(run("grep 'TARGET HIT' v31_log.txt | wc -l"))
     total_loss=safe_int(run("grep 'SL HIT' v31_log.txt | wc -l"))
     approved=safe_int(run("grep 'APPROVED' v31_log.txt | wc -l"))
-    executed=safe_int(run("grep 'ORDER PLACED\|order.*placed\|COMPLETE' v31_log.txt | wc -l"))
-    failed=safe_int(run("grep 'ORDER FAILED\|REJECTED.*order\|order.*REJECTED' v31_log.txt | wc -l"))
+    executed=safe_int(run("grep -E 'ORDER PLACED|order.*placed|COMPLETE' v31_log.txt | wc -l"))
+    failed=safe_int(run("grep -E 'ORDER FAILED|REJECTED.*order|order.*REJECTED' v31_log.txt | wc -l"))
     _closed=total_wins+total_loss
     overall_wr=f'{total_wins/_closed*100:.1f}%' if _closed>0 else 'N/A (no closed trades yet)'
     print(f'\n📊 Overall Summary:')
