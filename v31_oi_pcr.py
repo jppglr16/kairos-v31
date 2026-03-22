@@ -39,8 +39,50 @@ class OIPCREngine:
             log.warning(f'[OI] Session error: {e}')
             return False
 
+    def fetch_angel_oi(self,symbol='NIFTY'):
+        """Fetch OI data from Angel One directly"""
+        try:
+            from v31_angel_trader import angel_trader
+            import json
+            if not angel_trader.connected:
+                return {}
+
+            # Try getOIData
+            r=angel_trader.obj.getOIData(symbol)
+            if isinstance(r,str):
+                try:r=json.loads(r)
+                except:return {}
+            if isinstance(r,dict) and r.get('data'):
+                log.info(f'[OI] {symbol} Angel OI data received ✅')
+                return r
+
+            # Try oIBuildup
+            r=angel_trader.obj.oIBuildup(symbol)
+            if isinstance(r,str):
+                try:r=json.loads(r)
+                except:return {}
+            if isinstance(r,dict) and r.get('data'):
+                return r
+        except Exception as e:
+            log.debug(f'[OI] Angel OI error: {e}')
+        return {}
+
     def fetch_option_chain(self,symbol='NIFTY',is_stock=False):
-        """Fetch option chain from NSE"""
+        """Fetch option chain - try Angel first, then NSE"""
+        # Check cache
+        now=time.time()
+        if symbol in self._cache:
+            if now-self._cache_time.get(symbol,0)<self.CACHE_TTL:
+                return self._cache[symbol]
+
+        # Try Angel One first (more reliable!)
+        angel_data=self.fetch_angel_oi(symbol)
+        if angel_data:
+            self._cache[symbol]=angel_data
+            self._cache_time[symbol]=now
+            return angel_data
+
+        log.debug(f'[OI] Angel failed, trying NSE...')
         # Check cache
         now=time.time()
         if symbol in self._cache:
