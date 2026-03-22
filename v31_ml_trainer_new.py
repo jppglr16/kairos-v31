@@ -192,16 +192,22 @@ def extract_features(df, idx):
 # LABEL OUTCOMES
 # ============================================================
 def label_outcome(df, entry_idx, action, atr):
-    """Check if trade was win or loss"""
+    """Adaptive % targets based on ATR/price ratio"""
     try:
         entry=float(df["close"].iloc[entry_idx])
-        # Use % based SL/T1 for better balance!
-        # Min 0.5% move to avoid noise
-        pct_move=max(atr/entry,0.005)  # At least 0.5%
-        sl=entry*(1-pct_move*1.5) if action=="BUY" else entry*(1+pct_move*1.5)
-        t1=entry*(1+pct_move*2.0) if action=="BUY" else entry*(1-pct_move*2.0)
-        # Check next 30 candles
-        for i in range(entry_idx+1, min(entry_idx+30, len(df))):
+        if entry<=0:return 0
+        atr_pct=atr/entry
+        # Adaptive cap: MCX commodities move more
+        if atr_pct>0.03:atr_pct=0.015  # High ATR instruments
+        elif atr_pct>0.02:atr_pct=0.012
+        else:atr_pct=max(atr_pct,0.003)
+        sl_pct=max(atr_pct*0.8,0.003)
+        t1_pct=max(atr_pct*1.2,0.005)
+        sl_pct=min(sl_pct,0.05)
+        t1_pct=min(t1_pct,0.08)
+        sl=entry*(1-sl_pct) if action=="BUY" else entry*(1+sl_pct)
+        t1=entry*(1+t1_pct) if action=="BUY" else entry*(1-t1_pct)
+        for i in range(entry_idx+1,min(entry_idx+120,len(df))):
             hi=float(df["high"].iloc[i])
             lo=float(df["low"].iloc[i])
             if action=="BUY":
