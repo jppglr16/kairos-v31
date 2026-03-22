@@ -14,141 +14,106 @@ log=logging.getLogger(__name__)
 MCX_INST=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
 
 
-def orb_signal(df5, instrument, capital):
+def orb_signal(df5,instrument,capital):
     """
     Path C: Opening Range Breakout
-    - NSE: First 15 mins (3 candles) = range
-    - MCX: First 30 mins (6 candles) = range
-    - Trade only after range forms
-    - Volume + breakout confirmation
+    NSE: 15-min ORB (9:30-9:45)
+    MCX: 30-min ORB (9:00-9:30)
+    RR = 1:3 high conviction only!
     """
     try:
         from datetime import datetime
         now=datetime.now()
+        h=now.hour
+        m=now.minute
+
+        MCX_INST=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
         is_mcx=instrument in MCX_INST
 
-        # ✅ Time filter
+        # Time filter
         if is_mcx:
-            if not (9<=now.hour<11):return None
-            orb_candles=6   # MCX = 30 min range
+            if not (9<=h<11):return None
+            orb_candles=6  # 30 mins
         else:
-            if not (9<=now.hour<11):return None
-            if now.hour==9 and now.minute<30:return None  # Wait for range
-            orb_candles=3   # NSE = 15 min range (faster reaction)
+            if h==9 and m<30:return None
+            if not (9<=h<=10):return None
+            orb_candles=3  # 15 mins
 
-        if len(df5)<orb_candles+4:return None
-
-        # Get today's candles
-        today=now.strftime('%Y-%m-%d')
-        try:
-            df_today=df5[df5.index.strftime('%Y-%m-%d')==today]
-        except:
-            df_today=df5.tail(20)
+        # Get today candles
+        import pandas as pd
+        df5['date']=pd.to_datetime(df5['time']).dt.date
+        today=datetime.now().date()
+        df_today=df5[pd.to_datetime(df5['time']).dt.date==today].reset_index(drop=True)
 
         if len(df_today)<orb_candles+1:return None
 
-        # ✅ Opening range
+        # Opening Range
         orb_high=float(df_today['high'].iloc[:orb_candles].max())
         orb_low=float(df_today['low'].iloc[:orb_candles].min())
         orb_range=orb_high-orb_low
 
         current_close=float(df_today['close'].iloc[-1])
-        current_high=float(df_today['high'].iloc[-1])
-        current_low=float(df_today['low'].iloc[-1])
-
-        # ATR for noise filter
         atr=float((df5['high']-df5['low']).tail(14).mean())
 
-        # ✅ Range validation - avoid too narrow range
+        # Range validation
         if orb_range<atr*0.5:
-            log.debug(f'[ORB] {instrument} range too narrow: {orb_range:.2f} < {atr*0.5:.2f}')
+            log.debug(f'[ORB] {instrument} narrow range skip')
             return None
 
-        # ✅ Volume confirmation
+        # Volume confirmation
         vol=df_today['volume'] if 'volume' in df_today.columns else None
-        avg_vol=float(vol.iloc[:orb_candles].mean()) if vol is not None and float(vol.iloc[:orb_candles].mean())>0 else 1
-        curr_vol=float(vol.iloc[-1]) if vol is not None else 1
-        vol_confirm=curr_vol>avg_vol*1.2
+        if vol is not None and len(vol)>orb_candles:
+            avg_vol=float(vol.iloc[:orb_candles].mean())
+            curr_vol=float(vol.iloc[-1])
+            vol_confirm=curr_vol>avg_vol*1.5  # Strong filter!
+        else:
+            vol_confirm=True
 
-        # ✅ SL = 60% of range (tighter RR)
-        sl=round(orb_range*0.6, 2)
+        score=14
 
-        score=14  # Base ORB score
-
-        # ✅ BUY Breakout
-        if current_close>orb_high and current_low>orb_low:
-            if vol_confirm:score+=3
-            if current_close>orb_high+atr*0.3:score+=2  # Strong breakout bonus
-            if score<15:return None  # Minimum quality filter
-
-            log.info(f'[ORB] {instrument} BUY breakout! High:{orb_high:.2f} Close:{current_close:.2f} Score:{score}')
+        # BUY Breakout
+        if current_close>orb_high:
+            strength=current_close-orb_high
+            if strength>atr*0.3:score+=3
+            elif strength>atr*0.15:score+=2
+            if vol_confirm:score+=2
+            if score<15:return None
+            log.info(f'[ORB] {instrument} BUY breakout! score={score}')
             return {
-                'instrument':instrument,
-                'action':'BUY',
-                'option_type':'CE',
-                'price':current_close,
-                'sl_points':sl,
+                'instrument':instrument,'action':'BUY',
+                'option_type':'CE','price':current_close,
+                'sl_points':round(orb_range*0.6,2),
                 'sl_type':'ORB_LOW',
-                'target1':round(current_close+sl*2,2),
-                'target2':round(current_close+sl*3,2),
-                'rr_ratio':3.0,
-                'score':score,
-                'regime':'TRENDING_UP',
-                'liq_type':'ORB_BREAKOUT',
-                'imbalance_type':'ORB_BUY',
-                'path':'C_ORB',
-                'atr':atr,
-                'orb_high':orb_high,
-                'orb_low':orb_low,
-                'gamma_boost':0,
-                'gamma_info':None,
-                'oi_trap':None,
-                'use_trailing':False,
-                'hold_overnight':False,
-                'trap_type':'',
-                'trap_score':0,
-                'version':'V31'
+                'target1':round(current_close+orb_range*2,2),
+                'target2':round(current_close+orb_range*3,2),
+                'rr_ratio':3.0,'score':score,
+                'regime':'TRENDING_UP','liq_type':'ORB_BREAKOUT',
+                'imbalance_type':'ORB_BUY','path':'C_ORB','atr':atr
             }
 
-        # ✅ SELL Breakdown
-        if current_close<orb_low and current_high<orb_high:
-            if vol_confirm:score+=3
-            if current_close<orb_low-atr*0.3:score+=2
+        # SELL Breakdown
+        if current_close<orb_low:
+            strength=orb_low-current_close
+            if strength>atr*0.3:score+=3
+            elif strength>atr*0.15:score+=2
+            if vol_confirm:score+=2
             if score<15:return None
-
-            log.info(f'[ORB] {instrument} SELL breakdown! Low:{orb_low:.2f} Close:{current_close:.2f} Score:{score}')
+            log.info(f'[ORB] {instrument} SELL breakdown! score={score}')
             return {
-                'instrument':instrument,
-                'action':'SELL',
-                'option_type':'PE',
-                'price':current_close,
-                'sl_points':sl,
+                'instrument':instrument,'action':'SELL',
+                'option_type':'PE','price':current_close,
+                'sl_points':round(orb_range*0.6,2),
                 'sl_type':'ORB_HIGH',
-                'target1':round(current_close-sl*2,2),
-                'target2':round(current_close-sl*3,2),
-                'rr_ratio':3.0,
-                'score':score,
-                'regime':'TRENDING_DOWN',
-                'liq_type':'ORB_BREAKDOWN',
-                'imbalance_type':'ORB_SELL',
-                'path':'C_ORB',
-                'atr':atr,
-                'orb_high':orb_high,
-                'orb_low':orb_low,
-                'gamma_boost':0,
-                'gamma_info':None,
-                'oi_trap':None,
-                'use_trailing':False,
-                'hold_overnight':False,
-                'trap_type':'',
-                'trap_score':0,
-                'version':'V31'
+                'target1':round(current_close-orb_range*2,2),
+                'target2':round(current_close-orb_range*3,2),
+                'rr_ratio':3.0,'score':score,
+                'regime':'TRENDING_DOWN','liq_type':'ORB_BREAKDOWN',
+                'imbalance_type':'ORB_SELL','path':'C_ORB','atr':atr
             }
 
     except Exception as e:
-        log.debug(f'[ORB] Error {instrument}: {e}')
+        log.error(f'[ORB] {instrument}: {e}')
     return None
-
 
 def supertrend_signal(df5, instrument, period=7, multiplier=3):
     """
