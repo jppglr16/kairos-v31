@@ -562,11 +562,17 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             log.debug(f'[V31] Gamma error: {e}')
 
         # STEP 7: Structured Score Calculation
+        # Fix 1: Define trend_aligned properly!
+        trend_aligned=(
+            (action=='BUY' and trend5=='UP' and trend15=='UP') or
+            (action=='SELL' and trend5=='DOWN' and trend15=='DOWN')
+        )
+
         score_components={
-            "base":5,  # Base for valid signal
+            "base":5,
             "fvg":4 if has_fvg else 0,
             "ob":3 if has_ob else 0,
-            "trend":4 if trend_aligned else 0,
+            "trend":3 if trend_aligned else 0,  # Fix 2: reduced to 3
             "liquidity":locals().get("liq_score_adj",0),
             "trend_adj":locals().get("trend_score_adj",0),
         }
@@ -575,9 +581,8 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
         MCX_INSTRUMENTS=["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
         is_mcx=instrument in MCX_INSTRUMENTS
 
-        # Multi-TF alignment bonus
-        if trend5==trend15:score+=2
-        if trend_daily==trend5:score+=2
+        # Daily trend bonus only (not duplicate!)
+        if trend_daily==trend5:score+=1  # Reduced weight
 
         if not is_mcx:
             score+=gamma_boost
@@ -603,7 +608,9 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             elif action=="SELL" and current<vwap:score+=2
         except:pass
 
-        log.debug(f"[V31] {instrument} score_components={score_components} total={score}")
+        # Fix 3: Cap score to prevent explosion!
+        score=min(score,30)
+        log.debug(f"[V31] {instrument} components={score_components} total={score}")
 
         # STEP 8: Smart SL from structure
         from v30_rr_filter import find_tight_sl,find_best_target
