@@ -51,12 +51,14 @@ class VIXEngine:
                     'https://www.nseindia.com/api/allIndices',
                     timeout=10)
                 data=json.loads(resp.read().decode())
+                if 'data' not in data:
+                    raise ValueError('Invalid NSE response')
                 vix=next((i for i in data.get('data',[])
                           if 'VIX' in i.get('index','')),None)
                 if vix:
                     val=float(vix.get('last',0))
                     self._vix=val
-                    self._last_fetch=now
+                    self._last_fetch=time.time()  # Fix 1: after fetch!
                     log.info(f'[VIX] India VIX={val:.2f}')
                     return val
             except Exception as e:
@@ -94,7 +96,9 @@ class VIXEngine:
     def score_signal(self,action='BUY'):
         """Score boost based on VIX"""
         regime,boost=self.get_regime()
-        vix=self._vix or 0
+        vix=self._vix  # Fix 3: keep None!
+        if vix is None:
+            return 0,'UNKNOWN',None
         log.info(f'[VIX] {vix:.1f} regime={regime} boost={boost:+d}')
         return boost,regime,vix
 
@@ -106,10 +110,10 @@ class VIXEngine:
         """
         vix=self.get_vix()
         if vix is None:return True,'Unknown VIX - allow'
-        if vix>25:
-            return False,f'VIX too high ({vix:.1f}) - extreme volatility!'
+        if vix>27:
+            return False,f'VIX too high ({vix:.1f}) - extreme!'
         if vix<10:
-            return False,f'VIX too low ({vix:.1f}) - premiums worthless!'
+            return True,f'VIX low ({vix:.1f}) - avoid buying only'
         return True,f'VIX={vix:.1f} OK'
 
 # Global instance

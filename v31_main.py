@@ -814,7 +814,7 @@ async def main():
                 _vix_ok,_vix_reason=vix_engine.should_trade()
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
-                    await asyncio.sleep(300)
+                    await asyncio.sleep(60)  # Fix 5: 1 min not 5!
                     continue
             except Exception as _ve:
                 log.debug(f'[VIX] Error: {_ve}')
@@ -836,7 +836,7 @@ async def main():
                 _vix_ok,_vix_reason=vix_engine.should_trade()
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
-                    await asyncio.sleep(300)
+                    await asyncio.sleep(60)  # Fix 5: 1 min not 5!
                     continue
             except Exception as _ve:
                 log.debug(f'[VIX] Error: {_ve}')
@@ -990,13 +990,23 @@ async def main():
                     if datetime.now().hour==0 and datetime.now().minute<2:
                         used_zones.clear()
 
-                    # VIX score boost
+                    # VIX score boost + dynamic RR
                     try:
                         from v31_vix import vix_engine
                         _vix_boost,_vix_regime,_vix_val=vix_engine.score_signal()
                         if _vix_boost!=0:
                             signal['score']=signal.get('score',0)+_vix_boost
                             log.info(f'[VIX] {instrument} VIX={_vix_val:.1f} regime={_vix_regime} boost={_vix_boost:+d}')
+                        # Fix 6: Dynamic RR based on VIX
+                        if _vix_val:
+                            if _vix_val>20:
+                                signal['sl_pct']=signal.get('sl_pct',0.40)*1.3
+                                signal['t1_pct']=signal.get('t1_pct',1.60)*1.5
+                                log.info(f'[VIX] High vol: wider SL+T1')
+                            elif _vix_val<14:
+                                signal['sl_pct']=signal.get('sl_pct',0.40)*0.8
+                                signal['t1_pct']=signal.get('t1_pct',1.60)*0.7
+                                log.info(f'[VIX] Low vol: tighter SL+T1')
                     except Exception as _ve:
                         log.debug(f'[VIX] Score error: {_ve}')
 
