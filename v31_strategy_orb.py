@@ -91,7 +91,7 @@ def orb_signal(df5,instrument,capital):
             if vol_confirm:score+=2
             # Trend alignment bonus
             if _trend=='UP':score+=2
-            elif _trend=='DOWN':score-=2
+            elif _trend=='DOWN':score-=1  # Reduced penalty!
             if score<15:return None
             log.info(f'[ORB] {instrument} BUY breakout! score={score}')
             return {
@@ -114,7 +114,7 @@ def orb_signal(df5,instrument,capital):
             if vol_confirm:score+=2
             # Trend alignment bonus
             if _trend=='DOWN':score+=2
-            elif _trend=='UP':score-=2
+            elif _trend=='UP':score-=1  # Reduced penalty!
             if score<15:return None
             log.info(f'[ORB] {instrument} SELL breakdown! score={score}')
             return {
