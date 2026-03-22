@@ -164,7 +164,7 @@ class VIXEngine:
 
         if vix is None:return 'NORMAL'
         if 'SPIKE' in str(regime):return 'NO_TRADE'
-        if vix<12:  # Below sweet spotreturn 'SELL_PREMIUM'
+        if vix<12:return 'SELL_PREMIUM'
         if vix<20:return 'TREND_BUY'    # Best!
         if vix<25:return 'SCALP'
         return 'DEFENSIVE'
