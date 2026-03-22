@@ -1343,6 +1343,16 @@ async def main():
                         _lots=get_lots_kelly(instrument,capital,_ml_p,_rr,_prem)
                     except:
                         _lots=get_lots(instrument,capital)
+                    # Apply SL/T1 multipliers from score
+                    try:
+                        _sl_mult=signal.get('sl_multiplier',1.0)
+                        _t1_mult=signal.get('t1_multiplier',1.0)
+                        if _sl_mult!=1.0 or _t1_mult!=1.0:
+                            signal['sl_pct']=signal.get('sl_pct',0.40)*_sl_mult
+                            signal['t1_pct']=signal.get('t1_pct',1.60)*_t1_mult
+                            log.info(f'[SCORE] {instrument} SL×{_sl_mult} T1×{_t1_mult}')
+                    except:pass
+
                     # Smart lot allocation
                     _lots=signal.get('suggested_lots',1)  # From score!
                     try:
@@ -1365,6 +1375,17 @@ async def main():
                             continue
                         # Ensure global cap not exceeded
                         _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
+
+                        # Fix 2: Capital-based lot cap!
+                        try:
+                            _prem=float(signal.get('premium',50))
+                            _lot_size=signal.get('lot_size',1)
+                            _cost_per_lot=_prem*_lot_size*1.1
+                            if _cost_per_lot>0:
+                                _max_lots=max(1,int(capital//_cost_per_lot))
+                                _lots=min(_lots,_max_lots)
+                                log.info(f'[CAP] {instrument} capital cap: {_lots} lots (max={_max_lots})')
+                        except:pass
                     except:pass
                     _qty=_lots
 
