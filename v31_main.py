@@ -816,7 +816,7 @@ async def main():
                 _vix_data={
                     'mode':vix_engine.get_strategy_mode(),
                     'trend':vix_engine.get_trend(),
-                    'vix':vix_engine._vix
+                    'vix':vix_engine.get_vix_value()
                 }
                 _strategy_mode=_vix_data['mode']
                 log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
@@ -850,7 +850,7 @@ async def main():
                 _vix_data={
                     'mode':vix_engine.get_strategy_mode(),
                     'trend':vix_engine.get_trend(),
-                    'vix':vix_engine._vix
+                    'vix':vix_engine.get_vix_value()
                 }
                 _strategy_mode=_vix_data['mode']
                 log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
@@ -1048,7 +1048,8 @@ async def main():
                                     # Fix 3: Smart skip
                                     signal['score']=signal.get('score',0)-5
                                     # Only skip if score drops below threshold
-                                    _threshold=40  # quality threshold
+                                    from v31_vix import QUALITY_THRESHOLD
+                                    _threshold=QUALITY_THRESHOLD
                                     # Fix 2: Normalized quality
                                     _quality=(signal.get('score',0)/50)*signal.get('rr_ratio',1)*100
                                     if _quality<_threshold:

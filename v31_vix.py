@@ -103,13 +103,13 @@ class VIXEngine:
         if vix is None:
             return 'UNKNOWN',0
 
-        if vix<12:
+        if vix<12:  # Below sweet spot
             return 'TOO_LOW',-1
         elif vix<14:
             return 'LOW',0
-        elif vix<=20:
+        elif vix<=VIX_SWEET_HIGH:
             return 'SWEET_SPOT',2  # Best!
-        elif vix<=25:
+        elif vix<=VIX_DANGER:
             return 'HIGH',-1
         else:
             return 'EXTREME',-3
@@ -117,6 +117,10 @@ class VIXEngine:
     def get_trend(self):
         """Get VIX trend"""
         return getattr(self,'_vix_trend','STABLE')
+
+    def get_vix_value(self):
+        """Clean getter for VIX value"""
+        return self._vix
 
     def score_signal(self,action='BUY'):
         """Score boost based on VIX + trend"""
@@ -144,7 +148,7 @@ class VIXEngine:
         """
         vix=self.get_vix()
         if vix is None:return True,'Unknown VIX - allow'
-        if vix>25:
+        if vix>VIX_DANGER:
             return False,f'VIX too high ({vix:.1f}) - dangerous for buying!'
         if vix<10:
             return True,f'VIX low ({vix:.1f}) - avoid buying only'
@@ -160,7 +164,7 @@ class VIXEngine:
 
         if vix is None:return 'NORMAL'
         if 'SPIKE' in str(regime):return 'NO_TRADE'
-        if vix<12:return 'SELL_PREMIUM'
+        if vix<12:  # Below sweet spotreturn 'SELL_PREMIUM'
         if vix<20:return 'TREND_BUY'    # Best!
         if vix<25:return 'SCALP'
         return 'DEFENSIVE'
