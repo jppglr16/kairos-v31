@@ -245,10 +245,15 @@ def get_trend_v31(df):
     except:return 0
 
 
-def vwap_rejection_signal(df5,instrument,atr):
+def vwap_rejection_signal(df5,instrument,atr,regime='RANGING'):
     """Path B: VWAP rejection signal (clean production version)"""
     try:
         if len(df5)<5:return None
+
+        # Regime filter - VWAP works best in ranging markets!
+        if regime not in ['RANGING','LOW_VOL','SIDEWAYS']:
+            log.debug(f'[PathB] Skipping - regime={regime} not suitable for VWAP')
+            return None
 
         close=df5['close']
         high=df5['high']
@@ -270,6 +275,15 @@ def vwap_rejection_signal(df5,instrument,atr):
             return None
 
         score=14
+
+        # Distance scoring (context awareness!)
+        distance=abs(price-vwap)/atr if atr>0 else 0
+        if distance>1.0:
+            score+=2  # Strong rejection!
+            log.debug(f'[PathB] Strong rejection distance={distance:.2f} +2')
+        elif distance<0.4:
+            score-=2  # Weak signal
+            log.debug(f'[PathB] Weak signal distance={distance:.2f} -2')
 
         # BUY: VWAP Reclaim
         if prev_price<vwap and price>vwap:
