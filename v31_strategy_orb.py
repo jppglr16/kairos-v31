@@ -137,10 +137,11 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
     """
     Path D: Supertrend Signal
     Trades only on direction FLIP
-    With RSI + Volume + Time filter
+    With RSI + Volume + Time + Trend filter
     """
     try:
         import pandas as pd
+        import numpy as np
         from datetime import datetime
         now=datetime.now()
         h=now.hour
@@ -152,7 +153,7 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
             if not (9<=h<=23):return None
         else:
             if h<9 or h>15:return None
-            if 12<=h<13:return None  # Avoid lunch
+            if 12<=h<13:return None
 
         if len(df5)<period*3:return None
 
@@ -174,22 +175,18 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
         upper_band=hl2+multiplier*atr
         lower_band=hl2-multiplier*atr
 
-        # Fix 1: Proper vectorized direction
-        direction=pd.Series(1,index=df5.index,dtype=int)
-        for i in range(1,len(df5)):
-            if float(close.iloc[i])>float(upper_band.iloc[i-1]):
-                direction.iloc[i]=1   # Bullish
-            elif float(close.iloc[i])<float(lower_band.iloc[i-1]):
-                direction.iloc[i]=-1  # Bearish
-            else:
-                direction.iloc[i]=direction.iloc[i-1]
+        # Fix 3: Numpy vectorized direction (no loop!)
+        _dir=np.where(
+            close>upper_band.shift(1),1,
+            np.where(close<lower_band.shift(1),-1,np.nan)
+        )
+        direction=pd.Series(_dir).ffill().fillna(0).astype(int)
 
         # RSI
         delta=close.diff()
         gain=delta.clip(lower=0).rolling(14).mean()
         loss=(-delta.clip(upper=0)).rolling(14).mean()
-        rs=gain/(loss+1e-10)
-        rsi=100-(100/(1+rs))
+        rsi=100-(100/(1+gain/(loss+1e-10)))
 
         curr_dir=int(direction.iloc[-1])
         prev_dir=int(direction.iloc[-2])
@@ -197,34 +194,39 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
         curr_close=float(close.iloc[-1])
         curr_atr=float(atr.iloc[-1])
 
-        # Only trade on direction FLIP
+        # Only on FLIP
         if curr_dir==prev_dir:return None
 
-        # Fix 2: Volume confirmation
-        vol_ok=True
+        # Bonus: Weak flip filter
+        if abs(curr_close-float(close.iloc[-3]))<curr_atr*0.5:
+            log.debug(f'[ST] {instrument} weak flip skip')
+            return None
+
+        # Volume confirmation
         if volume is not None:
             avg_vol=float(volume.tail(20).mean())
             curr_vol=float(volume.iloc[-1])
-            vol_ok=curr_vol>avg_vol*1.2
-            if not vol_ok:
+            if avg_vol>0 and curr_vol<avg_vol*1.2:
                 log.debug(f'[ST] {instrument} low volume skip')
                 return None
 
-        # Fix 3: Trend alignment
+        # Trend alignment
         try:
             from v31_strategy import get_trend_v31
             trend=get_trend_v31(df5)
         except:
             trend='NEUTRAL'
 
-        score=16  # Base ST score
+        # Fix 4: Base score 14
+        score=14
 
         # BUY: Bullish flip
         if curr_dir==1:
-            if curr_rsi<65:score+=2   # Not overbought
-            if curr_rsi>40:score+=2   # Has momentum
-            if curr_rsi>70:score-=3   # Overbought penalty
-            # Fix 3: Trend alignment
+            # Fix 5: Clean RSI scoring
+            if 40<curr_rsi<65:score+=3
+            elif curr_rsi<=40:score+=1
+            elif curr_rsi>=70:score-=3
+            # Trend
             if trend=='UP':score+=2
             elif trend=='DOWN':score-=1
             if score<15:return None
@@ -244,17 +246,18 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
                 'regime':'TRENDING_UP',
                 'liq_type':'ST_CROSS',
                 'imbalance_type':'ST_BUY',
-                'path':'D_ST',
+                'path':'D_SUPERTREND',  # Fix 1: correct tag!
                 'atr':curr_atr,
                 'version':'V31'
             }
 
         # SELL: Bearish flip
         else:
-            if curr_rsi>35:score+=2
-            if curr_rsi<60:score+=2
-            if curr_rsi<30:score-=3
-            # Fix 3: Trend alignment
+            # Fix 5: Clean RSI scoring
+            if 35<curr_rsi<60:score+=3
+            elif curr_rsi>=60:score+=1
+            elif curr_rsi<=30:score-=3
+            # Trend
             if trend=='DOWN':score+=2
             elif trend=='UP':score-=1
             if score<15:return None
@@ -274,7 +277,7 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
                 'regime':'TRENDING_DOWN',
                 'liq_type':'ST_CROSS',
                 'imbalance_type':'ST_SELL',
-                'path':'D_ST',
+                'path':'D_SUPERTREND',  # Fix 1: correct tag!
                 'atr':curr_atr,
                 'version':'V31'
             }
