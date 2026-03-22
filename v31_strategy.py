@@ -307,7 +307,7 @@ def vwap_rejection_signal(df5,instrument,atr,regime='RANGING'):
                     'rr_ratio':2.0,'score':score,
                     'regime':'VWAP_REJECT','liq_type':'VWAP_CROSS',
                     'imbalance_type':'VWAP_BUY','path':'B',
-                    'atr':atr,'version':'V31'
+                    'atr':atr,'path':'A_SMART','version':'V31'
                 }
 
         # SELL: VWAP Breakdown
@@ -332,7 +332,7 @@ def vwap_rejection_signal(df5,instrument,atr,regime='RANGING'):
                     'rr_ratio':2.0,'score':score,
                     'regime':'VWAP_REJECT','liq_type':'VWAP_CROSS',
                     'imbalance_type':'VWAP_SELL','path':'B',
-                    'atr':atr,'version':'V31'
+                    'atr':atr,'path':'A_SMART','version':'V31'
                 }
 
     except Exception as e:
@@ -654,7 +654,7 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             'use_trailing':is_trending,
             'hold_overnight':False,
             'timestamp':str(now),
-            'version':'V31',
+            'path':'A_SMART','version':'V31',
             'trap_type':trap_detected.get('type','') if trap_detected else '',
             'trap_score':trap_score_val
         }
