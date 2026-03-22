@@ -1344,7 +1344,7 @@ async def main():
                     except:
                         _lots=get_lots(instrument,capital)
                     # Smart lot allocation
-                    _lots=1  # Base = 1 lot
+                    _lots=signal.get('suggested_lots',1)  # From score!
                     try:
                         from v31_capital_engine import capital_engine
                         from v31_exit_monitor import exit_monitor

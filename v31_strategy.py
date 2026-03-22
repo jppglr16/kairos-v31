@@ -505,8 +505,10 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             elif has_liq_s:action='SELL';has_liq=True;liq_type=liq_type_s;liq_level=liq_level_s
             else:return None
 
-        # Fix 1: Trend alignment - SEPARATE variable!
+        # Safe initialization
+        liq_score_adj=0
         trend_score_adj=0
+        # Fix 1: Trend alignment - SEPARATE variable!
         if action=='BUY':
             if trend5=='UP' and trend15=='UP':
                 trend_score_adj+=2  # Aligned bonus!
@@ -608,9 +610,41 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             elif action=="SELL" and current<vwap:score+=2
         except:pass
 
-        # Fix 3: Cap score to prevent explosion!
+        # Fix 3: Cap + normalize
         score=min(score,30)
-        log.debug(f"[V31] {instrument} components={score_components} total={score}")
+        score_pct=score/30  # 0.0 to 1.0
+
+        # Position sizing from score
+        if score_pct>0.80:
+            suggested_lots=2  # High conviction!
+        elif score_pct>0.60:
+            suggested_lots=1  # Normal
+        else:
+            log.debug(f"[V31] {instrument} weak score {score}/30 skip")
+            return None  # Skip weak trades!
+
+        # SL/T1 tuning based on score
+        sl_multiplier=1.0
+        t1_multiplier=1.0
+        if score_pct>0.75:
+            sl_multiplier=1.2  # Wider SL for strong signals
+            t1_multiplier=1.3  # Bigger target!
+        elif score_pct<0.50:
+            sl_multiplier=0.8  # Tighter SL for weak signals
+            t1_multiplier=0.7
+
+        # Entry timing filter (last candle direction)
+        last=df5.iloc[-1]
+        last_bullish=float(last['close'])>float(last['open'])
+        if action=='BUY' and not last_bullish:
+            log.debug(f'[V31] {instrument} BUY on bearish candle - weak entry')
+            score-=2  # Penalty not block
+        elif action=='SELL' and last_bullish:
+            log.debug(f'[V31] {instrument} SELL on bullish candle - weak entry')
+            score-=2
+
+        score=max(score,0)  # No negative scores
+        log.debug(f"[V31] {instrument} score={score}/30 ({score_pct:.0%}) lots={suggested_lots}")
 
         # STEP 8: Smart SL from structure
         from v30_rr_filter import find_tight_sl,find_best_target
