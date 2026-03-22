@@ -194,6 +194,12 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
         curr_close=float(close.iloc[-1])
         curr_atr=float(atr.iloc[-1])
 
+        # Safe NaN check!
+        import numpy as np
+        if np.isnan(curr_rsi) or np.isnan(curr_atr):
+            log.debug(f'[ST] {instrument} NaN values skip')
+            return None
+
         # Only on FLIP
         if curr_dir==prev_dir:return None
 
