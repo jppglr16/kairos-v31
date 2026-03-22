@@ -499,57 +499,75 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
         }
 
         score=sum(score_components.values())
+
         MCX_INSTRUMENTS=["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
         is_mcx=instrument in MCX_INSTRUMENTS
 
-        # Daily trend bonus only (not duplicate!)
-        if trend_daily==trend5:score+=1  # Reduced weight
+        # Daily trend bonus (light weight)
+        if trend_daily==trend5:
+            score+=1
 
+        # Gamma only for NSE
         if not is_mcx:
             score+=gamma_boost
 
-        # Session scoring
+        # Session Scoring
         if is_mcx:
-            if 21<=h<=23:score+=4
-            elif 18<=h<=21:score+=3
-            elif 9<=h<=11:score+=2
-            atr_pct=atr/current*100 if current>0 else 0
-            if atr_pct>0.5:score+=3
-            elif atr_pct>0.3:score+=2
-            elif atr_pct>0.2:score+=1
+            if 21<=h<=23:
+                score+=4
+            elif 18<=h<21:
+                score+=3
+            elif 9<=h<=11:
+                score+=2
         else:
-            if h==10 or h==11:score+=3
-            elif h==13 or h==14:score+=2
-            elif 9<=h<10:score+=2  # Morning bonus!
+            if h in [10,11]:
+                score+=3
+            elif h in [13,14]:
+                score+=2
+            elif 9<=h<10:
+                score+=2  # Morning bonus!
 
-        # VWAP
+        # Volatility Scoring (ALL instruments!)
+        atr_pct=atr/current*100 if current>0 else 0
+        if atr_pct>0.5:score+=3
+        elif atr_pct>0.3:score+=2
+        elif atr_pct>0.2:score+=1
+
+        # VWAP Alignment (rolling 20 candles)
         try:
-            vwap=float((c*v).sum()/v.sum())
-            if action=="BUY" and current>vwap:score+=2
-            elif action=="SELL" and current<vwap:score+=2
-        except:pass
+            if 'volume' in df5.columns and float(df5['volume'].sum())>0:
+                _typical=(df5['high']+df5['low']+df5['close'])/3
+                _vwap=float((_typical.tail(20)*df5['volume'].tail(20)).sum()/
+                            df5['volume'].tail(20).sum())
+            else:
+                _vwap=float((df5['high'].tail(20)+df5['low'].tail(20)+
+                             df5['close'].tail(20)).mean()/3)
+            if action=='BUY' and current>_vwap:score+=2
+            elif action=='SELL' and current<_vwap:score+=2
+        except Exception as _ve:
+            log.debug(f'[VWAP] {instrument}: {_ve}')
 
-        # Fix 3: Cap + normalize
+        # Score cap + normalize
         score=min(score,30)
-        score_pct=score/30  # 0.0 to 1.0
+        score_pct=score/30
 
-        # Position sizing from score
+        # Position sizing
         if score_pct>0.80:
-            suggested_lots=2  # High conviction!
+            suggested_lots=2
         elif score_pct>0.60:
-            suggested_lots=1  # Normal
+            suggested_lots=1
         else:
-            log.debug(f"[V31] {instrument} weak score {score}/30 skip")
-            return None  # Skip weak trades!
+            log.debug(f'[V31] {instrument} weak score {score}/30 skip')
+            return None
 
-        # SL/T1 tuning based on score
+        # SL/T1 tuning
         sl_multiplier=1.0
         t1_multiplier=1.0
         if score_pct>0.75:
-            sl_multiplier=1.2  # Wider SL for strong signals
-            t1_multiplier=1.3  # Bigger target!
+            sl_multiplier=1.2
+            t1_multiplier=1.3
         elif score_pct<0.50:
-            sl_multiplier=0.8  # Tighter SL for weak signals
+            sl_multiplier=0.8
             t1_multiplier=0.7
 
         # Entry timing filter (last candle direction)
