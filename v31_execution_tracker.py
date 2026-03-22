@@ -7,6 +7,31 @@ import json,os,logging
 from datetime import datetime
 log=logging.getLogger(__name__)
 
+def get_brokerage(instrument,lots=1,is_options=True):
+    """
+    Dynamic brokerage calculation
+    Angel One: Rs.20 flat per order
+    """
+    MCX=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
+    # Angel One flat fee
+    entry_charge=20  # Rs.20 per order
+    exit_charge=20   # Rs.20 per order
+    # STT (options: 0.05% on sell side only)
+    # Exchange charges ~0.05%
+    # GST 18% on brokerage
+    brokerage=(entry_charge+exit_charge)*1.18  # With GST
+    # Approximate STT+exchange
+    if is_options:
+        stt=0  # STT on options = 0 on buy side
+        exchange=10  # Approx exchange charges
+    else:
+        stt=20
+        exchange=15
+    total=brokerage+stt+exchange
+    # Scale with lots (exchange charges scale)
+    total+=lots*2  # Small per-lot charge
+    return round(total,2)
+
 class ExecutionTracker:
     def __init__(self):
         self.file='execution_log.json'
@@ -68,12 +93,18 @@ class ExecutionTracker:
                 return
         log.warning(f'[EXEC] trade_id {trade_id} not found!')
 
-    def executed(self,trade_id,entry_price,status='COMPLETE'):
-        """Order fully executed - handles COMPLETE/FILLED"""
+    def executed(self,trade_id,entry_price,actual_fill=None,status='COMPLETE'):
+        """Fix 4: Use actual fill price from broker"""
         for t in self.data['trades']:
             if t['id']==trade_id:
                 t['status']='EXECUTED'
-                t['entry_price']=entry_price
+                # Fix 4: Prefer actual fill price!
+                t['entry_price']=actual_fill if actual_fill else entry_price
+                t['signal_price']=entry_price
+                if actual_fill and actual_fill!=entry_price:
+                    slippage=abs(actual_fill-entry_price)
+                    t['slippage']=slippage
+                    log.info(f'[EXEC] Slippage detected: {slippage:.2f}')
                 self._save()
                 log.info(f'[EXEC] {t["instrument"]} EXECUTED @ {entry_price}')
                 return
@@ -88,23 +119,64 @@ class ExecutionTracker:
                 log.warning(f'[EXEC] {t["instrument"]} FAILED: {reason}')
                 return
 
-    def closed(self,trade_id,exit_price,result,lot_size=1,lots=1,charges=80):
+    def partial_exit(self,trade_id,exit_price,qty_exited,lot_size=1):
+        """Fix 2: Partial exit at T1"""
+        for t in self.data['trades']:
+            if t['id']==trade_id:
+                entry=t.get('entry_price',0) or 0
+                raw_pnl=(exit_price-entry)*lot_size*qty_exited
+                charges=get_brokerage(t['instrument'],qty_exited)
+                partial_pnl=round(raw_pnl-charges,2)
+                t['partial_exits']=t.get('partial_exits',[])+[{
+                    'price':exit_price,
+                    'qty':qty_exited,
+                    'pnl':partial_pnl
+                }]
+                t['qty_remaining']=t.get('lots',1)-qty_exited
+                t['partial_pnl']=t.get('partial_pnl',0)+partial_pnl
+                self._save()
+                log.info(f'[EXEC] {t["instrument"]} partial exit '
+                        f'qty={qty_exited} pnl={partial_pnl}')
+                return partial_pnl
+        return 0
+
+    def closed(self,trade_id,exit_price,result,lot_size=1,lots=1,charges=None):
         """Trade closed with accurate PnL"""
         for t in self.data['trades']:
             if t['id']==trade_id:
                 t['status']=result
                 t['exit_price']=exit_price
-                # Fix 5: Accurate PnL!
+                # Fix 1: Dynamic charges!
+                if charges is None:
+                    charges=get_brokerage(t['instrument'],lots)
                 entry=t.get('entry_price',0) or 0
                 raw_pnl=(exit_price-entry)*lot_size*lots
                 if t.get('action')=='SELL':
                     raw_pnl=-raw_pnl
-                pnl=raw_pnl-charges  # Deduct brokerage
-                t['pnl']=round(pnl,2)
+                # Add partial profits
+                partial=t.get('partial_pnl',0)
+                pnl=round(raw_pnl-charges+partial,2)
+                t['pnl']=pnl
                 self._save()
                 icon='🎯' if result=='WIN' else '🛑'
                 log.info(f'[EXEC] {t["instrument"]} {icon} {result} pnl={pnl}')
                 return
+
+    def check_time_exits(self):
+        """Fix 3: Warn about open trades near close"""
+        from datetime import datetime
+        now=datetime.now()
+        if now.hour==14 and now.minute>=45:
+            today=datetime.now().strftime('%Y-%m-%d')
+            open_trades=[t for t in self.data['trades']
+                        if t['time'].startswith(today)
+                        and t['status'] in ['EXECUTED','PLACED']]
+            if open_trades:
+                log.warning(f'[EXEC] ⚠️ {len(open_trades)} trades still open near close!')
+                for t in open_trades:
+                    log.warning(f'[EXEC] Open: {t["instrument"]} {t["action"]}')
+                return open_trades
+        return []
 
     def daily_report(self):
         """Generate daily execution report"""
