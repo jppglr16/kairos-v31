@@ -12,7 +12,7 @@ class VIXEngine:
         self._vix=None
         self._last_fetch=0
         self._session=None
-        self.CACHE_TTL=300  # 5 mins
+        self.CACHE_TTL=120  # 2 mins (VIX can spike fast!)
 
     def _create_session(self):
         try:
@@ -83,13 +83,13 @@ class VIXEngine:
             return 'UNKNOWN',0
 
         if vix<12:
-            return 'TOO_LOW',-2
+            return 'TOO_LOW',-1
         elif vix<14:
-            return 'LOW',-1
+            return 'LOW',0
         elif vix<=20:
             return 'SWEET_SPOT',2  # Best!
         elif vix<=25:
-            return 'HIGH',0
+            return 'HIGH',-1
         else:
             return 'EXTREME',-3
 
@@ -110,8 +110,8 @@ class VIXEngine:
         """
         vix=self.get_vix()
         if vix is None:return True,'Unknown VIX - allow'
-        if vix>27:
-            return False,f'VIX too high ({vix:.1f}) - extreme!'
+        if vix>25:
+            return False,f'VIX too high ({vix:.1f}) - dangerous for buying!'
         if vix<10:
             return True,f'VIX low ({vix:.1f}) - avoid buying only'
         return True,f'VIX={vix:.1f} OK'

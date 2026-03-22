@@ -997,9 +997,12 @@ async def main():
                         if _vix_boost!=0:
                             signal['score']=signal.get('score',0)+_vix_boost
                             log.info(f'[VIX] {instrument} VIX={_vix_val:.1f} regime={_vix_regime} boost={_vix_boost:+d}')
-                        # Fix 6: Dynamic RR based on VIX
-                        if _vix_val:
-                            if _vix_val>20:
+                        # Fix 6: Dynamic RR (only once per signal!)
+                        if _vix_val and 'vix_adjusted' not in signal:
+                            if _vix_regime=='SPIKE':
+                                signal['score']=signal.get('score',0)-3
+                                log.info(f'[VIX] SPIKE! score -3')
+                            elif _vix_val>20:
                                 signal['sl_pct']=signal.get('sl_pct',0.40)*1.3
                                 signal['t1_pct']=signal.get('t1_pct',1.60)*1.5
                                 log.info(f'[VIX] High vol: wider SL+T1')
@@ -1007,6 +1010,7 @@ async def main():
                                 signal['sl_pct']=signal.get('sl_pct',0.40)*0.8
                                 signal['t1_pct']=signal.get('t1_pct',1.60)*0.7
                                 log.info(f'[VIX] Low vol: tighter SL+T1')
+                            signal['vix_adjusted']=True  # Fix 1: only once!
                     except Exception as _ve:
                         log.debug(f'[VIX] Score error: {_ve}')
 
