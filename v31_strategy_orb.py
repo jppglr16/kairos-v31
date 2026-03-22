@@ -133,25 +133,35 @@ def orb_signal(df5,instrument,capital):
         log.error(f'[ORB] {instrument}: {e}')
     return None
 
-def supertrend_signal(df5, instrument, period=7, multiplier=3):
+def supertrend_signal(df5,instrument,period=7,multiplier=3):
     """
-    Path D: Supertrend + RSI
-    - Vectorized (fast, no loops)
-    - Direction flip = signal
-    - RSI confirmation
-    - Works all hours
+    Path D: Supertrend Signal
+    Trades only on direction FLIP
+    With RSI + Volume + Time filter
     """
     try:
-        if len(df5)<20:return None
+        import pandas as pd
+        from datetime import datetime
+        now=datetime.now()
+        h=now.hour
 
-        # ✅ Performance fix - limit candles
-        if len(df5)>100:df5=df5.tail(100).copy()
+        # Time filter
+        MCX_INST=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
+        is_mcx=instrument in MCX_INST
+        if is_mcx:
+            if not (9<=h<=23):return None
+        else:
+            if h<9 or h>15:return None
+            if 12<=h<13:return None  # Avoid lunch
 
+        if len(df5)<period*3:return None
+
+        close=df5['close']
         high=df5['high']
         low=df5['low']
-        close=df5['close']
+        volume=df5['volume'] if 'volume' in df5.columns else None
 
-        # ✅ Vectorized ATR (no loop)
+        # True ATR
         tr=pd.concat([
             (high-low),
             (high-close.shift()).abs(),
@@ -164,15 +174,15 @@ def supertrend_signal(df5, instrument, period=7, multiplier=3):
         upper_band=hl2+multiplier*atr
         lower_band=hl2-multiplier*atr
 
-        # ✅ Vectorized direction (faster than loop)
-        direction=pd.Series(0,index=df5.index,dtype=int)
+        # Fix 1: Proper vectorized direction
+        direction=pd.Series(1,index=df5.index,dtype=int)
         for i in range(1,len(df5)):
-            if close.iloc[i]>upper_band.iloc[i-1]:
+            if float(close.iloc[i])>float(upper_band.iloc[i-1]):
                 direction.iloc[i]=1   # Bullish
-            elif close.iloc[i]<lower_band.iloc[i-1]:
+            elif float(close.iloc[i])<float(lower_band.iloc[i-1]):
                 direction.iloc[i]=-1  # Bearish
             else:
-                direction.iloc[i]=direction.iloc[i-1]  # Continue
+                direction.iloc[i]=direction.iloc[i-1]
 
         # RSI
         delta=close.diff()
@@ -190,16 +200,36 @@ def supertrend_signal(df5, instrument, period=7, multiplier=3):
         # Only trade on direction FLIP
         if curr_dir==prev_dir:return None
 
+        # Fix 2: Volume confirmation
+        vol_ok=True
+        if volume is not None:
+            avg_vol=float(volume.tail(20).mean())
+            curr_vol=float(volume.iloc[-1])
+            vol_ok=curr_vol>avg_vol*1.2
+            if not vol_ok:
+                log.debug(f'[ST] {instrument} low volume skip')
+                return None
+
+        # Fix 3: Trend alignment
+        try:
+            from v31_strategy import get_trend_v31
+            trend=get_trend_v31(df5)
+        except:
+            trend='NEUTRAL'
+
         score=16  # Base ST score
 
-        # ✅ BUY: Bullish flip
+        # BUY: Bullish flip
         if curr_dir==1:
             if curr_rsi<65:score+=2   # Not overbought
             if curr_rsi>40:score+=2   # Has momentum
             if curr_rsi>70:score-=3   # Overbought penalty
+            # Fix 3: Trend alignment
+            if trend=='UP':score+=2
+            elif trend=='DOWN':score-=1
             if score<15:return None
 
-            log.info(f'[ST] {instrument} BUY flip! RSI:{curr_rsi:.0f} Score:{score}')
+            log.info(f'[ST] {instrument} BUY flip! RSI={curr_rsi:.0f} score={score}')
             return {
                 'instrument':instrument,
                 'action':'BUY',
@@ -216,25 +246,20 @@ def supertrend_signal(df5, instrument, period=7, multiplier=3):
                 'imbalance_type':'ST_BUY',
                 'path':'D_ST',
                 'atr':curr_atr,
-                'rsi':curr_rsi,
-                'gamma_boost':0,
-                'gamma_info':None,
-                'oi_trap':None,
-                'use_trailing':False,
-                'hold_overnight':False,
-                'trap_type':'',
-                'trap_score':0,
                 'version':'V31'
             }
 
-        # ✅ SELL: Bearish flip
+        # SELL: Bearish flip
         else:
-            if curr_rsi>35:score+=2   # Not oversold
-            if curr_rsi<60:score+=2   # Has bearish momentum
-            if curr_rsi<30:score-=3   # Oversold penalty
+            if curr_rsi>35:score+=2
+            if curr_rsi<60:score+=2
+            if curr_rsi<30:score-=3
+            # Fix 3: Trend alignment
+            if trend=='DOWN':score+=2
+            elif trend=='UP':score-=1
             if score<15:return None
 
-            log.info(f'[ST] {instrument} SELL flip! RSI:{curr_rsi:.0f} Score:{score}')
+            log.info(f'[ST] {instrument} SELL flip! RSI={curr_rsi:.0f} score={score}')
             return {
                 'instrument':instrument,
                 'action':'SELL',
@@ -251,17 +276,9 @@ def supertrend_signal(df5, instrument, period=7, multiplier=3):
                 'imbalance_type':'ST_SELL',
                 'path':'D_ST',
                 'atr':curr_atr,
-                'rsi':curr_rsi,
-                'gamma_boost':0,
-                'gamma_info':None,
-                'oi_trap':None,
-                'use_trailing':False,
-                'hold_overnight':False,
-                'trap_type':'',
-                'trap_score':0,
                 'version':'V31'
             }
 
     except Exception as e:
-        log.debug(f'[ST] Error {instrument}: {e}')
+        log.error(f'[ST] {instrument}: {e}')
     return None
