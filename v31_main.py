@@ -1343,14 +1343,16 @@ async def main():
                         _lots=get_lots_kelly(instrument,capital,_ml_p,_rr,_prem)
                     except:
                         _lots=get_lots(instrument,capital)
-                    # Apply SL/T1 multipliers from score
+                    # Apply SL/T1 multipliers (once only!)
                     try:
-                        _sl_mult=signal.get('sl_multiplier',1.0)
-                        _t1_mult=signal.get('t1_multiplier',1.0)
-                        if _sl_mult!=1.0 or _t1_mult!=1.0:
-                            signal['sl_pct']=signal.get('sl_pct',0.40)*_sl_mult
-                            signal['t1_pct']=signal.get('t1_pct',1.60)*_t1_mult
-                            log.info(f'[SCORE] {instrument} SL×{_sl_mult} T1×{_t1_mult}')
+                        if not signal.get('score_adjusted'):
+                            _sl_mult=signal.get('sl_multiplier',1.0)
+                            _t1_mult=signal.get('t1_multiplier',1.0)
+                            if _sl_mult!=1.0 or _t1_mult!=1.0:
+                                signal['sl_pct']=signal.get('sl_pct',0.40)*_sl_mult
+                                signal['t1_pct']=signal.get('t1_pct',1.60)*_t1_mult
+                                log.info(f'[SCORE] {instrument} SL×{_sl_mult} T1×{_t1_mult}')
+                            signal['score_adjusted']=True  # Fix 1: prevent double!
                     except:pass
 
                     # Smart lot allocation
@@ -1376,15 +1378,19 @@ async def main():
                         # Ensure global cap not exceeded
                         _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
 
-                        # Fix 2: Capital-based lot cap!
+                        # Fix 2+3: Capital cap with safety buffer!
                         try:
                             _prem=float(signal.get('premium',50))
                             _lot_size=signal.get('lot_size',1)
-                            _cost_per_lot=_prem*_lot_size*1.1
+                            _cost_per_lot=_prem*_lot_size*1.15  # Fix 2: 15% buffer!
                             if _cost_per_lot>0:
-                                _max_lots=max(1,int(capital//_cost_per_lot))
+                                _max_lots=int(capital//_cost_per_lot)
+                                # Fix 3: No forced bad trades!
+                                if _max_lots<=0:
+                                    log.info(f'[CAP] {instrument} insufficient capital! skip')
+                                    continue
                                 _lots=min(_lots,_max_lots)
-                                log.info(f'[CAP] {instrument} capital cap: {_lots} lots (max={_max_lots})')
+                                log.info(f'[CAP] {instrument} capital cap: {_lots}/{_max_lots} lots')
                         except:pass
                     except:pass
                     _qty=_lots
