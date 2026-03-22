@@ -528,10 +528,10 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
                 score+=2  # Morning bonus!
 
         # Volatility Scoring (ALL instruments!)
-        atr_pct=atr/current*100 if current>0 else 0
-        if atr_pct>0.5:score+=3
-        elif atr_pct>0.3:score+=2
-        elif atr_pct>0.2:score+=1
+        atr_pct=atr/current if current>0 else 0  # Fix 2: ratio not %
+        if atr_pct>0.005:score+=3   # >0.5%
+        elif atr_pct>0.003:score+=2  # >0.3%
+        elif atr_pct>0.002:score+=1  # >0.2%
 
         # VWAP Alignment (rolling 20 candles)
         try:
@@ -542,8 +542,9 @@ def generate_v31_signal(df5,df15,df_daily,instrument,capital,
             else:
                 _vwap=float((df5['high'].tail(20)+df5['low'].tail(20)+
                              df5['close'].tail(20)).mean()/3)
-            if action=='BUY' and current>_vwap:score+=2
-            elif action=='SELL' and current<_vwap:score+=2
+            vwap=_vwap  # Fix 1: consistent naming!
+            if action=='BUY' and current>vwap:score+=2
+            elif action=='SELL' and current<vwap:score+=2
         except Exception as _ve:
             log.debug(f'[VWAP] {instrument}: {_ve}')
 
