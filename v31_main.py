@@ -997,20 +997,42 @@ async def main():
                         if _vix_boost!=0:
                             signal['score']=signal.get('score',0)+_vix_boost
                             log.info(f'[VIX] {instrument} VIX={_vix_val:.1f} regime={_vix_regime} boost={_vix_boost:+d}')
-                        # Fix 6: Dynamic RR (only once per signal!)
+                        # Dynamic RR + spike handling (once per signal!)
                         if _vix_val and 'vix_adjusted' not in signal:
-                            if _vix_regime=='SPIKE':
-                                signal['score']=signal.get('score',0)-3
-                                log.info(f'[VIX] SPIKE! score -3')
+                            _hour=__import__('datetime').datetime.now().hour
+
+                            # Fix 2+4: Spike = hard block
+                            if 'SPIKE' in str(_vix_regime):
+                                if _hour<10:
+                                    # Early spike = often fake!
+                                    log.info(f'[VIX] Early spike ignored (hour={_hour})')
+                                else:
+                                    # Real spike = block!
+                                    signal['score']=signal.get('score',0)-5
+                                    signal['blocked_reason']='VIX SPIKE'
+                                    signal['skip']=True
+                                    log.warning(f'[VIX] SPIKE block! score-5')
+
+                            # Fix 3: Only adjust if key exists
                             elif _vix_val>20:
-                                signal['sl_pct']=signal.get('sl_pct',0.40)*1.3
-                                signal['t1_pct']=signal.get('t1_pct',1.60)*1.5
+                                if 'sl_pct' in signal:
+                                    signal['sl_pct']*=1.3
+                                if 't1_pct' in signal:
+                                    signal['t1_pct']*=1.5
                                 log.info(f'[VIX] High vol: wider SL+T1')
                             elif _vix_val<14:
-                                signal['sl_pct']=signal.get('sl_pct',0.40)*0.8
-                                signal['t1_pct']=signal.get('t1_pct',1.60)*0.7
+                                if 'sl_pct' in signal:
+                                    signal['sl_pct']*=0.8
+                                if 't1_pct' in signal:
+                                    signal['t1_pct']*=0.7
                                 log.info(f'[VIX] Low vol: tighter SL+T1')
-                            signal['vix_adjusted']=True  # Fix 1: only once!
+
+                            signal['vix_adjusted']=True
+
+                        # Skip if VIX blocked
+                        if signal.get('skip'):
+                            log.info(f'[VIX] {instrument} skipped: {signal.get("blocked_reason")}')
+                            continue
                     except Exception as _ve:
                         log.debug(f'[VIX] Score error: {_ve}')
 

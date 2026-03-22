@@ -33,8 +33,27 @@ class VIXEngine:
             log.debug(f'[VIX] Session error: {e}')
             return False
 
+    def _load_prev_vix(self):
+        """Load previous VIX from file"""
+        try:
+            import json,os
+            if os.path.exists('vix_state.json'):
+                d=json.load(open('vix_state.json'))
+                self._prev_vix=d.get('prev_vix')
+        except:pass
+
+    def _save_prev_vix(self,vix):
+        """Save VIX to file for persistence"""
+        try:
+            import json
+            json.dump({'prev_vix':vix},open('vix_state.json','w'))
+        except:pass
+
     def get_vix(self):
         """Get India VIX value"""
+        if not hasattr(self,'_loaded'):
+            self._load_prev_vix()
+            self._loaded=True
         now=time.time()
         # Return cached value
         if self._vix and now-self._last_fetch<self.CACHE_TTL:
@@ -58,7 +77,8 @@ class VIXEngine:
                 if vix:
                     val=float(vix.get('last',0))
                     self._vix=val
-                    self._last_fetch=time.time()  # Fix 1: after fetch!
+                    self._last_fetch=time.time()
+                    self._save_prev_vix(val)  # Fix 5: persist!
                     log.info(f'[VIX] India VIX={val:.2f}')
                     return val
             except Exception as e:
