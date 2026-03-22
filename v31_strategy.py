@@ -294,7 +294,10 @@ def vwap_rejection_signal(df5,instrument,atr,regime='RANGING'):
                     vol_avg=float(volume.iloc[-5:-1].mean())
                     if vol_avg>0 and float(volume.iloc[-1])>vol_avg*1.3:
                         score+=2
-                score=max(score,10)  # Min score cap!
+                # Hard skip weak signals (keep score pure!)
+                if score<10:
+                    log.debug(f'[PathB] Weak BUY score {score} skip')
+                    return None
                 return {
                     'instrument':instrument,'action':'BUY',
                     'option_type':'CE','price':price,'vwap':vwap,
@@ -316,7 +319,10 @@ def vwap_rejection_signal(df5,instrument,atr,regime='RANGING'):
                     vol_avg=float(volume.iloc[-5:-1].mean())
                     if vol_avg>0 and float(volume.iloc[-1])>vol_avg*1.3:
                         score+=2
-                score=max(score,10)  # Min score cap!
+                # Hard skip weak signals
+                if score<10:
+                    log.debug(f'[PathB] Weak SELL score {score} skip')
+                    return None
                 return {
                     'instrument':instrument,'action':'SELL',
                     'option_type':'PE','price':price,'vwap':vwap,
