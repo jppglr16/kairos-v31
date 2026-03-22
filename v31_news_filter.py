@@ -111,6 +111,21 @@ class NewsFilter:
                     self._alert(f'⚠️ {event_name}!\nTrading paused\nResumes: {resume.strftime("%H:%M")}')
                     return True,f'{event_name}',resume
 
+        # MCX options last 6 days filter
+        if instrument in ['GOLDM','SILVERM','NATURALGAS']:
+            try:
+                from v31_angel_options import get_expiry_str
+                from datetime import datetime as _edt
+                _exp=get_expiry_str(instrument)
+                _exp_dt=_edt.strptime(_exp,'%d%b%y')
+                _days=(_exp_dt.date()-_edt.now().date()).days
+                if _days<=6:
+                    log.info(f'[NEWS] {instrument} expiry in {_days} days - too close!')
+                    self._last_result=(True,f'{instrument} near expiry ({_days}d)',None)
+                    return True,f'{instrument} near expiry ({_days}d)',None
+            except Exception as _me:
+                log.debug(f'[NEWS] MCX expiry check: {_me}')
+
         # Check instrument-specific result dates
         if instrument and instrument in RESULT_DATES:
             if today in RESULT_DATES[instrument]:
