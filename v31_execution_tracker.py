@@ -195,12 +195,7 @@ class ExecutionTracker:
             # Send Telegram alert!
             try:
                 from v31_notify import send
-                msg=f'⚠️ {len(open_trades)} trades still open!\n'
-'
-                msg+='
-'.join([f'{t["instrument"]} {t["action"]}' for t in open_trades])
-                msg+='
-Please exit before 3:15 PM!'
+                msg=f'Warning: {len(open_trades)} trades still open! Please exit before 3:15 PM!'
                 send(msg)
             except:pass
 
