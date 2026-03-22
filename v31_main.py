@@ -1103,9 +1103,15 @@ async def main():
                         log.info(f'[V31] {instrument} ENSEMBLE={ensemble_prob:.2f} details={ens_details}')
 
                         trained=[f for f in __import__('os').listdir('ml_models') if f.endswith('.pkl')]
-                        ens_thresh=0.35 if len(trained)>=10 else 0.25
+                        # Adaptive threshold based on model count
+                        if len(trained)>=40:
+                            ens_thresh=0.45  # Many models = stricter!
+                        elif len(trained)>=10:
+                            ens_thresh=0.40
+                        else:
+                            ens_thresh=0.30
                         if ensemble_prob<ens_thresh:
-                            log.info(f'[V31] {instrument} ENSEMBLE blocked ({ensemble_prob:.2f})<{ens_thresh}')
+                            log.info(f'[V31] {instrument} ENSEMBLE blocked ({ensemble_prob:.2f}<{ens_thresh})')
                             continue
 
                         # LOW AGREEMENT filter (disabled until training complete)
