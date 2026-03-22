@@ -266,9 +266,9 @@ def train_instrument(symbol):
 
     # Train
     model=GradientBoostingClassifier(
-        n_estimators=100,
-        max_depth=4,
-        learning_rate=0.1,
+        n_estimators=500,
+        max_depth=5,
+        learning_rate=0.05,
         random_state=42
     )
     model.fit(X_train,y_train)
