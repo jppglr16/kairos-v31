@@ -808,6 +808,17 @@ async def main():
                     _last_capital_refresh=_time.time()
                 except:pass
 
+            # VIX filter
+            try:
+                from v31_vix import vix_engine
+                _vix_ok,_vix_reason=vix_engine.should_trade()
+                if not _vix_ok:
+                    log.info(f'[VIX] Trading blocked: {_vix_reason}')
+                    await asyncio.sleep(300)
+                    continue
+            except Exception as _ve:
+                log.debug(f'[VIX] Error: {_ve}')
+
             # News event filter
             try:
                 from v31_news_filter import news_filter
@@ -818,6 +829,17 @@ async def main():
                     continue
             except Exception as _ne:
                 log.debug(f'[NEWS] Filter error: {_ne}')
+
+            # VIX filter
+            try:
+                from v31_vix import vix_engine
+                _vix_ok,_vix_reason=vix_engine.should_trade()
+                if not _vix_ok:
+                    log.info(f'[VIX] Trading blocked: {_vix_reason}')
+                    await asyncio.sleep(300)
+                    continue
+            except Exception as _ve:
+                log.debug(f'[VIX] Error: {_ve}')
 
             # News event filter
             try:
@@ -967,6 +989,16 @@ async def main():
                     # Reset zones daily at midnight
                     if datetime.now().hour==0 and datetime.now().minute<2:
                         used_zones.clear()
+
+                    # VIX score boost
+                    try:
+                        from v31_vix import vix_engine
+                        _vix_boost,_vix_regime,_vix_val=vix_engine.score_signal()
+                        if _vix_boost!=0:
+                            signal['score']=signal.get('score',0)+_vix_boost
+                            log.info(f'[VIX] {instrument} VIX={_vix_val:.1f} regime={_vix_regime} boost={_vix_boost:+d}')
+                    except Exception as _ve:
+                        log.debug(f'[VIX] Score error: {_ve}')
 
                     # OI/PCR signal boost
                     try:
