@@ -968,6 +968,18 @@ async def main():
                     if datetime.now().hour==0 and datetime.now().minute<2:
                         used_zones.clear()
 
+                    # OI/PCR signal boost
+                    try:
+                        from v31_oi_pcr import oi_pcr
+                        _price=float(signal.get('price',0))
+                        _action=signal.get('action','BUY')
+                        _oi_boost=oi_pcr.score_signal(instrument,_action,_price)
+                        if _oi_boost!=0:
+                            signal['score']=signal.get('score',0)+_oi_boost
+                            log.info(f'[OI] {instrument} score boost={_oi_boost:+d}')
+                    except Exception as _oe:
+                        log.debug(f'[OI] Error: {_oe}')
+
                     # S/R quality check
                     try:
                         from v31_support_resistance import sr_engine
