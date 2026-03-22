@@ -194,21 +194,23 @@ def extract_features(df, idx):
 def label_outcome(df, entry_idx, action, atr):
     """Check if trade was win or loss"""
     try:
-        entry=float(df['close'].iloc[entry_idx])
-        sl=entry-(atr*1.5) if action=='BUY' else entry+(atr*1.5)
-        t1=entry+(atr*2.0) if action=='BUY' else entry-(atr*2.0)
-
+        entry=float(df["close"].iloc[entry_idx])
+        # Use % based SL/T1 for better balance!
+        # Min 0.5% move to avoid noise
+        pct_move=max(atr/entry,0.005)  # At least 0.5%
+        sl=entry*(1-pct_move*1.5) if action=="BUY" else entry*(1+pct_move*1.5)
+        t1=entry*(1+pct_move*2.0) if action=="BUY" else entry*(1-pct_move*2.0)
         # Check next 30 candles
         for i in range(entry_idx+1, min(entry_idx+30, len(df))):
-            hi=float(df['high'].iloc[i])
-            lo=float(df['low'].iloc[i])
-            if action=='BUY':
-                if lo<=sl:return 0  # SL hit
-                if hi>=t1:return 1  # Target hit
+            hi=float(df["high"].iloc[i])
+            lo=float(df["low"].iloc[i])
+            if action=="BUY":
+                if lo<=sl:return 0
+                if hi>=t1:return 1
             else:
                 if hi>=sl:return 0
                 if lo<=t1:return 1
-        return 0  # Time exit = loss
+        return 0
     except:
         return 0
 
