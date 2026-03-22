@@ -35,6 +35,19 @@ INSTRUMENTS={
     'TCS':       {'exchange':'NSE','token':'11536', 'lot':150,  'step':20, 'exch_seg':'NFO','type':'STOCK'},
     'TATASTEEL': {'exchange':'NSE','token':'3499',  'lot':5500, 'step':2,  'exch_seg':'NFO','type':'STOCK'},
 
+    # New F&O stocks added 22-Mar-2026
+    'EICHERMOT': {'exchange':'NSE','token':'910',  'lot':50,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'SHREECEM':  {'exchange':'NSE','token':'3103', 'lot':10,  'step':100,'exch_seg':'NFO','type':'STOCK'},
+    'CUMMINSIND':{'exchange':'NSE','token':'1901', 'lot':75,  'step':20, 'exch_seg':'NFO','type':'STOCK'},
+    'ABB':       {'exchange':'NSE','token':'13',   'lot':50,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'DIVISLAB':  {'exchange':'NSE','token':'10940','lot':50,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'HEROMOTOCO':{'exchange':'NSE','token':'1348', 'lot':50,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'INDIGO':    {'exchange':'NSE','token':'11195','lot':75,  'step':100,'exch_seg':'NFO','type':'STOCK'},
+    'TATAELXSI': {'exchange':'NSE','token':'3411', 'lot':75,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'AMBER':     {'exchange':'NSE','token':'1185', 'lot':50,  'step':100,'exch_seg':'NFO','type':'STOCK'},
+    'ALKEM':     {'exchange':'NSE','token':'11703','lot':75,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'TORNTPHARM':{'exchange':'NSE','token':'3518', 'lot':50,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
+    'KEI':       {'exchange':'NSE','token':'13310','lot':200, 'step':10, 'exch_seg':'NFO','type':'STOCK'},
     # === ADD NEW INSTRUMENTS HERE ===
     # 'HDFCBANK': {'exchange':'NSE','token':'1333','lot':550,'step':20,'exch_seg':'NFO','type':'STOCK'},
     # 'ICICIBANK': {'exchange':'NSE','token':'4963','lot':700,'step':20,'exch_seg':'NFO','type':'STOCK'},
