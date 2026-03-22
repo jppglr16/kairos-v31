@@ -47,7 +47,7 @@ class VIXEngine:
         try:
             import json
             with open('vix_state.json','w') as f:
-                json.dump({'prev_vix':vix,'last_vix':vix},f)
+                json.dump({'prev_vix':vix},f)
         except:pass
 
     def get_vix(self):
@@ -114,13 +114,23 @@ class VIXEngine:
         else:
             return 'EXTREME',-3
 
+    def get_trend(self):
+        """Get VIX trend"""
+        return getattr(self,'_vix_trend','STABLE')
+
     def score_signal(self,action='BUY'):
-        """Score boost based on VIX"""
+        """Score boost based on VIX + trend"""
         regime,boost=self.get_regime()
-        vix=self._vix  # Fix 3: keep None!
+        vix=self._vix
         if vix is None:
             return 0,'UNKNOWN',None
-        log.info(f'[VIX] {vix:.1f} regime={regime} boost={boost:+d}')
+
+        # Add trend boost
+        trend=self.get_trend()
+        if trend=='RISING':boost-=1
+        elif trend=='FALLING':boost+=1
+
+        log.info(f'[VIX] {vix:.1f} regime={regime} trend={trend} boost={boost:+d}')
         return boost,regime,vix
 
     def should_trade(self):

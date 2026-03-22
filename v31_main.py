@@ -813,7 +813,7 @@ async def main():
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
                 _strategy_mode=vix_engine.get_strategy_mode()
-                log.info(f'[VIX] Mode={_strategy_mode}')
+                log.info(f'[VIX] Mode={_strategy_mode} Trend={vix_engine.get_trend()}')
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
                     await asyncio.sleep(60)
@@ -841,7 +841,7 @@ async def main():
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
                 _strategy_mode=vix_engine.get_strategy_mode()
-                log.info(f'[VIX] Mode={_strategy_mode}')
+                log.info(f'[VIX] Mode={_strategy_mode} Trend={vix_engine.get_trend()}')
                 if not _vix_ok:
                     log.info(f'[VIX] Trading blocked: {_vix_reason}')
                     await asyncio.sleep(60)
@@ -1002,10 +1002,24 @@ async def main():
                     if datetime.now().hour==0 and datetime.now().minute<2:
                         used_zones.clear()
 
-                    # VIX score boost + dynamic RR
+                    # VIX score boost + strategy mode
                     try:
                         from v31_vix import vix_engine
                         _vix_boost,_vix_regime,_vix_val=vix_engine.score_signal()
+                        _s_mode=vix_engine.get_strategy_mode()
+                        signal['strategy_mode']=_s_mode
+
+                        # Fix 1: Mode influences signals!
+                        if _s_mode=='SELL_PREMIUM':
+                            signal['score']=signal.get('score',0)-2
+                            log.info(f'[VIX] SELL_PREMIUM mode: score -2')
+                        elif _s_mode=='SCALP':
+                            if 't1_pct' in signal:
+                                signal['t1_pct']*=0.7
+                            log.info(f'[VIX] SCALP mode: tighter T1')
+                        elif _s_mode=='DEFENSIVE':
+                            signal['score']=signal.get('score',0)-1
+                            log.info(f'[VIX] DEFENSIVE mode: score -1')
                         if _vix_boost!=0:
                             signal['score']=signal.get('score',0)+_vix_boost
                             log.info(f'[VIX] {instrument} VIX={_vix_val:.1f} regime={_vix_regime} boost={_vix_boost:+d}')
@@ -1022,7 +1036,8 @@ async def main():
                                     signal['score']=signal.get('score',0)-5
                                     # Only skip if score drops below threshold
                                     _threshold=40  # quality threshold
-                                    _quality=signal.get('score',0)*signal.get('rr_ratio',1)
+                                    # Fix 2: Normalized quality
+                                    _quality=(signal.get('score',0)/50)*signal.get('rr_ratio',1)*100
                                     if _quality<_threshold:
                                         signal['blocked_reason']='VIX SPIKE'
                                         signal['skip']=True
