@@ -48,6 +48,7 @@ INSTRUMENTS={
     'ALKEM':     {'exchange':'NSE','token':'11703','lot':75,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
     'TORNTPHARM':{'exchange':'NSE','token':'3518', 'lot':50,  'step':50, 'exch_seg':'NFO','type':'STOCK'},
     'KEI':       {'exchange':'NSE','token':'13310','lot':200, 'step':10, 'exch_seg':'NFO','type':'STOCK'},
+    'BANKEX':    {'exchange':'BSE','token':'999901','lot':20, 'step':100,'exch_seg':'BFO','type':'INDEX'},
     # === ADD NEW INSTRUMENTS HERE ===
     # 'HDFCBANK': {'exchange':'NSE','token':'1333','lot':550,'step':20,'exch_seg':'NFO','type':'STOCK'},
     # 'ICICIBANK': {'exchange':'NSE','token':'4963','lot':700,'step':20,'exch_seg':'NFO','type':'STOCK'},
