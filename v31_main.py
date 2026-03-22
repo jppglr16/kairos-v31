@@ -1036,6 +1036,10 @@ async def main():
                         if _vix_boost!=0:
                             signal['score']=signal.get('score',0)+_vix_boost
                             log.info(f'[VIX] {instrument} VIX={_vix_val:.1f} regime={_vix_regime} boost={_vix_boost:+d}')
+                        try:
+                            signal_tracker.step('VIX Filter',True,
+                                f'VIX={_vix_val:.1f} {_vix_regime}',_vix_boost)
+                        except:pass
                         # Dynamic RR + spike handling (once per signal!)
                         if _vix_val and 'vix_adjusted' not in signal:
                             _hour=__import__('datetime').datetime.now().hour
@@ -1103,6 +1107,17 @@ async def main():
                     except Exception as _oe:
                         log.debug(f'[OI] Error: {_oe}')
 
+                    # Start signal tracking
+                    try:
+                        from v31_signal_tracker import signal_tracker
+                        signal_tracker.start(
+                            instrument,
+                            signal.get('action','BUY'),
+                            signal.get('price',0),
+                            signal.get('score',0)
+                        )
+                    except:pass
+
                     # S/R quality check
                     try:
                         from v31_support_resistance import sr_engine
@@ -1112,12 +1127,12 @@ async def main():
                         signal['sr_boost']=_sr_boost
                         signal['sr_comment']=_sr_comment
                         # Add boost to score
-                        if _sr_boost>0:
+                        if _sr_boost!=0:
                             signal['score']=signal.get('score',0)+_sr_boost
-                            log.info(f'[SR] {instrument} score boosted +{_sr_boost} ({_sr_comment})')
-                        elif _sr_boost<0:
-                            signal['score']=signal.get('score',0)+_sr_boost
-                            log.info(f'[SR] {instrument} score reduced {_sr_boost} ({_sr_comment})')
+                            log.info(f'[SR] {instrument} score {_sr_boost:+d} ({_sr_comment})')
+                        try:
+                            signal_tracker.step('S/R Check',True,_sr_comment,_sr_boost)
+                        except:pass
                     except Exception as _sre:
                         log.debug(f'[SR] Error: {_sre}')
 
@@ -1136,12 +1151,21 @@ async def main():
 
                     if _rr<_rr_thresh:
                         log.info(f'[V31] {instrument} RR too low ({_rr:.1f}<{_rr_thresh}) - SKIP!')
+                        try:signal_tracker.reject(f'RR too low ({_rr:.1f}<{_rr_thresh})')
+                        except:pass
                         continue
                     elif _quality<_quality_thresh:
                         log.info(f'[V31] {instrument} quality low ({_quality:.0f}<{_quality_thresh}) - SKIP!')
+                        try:signal_tracker.reject(f'Quality low ({_quality:.0f}<{_quality_thresh})')
+                        except:pass
                         continue
                     else:
                         log.info(f'[V31] {instrument} quality OK: RR={_rr:.1f} score={_sig_score} quality={_quality:.0f} thresh={_quality_thresh}')
+
+                    try:
+                        signal_tracker.step('Quality Check',True,
+                            f'RR={_rr:.1f} Score={_sig_score} Quality={_quality:.0f}')
+                    except:pass
 
                     log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')
 
