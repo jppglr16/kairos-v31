@@ -12,8 +12,14 @@ class ExecutionTracker:
         self.file='execution_log.json'
         self._load()
 
+    def _get_filename(self):
+        """Fix 4: Daily rotation!"""
+        today=datetime.now().strftime('%Y-%m-%d')
+        return f'execution_log_{today}.json'
+
     def _load(self):
         try:
+            self.file=self._get_filename()
             if os.path.exists(self.file):
                 self.data=json.load(open(self.file))
             else:
@@ -62,8 +68,8 @@ class ExecutionTracker:
                 return
         log.warning(f'[EXEC] trade_id {trade_id} not found!')
 
-    def executed(self,trade_id,entry_price):
-        """Order fully executed"""
+    def executed(self,trade_id,entry_price,status='COMPLETE'):
+        """Order fully executed - handles COMPLETE/FILLED"""
         for t in self.data['trades']:
             if t['id']==trade_id:
                 t['status']='EXECUTED'
@@ -82,13 +88,19 @@ class ExecutionTracker:
                 log.warning(f'[EXEC] {t["instrument"]} FAILED: {reason}')
                 return
 
-    def closed(self,trade_id,exit_price,pnl,result):
-        """Trade closed (SL/T1/T2)"""
+    def closed(self,trade_id,exit_price,result,lot_size=1,lots=1,charges=80):
+        """Trade closed with accurate PnL"""
         for t in self.data['trades']:
             if t['id']==trade_id:
-                t['status']=result  # 'WIN' or 'LOSS'
+                t['status']=result
                 t['exit_price']=exit_price
-                t['pnl']=pnl
+                # Fix 5: Accurate PnL!
+                entry=t.get('entry_price',0) or 0
+                raw_pnl=(exit_price-entry)*lot_size*lots
+                if t.get('action')=='SELL':
+                    raw_pnl=-raw_pnl
+                pnl=raw_pnl-charges  # Deduct brokerage
+                t['pnl']=round(pnl,2)
                 self._save()
                 icon='🎯' if result=='WIN' else '🛑'
                 log.info(f'[EXEC] {t["instrument"]} {icon} {result} pnl={pnl}')
