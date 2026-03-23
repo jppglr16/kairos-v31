@@ -245,3 +245,22 @@ def find_best_target(df5, df15, action, entry, sl_points, atr, is_trending=True)
         t1 = entry + sl_points*3 if action=='BUY' else entry - sl_points*3
         t2 = entry + sl_points*5 if action=='BUY' else entry - sl_points*5
         return t1, t2, 3.0
+
+
+def apply_rr_filter(signal,df5,df15,atr):
+    """Compatibility function for ML engine"""
+    try:
+        action=signal.get('action','BUY')
+        sl_type,sl_pts,sl_price=find_tight_sl(df5,df15,action,atr)
+        entry=signal.get('price',0)
+        t1,t2=find_best_target(df5,df15,action,entry,sl_pts,atr)
+        rr=abs(t1-entry)/max(sl_pts,0.01)
+        return {
+            'sl_points':sl_pts,
+            'sl_price':sl_price,
+            'target1':t1,
+            'target2':t2,
+            'rr_ratio':round(rr,2)
+        }
+    except Exception as e:
+        return None
