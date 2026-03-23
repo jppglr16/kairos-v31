@@ -23,7 +23,7 @@ STEP_MAP={
     'CRUDEOIL':100,'GOLDM':100,'SILVERM':500,'NATURALGAS':10,
     # Stocks - 10 point strikes
     'HINDUNILVR':10,'HDFCBANK':10,'ICICIBANK':10,'SBIN':10,
-    'TATAMOTORS':5,'TATASTEEL':5,'BHARTIARTL':10,'NTPC':5,
+    'TATAMOTORS':5,'TMPV':5,'TATASTEEL':5,'BHARTIARTL':10,'NTPC':5,
     'LT':50,'RELIANCE':50,'TCS':50,'INFOSYS':50,
     'MARUTI':100,'BAJFINANCE':50,'BAJAJ-AUTO':50,
     'EICHERMOT':50,'SIEMENS':50,'POLYCAB':50,
@@ -134,7 +134,7 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
         'FINNIFTY':'FINNIFTY','MIDCPNIFTY':'MIDCPNIFTY',
         'SENSEX':'SENSEX50','CRUDEOIL':'CRUDEOIL',
         'GOLDM':'GOLDM','SILVERM':'SILVERM','NATURALGAS':'NATURALGAS',
-        # TATAMOTORS options on NFO only (no BSE mapping needed)
+        'TATAMOTORS':'TMPV',  # TATAMOTORS renamed to TMPV on exchanges!
     }
     prefix=prefix_map.get(inst,inst)
 
