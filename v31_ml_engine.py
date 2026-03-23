@@ -316,3 +316,38 @@ def retrain_from_signals(symbol,signals):
             log.info(f'[V31 ML] {symbol} retrained! Acc={acc*100:.1f}%')
     except Exception as e:
         log.error(f'[V31 ML] Retrain error: {e}')
+
+def predict_with_confidence(symbol,features):
+    """
+    ML prediction with confidence-based lot sizing
+    Returns: (prediction, confidence, suggested_lots)
+    """
+    try:
+        data=load_v31_model(symbol)
+        if not data:return 0,0.5,1
+
+        model=data.get('model')
+        if model is None:return 0,0.5,1
+
+        X=[features]
+        probs=model.predict_proba(X)[0]
+        confidence=float(max(probs))
+        prediction=int(model.predict(X)[0])
+
+        # Confidence-based lot sizing
+        if confidence<0.55:
+            suggested_lots=0  # Skip!
+            log.debug(f'[ML] {symbol} low confidence {confidence:.2f} skip')
+        elif confidence<0.70:
+            suggested_lots=1  # Half conviction
+        elif confidence<0.85:
+            suggested_lots=1  # Normal
+        else:
+            suggested_lots=2  # Strong conviction!
+
+        log.debug(f'[ML] {symbol} pred={prediction} conf={confidence:.2f} lots={suggested_lots}')
+        return prediction,confidence,suggested_lots
+    except Exception as e:
+        log.debug(f'[ML] {symbol} confidence error: {e}')
+        return 0,0.5,1
+
