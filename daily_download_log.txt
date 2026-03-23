@@ -247,3 +247,9 @@ HINDUNILVR: +75 candles
 TCS: +75 candles
 TATASTEEL: +75 candles
 Done! Updated 17/18
+[I 260323 16:00:13 smartConnect:124] in pool
+[I 260323 17:00:58 smartConnect:124] in pool
+[I 260323 18:00:48 smartConnect:124] in pool
+[I 260323 20:00:53 smartConnect:124] in pool
+[I 260323 21:00:43 smartConnect:124] in pool
+[I 260323 23:00:57 smartConnect:124] in pool
