@@ -1393,6 +1393,19 @@ async def main():
                             log.info(f'[V31] {instrument} expiry {_days2}d - forced 1 lot!')
                     except:pass
 
+                    # Expiry day safety check (merged)
+                    try:
+                        from v31_angel_options import get_expiry_str
+                        from datetime import datetime as _dt
+                        _exp=get_expiry_str(instrument)
+                        _exp_dt=_dt.strptime(_exp,"%d%b%y")
+                        _days_to_expiry=(_exp_dt.date()-_dt.now().date()).days
+                        if _days_to_expiry<=1:
+                            _lots=1
+                            log.info(f"[V31] {instrument} expiry {_days_to_expiry}d - forced 1 lot!")
+                    except Exception as _ee:
+                        log.debug(f"[V31] Expiry check error {instrument}: {_ee}")
+
                     # Apply SL/T1 multipliers (once only!)
                     try:
                         if not signal.get('score_adjusted'):
