@@ -17,7 +17,7 @@ SYMBOLS={
     'MIDCPNIFTY':{'token':'99926074','exchange':'NSE'},
     'SENSEX':    {'token':'99919000','exchange':'BSE'},
     # MCX
-    'CRUDEOIL':  {'token':'472790','exchange':'MCX'},
+    'CRUDEOIL':  {'token':'486502','exchange':'MCX'},  # CRUDEOIL20APR26FUT
     'GOLDM':     {'token':'477904','exchange':'MCX'},
     'SILVERM':   {'token':'457533','exchange':'MCX'},
     'NATURALGAS':{'token':'473860','exchange':'MCX'},
