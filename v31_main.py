@@ -890,7 +890,7 @@ async def main():
             for inst_idx,instrument in enumerate(INSTRUMENTS):
                 if inst_idx>0:
                     import time as _sleep_time
-                    _sleep_time.sleep(1.5)
+                    _sleep_time.sleep(0.3)  # Reduced from 1.5s!
 
                 inst_cfg=_INST_CONFIG.get(instrument,{})
                 inst_type=inst_cfg.get('type','STOCK')
@@ -1117,6 +1117,31 @@ async def main():
                     except Exception as _oe:
                         log.debug(f'[OI] Error: {_oe}')
 
+                    # Check existing position
+                    if instrument in active_trades:
+                        existing=active_trades[instrument]
+                        existing_action=existing.get('action','')
+                        new_action=signal.get('action','')
+                        t1_hit=existing.get('t1_hit',False)
+
+                        if existing_action!=new_action:
+                            # Opposite direction = ALWAYS block!
+                            log.info(f'[V31] {instrument} CONFLICT: '
+                                    f'open {existing_action} vs new {new_action}! Block!')
+                            continue
+                        elif not t1_hit:
+                            # Same direction but T1 not hit = block
+                            log.info(f'[V31] {instrument} already has {existing_action} '
+                                    f'position (T1 not hit). Skip!')
+                            continue
+                        else:
+                            # Same direction + T1 hit = allow IF strong signal!
+                            _new_score=signal.get('score',0)
+                            if _new_score<22:
+                                log.info(f'[V31] {instrument} T1 hit but weak score {_new_score} skip!')
+                                continue
+                            log.info(f'[V31] {instrument} T1 hit + strong signal! Adding to {new_action} score={_new_score}')
+
                     # Start signal tracking
                     try:
                         from v31_signal_tracker import signal_tracker
@@ -1204,11 +1229,13 @@ async def main():
                         from v31_ml_engine import (extract_v31_features,get_v31_ml_prob)
                         atr=float((df5['high']-df5['low']).tail(14).mean())
                         features=extract_v31_features(
-                            df5,df15,signal['action'],
-                            signal['regime'],signal['liq_type'],
-                            signal['imbalance_type']!='',
-                            False,signal['gamma_boost'],
-                            signal['rr_ratio'],signal['sl_points'],atr
+                            df5,df15,signal.get('action','BUY'),
+                            signal.get('regime','TRENDING'),
+                            signal.get('liq_type',''),
+                            signal.get('imbalance_type','')!='',
+                            False,signal.get('gamma_boost',0),
+                            signal.get('rr_ratio',1.5),
+                            signal.get('sl_points',10),atr
                         )
                         if features:
                             regime=signal.get('regime','TRENDING')
@@ -1424,7 +1451,12 @@ async def main():
                     try:
                         from v31_option_engine import get_option
                         _opt_type='CE' if signal.get('action')=='BUY' else 'PE'
-                        _opt_result=get_option(instrument,float(signal.get('price',0)),_opt_type)
+                        # Use current market price for ATM strike!
+                        try:
+                            _mkt_price=float(df5['close'].iloc[-1])
+                        except:
+                            _mkt_price=float(signal.get('price',0))
+                        _opt_result=get_option(instrument,_mkt_price,_opt_type)
                     except:pass
 
                     # Liquidity check
@@ -1468,6 +1500,17 @@ async def main():
                         from v31_angel_trader import angel_trader,place_trade_angel
                         if PAPER_TRADE:
                             log.info(f'[PAPER] {instrument} {_action} 1 lot - notified via Telegram')
+                            # Track paper trades too!
+                            try:
+                                from v31_execution_tracker import execution_tracker
+                                _tid=execution_tracker.approved(
+                                    instrument,_action,
+                                    signal.get('score',0),
+                                    signal.get('path','?'),_lots)
+                                execution_tracker.executed(_tid,signal.get('price',0))
+                                log.info(f'[PAPER] Trade tracked! ID:{_tid}')
+                            except Exception as _te:
+                                log.debug(f'[PAPER] Tracker error: {_te}')
                         else:
                             if angel_trader and angel_trader.connected:
                                 order_id=place_trade_angel(signal,_qty,capital,instrument,angel_trader)

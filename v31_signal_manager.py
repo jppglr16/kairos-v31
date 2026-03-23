@@ -147,13 +147,15 @@ class SignalManager:
     def _get_limits(self,score):
         """✅ Fix 1: Score-based limits"""
         if score>=28:
-            return {'BUY':2,'SELL':2}  # High score = 2 trades each
+            return {'BUY':2,'SELL':2}  # High conviction
         elif score>=25:
             return {'BUY':2,'SELL':1}
         elif score>=20:
             return {'BUY':1,'SELL':1}
+        elif score>=15:
+            return {'BUY':1,'SELL':1}  # Allow lower scores!
         else:
-            return {'BUY':0,'SELL':0}  # Low score blocked!
+            return {'BUY':0,'SELL':0}  # Too low!
 
     def _get_daily_total(self,instrument):
         """Get total trades today for instrument"""

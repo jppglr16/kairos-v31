@@ -1,4 +1,12 @@
 
+def _fix_nan_features(features):
+    """Replace NaN/None with 0 in features"""
+    if not features:return features
+    import math
+    return [0.0 if (f is None or (isinstance(f,float) and math.isnan(f))) else float(f)
+            for f in features]
+
+
 def get_option_premium(atr):
     """Match backtest: premium = ATR * 0.9"""
     return max(60,min(350,round(atr*0.9)))
