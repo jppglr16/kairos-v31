@@ -924,8 +924,8 @@ async def main():
                     if df5 is None or len(df5)<30:continue
                     if df15 is None or len(df15)<10:continue
 
-                    # Skip GOLDM/SILVERM unless near expiry
-                    if instrument in ['GOLDM','SILVERM'] and capital<200000:
+                    # Skip GOLDM/SILVERM unless near expiry (NOT CRUDEOIL/NATURALGAS!)
+                    if instrument in ['GOLDM','SILVERM']:
                         try:
                             from v31_angel_options import get_expiry_str
                             import datetime as _expdt
