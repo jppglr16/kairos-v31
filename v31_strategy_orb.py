@@ -204,7 +204,7 @@ def supertrend_signal(df5,instrument,period=7,multiplier=3):
         if curr_dir==prev_dir:return None
 
         # Bonus: Weak flip filter
-        if abs(curr_close-float(close.iloc[-3]))<curr_atr*0.5:
+        if abs(curr_close-float(close.iloc[-3]))<curr_atr*0.3:
             log.debug(f'[ST] {instrument} weak flip skip')
             return None
 
