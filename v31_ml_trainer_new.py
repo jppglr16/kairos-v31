@@ -1,3 +1,4 @@
+import pickle
 """
 V31 Fresh ML Trainer
 Trains GradientBoostingClassifier for all 36 instruments
