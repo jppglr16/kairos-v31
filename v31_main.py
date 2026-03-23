@@ -1409,14 +1409,15 @@ async def main():
                     # Expiry safety: max 1 lot when expiry <=1 day
                     try:
                         from v31_angel_options import get_expiry_str
-                        from datetime import datetime as _dt
+                        from datetime import datetime as _dt_exp
                         _exp=get_expiry_str(instrument)
-                        _exp_dt=_dt.strptime(_exp,"%d%b%y")
-                        _days_to_expiry=(_exp_dt.date()-_dt.now().date()).days
+                        _exp_dt=_dt_exp.strptime(_exp,"%d%b%y")
+                        _days_to_expiry=(_exp_dt.date()-_dt_exp.now().date()).days
                         if _days_to_expiry<=1:
                             _lots=1
                             log.info(f"[V31] {instrument} expiry {_days_to_expiry}d - 1 lot!")
-                    except:pass
+                    except Exception as _exp_e:
+                        log.debug(f"[V31] Expiry check: {_exp_e}")
 
                     # Apply SL/T1 multipliers (once only!)
                     try:
