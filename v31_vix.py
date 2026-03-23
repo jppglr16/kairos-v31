@@ -107,9 +107,9 @@ class VIXEngine:
             return 'TOO_LOW',-1
         elif vix<14:
             return 'LOW',0
-        elif vix<=VIX_SWEET_HIGH:
+        elif vix<=20:  # VIX_SWEET_HIGH
             return 'SWEET_SPOT',2  # Best!
-        elif vix<=VIX_DANGER:
+        elif vix<=25:  # VIX_DANGER
             return 'HIGH',-1
         else:
             return 'EXTREME',-3
