@@ -7,6 +7,19 @@ import logging,time,json
 import urllib.request,http.cookiejar
 log=logging.getLogger(__name__)
 
+# VIX Configuration - adjust here!
+VIX_CONFIG={
+    "SPIKE_PCT":    0.10,
+    "TREND_THRESH": 0.5,
+    "SWEET_LOW":    14,
+    "SWEET_HIGH":   20,
+    "DANGER":       25,
+    "QUALITY":      40,
+}
+VIX_DANGER=VIX_CONFIG["DANGER"]
+QUALITY_THRESHOLD=VIX_CONFIG["QUALITY"]
+
+
 class VIXEngine:
     def __init__(self):
         self._vix=None
@@ -107,9 +120,9 @@ class VIXEngine:
             return 'TOO_LOW',-1
         elif vix<14:
             return 'LOW',0
-        elif vix<=20:  # VIX_SWEET_HIGH
+        elif vix<=VIX_CONFIG["SWEET_HIGH"]:
             return 'SWEET_SPOT',2  # Best!
-        elif vix<=25:  # VIX_DANGER
+        elif vix<=VIX_CONFIG["DANGER"]:
             return 'HIGH',-1
         else:
             return 'EXTREME',-3
@@ -148,7 +161,7 @@ class VIXEngine:
         """
         vix=self.get_vix()
         if vix is None:return True,'Unknown VIX - allow'
-        if vix>VIX_DANGER:
+        if vix>VIX_CONFIG["DANGER"]:
             return False,f'VIX too high ({vix:.1f}) - dangerous for buying!'
         if vix<10:
             return True,f'VIX low ({vix:.1f}) - avoid buying only'
