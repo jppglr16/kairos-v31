@@ -134,7 +134,7 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
         'FINNIFTY':'FINNIFTY','MIDCPNIFTY':'MIDCPNIFTY',
         'SENSEX':'SENSEX50','CRUDEOIL':'CRUDEOIL',
         'GOLDM':'GOLDM','SILVERM':'SILVERM','NATURALGAS':'NATURALGAS',
-        'TATAMOTORS':'TMPV'  # TATAMOTORS renamed to TMPV!
+        # TATAMOTORS options on NFO only (no BSE mapping needed)
     }
     prefix=prefix_map.get(inst,inst)
 
