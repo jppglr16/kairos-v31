@@ -1215,7 +1215,8 @@ async def main():
                             log.info(f'[V31] {instrument} EXPIRY TODAY - skipping!')
                             continue
                         elif _days_to_exp==1:
-                            log.info(f'[V31] {instrument} expiry tomorrow - extra caution')
+                            log.info(f'[V31] {instrument} expiry tomorrow - max 1 lot!')
+                            _lots=1  # Reduce to 1 lot on expiry day!
                     except:pass
 
                     # Causal engine
