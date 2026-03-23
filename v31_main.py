@@ -1278,7 +1278,9 @@ async def main():
                         _mmt_p=signal.get('mmt_prob',0.5)
                         _crl_ok=True
                         ensemble_result=dynamic_ensemble.get_ensemble_prob(
-                            instrument,_ml_p,_meta_p,_mmt_p,_crl_ok
+                            instrument,signal,
+                            signal.get('features',[]),
+                            _ml_p,_meta_p,_mmt_p,_crl_ok
                         )
                         ensemble_prob=ensemble_result.get('prob',0.5) if isinstance(ensemble_result,dict) else float(ensemble_result)
                         ens_details=ensemble_result.get('details',{}) if isinstance(ensemble_result,dict) else {}
