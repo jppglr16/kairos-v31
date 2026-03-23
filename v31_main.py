@@ -932,9 +932,8 @@ async def main():
                             _exp=get_expiry_str(instrument)
                             _exp_dt=_expdt.datetime.strptime(_exp,'%d%b%y')
                             _days=(_exp_dt.date()-_expdt.datetime.now().date()).days
-                            if _days>10:
-                                _est_cost=capital*0.4
-                                log.info(f'[V31] {instrument} skipped - {_days}d to expiry, need Rs.{_est_cost:,.0f}')
+                            if _days>6:
+                                log.info(f'[V31] {instrument} skipped - {_days}d to expiry (need last 6 days!)')
                                 continue
                         except:
                             continue
