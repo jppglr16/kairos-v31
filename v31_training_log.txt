@@ -1950,3 +1950,78 @@ nohup: ignoring input
 2026-03-23 00:34:16,126 SENSEX: Saved to ml_models/SENSEX_v31_ml.pkl ✅
 SENSEX: True
 [GAMMA] OC fetch error UNKNOWN: ('Connection aborted.', ConnectionAbortedError(103, 'Software caused connection abort'))
+nohup: ignoring input
+2026-03-23 08:36:37,410 [IM] Loaded saved instrument: HDFCBANK
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: ICICIBANK
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: SIEMENS
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: POLYCAB
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: SOLARINDS
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: PAGEIND
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: BRITANNIA
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: OFSS
+2026-03-23 08:36:37,411 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-23 08:36:37,411 Loaded 44 instruments
+2026-03-23 08:36:37,412 Training SBIN...
+2026-03-23 08:36:37,736 SBIN: 47031 candles loaded
+nohup: ignoring input
+2026-03-23 08:37:36,865 [IM] Loaded saved instrument: HDFCBANK
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: ICICIBANK
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: SIEMENS
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: POLYCAB
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: SOLARINDS
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: PAGEIND
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: BRITANNIA
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: OFSS
+2026-03-23 08:37:36,866 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-23 08:37:36,866 Loaded 44 instruments
+2026-03-23 08:37:36,867 Training SBIN...
+2026-03-23 08:37:37,080 SBIN: 47031 candles loaded
+2026-03-23 08:46:00,511 SBIN: 4696 samples | WR=33.5%
+2026-03-23 08:46:40,472 SBIN: Accuracy=64.8%
+2026-03-23 08:46:40,518 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-23 08:46:40,553 Training RELIANCE...
+2026-03-23 08:46:40,805 RELIANCE: 46958 candles loaded
+2026-03-23 08:47:40,550 SBIN: 4696 samples | WR=33.5%
+2026-03-23 08:48:18,133 SBIN: Accuracy=64.8%
+2026-03-23 08:48:18,177 SBIN: Saved to ml_models/SBIN_v31_ml.pkl ✅
+2026-03-23 08:48:18,224 Training RELIANCE...
+2026-03-23 08:48:18,491 RELIANCE: 46958 candles loaded
+nohup: ignoring input
+2026-03-23 08:48:50,687 [IM] Loaded saved instrument: HDFCBANK
+2026-03-23 08:48:50,687 [IM] Loaded saved instrument: ICICIBANK
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: BAJFINANCE
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: SIEMENS
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: POLYCAB
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: SOLARINDS
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: TVSMOTOR
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: BOSCHLTD
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: PAGEIND
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: BRITANNIA
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: APOLLOHOSP
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: OFSS
+2026-03-23 08:48:50,688 [IM] Loaded saved instrument: BAJAJ-AUTO
+2026-03-23 08:48:50,688 Loaded 44 instruments
+2026-03-23 08:48:50,688 Training RELIANCE...
+2026-03-23 08:48:50,939 RELIANCE: 46958 candles loaded
+2026-03-23 08:56:20,323 RELIANCE: 4688 samples | WR=30.2%
+2026-03-23 08:56:31,594 RELIANCE: 4688 samples | WR=30.2%
+2026-03-23 08:56:50,928 RELIANCE: Accuracy=65.9%
+2026-03-23 08:56:50,976 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-23 08:56:51,015 Training TCS...
+2026-03-23 08:56:51,248 TCS: 46951 candles loaded
+2026-03-23 08:57:02,589 RELIANCE: Accuracy=65.9%
+2026-03-23 08:57:02,626 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+RELIANCE: True
+2026-03-23 08:57:11,931 RELIANCE: 4688 samples | WR=30.2%
+2026-03-23 08:57:43,432 RELIANCE: Accuracy=65.9%
+2026-03-23 08:57:43,474 RELIANCE: Saved to ml_models/RELIANCE_v31_ml.pkl ✅
+2026-03-23 08:57:43,535 Training TCS...
+2026-03-23 08:57:43,721 TCS: 46951 candles loaded
