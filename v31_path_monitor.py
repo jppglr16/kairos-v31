@@ -31,7 +31,8 @@ def monitor():
     print(f'  {"Path":<15} {"Signals":>8} {"Wins":>6} {"Losses":>7} {"WR":>6}')
     print('  '+'-'*45)
     for path in ['A_SMART','B_VWAP','C_ORB','D_SUPERTREND']:
-        total=safe_int(run(f"grep 'FINAL' v31_log.txt | grep '{path}' | wc -l"))
+        today=datetime.now().strftime('%Y-%m-%d')
+        total=safe_int(run(f"grep '{today}.*SIGNAL:.*{path}\|{today}.*path.*{path}' v31_log.txt | wc -l"))
         wins=safe_int(run(f"grep 'TARGET HIT' v31_log.txt | grep '{path}' | wc -l"))
         losses=safe_int(run(f"grep 'SL HIT' v31_log.txt | grep '{path}' | wc -l"))
         closed=wins+losses
@@ -73,7 +74,8 @@ def monitor():
         if n>0:print(f'  {name:<15}: {n}')
 
     # 6. Win/Loss summary
-    total_sigs=safe_int(run("grep 'FINAL' v31_log.txt | wc -l"))
+    today=datetime.now().strftime('%Y-%m-%d')
+    total_sigs=safe_int(run(f"grep '{today}.*SIGNAL:' v31_log.txt | wc -l"))
     total_wins=safe_int(run("grep 'TARGET HIT' v31_log.txt | wc -l"))
     total_loss=safe_int(run("grep 'SL HIT' v31_log.txt | wc -l"))
     approved=safe_int(run("grep 'APPROVED' v31_log.txt | wc -l"))

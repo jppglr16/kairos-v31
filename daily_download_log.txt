@@ -224,3 +224,26 @@ Engine cache refreshed!
 [I 260323 09:00:50 smartConnect:124] in pool
 [I 260323 10:00:48 smartConnect:124] in pool
 [I 260323 11:00:45 smartConnect:124] in pool
+[I 260323 12:00:27 smartConnect:124] in pool
+[I 260323 13:00:04 smartConnect:124] in pool
+[I 260323 14:00:18 smartConnect:124] in pool
+[I 260323 15:00:24 smartConnect:124] in pool
+[I 260323 15:35:31 smartConnect:124] in pool
+NIFTY: +75 candles
+BANKNIFTY: +75 candles
+SENSEX: +75 candles
+FINNIFTY: +75 candles
+MIDCPNIFTY: +75 candles
+GOLDM: +79 candles
+SILVERM: +79 candles
+LT: +75 candles
+NTPC: +75 candles
+MARUTI: +75 candles
+BHARTIARTL: +75 candles
+SBIN: +75 candles
+TATAMOTORS: +75 candles
+RELIANCE: +75 candles
+HINDUNILVR: +75 candles
+TCS: +75 candles
+TATASTEEL: +75 candles
+Done! Updated 17/18
