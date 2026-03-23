@@ -812,7 +812,6 @@ async def main():
             try:
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
-                # Fix 2: Cache all VIX data once!
                 _vix_data={
                     'mode':vix_engine.get_strategy_mode(),
                     'trend':vix_engine.get_trend(),
@@ -820,8 +819,16 @@ async def main():
                 }
                 _strategy_mode=_vix_data['mode']
                 log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
-                if not _vix_ok:
-                    log.info(f'[VIX] Trading blocked: {_vix_reason}')
+
+                # MCX evening: relax VIX filter after NSE close
+                from datetime import datetime as _now_dt
+                _is_mcx_instrument=instrument in ["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
+                _after_nse_close=_now_dt.now().hour>=15 and _now_dt.now().minute>=30
+                if not _vix_ok and _is_mcx_instrument and _after_nse_close:
+                    log.info(f"[VIX] MCX evening - relaxing VIX for {instrument}")
+                    _vix_ok=True
+                elif not _vix_ok:
+                    log.info(f"[VIX] Trading blocked: {_vix_reason}")
                     await asyncio.sleep(60)
                     continue
                 if _strategy_mode=='NO_TRADE':
@@ -846,7 +853,6 @@ async def main():
             try:
                 from v31_vix import vix_engine
                 _vix_ok,_vix_reason=vix_engine.should_trade()
-                # Fix 2: Cache all VIX data once!
                 _vix_data={
                     'mode':vix_engine.get_strategy_mode(),
                     'trend':vix_engine.get_trend(),
@@ -854,8 +860,16 @@ async def main():
                 }
                 _strategy_mode=_vix_data['mode']
                 log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
-                if not _vix_ok:
-                    log.info(f'[VIX] Trading blocked: {_vix_reason}')
+
+                # MCX evening: relax VIX filter after NSE close
+                from datetime import datetime as _now_dt
+                _is_mcx_instrument=instrument in ["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
+                _after_nse_close=_now_dt.now().hour>=15 and _now_dt.now().minute>=30
+                if not _vix_ok and _is_mcx_instrument and _after_nse_close:
+                    log.info(f"[VIX] MCX evening - relaxing VIX for {instrument}")
+                    _vix_ok=True
+                elif not _vix_ok:
+                    log.info(f"[VIX] Trading blocked: {_vix_reason}")
                     await asyncio.sleep(60)
                     continue
                 if _strategy_mode=='NO_TRADE':
