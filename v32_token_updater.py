@@ -52,18 +52,27 @@ def get_nearest_futures(data,inst):
 
 def build_tokens(data):
     tokens={}
+    missing=[]
     for inst in MCX_INSTRUMENTS:
         contract=get_nearest_futures(data,inst)
         if not contract:
             log.error(f'{inst}: NOT FOUND')
+            missing.append(inst)
             continue
+        # Market validation
+        if not contract.get('token') or int(contract['token'])<=0:
+            raise Exception(f"Bad token for {inst}")
         tokens[inst]={
             'token':contract['token'],
             'symbol':contract['symbol'],
             'lotsize':contract.get('lotsize',1),
             'exchange':'MCX'
         }
-        log.info(f"{inst}: {contract['symbol']} token={contract['token']}")
+    # All-or-nothing!
+    if missing:
+        raise Exception(f"Missing instruments: {missing} - aborting!")
+    for inst,info in tokens.items():
+        log.info(f"{inst}: {info['symbol']} token={info['token']}")
     return tokens
 
 def backup_file(filepath):
@@ -120,8 +129,12 @@ def send_telegram_alert(tokens,success=True):
 
 def auto_git_commit():
     try:
-        os.system("cd ~/kairos_kotak_bot && git add angel_feed.py mcx_tokens.json && git commit -m 'Auto: MCX token update' && git push origin main")
-        log.info('Git commit done!')
+        diff=os.system("cd ~/kairos_kotak_bot && git diff --quiet angel_feed.py mcx_tokens.json")
+        if diff!=0:
+            os.system("cd ~/kairos_kotak_bot && git add angel_feed.py mcx_tokens.json && git commit -m 'Auto: MCX token update' && git push origin main")
+            log.info('Git commit done!')
+        else:
+            log.info('No changes to commit')
     except:pass
 
 def update_mcx_tokens():
