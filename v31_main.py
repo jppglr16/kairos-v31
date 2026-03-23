@@ -1381,6 +1381,18 @@ async def main():
                         _lots=get_lots_kelly(instrument,capital,_ml_p,_rr,_prem)
                     except:
                         _lots=get_lots(instrument,capital)
+                    # Expiry day safety check!
+                    try:
+                        from v31_angel_options import get_expiry_str
+                        from datetime import datetime as _edt2
+                        _exp2=get_expiry_str(instrument)
+                        _exp_dt2=_edt2.strptime(_exp2,'%d%b%y')
+                        _days2=(_exp_dt2.date()-_edt2.now().date()).days
+                        if _days2<=1:
+                            _lots=1
+                            log.info(f'[V31] {instrument} expiry {_days2}d - forced 1 lot!')
+                    except:pass
+
                     # Apply SL/T1 multipliers (once only!)
                     try:
                         if not signal.get('score_adjusted'):
