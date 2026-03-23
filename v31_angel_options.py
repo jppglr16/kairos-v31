@@ -133,7 +133,8 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
         'NIFTY':'NIFTY','BANKNIFTY':'BANKNIFTY',
         'FINNIFTY':'FINNIFTY','MIDCPNIFTY':'MIDCPNIFTY',
         'SENSEX':'SENSEX50','CRUDEOIL':'CRUDEOIL',
-        'GOLDM':'GOLDM','SILVERM':'SILVERM','NATURALGAS':'NATURALGAS'
+        'GOLDM':'GOLDM','SILVERM':'SILVERM','NATURALGAS':'NATURALGAS',
+        'TATAMOTORS':'TMPV'  # TATAMOTORS renamed to TMPV!
     }
     prefix=prefix_map.get(inst,inst)
 
