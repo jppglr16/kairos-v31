@@ -939,19 +939,6 @@ async def main():
                         except:
                             continue
 
-                    # Skip CRUDEOIL if too expensive
-                    if instrument=='CRUDEOIL':
-                        try:
-                            from v31_angel_options import get_expiry_str
-                            import datetime as _expdt
-                            _exp=get_expiry_str(instrument)
-                            _exp_dt=_expdt.datetime.strptime(_exp,'%d%b%y')
-                            _days=(_exp_dt.date()-_expdt.datetime.now().date()).days
-                            if _days>10 and capital<150000:
-                                log.info(f'[V31] CRUDEOIL skipped - {_days}d to expiry, need Rs.1.5L')
-                                continue
-                        except:pass
-
                     # Signal Manager daily limit check
                     from v31_signal_manager import signal_manager
                     if signal_manager._get_daily_total(instrument)>=8:
