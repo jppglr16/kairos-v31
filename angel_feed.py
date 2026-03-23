@@ -10,14 +10,53 @@ ANGEL_CONFIG={
 }
 
 SYMBOLS={
+    # Indices
     'NIFTY':     {'token':'99926000','exchange':'NSE'},
     'BANKNIFTY': {'token':'99926009','exchange':'NSE'},
     'FINNIFTY':  {'token':'99926037','exchange':'NSE'},
     'MIDCPNIFTY':{'token':'99926074','exchange':'NSE'},
     'SENSEX':    {'token':'99919000','exchange':'BSE'},
+    # MCX
     'CRUDEOIL':  {'token':'472790','exchange':'MCX'},
     'GOLDM':     {'token':'477904','exchange':'MCX'},
     'SILVERM':   {'token':'457533','exchange':'MCX'},
+    'NATURALGAS':{'token':'473860','exchange':'MCX'},
+    # NSE Stocks
+    'LT':        {'token':'11483','exchange':'NSE'},
+    'NTPC':      {'token':'11630','exchange':'NSE'},
+    'MARUTI':    {'token':'10999','exchange':'NSE'},
+    'BHARTIARTL':{'token':'10604','exchange':'NSE'},
+    'SBIN':      {'token':'3045','exchange':'NSE'},
+    'TATAMOTORS':{'token':'3456','exchange':'NSE'},
+    'RELIANCE':  {'token':'2885','exchange':'NSE'},
+    'HINDUNILVR':{'token':'1394','exchange':'NSE'},
+    'TCS':       {'token':'11536','exchange':'NSE'},
+    'TATASTEEL': {'token':'3505','exchange':'NSE'},
+    'HDFCBANK':  {'token':'1333','exchange':'NSE'},
+    'ICICIBANK': {'token':'4963','exchange':'NSE'},
+    'BAJFINANCE':{'token':'317','exchange':'NSE'},
+    'SIEMENS':   {'token':'3150','exchange':'NSE'},
+    'POLYCAB':   {'token':'14418','exchange':'NSE'},
+    'SOLARINDS': {'token':'22592','exchange':'NSE'},
+    'TVSMOTOR':  {'token':'3775','exchange':'NSE'},
+    'BOSCHLTD':  {'token':'2181','exchange':'NSE'},
+    'PAGEIND':   {'token':'14413','exchange':'NSE'},
+    'BRITANNIA': {'token':'547','exchange':'NSE'},
+    'APOLLOHOSP':{'token':'157','exchange':'NSE'},
+    'OFSS':      {'token':'10738','exchange':'NSE'},
+    'BAJAJ-AUTO':{'token':'16669','exchange':'NSE'},
+    'EICHERMOT': {'token':'910','exchange':'NSE'},
+    'SHREECEM':  {'token':'3103','exchange':'NSE'},
+    'CUMMINSIND':{'token':'1901','exchange':'NSE'},
+    'ABB':       {'token':'13','exchange':'NSE'},
+    'DIVISLAB':  {'token':'10940','exchange':'NSE'},
+    'HEROMOTOCO':{'token':'1348','exchange':'NSE'},
+    'INDIGO':    {'token':'11195','exchange':'NSE'},
+    'TATAELXSI': {'token':'3411','exchange':'NSE'},
+    'AMBER':     {'token':'19234','exchange':'NSE'},
+    'ALKEM':     {'token':'11703','exchange':'NSE'},
+    'TORNTPHARM':{'token':'3518','exchange':'NSE'},
+    'KEI':       {'token':'13310','exchange':'NSE'},
 }
 
 def get_angel_client():
