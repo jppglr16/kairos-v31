@@ -210,23 +210,45 @@ def search_option_token(obj,inst,price,opt_type):
     """Search Angel One for option token using master file"""
     # Dynamic expiry via option_engine!
     try:
-        from v31_option_engine import get_option
+        from v31_option_engine import get_option,CACHE as options_cache
+        if not options_cache:
+            log.warning("[OPTION] Cache empty! Loading...")
+            from v31_option_engine import load_all_options
+            load_all_options()
         result=get_option(inst,price,opt_type)
-        if result and result.get("token"):
-            log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
-            return (result["token"],result["symbol"],result.get("segment","NFO"))
+        # Validate result structure
+        if result and all(k in result for k in ("token","symbol")):
+            if result["token"]:
+                log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
+                return (result["token"],result["symbol"],
+                        result.get("segment","NFO"))
+            else:
+                log.warning(f"[OPTION FAIL] {inst} {price} {opt_type} - empty token")
+        else:
+            log.warning(f"[OPTION FAIL] {inst} {price} {opt_type} - invalid result")
     except Exception as _de:
-        log.debug(f"[ANGEL OPT] Engine fallback: {_de}")
+        log.debug(f"[OPTION] Dynamic lookup failed: {_de}")
 
     # Dynamic expiry via option_engine!
     try:
-        from v31_option_engine import get_option
+        from v31_option_engine import get_option,CACHE as options_cache
+        if not options_cache:
+            log.warning("[OPTION] Cache empty! Loading...")
+            from v31_option_engine import load_all_options
+            load_all_options()
         result=get_option(inst,price,opt_type)
-        if result and result.get("token"):
-            log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
-            return (result["token"],result["symbol"],result.get("segment","NFO"))
+        # Validate result structure
+        if result and all(k in result for k in ("token","symbol")):
+            if result["token"]:
+                log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
+                return (result["token"],result["symbol"],
+                        result.get("segment","NFO"))
+            else:
+                log.warning(f"[OPTION FAIL] {inst} {price} {opt_type} - empty token")
+        else:
+            log.warning(f"[OPTION FAIL] {inst} {price} {opt_type} - invalid result")
     except Exception as _de:
-        log.debug(f"[ANGEL OPT] Engine fallback: {_de}")
+        log.debug(f"[OPTION] Dynamic lookup failed: {_de}")
 
     symbol,strike,expiry=get_option_symbol(inst,price,opt_type)
     # SENSEX uses BFO exchange
