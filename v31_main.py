@@ -981,11 +981,20 @@ async def main():
                                      if _edt.strptime(e,'%d%b%Y').date()>=_edt.now().date()]
                             if not _future:continue
                             _nearest=min(_future,key=lambda e:_edt.strptime(e,'%d%b%Y'))
-                            _days=(_edt.strptime(_nearest,'%d%b%Y').date()-_edt.now().date()).days
-                            if _days>6:
-                                log.info(f'[V31] {instrument} skipped - {_days}d to expiry (need last 6 days!)')
+                            # Count TRADING days only (skip weekends!)
+                            from datetime import timedelta
+                            _exp_date=_edt.strptime(_nearest,'%d%b%Y').date()
+                            _today=_edt.now().date()
+                            _trading_days=0
+                            _d=_today
+                            while _d<=_exp_date:
+                                if _d.weekday()<5:  # Mon-Fri only
+                                    _trading_days+=1
+                                _d+=timedelta(days=1)
+                            if _trading_days>6:
+                                log.info(f'[V31] {instrument} skipped - {_trading_days} trading days to expiry')
                                 continue
-                            log.info(f'[V31] {instrument} ACTIVE! {_days}d to expiry')
+                            log.info(f'[V31] {instrument} ACTIVE! {_trading_days} trading days to expiry')
                         except:
                             continue
 
