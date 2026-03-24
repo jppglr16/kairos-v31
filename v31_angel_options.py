@@ -37,85 +37,77 @@ STEP_MAP={
 
 def get_expiry_str(inst):
     """Get nearest expiry in DDMMMYY format"""
-    from datetime import datetime,timedelta
-    import os,json,re,calendar
+    from datetime import timedelta
     today=datetime.now()
-
-    # INDEX OPTIONS - use fresh cache!
     if inst in ['NIFTY','BANKNIFTY','FINNIFTY','MIDCPNIFTY','SENSEX']:
+        # Use master file for nearest expiry
         try:
-            # Use fresh option_engine_cache first!
-            master='option_engine_cache.json'
-            if not os.path.exists(master):
-                master='angel_options_lookup.json'
-            prefix={'NIFTY':'NIFTY','BANKNIFTY':'BANKNIFTY',
-                    'FINNIFTY':'FINNIFTY','MIDCPNIFTY':'MIDCPNIFTY',
-                    'SENSEX':'SENSEX50'}.get(inst,inst)
-
+            import json,os,re
+            master='angel_options_lookup.json'
+            prefix={'NIFTY':'NIFTY','BANKNIFTY':'BANKNIFTY','FINNIFTY':'FINNIFTY','MIDCPNIFTY':'MIDCPNIFTY','SENSEX':'SENSEX50'}.get(inst,inst)
             if os.path.exists(master):
-                raw=json.load(open(master))
-                # Handle both formats
-                if isinstance(raw,list):
-                    keys=[r.get('symbol','') for r in raw]
-                else:
-                    keys=list(raw.keys())
-
+                lookup=json.load(open(master))
                 expiries=set()
-                for k in keys:
-                    if k.startswith(prefix) and 'CE' in k:
+                for k in lookup:
+                    if k.startswith(prefix) and k[len(prefix):len(prefix)+2].isdigit() and 'CE' in k:
                         m2=re.search(prefix+r'(\d{2}[A-Z]{3}\d{2})',k)
                         if m2:expiries.add(m2.group(1))
-
                 future=[]
                 for e in expiries:
                     try:
                         dt=datetime.strptime(e,'%d%b%y')
-                        if dt.date()>=today.date():
-                            future.append((dt,e))
+                        if dt.date()>=today.date():future.append((dt,e))
                     except:pass
-
                 if future:
                     return min(future,key=lambda x:x[0])[1]
         except:pass
-
-        # Fallback: Next Thursday
         days=(3-today.weekday())%7
         if days==0:days=7
+        from datetime import timedelta
         expiry=today+timedelta(days=days)
-
-    # MCX OPTIONS
     elif inst in ['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']:
+        # MCX options expire on 3rd Wednesday of month
+        import calendar
         def mcx_option_expiry(y,m):
+            # Find 3rd Wednesday
             count=0
             for d in range(1,calendar.monthrange(y,m)[1]+1):
-                if datetime(y,m,d).weekday()==2:
+                if datetime(y,m,d).weekday()==2:  # Wednesday
                     count+=1
-                    if count==3:return datetime(y,m,d)
+                    if count==3:
+                        return datetime(y,m,d)
             return datetime(y,m,15)
 
         exp=mcx_option_expiry(today.year,today.month)
+        # Switch to next month if < 2 days to expiry or passed
         if (exp.date()-today.date()).days<2:
             m=today.month+1 if today.month<12 else 1
             y=today.year+1 if today.month==12 else today.year
             exp=mcx_option_expiry(y,m)
         expiry=exp
-
-    # STOCK OPTIONS
     else:
+        # Stocks - last Thursday of month
+        import calendar
+        y,m=today.year,today.month
         def last_thursday(y,m):
-            for d in range(calendar.monthrange(y,m)[1],0,-1):
+            last=calendar.monthrange(y,m)[1]
+            for d in range(last,0,-1):
                 if datetime(y,m,d).weekday()==3:
                     return datetime(y,m,d)
             return datetime(y,m,1)
-
-        y,m=today.year,today.month
         exp=last_thursday(y,m)
+        # If expiry passed or today, use next month
         if exp.date()<=today.date():
             m=m+1 if m<12 else 1
-            y=y+1 if m==1 else y
+            y=y+1 if today.month==12 else y
             exp=last_thursday(y,m)
-        expiry=exp
-
+        # Angel One uses settlement date (T+2) for stocks
+        from datetime import timedelta
+        settlement=exp+timedelta(days=2)
+        # Skip weekend
+        if settlement.weekday()==5:settlement+=timedelta(days=2)
+        elif settlement.weekday()==6:settlement+=timedelta(days=1)
+        expiry=settlement
     return expiry.strftime('%d%b%y').upper()
 
 def get_atm_strike(inst,price):
@@ -210,24 +202,19 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
 
 
 def search_option_token(obj,inst,price,opt_type):
-    """Search Angel One for option token - dynamic expiry!"""
-    # Use option_engine for correct strike + expiry!
+    """Search Angel One for option token using master file"""
+    # Dynamic expiry via option_engine!
     try:
         from v31_option_engine import get_option
         result=get_option(inst,price,opt_type)
-        if result and result.get('token'):
+        if result and result.get("token"):
             log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
-            return (result['token'],result['symbol'],
-                    result.get('segment','NFO'))
+            return (result["token"],result["symbol"],result.get("segment","NFO"))
     except Exception as _de:
-        log.debug(f'[ANGEL OPT] Engine failed: {_de}')
+        log.debug(f"[ANGEL OPT] Engine fallback: {_de}")
 
-    # Fallback to old method
     symbol,strike,expiry=get_option_symbol(inst,price,opt_type)
-    exchange=EXCHANGE_MAP.get(inst,'NFO')
-    if inst=='SENSEX':exchange='BFO'
-    try:
-        import json,os
+    # SENSEX uses BFO exchange
     exchange=EXCHANGE_MAP.get(inst,'NFO')
     if inst=='SENSEX':exchange='BFO' 
     try:
