@@ -13,7 +13,7 @@ VIX_CONFIG={
     "TREND_THRESH": 0.5,
     "SWEET_LOW":    14,
     "SWEET_HIGH":   20,
-    "DANGER":       25,
+    "DANGER":       26,  # Raised from 25 - allow trading up to 26!
     "QUALITY":      40,
 }
 VIX_DANGER=VIX_CONFIG["DANGER"]
