@@ -2,25 +2,25 @@
   "CRUDEOIL": {
     "token": "486502",
     "symbol": "CRUDEOIL20APR26FUT",
-    "lotsize": "100",
+    "lotsize": 100,
     "exchange": "MCX"
   },
   "GOLDM": {
     "token": "477904",
     "symbol": "GOLDM03APR26FUT",
-    "lotsize": "100",
+    "lotsize": 100,
     "exchange": "MCX"
   },
   "SILVERM": {
     "token": "466029",
     "symbol": "SILVERMIC30APR26FUT",
-    "lotsize": "1",
+    "lotsize": 1,
     "exchange": "MCX"
   },
   "NATURALGAS": {
     "token": "475111",
     "symbol": "NATURALGAS26MAR26FUT",
-    "lotsize": "1250",
+    "lotsize": 1250,
     "exchange": "MCX"
   }
 }
