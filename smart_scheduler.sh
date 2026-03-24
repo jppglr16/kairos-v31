@@ -113,6 +113,19 @@ send(f'''🌅 Good Morning Ramkumar!
     fi
 
     # ============================================================
+    # 10:30 AM - Refresh option cache (weekly contracts released!)
+    if [ "$HHMM" = "10:30" ]; then
+        python3 -c "
+import os
+if os.path.exists('option_engine_cache.json'):
+    os.remove('option_engine_cache.json')
+from v31_option_engine import load_all_options
+options=load_all_options(force=True)
+print(f'Cache refreshed: {len(options)} options')
+" 2>/dev/null
+        log "10:30 AM - Option cache refreshed"
+    fi
+
     # 9:00 AM - Ensure V31 running
     # ============================================================
     if [ "$HHMM" = "09:00" ]; then
