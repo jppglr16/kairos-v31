@@ -1522,25 +1522,48 @@ async def main():
                     notified=notify_v31_entry(signal,_qty,instrument)
                     if not notified:
                         log.info(f'[V31] {instrument} skipped by notify (too expensive)')
-                        # Try OTM strike (cheaper!)
+                        # Strike ladder: try OTM strikes!
                         try:
                             from v31_option_engine import get_option
-                            from v31_angel_options import get_atm_strike
+                            from v31_angel_trader import angel_trader as _at
+                            # Fix: get correct opt_type
+                            _action=signal.get('action','BUY')
+                            _opt_type_ladder='CE' if _action=='BUY' else 'PE'
                             _curr_price=float(df5['close'].iloc[-1])
                             _atr=float((df5['high']-df5['low']).tail(14).mean())
-                            _step=_atr*0.5  # 0.5 ATR away from ATM
-                            _otm_price=_curr_price-_step if _opt_type=='PE' else _curr_price+_step
-                            _otm_result=get_option(instrument,_otm_price,_opt_type)
-                            if _otm_result and _otm_result.get('token'):
+                            _max_step=_curr_price*0.02  # Max 2% OTM
+
+                            for _mult in [0.5,1.0,1.5]:
+                                _step=min(_atr*_mult,_max_step)
+                                if _opt_type_ladder=='PE':
+                                    _otm_price=_curr_price-_step
+                                else:
+                                    _otm_price=_curr_price+_step
+
+                                _otm_result=get_option(instrument,_otm_price,_opt_type_ladder)
+                                if not _otm_result or not _otm_result.get('token'):
+                                    continue
+
+                                # Fetch real LTP!
+                                try:
+                                    _seg=_otm_result.get('segment','NFO')
+                                    _ltp_r=_at.obj.ltpData(
+                                        _seg,_otm_result['symbol'],
+                                        _otm_result['token'])
+                                    if _ltp_r and _ltp_r.get('data'):
+                                        signal['premium']=_ltp_r['data']['ltp']
+                                        signal['real_prem']=_ltp_r['data']['ltp']
+                                except:pass
+
                                 signal['option_token']=_otm_result['token']
                                 signal['option_symbol']=_otm_result['symbol']
-                                signal['premium']=signal.get('premium',0)*0.7
-                                log.info(f'[V31] {instrument} trying OTM: {_otm_result["symbol"]}')
+                                log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]}')
                                 notified=notify_v31_entry(signal,_qty,instrument)
                                 if notified:
-                                    log.info(f'[V31] {instrument} OTM trade accepted!')
+                                    log.info(f'[V31] {instrument} OTM accepted! x{_mult}')
+                                    break
                         except Exception as _otme:
-                            log.debug(f'[V31] OTM fallback error: {_otme}')
+                            log.debug(f'[V31] OTM ladder error: {_otme}')
                         if not notified:
                             try:
                                 from v31_trade_logger import log_decision
