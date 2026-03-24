@@ -23,6 +23,8 @@ QUALITY_THRESHOLD=VIX_CONFIG["QUALITY"]
 class VIXEngine:
     def __init__(self):
         self._vix=None
+        self._prev_vix=None
+        self._vix_trend='STABLE'
         self._last_fetch=0
         self._session=None
         self.CACHE_TTL=120  # 2 mins (VIX can spike fast!)
@@ -71,7 +73,7 @@ class VIXEngine:
         now=time.time()
         # Return cached value
         if self._vix and now-self._last_fetch<self.CACHE_TTL:
-            return self._vix
+            return self._vix or 0.0
 
         # Create session
         if not self._session:
@@ -133,7 +135,7 @@ class VIXEngine:
 
     def get_vix_value(self):
         """Clean getter for VIX value"""
-        return self._vix
+        return self._vix or 0.0
 
     def score_signal(self,action='BUY'):
         """Score boost based on VIX + trend"""
