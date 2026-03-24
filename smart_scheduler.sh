@@ -136,16 +136,8 @@ send('⚠️ V31 was stopped!\nRestarted automatically!\nMarket ready!')
     fi
 
     # 3:35 PM - NSE EOD P&L Report
-    if [ "$HHMM" = "15:35" ]; then
-        python3 v31_pnl_report.py NSE 2>/dev/null
-        log "3:35 PM - NSE P&L report sent"
-    fi
 
     # 3:35 PM - NSE EOD P&L Report
-    if [ "$HHMM" = "15:35" ]; then
-        python3 v31_pnl_report.py NSE 2>/dev/null
-        log "3:35 PM - NSE P&L report sent"
-    fi
 
     # 11:35 PM - MCX EOD P&L Report
     if [ "$HHMM" = "23:35" ]; then
@@ -242,74 +234,6 @@ if weekly:
         # ============================================================
     # 3:35 PM - Download today candles after market close
     # ============================================================
-    if [ "$HHMM" = "15:35" ]; then
-        log "3:35 PM - Downloading today candles..."
-        python3 -c "
-import json,os,time
-from SmartApi import SmartConnect
-import pyotp
-from datetime import datetime
-
-obj=SmartConnect(api_key='pEOas0vU')
-totp=pyotp.TOTP('R2T2F2BMP56U44O4OMOYJZTFJI').now()
-obj.generateSession('J234619','1605',totp)
-
-today=datetime.now().strftime('%Y-%m-%d')
-year=datetime.now().strftime('%Y')
-
-INSTRUMENTS={
-    'NIFTY':{'token':'99926000','exchange':'NSE'},
-    'BANKNIFTY':{'token':'99926009','exchange':'NSE'},
-    'SENSEX':{'token':'99919000','exchange':'BSE'},
-    'FINNIFTY':{'token':'99926037','exchange':'NSE'},
-    'MIDCPNIFTY':{'token':'99926074','exchange':'NSE'},
-    'CRUDEOIL':{'token':'472790','exchange':'MCX'},
-    'GOLDM':{'token':'477904','exchange':'MCX'},
-    'SILVERM':{'token':'457533','exchange':'MCX'},
-    'LT':{'token':'11483','exchange':'NSE'},
-    'NTPC':{'token':'11630','exchange':'NSE'},
-    'MARUTI':{'token':'10999','exchange':'NSE'},
-    'BHARTIARTL':{'token':'10604','exchange':'NSE'},
-    'SBIN':{'token':'3045','exchange':'NSE'},
-    'TATAMOTORS':{'token':'3456','exchange':'NSE'},
-    'RELIANCE':{'token':'2885','exchange':'NSE'},
-    'HINDUNILVR':{'token':'1394','exchange':'NSE'},
-    'TCS':{'token':'11536','exchange':'NSE'},
-    'TATASTEEL':{'token':'3499','exchange':'NSE'},
-}
-
-updated=0
-for symbol,info in INSTRUMENTS.items():
-    try:
-        time.sleep(0.5)
-        resp=obj.getCandleData({
-            'exchange':info['exchange'],
-            'symboltoken':info['token'],
-            'interval':'FIVE_MINUTE',
-            'fromdate':f'{today} 09:00',
-            'todate':f'{today} 15:30'
-        })
-        if resp and resp.get('data'):
-            candles=resp['data']
-            fname=f'historical_data/{symbol}_{year}_5min.json'
-            existing=json.load(open(fname)) if os.path.exists(fname) else []
-            existing=[c for c in existing if not str(c[0]).startswith(today)]
-            existing.extend(candles)
-            json.dump(existing,open(fname,'w'))
-            updated+=1
-            print(f'{symbol}: +{len(candles)} candles')
-    except Exception as e:
-        print(f'{symbol}: {e}')
-print(f'Done! Updated {updated}/18')
-" >> daily_download_log.txt 2>&1
-        log "Daily candles download complete!"
-        python3 -c "
-from v30_notify import send
-send('📊 Daily candles downloaded!
-All 18 instruments updated!
-Data ready for tomorrow!')
-" 2>/dev/null
-    fi
 
     # ============================================================
     # Saturday + Sunday 10PM - Weekly retrain
