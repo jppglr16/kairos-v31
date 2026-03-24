@@ -5,6 +5,7 @@ from datetime import datetime,timedelta
 import json,os
 
 log=logging.getLogger(__name__)
+_option_cache={}  # ATM option cache
 
 # Exchange mapping
 EXCHANGE_MAP={
@@ -208,20 +209,34 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
 
 def search_option_token(obj,inst,price,opt_type):
     """Search Angel One for option token using master file"""
+    # ATM cache for fast lookup!
+    from v31_angel_options import _option_cache
+    from v31_angel_options import get_atm_strike as _atm
+    _atm_strike=_atm(inst,price)
+    _cache_key=(inst,_atm_strike,opt_type)
+    if _cache_key in _option_cache:
+        log.debug(f"[ANGEL OPT] Cache hit: {inst} {opt_type}")
+        return _option_cache[_cache_key]
+
     # Dynamic expiry via option_engine!
     try:
         from v31_option_engine import get_option,CACHE as options_cache
+        # Thread-safe load
         if not options_cache:
-            log.warning("[OPTION] Cache empty! Loading...")
-            from v31_option_engine import load_all_options
-            load_all_options()
+            if not getattr(search_option_token,"_loading",False):
+                search_option_token._loading=True
+                log.warning("[OPTION] Cache empty! Loading...")
+                from v31_option_engine import load_all_options
+                load_all_options()
+                search_option_token._loading=False
         result=get_option(inst,price,opt_type)
         # Validate result structure
         if result and all(k in result for k in ("token","symbol")):
             if result["token"]:
                 log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
-                return (result["token"],result["symbol"],
-                        result.get("segment","NFO"))
+                _r=(result["token"],result["symbol"],result.get("segment","NFO"))
+                _option_cache[_cache_key]=_r  # Cache it!
+                return _r
             else:
                 log.warning(f"[OPTION FAIL] {inst} {price} {opt_type} - empty token")
         else:
@@ -229,20 +244,34 @@ def search_option_token(obj,inst,price,opt_type):
     except Exception as _de:
         log.debug(f"[OPTION] Dynamic lookup failed: {_de}")
 
+    # ATM cache for fast lookup!
+    from v31_angel_options import _option_cache
+    from v31_angel_options import get_atm_strike as _atm
+    _atm_strike=_atm(inst,price)
+    _cache_key=(inst,_atm_strike,opt_type)
+    if _cache_key in _option_cache:
+        log.debug(f"[ANGEL OPT] Cache hit: {inst} {opt_type}")
+        return _option_cache[_cache_key]
+
     # Dynamic expiry via option_engine!
     try:
         from v31_option_engine import get_option,CACHE as options_cache
+        # Thread-safe load
         if not options_cache:
-            log.warning("[OPTION] Cache empty! Loading...")
-            from v31_option_engine import load_all_options
-            load_all_options()
+            if not getattr(search_option_token,"_loading",False):
+                search_option_token._loading=True
+                log.warning("[OPTION] Cache empty! Loading...")
+                from v31_option_engine import load_all_options
+                load_all_options()
+                search_option_token._loading=False
         result=get_option(inst,price,opt_type)
         # Validate result structure
         if result and all(k in result for k in ("token","symbol")):
             if result["token"]:
                 log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
-                return (result["token"],result["symbol"],
-                        result.get("segment","NFO"))
+                _r=(result["token"],result["symbol"],result.get("segment","NFO"))
+                _option_cache[_cache_key]=_r  # Cache it!
+                return _r
             else:
                 log.warning(f"[OPTION FAIL] {inst} {price} {opt_type} - empty token")
         else:
