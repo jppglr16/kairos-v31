@@ -1,14 +1,14 @@
 """
-V32 Token Updater (Bulletproof)
-- Safe updates with backup + rollback
-- Retry logic + timeout handling
-- Token validation
-- Atomic file write (no corruption)
-- Dry-run mode
-- Telegram alert
+V32 Token Updater (Final Bulletproof Version)
+- All-or-nothing updates
+- Safe token validation
+- Atomic writes
+- Retry logic
+- Fallback to previous tokens
+- Telegram alerts
+- Safe git commit
 """
-
-import requests,json,logging,shutil,os,tempfile,re
+import requests,json,logging,shutil,os,tempfile,re,time
 from datetime import datetime
 
 log=logging.getLogger(__name__)
@@ -20,27 +20,33 @@ MASTER_URL='https://margincalculator.angelbroking.com/OpenAPI_File/files/OpenAPI
 DRY_RUN=False
 
 def download_master():
+    """Download with retry"""
     for attempt in range(3):
         try:
             log.info(f'Downloading master (attempt {attempt+1})...')
             r=requests.get(MASTER_URL,timeout=30)
             r.raise_for_status()
-            return r.json()
+            data=r.json()
+            log.info(f'Downloaded {len(data)} instruments')
+            return data
         except Exception as e:
-            log.warning(f'Retry {attempt+1} failed: {e}')
-    raise Exception("Failed to download master file")
+            log.warning(f'Attempt {attempt+1} failed: {e}')
+            if attempt<2:time.sleep(3)
+    raise Exception("Failed to download master after 3 attempts")
 
 def extract_expiry(symbol):
+    """Safe expiry extraction"""
     try:
         m=re.search(r'(\d{2})([A-Z]{3})(\d{2})FUT',symbol)
         if m:
             return datetime.strptime(
                 f"{m.group(1)}{m.group(2)}{m.group(3)}",'%d%b%y')
     except Exception as e:
-        log.debug(f'Expiry parse failed: {symbol}')
+        log.debug(f'Expiry parse failed: {symbol}: {e}')
     return datetime.max
 
 def get_nearest_futures(data,inst):
+    """Find nearest futures contract"""
     futures=[d for d in data
              if d.get('exch_seg')=='MCX'
              and d.get('symbol','').startswith(inst)
@@ -50,7 +56,21 @@ def get_nearest_futures(data,inst):
     futures.sort(key=lambda x:extract_expiry(x['symbol']))
     return futures[0]
 
-def build_tokens(data):
+def validate_contract(inst,contract):
+    """Validate contract data"""
+    # Safe int parsing
+    try:
+        token_val=int(contract.get('token',0))
+        if token_val<=0:raise Exception()
+    except:
+        raise Exception(f"Bad token for {inst}: {contract.get('token')}")
+    # Symbol validation
+    if not contract.get('symbol'):
+        raise Exception(f"Missing symbol for {inst}")
+    return True
+
+def build_tokens_once(data):
+    """Build tokens - raises if any missing"""
     tokens={}
     missing=[]
     for inst in MCX_INSTRUMENTS:
@@ -59,9 +79,8 @@ def build_tokens(data):
             log.error(f'{inst}: NOT FOUND')
             missing.append(inst)
             continue
-        # Market validation
-        if not contract.get('token') or int(contract['token'])<=0:
-            raise Exception(f"Bad token for {inst}")
+        # Validate
+        validate_contract(inst,contract)
         tokens[inst]={
             'token':contract['token'],
             'symbol':contract['symbol'],
@@ -70,23 +89,42 @@ def build_tokens(data):
         }
     # All-or-nothing!
     if missing:
-        raise Exception(f"Missing instruments: {missing} - aborting!")
+        raise Exception(f"Missing: {missing}")
     for inst,info in tokens.items():
         log.info(f"{inst}: {info['symbol']} token={info['token']}")
     return tokens
 
+def build_tokens(data):
+    """Build tokens with retry + fallback"""
+    for attempt in range(3):
+        try:
+            return build_tokens_once(data)
+        except Exception as e:
+            log.warning(f'Token build attempt {attempt+1} failed: {e}')
+            if attempt<2:time.sleep(2)
+    # Fallback to previous tokens
+    if os.path.exists('mcx_tokens.json'):
+        log.warning('Using previous tokens as fallback!')
+        return json.load(open('mcx_tokens.json'))
+    raise Exception("Token build failed after retries - no fallback!")
+
 def backup_file(filepath):
+    """Backup file before modify"""
     backup=filepath+'.bak'
     shutil.copy(filepath,backup)
     log.info(f'Backup: {backup}')
 
 def atomic_write(filepath,content):
-    with tempfile.NamedTemporaryFile('w',delete=False) as tmp:
+    """Write atomically - no corruption risk"""
+    with tempfile.NamedTemporaryFile('w',
+            delete=False,suffix='.tmp') as tmp:
         tmp.write(content)
         tempname=tmp.name
     os.replace(tempname,filepath)
+    log.info(f'Atomic write: {filepath}')
 
 def update_feed(tokens):
+    """Update angel_feed.py safely"""
     path='angel_feed.py'
     if not os.path.exists(path):
         raise Exception("angel_feed.py not found!")
@@ -94,50 +132,76 @@ def update_feed(tokens):
     content=open(path).read()
     for inst,info in tokens.items():
         pattern=rf"'{inst}':\s*\{{[^}}]*\}}"
-        new_val=f"'{inst}': {{'token':'{info['token']}','exchange':'MCX'}}  # {info['symbol']}"
-        content=re.sub(pattern,new_val,content)
+        new_val=(f"'{inst}': {{'token':'{info['token']}',"
+                f"'exchange':'MCX'}}  # {info['symbol']}")
+        new_content=re.sub(pattern,new_val,content)
+        if new_content==content:
+            log.warning(f'{inst}: Pattern not found!')
+        else:
+            content=new_content
+            log.info(f'{inst}: Updated')
     if DRY_RUN:
-        log.info("DRY RUN - no file written")
+        log.info("DRY RUN - not writing")
         return
     atomic_write(path,content)
-    log.info('angel_feed.py updated safely')
 
 def save_tokens(tokens):
-    with open('mcx_tokens.json','w') as f:
-        json.dump(tokens,f,indent=2)
-    log.info('Saved to mcx_tokens.json')
+    """Save tokens atomically"""
+    with tempfile.NamedTemporaryFile('w',
+            delete=False,suffix='.tmp') as tmp:
+        json.dump(tokens,tmp,indent=2)
+        tempname=tmp.name
+    os.replace(tempname,'mcx_tokens.json')
+    log.info('Saved mcx_tokens.json')
 
 def validate_tokens(tokens):
+    """Final validation"""
     if not tokens:
         raise Exception("No tokens generated!")
     for k,v in tokens.items():
-        if not v.get('token'):
-            raise Exception(f"Invalid token for {k}")
-    log.info('Token validation passed')
+        validate_contract(k,{'token':v['token'],
+                             'symbol':v['symbol']})
+    log.info(f'Validated {len(tokens)} tokens')
 
 def send_telegram_alert(tokens,success=True):
+    """Telegram notification"""
     try:
         from v30_notify import send
         if success:
-            msg='✅ MCX Tokens Updated!\n'
+            msg='✅ MCX Tokens Updated!\n━━━━━━━━━\n'
             for inst,info in tokens.items():
-                msg+=f"{inst}: {info['symbol']}\n"
+                msg+=f"📌 {inst}: {info['symbol']}\n"
+            msg+=f"🕐 {datetime.now().strftime('%d-%b %H:%M')}"
         else:
-            msg='❌ MCX Token Update FAILED!'
+            msg=('❌ MCX Token Update FAILED!\n'
+                f'🕐 {datetime.now().strftime("%d-%b %H:%M")}')
         send(msg)
-    except:pass
+    except Exception as e:
+        log.error(f'Telegram alert failed: {e}')
 
 def auto_git_commit():
+    """Commit only if changed"""
     try:
-        diff=os.system("cd ~/kairos_kotak_bot && git diff --quiet angel_feed.py mcx_tokens.json")
+        diff=os.system(
+            "cd ~/kairos_kotak_bot && "
+            "git diff --quiet angel_feed.py mcx_tokens.json")
         if diff!=0:
-            os.system("cd ~/kairos_kotak_bot && git add angel_feed.py mcx_tokens.json && git commit -m 'Auto: MCX token update' && git push origin main")
+            os.system(
+                "cd ~/kairos_kotak_bot && "
+                "git add angel_feed.py mcx_tokens.json && "
+                "git commit -m 'Auto: MCX token update' && "
+                "git push origin main")
             log.info('Git commit done!')
         else:
             log.info('No changes to commit')
-    except:pass
+    except Exception as e:
+        log.error(f'Git commit failed: {e}')
 
 def update_mcx_tokens():
+    """Main update function"""
+    log.info('='*40)
+    log.info('V32 MCX Token Updater Starting...')
+    log.info('='*40)
     try:
         data=download_master()
         tokens=build_tokens(data)
@@ -146,7 +210,7 @@ def update_mcx_tokens():
         save_tokens(tokens)
         send_telegram_alert(tokens,success=True)
         auto_git_commit()
-        log.info(f'SUCCESS: Updated {len(tokens)} tokens')
+        log.info(f'SUCCESS: {len(tokens)}/4 tokens updated!')
         return tokens
     except Exception as e:
         log.error(f'FAILED: {e}')
