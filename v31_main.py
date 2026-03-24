@@ -12,6 +12,14 @@ logging.basicConfig(
 )
 log=logging.getLogger(__name__)
 
+# Priority-based data engine (reduces API calls 70%!)
+try:
+    from v31_priority_engine import priority_engine
+    log.info('[V31] Priority engine loaded!')
+except Exception as _pe:
+    priority_engine=None
+    log.warning(f'[V31] Priority engine unavailable: {_pe}')
+
 # Premium limits per instrument (module level!)
 _PREM_LIMITS={
     'NIFTY':200,'BANKNIFTY':400,
@@ -41,6 +49,14 @@ logging.basicConfig(
     filemode='a'
 )
 log=logging.getLogger(__name__)
+
+# Priority-based data engine (reduces API calls 70%!)
+try:
+    from v31_priority_engine import priority_engine
+    log.info('[V31] Priority engine loaded!')
+except Exception as _pe:
+    priority_engine=None
+    log.warning(f'[V31] Priority engine unavailable: {_pe}')
 
 # Premium limits per instrument (module level!)
 _PREM_LIMITS={
@@ -1004,7 +1020,20 @@ async def main():
                         log.info(f'[V31] {instrument} max signals reached today (2)')
                         continue
 
-                    # Generate signal (Path A)
+                    # Priority check - skip if too soon!
+                if priority_engine:
+                    _should,_pri=priority_engine.should_fetch(instrument)
+                    if not _should:
+                        log.debug(f'[V31] {instrument} skip ({_pri} - too soon)')
+                        continue
+                    priority_engine.update_priority(
+                        instrument,
+                        active_trades,
+                        recent_score=0
+                    )
+                    priority_engine.mark_fetched(instrument)
+
+                # Generate signal (Path A)
                     from v31_strategy import generate_v31_signal,notify_v31_signal
                     _prev_signal=None
                     signal=generate_v31_signal(
