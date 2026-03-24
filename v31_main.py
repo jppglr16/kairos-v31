@@ -970,14 +970,22 @@ async def main():
                     # Skip GOLDM/SILVERM unless near expiry (NOT CRUDEOIL/NATURALGAS!)
                     if instrument in ['GOLDM','SILVERM']:
                         try:
-                            from v31_angel_options import get_expiry_str
-                            import datetime as _expdt
-                            _exp=get_expiry_str(instrument)
-                            _exp_dt=_expdt.datetime.strptime(_exp,'%d%b%y')
-                            _days=(_exp_dt.date()-_expdt.datetime.now().date()).days
+                            from v31_option_engine import load_all_options
+                            from datetime import datetime as _edt
+                            _opts=load_all_options()
+                            _items=[o for o in _opts
+                                    if o.get('name','').startswith(instrument[:6])
+                                    and o.get('seg')=='MCX']
+                            _expiries=sorted(set(o.get('expiry','') for o in _items if o.get('expiry')))
+                            _future=[e for e in _expiries
+                                     if _edt.strptime(e,'%d%b%Y').date()>=_edt.now().date()]
+                            if not _future:continue
+                            _nearest=min(_future,key=lambda e:_edt.strptime(e,'%d%b%Y'))
+                            _days=(_edt.strptime(_nearest,'%d%b%Y').date()-_edt.now().date()).days
                             if _days>6:
                                 log.info(f'[V31] {instrument} skipped - {_days}d to expiry (need last 6 days!)')
                                 continue
+                            log.info(f'[V31] {instrument} ACTIVE! {_days}d to expiry')
                         except:
                             continue
 
