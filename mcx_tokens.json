@@ -12,9 +12,9 @@
     "exchange": "MCX"
   },
   "SILVERM": {
-    "token": "457533",
-    "symbol": "SILVERM30APR26FUT",
-    "lotsize": "5",
+    "token": "466029",
+    "symbol": "SILVERMIC30APR26FUT",
+    "lotsize": "1",
     "exchange": "MCX"
   },
   "NATURALGAS": {
