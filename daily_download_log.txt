@@ -264,3 +264,5 @@ Done! Options master updated!
 Engine cache refreshed!
 [I 260324 10:00:18 smartConnect:124] in pool
 [I 260324 12:00:10 smartConnect:124] in pool
+[I 260324 13:00:04 smartConnect:124] in pool
+[I 260324 14:01:03 smartConnect:124] in pool
