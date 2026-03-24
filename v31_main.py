@@ -716,7 +716,7 @@ async def main():
             # Load into feed builders - use LATEST candles!
             if inst in feed.builders:
                 df5_sorted=df5.sort_values('time').tail(500)
-                for _,row in df5_sorted.iterrows():
+                for row in df5_sorted.to_dict('records'):
                     feed.builders[inst]['5'].candles.append({
                         'time':str(row['time']),
                         'open':float(row['open']),
@@ -726,7 +726,7 @@ async def main():
                         'volume':float(row['volume'])
                     })
                 df15_sorted=df15.sort_values('time').tail(200)
-                for _,row in df15_sorted.iterrows():
+                for row in df15_sorted.to_dict('records'):
                     feed.builders[inst]['15'].candles.append({
                         'time':str(row['time']),
                         'open':float(row['open']),
