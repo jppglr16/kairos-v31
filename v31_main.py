@@ -12,6 +12,15 @@ logging.basicConfig(
 )
 log=logging.getLogger(__name__)
 
+# Premium limits per instrument (module level!)
+_PREM_LIMITS={
+    'NIFTY':200,'BANKNIFTY':400,
+    'FINNIFTY':150,'SENSEX':300,
+    'MIDCPNIFTY':100,'CRUDEOIL':500,
+    'GOLDM':400,'SILVERM':300,
+    'NATURALGAS':100
+}
+
 from v31_instrument_manager import instrument_manager,INSTRUMENTS as _INST_CONFIG
 INSTRUMENTS=instrument_manager.get_all_instruments()
 
@@ -32,6 +41,15 @@ logging.basicConfig(
     filemode='a'
 )
 log=logging.getLogger(__name__)
+
+# Premium limits per instrument (module level!)
+_PREM_LIMITS={
+    'NIFTY':200,'BANKNIFTY':400,
+    'FINNIFTY':150,'SENSEX':300,
+    'MIDCPNIFTY':100,'CRUDEOIL':500,
+    'GOLDM':400,'SILVERM':300,
+    'NATURALGAS':100
+}
 
 INSTRUMENTS=['NIFTY','BANKNIFTY','SENSEX','FINNIFTY','MIDCPNIFTY',
              'CRUDEOIL','GOLDM','SILVERM',
@@ -1600,7 +1618,7 @@ async def main():
                                 log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]} LTP={_ltp_val}')
                                 notified=notify_v31_entry(signal,_qty,instrument)
                                 if notified:
-                                    log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult}')
+                                    log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult} | reason=OTM_LADDER')
                                     break
                         except Exception as _otme:
                             log.debug(f'[V31] OTM ladder error: {_otme}')
