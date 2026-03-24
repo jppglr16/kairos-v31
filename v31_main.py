@@ -1629,7 +1629,9 @@ async def main():
                         except Exception as _otme:
                             log.debug(f'[V31] OTM ladder error: {_otme}')
                         if not notified:
-                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f} | reasons={set(_fail_reasons)}')
+                            from collections import Counter
+                            _reason_count=dict(Counter(_fail_reasons))
+                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f} | reasons={_reason_count}')
                             try:
                                 from v31_trade_logger import log_decision
                                 log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
