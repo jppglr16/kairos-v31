@@ -4,3 +4,5 @@ __pycache__/
 logs/
 kairos_training.zip
 ml_models_trained.zip
+
+.env

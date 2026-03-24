@@ -2,11 +2,12 @@ import pyotp
 from SmartApi import SmartConnect
 from datetime import datetime,timedelta
 
+import os
 ANGEL_CONFIG={
-    'api_key':'pEOas0vU',
+    'api_key':os.getenv('ANGEL_API_KEY','pEOas0vU'),
     'client_id':'J234619',
-    'mpin':'1605',
-    'totp_secret':'R2T2F2BMP56U44O4OMOYJZTFJI'
+    'mpin':os.getenv('ANGEL_MPIN','1605'),
+    'totp_secret':os.getenv('ANGEL_TOTP','R2T2F2BMP56U44O4OMOYJZTFJI')
 }
 
 SYMBOLS={
