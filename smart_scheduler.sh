@@ -135,6 +135,12 @@ send('⚠️ V31 was stopped!\nRestarted automatically!\nMarket ready!')
         log "3:35 PM - NSE P&L report sent"
     fi
 
+    # 3:35 PM - NSE EOD P&L Report
+    if [ "$HHMM" = "15:35" ]; then
+        python3 v31_pnl_report.py NSE 2>/dev/null
+        log "3:35 PM - NSE P&L report sent"
+    fi
+
     # 11:30 PM - Resume training
     # ============================================================
     if [ "$HHMM" = "23:30" ]; then
