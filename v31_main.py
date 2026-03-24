@@ -1552,6 +1552,7 @@ async def main():
                             _max_step=_curr_price*0.02  # Max 2% OTM
 
                             _tried=set()  # Prevent duplicate strikes!
+                            _fail_reasons=[]  # Track why failed!
                             for _mult in [0.5,1.0,1.5]:
                                 _step=min(_atr*_mult,_max_step)
                                 if _opt_type_ladder=='PE':
@@ -1571,6 +1572,7 @@ async def main():
 
                                 # Fetch real LTP!
                                 _ltp_val=0
+                                _ltp_r=None  # Safe init!
                                 try:
                                     _seg=_otm_result.get('segment','NFO')
                                     _ltp_r=_at.obj.ltpData(
@@ -1583,11 +1585,13 @@ async def main():
                                 # LTP fetch failed?
                                 if _ltp_val<=0:
                                     log.debug(f'[V31] {instrument} LTP fetch failed')
+                                    _fail_reasons.append('LTP_FAIL')
                                     continue
 
                                 # Liquidity filter: skip junk options!
                                 if _ltp_val<5:
                                     log.debug(f'[V31] {instrument} OTM illiquid: Rs.{_ltp_val}')
+                                    _fail_reasons.append('LOW_LTP')
                                     continue
 
                                 # Premium ceiling filter!
@@ -1608,6 +1612,7 @@ async def main():
                                             _spread=(_ask-_bid)/_bid
                                             if _spread>0.05:
                                                 log.debug(f'[V31] {instrument} wide spread: {_spread:.2%}')
+                                                _fail_reasons.append('WIDE_SPREAD')
                                                 continue
                                 except:pass
 
@@ -1618,12 +1623,13 @@ async def main():
                                 log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]} LTP={_ltp_val}')
                                 notified=notify_v31_entry(signal,_qty,instrument)
                                 if notified:
-                                    log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult} | reason=OTM_LADDER')
+                                    _dist=abs(_otm_price-_curr_price)
+                                    log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult} | dist={_dist:.2f} | reason=OTM_LADDER')
                                     break
                         except Exception as _otme:
                             log.debug(f'[V31] OTM ladder error: {_otme}')
                         if not notified:
-                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f}')
+                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f} | reasons={set(_fail_reasons)}')
                             try:
                                 from v31_trade_logger import log_decision
                                 log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
