@@ -107,7 +107,9 @@ send(f'''🌅 Good Morning Ramkumar!
 ⏰ Market opens 9:15 AM
 🎯 First signals at 10:00 AM!''')
 " 2>/dev/null
-        log "8:45 AM - Training paused, good morning sent"
+        # Run morning checklist
+    python3 morning_checklist.py 2>/dev/null
+    log "8:45 AM - Training paused, good morning + checklist sent"
     fi
 
     # ============================================================
