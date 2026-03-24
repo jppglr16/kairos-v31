@@ -1573,7 +1573,10 @@ async def main():
                                     continue
 
                                 # Premium ceiling filter!
-                                if notified:
+                                _max_prem=_PREM_LIMITS.get(instrument,300)
+                                if _ltp_val>_max_prem:
+                                    log.debug(f"[V31] {instrument} premium ceiling Rs.{_ltp_val}>{_max_prem}")
+                                    continue
 
                                 # Spread filter: safe depth access!
                                 try:
