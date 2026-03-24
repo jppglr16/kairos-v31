@@ -2064,3 +2064,6 @@ SILVERM: True
 CUMMINSIND: True
 Done!
 [GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Max retries exceeded with url: /api/option-chain-indices?symbol=UNKNOWN (Caused by NameResolutionError("HTTPSConnection(host='www.nseindia.com', port=443): Failed to resolve 'www.nseindia.com' ([Errno 7] No address associated with hostname)"))
+[GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Read timed out. (read timeout=10)
+[GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Read timed out. (read timeout=10)
+[GAMMA] OC fetch error UNKNOWN: HTTPSConnectionPool(host='www.nseindia.com', port=443): Read timed out. (read timeout=10)

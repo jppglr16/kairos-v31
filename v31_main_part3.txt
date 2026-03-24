@@ -1,0 +1,200 @@
+                import json,os
+                sig_data={
+                    'timestamp':str(datetime.now()),
+                    'instrument':instrument,
+                    'action':signal.get('action',''),
+                    'score':signal.get('score',0),
+                    'regime':signal.get('regime',''),
+                    'hour':datetime.now().hour,
+                    'ml_prob':signal.get('ml_prob',0.5),
+                    'rr':signal.get('rr_ratio',2),
+                    'sl_atr':signal.get('sl_points',50)/max(atr,1),
+                    'skipped':True,
+                    'skip_reason':'LOW_CAPITAL',
+                    'outcome':None  # Will be updated by simulator
+                }
+                fname=f'ml_models/{instrument}_v31_skipped_signals.json'
+                existing=json.load(open(fname)) if os.path.exists(fname) else []
+                existing.append(sig_data)
+                json.dump(existing,open(fname,'w'))
+
+                # Add to active_trades for simulation only
+                active_trades[f'{instrument}_SIM']={
+                    'signal':signal,
+                    'entry':signal['price'],
+                    'sl_points':signal['sl_points'],
+                    'target1':signal['target1'],
+                    'target2':signal['target2'],
+                    'action':signal.get('action',''),
+                    'lots':0,'qty':0,  # 0 = simulation only
+                    't1_hit':False,
+                    'entry_time':str(datetime.now()),
+                    'simulation':True  # Flag = no real order!
+                }
+                log.info(f'[V31] {instrument} saved for ML learning (simulation)')
+            except Exception as e:
+                log.error(f'[V31] Save skipped signal error: {e}')
+            return
+
+        from v31_notify import (notify_v31_startup,notify_v31_entry,
+    notify_v31_exit,notify_v31_daily_summary,notify_v31_gamma_alert)
+        msg=f"""🚀 <b>V31 TRADE ENTRY</b>
+━━━━━━━━━━━━━━━
+📊 {instrument} {option_type}
+📈 Action: {action}
+💵 Entry: {signal['price']:.1f}
+🛑 SL: {sl_pts:.1f} pts ({signal['sl_type']})
+🎯 T2: {signal['target2']:.1f} pts (1:{signal['rr_ratio']:.1f})
+📦 Lots: {lots} | Qty: {qty}
+🧠 Score: {signal['score']}/26
+📊 Regime: {signal['regime']}
+💧 Liq: {signal['liq_type']}
+⚡ Imbalance: {signal['imbalance_type']}
+🎰 Gamma: +{signal['gamma_boost']}
+⏰ {datetime.now().strftime('%H:%M:%S')}"""
+        send(msg)
+        log.info(f'[V31] TRADE: {instrument} {action} Score:{signal["score"]} RR:1:{signal["rr_ratio"]:.1f}')
+
+        active_trades[instrument]={
+            'signal':signal,
+            'entry':signal['price'],
+            'sl_points':sl_pts,
+            'target1':signal['target1'],
+            'target2':signal['target2'],
+            'action':action,
+            'lots':lots,'qty':qty,
+            'use_trailing':signal.get('use_trailing',False),
+            't1_hit':False,
+            'entry_time':str(datetime.now()),
+            'features':None
+        }
+        # Increment trade counter
+        global trade_counter,paper_pnl
+        trade_counter+=1
+
+        # Track paper trade P&L
+        if PAPER_TRADE:
+            paper_pnl[instrument]={
+                'entry':price,
+                'sl':signal.get('sl_points',0),
+                'target':signal.get('target2',0),
+                'action':action,
+                'qty':qty,
+                'time':str(datetime.now())
+            }
+        log.info(f'[V31] Trade #{trade_counter} (every 50)')
+        # Every 50 trades = incremental retrain
+        if trade_counter%50==0:
+            log.info(f'[V31] 50 trades done! Starting incremental retrain...')
+            import threading
+            def do_retrain():
+                try:
+                    from v31_ml_engine import retrain_from_signals
+                    sig_file=f'ml_models/{instrument}_v31_all_signals.json'
+                    if os.path.exists(sig_file):
+                        import json
+                        sigs=json.load(open(sig_file))
+                        retrain_from_signals(instrument,sigs)
+                        log.info(f'[V31] Incremental retrain done for {instrument}!')
+                        from v30_notify import send
+                        send(f'🔄 V31 Incremental Retrain\n{instrument} model updated!\nTrade #{trade_counter} (every 50)')
+                except Exception as e:
+                    log.error(f'[V31] Retrain error: {e}')
+            threading.Thread(target=do_retrain,daemon=True).start()
+    except Exception as e:
+        log.error(f'[V31] Trade error: {e}')
+
+def manage_trades(feed):
+    # Handle simulation trades (skipped due to low capital)
+    sim_keys=[k for k in active_trades if k.endswith('_SIM')]
+    for sim_key in sim_keys:
+        trade=active_trades[sim_key]
+        instrument=sim_key.replace('_SIM','')
+        try:
+            df5=feed.get_candles(instrument,'5')
+            if df5 is None or len(df5)<2:continue
+            row=df5.iloc[-1]
+            entry=trade['entry']
+            sl=trade['sl_points']
+            t2=trade['target2']
+            action=trade['action']
+            outcome=None
+
+            if action=='BUY':
+                if float(row['low'])<=entry-sl:outcome=0
+                elif float(row['high'])>=entry+t2:outcome=1
+            else:
+                if float(row['high'])>=entry+sl:outcome=0
+                elif float(row['low'])<=entry-t2:outcome=1
+
+            if outcome is not None:
+                # Save outcome to ML
+                import json,os
+                fname=f'ml_models/{instrument}_v31_skipped_signals.json'
+                if os.path.exists(fname):
+                    sigs=json.load(open(fname))
+                    for s in reversed(sigs):
+                        if s.get('outcome') is None:
+                            s['outcome']=outcome
+                            break
+                    json.dump(sigs,open(fname,'w'))
+                result='WIN' if outcome==1 else 'LOSS'
+                log.info(f'[SIM] {instrument} simulation {result}')
+                del active_trades[sim_key]
+        except:pass
+
+    global capital
+    global capital
+    now=datetime.now()
+    now=datetime.now()
+    force_exit=now.hour==15 and now.minute>=10
+
+    for instrument in list(active_trades.keys()):
+        # Skip feature storage and simulation keys
+        if instrument.endswith('_feat') or instrument.endswith('_SIM'):
+            continue
+        trade=active_trades[instrument]
+        try:
+            df5=feed.get_candles(instrument,'5')
+            if df5 is None:continue
+            current=float(df5['close'].iloc[-1])
+            entry=trade['entry']
+            action=trade['action']
+            sl_pts=trade['sl_points']
+            t1=trade['target1']
+            t2=trade['target2']
+            qty=trade['qty']
+            pnl=0;reason=''
+
+            if action=='BUY':
+                if not trade['t1_hit'] and current>=entry+t1:
+                    trade['t1_hit']=True
+                    trade['sl_points']=0
+                    log.info(f'[V31] {instrument} T1 hit! SL moved to breakeven')
+                if current<=entry-sl_pts and not trade['t1_hit']:
+                    pnl=-(sl_pts*qty);reason='SL'
+                elif current>=entry+t2:
+                    pnl=t2*qty;reason='T2'
+                elif force_exit:
+                    pnl=(current-entry)*qty;reason='EOD'
+            else:
+                if not trade['t1_hit'] and current<=entry-t1:
+                    trade['t1_hit']=True
+                    trade['sl_points']=0
+                if current>=entry+sl_pts and not trade['t1_hit']:
+                    pnl=-(sl_pts*qty);reason='SL'
+                elif current<=entry-t2:
+                    pnl=t2*qty;reason='T2'
+                elif force_exit:
+                    pnl=(entry-current)*qty;reason='EOD'
+
+            if reason:
+                net=pnl-25  # Brokerage
+                capital+=net
+                del active_trades[instrument]
+                signal_cooldown.pop(instrument,None)
+
+                # CRL outcome update
+                try:
+                    from v31_constrained_rl import crl_update_outcome
+                    crl_update_outcome(

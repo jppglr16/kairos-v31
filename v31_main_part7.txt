@@ -1,0 +1,200 @@
+                        log.debug(f'[SR] Error: {_sre}')
+
+                    # Quality filter: RR + Score combined
+                    _rr=signal.get('rr_ratio',0)
+                    _sig_score=signal.get('score',0)
+                    _atr=signal.get('atr',100)
+                    _regime=signal.get('regime','RANGING')
+
+                    # Adaptive threshold based on volatility
+                    _is_low_vol=_atr<50 or 'RANGING' in _regime
+                    _quality_thresh=35 if _is_low_vol else 40
+                    _rr_thresh=1.2 if _is_low_vol else 1.5
+
+                    _quality=_rr*_sig_score
+
+                    if _rr<_rr_thresh:
+                        log.info(f'[V31] {instrument} RR too low ({_rr:.1f}<{_rr_thresh}) - SKIP!')
+                        try:signal_tracker.reject(f'RR too low ({_rr:.1f}<{_rr_thresh})')
+                        except:pass
+                        continue
+                    elif _quality<_quality_thresh:
+                        log.info(f'[V31] {instrument} quality low ({_quality:.0f}<{_quality_thresh}) - SKIP!')
+                        try:signal_tracker.reject(f'Quality low ({_quality:.0f}<{_quality_thresh})')
+                        except:pass
+                        continue
+                    else:
+                        log.info(f'[V31] {instrument} quality OK: RR={_rr:.1f} score={_sig_score} quality={_quality:.0f} thresh={_quality_thresh}')
+
+                    try:
+                        signal_tracker.step('Quality Check',True,
+                            f'RR={_rr:.1f} Score={_sig_score} Quality={_quality:.0f}')
+                    except:pass
+
+                    log.info(f'[V31] SIGNAL: {instrument} {signal.get("action")} Score:{signal.get("score")} RR:1:{signal.get("rr_ratio")} SL:{signal.get("sl_points",0):.1f}({signal.get("sl_type","")}) Liq:{signal.get("liq_type","")} Gamma:{signal.get("gamma_boost",0)}')
+
+                    # Expiry safety
+                    try:
+                        from v31_angel_options import get_expiry_str
+                        import datetime as _expdt2
+                        _exp_str=get_expiry_str(instrument)
+                        _exp_dt=_expdt2.datetime.strptime(_exp_str,'%d%b%y')
+                        _days_to_exp=(_exp_dt.date()-_expdt2.datetime.now().date()).days
+                        if _days_to_exp==0:
+                            log.info(f'[V31] {instrument} EXPIRY TODAY - skipping!')
+                            continue
+                        elif _days_to_exp==1:
+                            log.info(f'[V31] {instrument} expiry tomorrow - max 1 lot!')
+                            _lots=1  # Reduce to 1 lot on expiry day!
+                    except:pass
+
+                    # Causal engine
+                    try:
+                        from v31_causal_engine_v2 import causal_engine_v2
+                        causal_engine_v2.log_trade(instrument,signal)
+                    except:pass
+
+                    # ML filter
+                    try:
+                        from v31_ml_engine import (extract_v31_features,get_v31_ml_prob)
+                        atr=float((df5['high']-df5['low']).tail(14).mean())
+                        features=extract_v31_features(
+                            df5,df15,signal.get('action','BUY'),
+                            signal.get('regime','TRENDING'),
+                            signal.get('liq_type',''),
+                            signal.get('imbalance_type','')!='',
+                            False,signal.get('gamma_boost',0),
+                            signal.get('rr_ratio',1.5),
+                            signal.get('sl_points',10),atr
+                        )
+                        if features:
+                            regime=signal.get('regime','TRENDING')
+                            prob=get_v31_ml_prob(instrument,features,regime)
+                            signal['ml_prob']=prob
+                    except Exception as _mle:
+                        log.debug(f'[V31 ML] Features error: {_mle}')
+
+                    # Online Learning
+                    try:
+                        from v31_online_learning import online_learner
+                        _ol_prob=online_learner.predict(instrument,signal)
+                        signal['ol_prob']=_ol_prob
+                    except:pass
+
+                    # Adaptive weighting
+                    try:
+                        _ml_p=signal.get('ml_prob',0.5)
+                        _ol_p=signal.get('ol_prob',0.5)
+                        _w_ml=0.5;_w_ol=0.5
+                        _final_p=_ml_p*_w_ml+_ol_p*_w_ol
+                        signal['adaptive_prob']=_final_p
+                        log.info(f'[ADAPTIVE] {instrument}: ml={_ml_p:.2f}({_w_ml}) online={_ol_p:.2f}({_w_ol}) final={_final_p:.2f}')
+                    except:pass
+
+                    # Uncertainty
+                    try:
+                        from v31_uncertainty import estimate_uncertainty
+                        unc=estimate_uncertainty(instrument,signal)
+                        signal['uncertainty']=unc
+                        unc_val=unc.get('uncertainty',0.5) if isinstance(unc,dict) else 0.5
+                        unc_thresh=0.40
+                        log.info(f'[UNC] {instrument}: conf={1-unc_val:.2f} unc={unc_val:.2f}')
+                        if unc_val>unc_thresh:
+                            log.info(f'[V31] {instrument} UNCERTAINTY blocked ({unc_val:.2f}>{unc_thresh})')
+                            continue
+                    except:pass
+
+                    # MMT
+                    try:
+                        from v31_mmt import mmt_filter
+                        _mmt_p=mmt_filter.predict(instrument,df5,signal)
+                        signal['mmt_prob']=_mmt_p
+                        log.info(f'[MMT] {instrument} models built!')
+                    except:pass
+
+                    # Dynamic Ensemble
+                    try:
+                        from v31_dynamic_ensemble import dynamic_ensemble
+                        _ml_p=signal.get('ml_prob',0.5)
+                        _meta_p=signal.get('adaptive_prob',0.5)
+                        _mmt_p=signal.get('mmt_prob',0.5)
+                        _crl_ok=True
+                        ensemble_result=dynamic_ensemble.get_ensemble_prob(
+                            instrument,signal,
+                            signal.get('features',[]),
+                            _ml_p,_meta_p,_mmt_p,_crl_ok
+                        )
+                        ensemble_prob=ensemble_result.get('prob',0.5) if isinstance(ensemble_result,dict) else float(ensemble_result)
+                        ens_details=ensemble_result.get('details',{}) if isinstance(ensemble_result,dict) else {}
+                        signal['ensemble_prob']=ensemble_prob
+                        signal['ens_details']=ens_details
+                        log.info(f'[V31] {instrument} ENSEMBLE={ensemble_prob:.2f} details={ens_details}')
+
+                        trained=[f for f in __import__('os').listdir('ml_models') if f.endswith('.pkl')]
+                        # Adaptive threshold based on model count
+                        if len(trained)>=40:
+                            ens_thresh=0.45  # Many models = stricter!
+                        elif len(trained)>=10:
+                            ens_thresh=0.40
+                        else:
+                            ens_thresh=0.30
+                        if ensemble_prob<ens_thresh:
+                            log.info(f'[V31] {instrument} ENSEMBLE blocked ({ensemble_prob:.2f}<{ens_thresh})')
+                            continue
+
+                        # LOW AGREEMENT filter (disabled until training complete)
+                        if _agr_pct<0.40:  # Re-enabled! 33 models trained!
+                            _agree=[v.get('prob',0.5) for v in ens_details.values() if isinstance(v,dict)]
+                            _agr_pct=sum(1 for p in _agree if p>0.5)/len(_agree) if _agree else 1.0
+                            if _agr_pct<0.40:
+                                log.info(f'[V31] {instrument} LOW AGREEMENT blocked ({_agr_pct:.0%})')
+                                continue
+
+                    except Exception as ee:
+                        log.debug(f'[V31] Ensemble err: {ee}')
+
+                    # Online learner update
+                    try:
+                        from v31_online_learning import online_learner
+                        online_learner.update(instrument,signal)
+                        log.info(f'[OL] {instrument} new model created!')
+                    except:pass
+
+                    # CRL
+                    try:
+                        from v31_constrained_rl import crl_agent
+                        _crl=crl_agent.should_trade(instrument,signal)
+                        if not _crl:
+                            log.info(f'[V31] {instrument} CRL blocked')
+                            continue
+                    except:pass
+
+                    # Execution optimizer
+                    try:
+                        from v31_execution_optimizer import optimize_execution
+                        _unc=signal.get('uncertainty',{})
+                        _qty_tmp=1
+                        exec_params=optimize_execution(
+                            instrument,df5,signal,
+                            signal.get('atr',50),
+                            _qty_tmp,_unc,capital
+                        )
+                        if exec_params.get('optimal_qty',0)>0:
+                            pass
+                        signal['exec_params']=exec_params
+                        log.info(f'[EXEC] {instrument} order type: {exec_params.get("order_type")} ({exec_params.get("reason","")})')
+                    except:pass
+
+                    # Signal Manager V2 - 7-step check
+                    _action=signal.get('action','BUY')
+                    _score=signal.get('score',18)
+                    try:
+                        _sm_ok,_sm_reason=signal_manager.can_trade(instrument,_action,_score)
+                        if not _sm_ok:
+                            log.info(f'[SM] {instrument} BLOCKED: {_sm_reason}')
+                            try:
+                                from v31_trade_logger import log_decision
+                                log_decision(instrument,signal,'BLOCKED',_sm_reason)
+                            except:pass
+                            continue
+                        log.info(f'[SM] {instrument} {_action} ALLOWED: {_sm_reason}')

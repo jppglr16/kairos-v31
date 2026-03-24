@@ -1,0 +1,200 @@
+            # MCX: 9AM to 11:30PM only
+            # MCX opens 9 AM, but trade only after 3:30 PM (after NSE close)
+            # Reason: Focus on NSE during market hours, MCX after close
+            mcx_trade_start=15
+            mcx_open=(
+                (mcx_trade_start<=now.hour<23 or (now.hour==23 and now.minute<30))
+                and now.weekday()<5
+                and not _mcx_hol
+            )
+
+            if not nse_open and not mcx_open:
+                await asyncio.sleep(60)
+                continue
+
+            if now.hour==9 and now.minute<15:
+                await asyncio.sleep(60)
+                continue
+
+            # Auto-refresh Angel token every 6 hours
+            try:
+                if angel_trader and angel_trader.connected:
+                    angel_trader.check_and_refresh()
+                elif angel_trader:
+                    log.warning('[MAIN] Angel disconnected! Reconnecting...')
+                    angel_trader.reconnect()
+            except:pass
+
+            # Refresh capital every hour
+            import time as _time
+            if _time.time()-_last_capital_refresh>3600:
+                try:
+                    if angel_trader and angel_trader.connected:
+                        rms=angel_trader.obj.rmsLimit()
+                        if rms and rms.get('data'):
+                            capital=float(rms['data'].get('availablecash',capital) or capital)
+                            log.info(f'[ANGEL] Available margin: Rs.{capital:,.0f}')
+                    _last_capital_refresh=_time.time()
+                except:pass
+
+            # VIX filter + strategy mode (cached once per cycle!)
+            try:
+                from v31_vix import vix_engine
+                _vix_ok,_vix_reason=vix_engine.should_trade()
+                _vix_data={
+                    'mode':vix_engine.get_strategy_mode(),
+                    'trend':vix_engine.get_trend(),
+                    'vix':vix_engine.get_vix_value()
+                }
+                _strategy_mode=_vix_data['mode']
+                log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
+
+                # MCX evening: relax VIX filter after NSE close
+                from datetime import datetime as _now_dt
+                _is_mcx_instrument=instrument in ["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
+                _after_nse_close=_now_dt.now().hour>=15 and _now_dt.now().minute>=30
+                if not _vix_ok and _is_mcx_instrument and _after_nse_close:
+                    log.info(f"[VIX] MCX evening - relaxing VIX for {instrument}")
+                    _vix_ok=True
+                elif not _vix_ok:
+                    log.info(f"[VIX] Trading blocked: {_vix_reason}")
+                    await asyncio.sleep(60)
+                    continue
+                if _strategy_mode=='NO_TRADE':
+                    log.info(f'[VIX] NO_TRADE mode - skipping cycle')
+                    await asyncio.sleep(60)
+                    continue
+            except Exception as _ve:
+                log.debug(f'[VIX] Error: {_ve}')
+
+            # News event filter
+            try:
+                from v31_news_filter import news_filter
+                _news_blocked,_news_reason,_resume=news_filter.check()
+                if _news_blocked:
+                    log.info(f'[NEWS] Trading blocked: {_news_reason}')
+                    await asyncio.sleep(300)  # Check again in 5 mins
+                    continue
+            except Exception as _ne:
+                log.debug(f'[NEWS] Filter error: {_ne}')
+
+            # VIX filter + strategy mode (cached once per cycle!)
+            try:
+                from v31_vix import vix_engine
+                _vix_ok,_vix_reason=vix_engine.should_trade()
+                _vix_data={
+                    'mode':vix_engine.get_strategy_mode(),
+                    'trend':vix_engine.get_trend(),
+                    'vix':vix_engine.get_vix_value()
+                }
+                _strategy_mode=_vix_data['mode']
+                log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
+
+                # MCX evening: relax VIX filter after NSE close
+                from datetime import datetime as _now_dt
+                _is_mcx_instrument=instrument in ["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
+                _after_nse_close=_now_dt.now().hour>=15 and _now_dt.now().minute>=30
+                if not _vix_ok and _is_mcx_instrument and _after_nse_close:
+                    log.info(f"[VIX] MCX evening - relaxing VIX for {instrument}")
+                    _vix_ok=True
+                elif not _vix_ok:
+                    log.info(f"[VIX] Trading blocked: {_vix_reason}")
+                    await asyncio.sleep(60)
+                    continue
+                if _strategy_mode=='NO_TRADE':
+                    log.info(f'[VIX] NO_TRADE mode - skipping cycle')
+                    await asyncio.sleep(60)
+                    continue
+            except Exception as _ve:
+                log.debug(f'[VIX] Error: {_ve}')
+
+            # News event filter
+            try:
+                from v31_news_filter import news_filter
+                _news_blocked,_news_reason,_resume=news_filter.check()
+                if _news_blocked:
+                    log.info(f'[NEWS] Trading blocked: {_news_reason}')
+                    await asyncio.sleep(300)  # Check again in 5 mins
+                    continue
+            except Exception as _ne:
+                log.debug(f'[NEWS] Filter error: {_ne}')
+
+            # Internet + API health check
+            try:
+                from v33_connection import conn_monitor
+                _net_ok,_net_reason=conn_monitor.full_check()
+                if not _net_ok:
+                    log.warning(f'[NET] Skipping cycle: {_net_reason}')
+                    await asyncio.sleep(30)
+                    continue
+            except Exception as _ne:
+                log.debug(f'[NET] Check error: {_ne}')
+
+            for inst_idx,instrument in enumerate(INSTRUMENTS):
+                if inst_idx>0:
+                    import time as _sleep_time
+                    _sleep_time.sleep(0.3)  # Reduced from 1.5s!
+
+                inst_cfg=_INST_CONFIG.get(instrument,{})
+                inst_type=inst_cfg.get('type','STOCK')
+
+                # Route MCX vs NSE
+                MCX_INST=[k for k,v in _INST_CONFIG.items() if v.get('type')=='COMMODITY']
+                if instrument in MCX_INST:
+                    if not mcx_open:continue
+                else:
+                    if not nse_open:continue
+
+                try:
+                    # Load candles WITH CACHE (prevents rate limiting!)
+                    from v31_data_cache import get_candle_cached
+                    _inst=instrument
+                    if instrument in MCX_INST and angel_mcx_feed:
+                        _feed=angel_mcx_feed
+                        df5=get_candle_cached(_inst,'FIVE_MINUTE',
+                            lambda i=_inst,f=_feed: f.get_candles(i,5))
+                        df15=get_candle_cached(_inst,'FIFTEEN_MINUTE',
+                            lambda i=_inst,f=_feed: f.get_candles(i,15))
+                        df_daily=df15
+                    else:
+                        _ang=angel
+                        df5=get_candle_cached(_inst,'FIVE_MINUTE',
+                            lambda i=_inst,a=_ang: load_candles(a,i,5))
+                        df15=get_candle_cached(_inst,'FIFTEEN_MINUTE',
+                            lambda i=_inst,a=_ang: load_candles(a,i,15))
+                        df_daily=df15
+
+                    if df5 is None or len(df5)<30:continue
+                    if df15 is None or len(df15)<10:continue
+
+                    # Skip GOLDM/SILVERM unless near expiry (NOT CRUDEOIL/NATURALGAS!)
+                    if instrument in ['GOLDM','SILVERM']:
+                        try:
+                            from v31_angel_options import get_expiry_str
+                            import datetime as _expdt
+                            _exp=get_expiry_str(instrument)
+                            _exp_dt=_expdt.datetime.strptime(_exp,'%d%b%y')
+                            _days=(_exp_dt.date()-_expdt.datetime.now().date()).days
+                            if _days>6:
+                                log.info(f'[V31] {instrument} skipped - {_days}d to expiry (need last 6 days!)')
+                                continue
+                        except:
+                            continue
+
+                    # Signal Manager daily limit check
+                    from v31_signal_manager import signal_manager
+                    if signal_manager._get_daily_total(instrument)>=8:
+                        log.info(f'[V31] {instrument} max signals reached today (2)')
+                        continue
+
+                    # Generate signal (Path A)
+                    from v31_strategy import generate_v31_signal,notify_v31_signal
+                    _prev_signal=None
+                    signal=generate_v31_signal(
+                        df5,df15,df_daily,
+                        instrument,capital,feed,kotak
+                    )
+
+                    # Path B: VWAP Rejection
+                    if not signal:
+                        try:

@@ -1,0 +1,200 @@
+            ]:
+                if os.path.exists(fname):
+                    all_candles.extend(json.load(open(fname)))
+                    break
+        now=datetime.now()
+        if now.hour>=9 and now.weekday()<5:
+            trade_day=now.strftime('%Y-%m-%d')
+            try:
+                params={
+                    'exchange':'BSE' if instrument=='SENSEX' else
+                              ('MCX' if instrument in ['CRUDEOIL','GOLDM','SILVERM','NATURALGAS'] else 'NSE'),
+                    'symboltoken':TOKEN[instrument],
+                    'interval':'FIVE_MINUTE' if tf==5 else 'FIFTEEN_MINUTE',
+                    'fromdate':f'{trade_day} 09:00',
+                    'todate':now.strftime('%Y-%m-%d %H:%M')
+                }
+                time.sleep(0.5)
+                data=angel.getCandleData(params)
+                if data and data.get('data'):
+                    all_candles.extend(data['data'])
+                    # Save to cache
+                    try:
+                        import time as _st
+                        from v31_data_cache import _cache
+                        _df_tmp=to_df(all_candles)
+                        if _df_tmp is not None:
+                            _cache[f'{instrument}_{tf}']=(_df_tmp,_st.time())
+                    except:pass
+            except:pass
+        if not all_candles:return None
+        df=pd.DataFrame(all_candles)
+        if len(df.columns)==6:
+            df.columns=['time','open','high','low','close','volume']
+        for col in ['open','high','low','close','volume']:
+            df[col]=pd.to_numeric(df[col],errors='coerce')
+        return df.dropna().reset_index(drop=True)
+    except Exception as e:
+        log.error(f'Candle load error {instrument}: {e}')
+    return None
+
+def place_trade_angel(angel,signal,capital):
+    """Place trade via Angel One - supports NSE + MCX"""
+    from v30_notify import send
+    try:
+        instrument=signal['instrument']
+        action=signal['action']
+        atr=signal.get('atr',50)
+        price=signal.get('price',0)
+
+        # Get lot size
+        lots=get_lots(instrument,capital)
+        qty=lots*LOT.get(instrument,75)
+
+        # Capital check
+        # Get real premium
+        try:
+            from v31_angel_options import search_option_token
+            _opt='CE' if signal.get('action')=='BUY' else 'PE'
+            _tok,_sym,_exch=search_option_token(angel.obj,instrument,float(signal.get('price',0)),_opt)
+            if _tok:
+                _ltp=angel.obj.ltpData(_exch,_sym,_tok)
+                prem=float(_ltp['data'].get('ltp',0)) if _ltp and _ltp.get('data') else 0
+            else:prem=0
+        except:prem=0
+        if not prem:prem=signal.get('real_prem',max(50,round(atr*0.9)))
+        est_cost=prem*qty
+        if capital<est_cost*1.2:
+            log.warning(f'[ANGEL] Low capital: Rs.{capital:,}')
+            return
+
+        # Risk check (use lots not total qty)
+        LOT_SIZES={'NIFTY':65,'BANKNIFTY':30,'SENSEX':20,'FINNIFTY':60,
+                   'MIDCPNIFTY':120,'CRUDEOIL':100,'GOLDM':10,'SILVERM':30,
+                   'NATURALGAS':1250,'LT':450,'NTPC':4500,'MARUTI':100,
+                   'BHARTIARTL':950,'SBIN':1500,'TATAMOTORS':1350,
+                   'RELIANCE':250,'HINDUNILVR':300,'TCS':150,'TATASTEEL':5500}
+        _lot_size=LOT_SIZES.get(instrument,75)
+        _n_lots=max(1,round(qty/_lot_size))
+        signal_risk=signal.get('sl_points',50)*_lot_size*_n_lots
+        can_trade,reason=risk_mgr.can_trade(capital,signal_risk)
+        if not can_trade:
+            log.warning(f'[ANGEL] Risk blocked: {reason} (risk=Rs.{signal_risk:.0f})')
+            return
+
+        # Paper trade or real trade
+        if PAPER_TRADE:
+            # Paper trade - Telegram already sent via notify_v31_entry
+            log.info(f'[PAPER] {instrument} {action} 1 lot - notified via Telegram')
+        else:
+            # Real trade via Angel One - SAFE ORDER ENGINE
+            if angel_trader and angel_trader.connected:
+                try:
+                    from v31_safe_order_engine import get_safe_engine
+                    from v31_angel_options import search_option_token
+                    engine=get_safe_engine(angel_trader.obj)
+
+                    # Get option token
+                    _opt='CE' if signal.get('action')=='BUY' else 'PE'
+                    token,sym,exch=search_option_token(angel_trader.obj,instrument,
+                        float(signal.get('price',0)),_opt)
+
+                    if token:
+                        # Add signal timestamp
+                        signal['signal_time']=signal.get('signal_time',time.time())
+                        order_id=engine.place_safe_order(
+                            exch,sym,token,_qty,
+                            signal.get('real_prem',0),signal,_opt
+                        )
+                        if order_id:
+                            log.info(f'[ANGEL] Safe order placed! ID:{order_id}')
+                        else:
+                            log.warning(f'[ANGEL] Safe order failed for {instrument}')
+                    else:
+                        log.warning(f'[ANGEL] No token for {instrument}')
+                except Exception as se:
+                    log.error(f'[ANGEL] Safe engine error: {se}')
+                    # Fallback to regular order
+                    order_id=angel_trader.place_option_trade(signal,capital)
+            else:
+                log.warning('[ANGEL] Not connected!')
+                send(f'⚠️ Angel One disconnected!\nCannot place {instrument} order!')
+
+        # Track in active trades
+        active_trades[instrument]={
+            'signal':signal,
+            'entry':price,
+            'sl_points':signal['sl_points'],
+            'target1':signal['target1'],
+            'target2':signal['target2'],
+            'action':action,
+            'lots':lots,'qty':qty,
+            't1_hit':False,
+            'entry_time':str(datetime.now()),
+            'broker':'ANGEL'
+        }
+        global trade_counter,paper_pnl
+        trade_counter+=1
+
+        # Track paper trade P&L
+        if PAPER_TRADE:
+            paper_pnl[instrument]={
+                'entry':price,
+                'sl':signal.get('sl_points',0),
+                'target':signal.get('target2',0),
+                'action':action,
+                'qty':qty,
+                'time':str(datetime.now())
+            }
+
+    except Exception as e:
+        log.error(f'[ANGEL] Trade error: {e}')
+
+def place_trade(client,signal,capital):
+    from v30_notify import send
+    try:
+        instrument=signal['instrument']
+        action=signal['action']
+        sl_pts=signal['sl_points']
+        option_type=signal.get('option_type','CE' if action=='BUY' else 'PE')
+        lots=get_lots(instrument,capital,sl_pts)
+        qty=lots*LOT.get(instrument,75)
+
+        # Capital check before placing order
+        atr=signal.get('atr',50)
+        est_premium=max(60,min(350,round(atr*0.9)))
+        est_cost=est_premium*qty
+        signal_risk=signal.get('sl_points',50)*qty
+
+        # Full risk check
+        can_trade,reason=risk_mgr.can_trade(capital,signal_risk)
+        if not can_trade:
+            send(f"""⚠️ <b>TRADE BLOCKED</b>
+━━━━━━━━━━━━━━━
+📊 {instrument}
+🚫 Rule: {reason}
+💰 Capital: Rs.{capital:,.0f}
+📊 Daily PnL: Rs.{risk_mgr.daily_pnl:,.0f}
+📉 Losses today: {risk_mgr.daily_losses}
+⏰ {datetime.now().strftime("%H:%M:%S")}""")
+            log.warning(f'[V31] Blocked: {reason}')
+            return
+        if reason=='REDUCE_SIZE':
+            lots=max(1,lots//2)
+            qty=lots*LOT.get(instrument,75)
+            log.info(f'[V31] Lots reduced to {lots}')
+
+        if capital<est_cost*1.2:
+            msg=f"""❌ <b>ORDER SKIPPED - Low Capital</b>
+━━━━━━━━━━━━━━━
+📊 {instrument} {option_type}
+💰 Capital: Rs.{capital:,.0f}
+💸 Required: Rs.{est_cost*1.2:,.0f}
+📉 Premium: Rs.{est_premium} × {qty} = Rs.{est_cost:,.0f}
+⚠️ Add funds to trade!
+⏰ {datetime.now().strftime("%H:%M:%S")}"""
+            send(msg)
+            log.warning(f'[V31] Skipped {instrument}: Low capital')
+
+            # Still save signal for ML learning!
+            try:

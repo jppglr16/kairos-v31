@@ -1,0 +1,128 @@
+                                    _fail_reasons.append('LTP_FAIL')
+                                    continue
+
+                                # Liquidity filter: skip junk options!
+                                if _ltp_val<5:
+                                    log.debug(f'[V31] {instrument} OTM illiquid: Rs.{_ltp_val}')
+                                    _fail_reasons.append('LOW_LTP')
+                                    continue
+
+                                # Premium ceiling filter!
+                                _max_prem=_PREM_LIMITS.get(instrument,300)
+                                if _ltp_val>_max_prem:
+                                    log.debug(f"[V31] {instrument} premium ceiling Rs.{_ltp_val}>{_max_prem}")
+                                    _fail_reasons.append('HIGH_PREMIUM')
+                                    continue
+
+                                # Spread filter: safe depth access!
+                                try:
+                                    _depth_data=_ltp_r.get('data',{}).get('depth',{})
+                                    _buy=_depth_data.get('buy',[])
+                                    _sell=_depth_data.get('sell',[])
+                                    if _buy and _sell:
+                                        _bid=_buy[0].get('price',0)
+                                        _ask=_sell[0].get('price',0)
+                                        if _bid>0:
+                                            _spread=(_ask-_bid)/_bid
+                                            if _spread>0.05:
+                                                log.debug(f'[V31] {instrument} wide spread: {_spread:.2%}')
+                                                _fail_reasons.append('WIDE_SPREAD')
+                                                continue
+                                except:pass
+
+                                signal['premium']=_ltp_val
+                                signal['real_prem']=_ltp_val
+                                signal['option_token']=_otm_result['token']
+                                signal['option_symbol']=_otm_result['symbol']
+                                log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]} LTP={_ltp_val}')
+                                notified=notify_v31_entry(signal,_qty,instrument)
+                                if notified:
+                                    _dist=abs(_otm_price-_curr_price)
+                                    log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult} | dist={_dist:.2f} | reason=OTM_LADDER')
+                                    break
+                        except Exception as _otme:
+                            log.debug(f'[V31] OTM ladder error: {_otme}')
+                        if not notified:
+                            from collections import Counter
+                            _reason_count=dict(Counter(_fail_reasons))
+                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f} | reasons={_reason_count}')
+                            try:
+                                from v31_trade_logger import log_decision
+                                log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
+                            except:pass
+                            continue
+
+                    # Track position
+                    try:
+                        from v31_exit_monitor import exit_monitor
+                        _prem=signal.get('real_prem',0)
+                        if _prem>0 and _opt_result and _is_liquid:
+                            exit_monitor.add_position(signal,_qty,_prem,_opt_result)
+                    except:pass
+
+                    # Execute trade
+                    try:
+                        from v31_angel_trader import angel_trader,place_trade_angel
+                        if PAPER_TRADE:
+                            log.info(f'[PAPER] {instrument} {_action} 1 lot - notified via Telegram')
+                            # Track paper trades too!
+                            try:
+                                from v31_execution_tracker import execution_tracker
+                                _tid=execution_tracker.approved(
+                                    instrument,_action,
+                                    signal.get('score',0),
+                                    signal.get('path','?'),_lots)
+                                execution_tracker.executed(_tid,signal.get('price',0))
+                                log.info(f'[PAPER] Trade tracked! ID:{_tid}')
+                            except Exception as _te:
+                                log.debug(f'[PAPER] Tracker error: {_te}')
+                        else:
+                            if angel_trader and angel_trader.connected:
+                                order_id=place_trade_angel(signal,_qty,capital,instrument,angel_trader)
+                                if order_id:
+                                    log.info(f'[ANGEL] Order placed! ID:{order_id}')
+                                    # Verify order filled
+                                    try:
+                                        from v31_angel_trader import verify_order
+                                        _filled,_status=verify_order(
+                                            angel_trader.obj,order_id)
+                                        if _filled:
+                                            log.info(f'[ANGEL] Order FILLED! ✅')
+                                        else:
+                                            log.warning(f'[ANGEL] Order {_status}! Retrying...')
+                                            # Retry once
+                                            order_id2=place_trade_angel(
+                                                signal,_qty,capital,instrument,angel_trader)
+                                            if order_id2:
+                                                log.info(f'[ANGEL] Retry order placed: {order_id2}')
+                                    except Exception as _ve:
+                                        log.debug(f'[ANGEL] Verify error: {_ve}')
+                                else:
+                                    log.warning(f'[ANGEL] Order failed for {instrument}')
+                            else:
+                                log.warning('[ANGEL] Not connected!')
+                    except Exception as _exe:
+                        log.error(f'[ANGEL] Execute error: {_exe}')
+
+                    # Sell strategy check
+                    try:
+                        if capital>=100000:
+                            from v31_options_sell import run_sell_strategy
+                            run_sell_strategy(instrument,df5,df15,capital,angel_trader)
+                    except Exception as _se:
+                        log.debug(f'[SELL] Signal error {instrument}: {_se}')
+
+                except Exception as _scan_e:
+                    log.error(f'[V31] Error {instrument}: {_scan_e}')
+                    import traceback
+                    log.debug(traceback.format_exc())
+
+            await asyncio.sleep(60)
+
+        except Exception as _loop_e:
+            log.error(f'[V31] Main loop error: {_loop_e}')
+            await asyncio.sleep(30)
+
+if __name__=='__main__':
+    import asyncio
+    asyncio.run(main())

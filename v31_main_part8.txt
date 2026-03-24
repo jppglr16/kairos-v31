@@ -1,0 +1,200 @@
+                    except Exception as _sme:
+                        log.debug(f'[SM] Error: {_sme}')
+
+                    _price=float(signal.get('price',0))
+
+                    # Lot sizing
+                    try:
+                        from v30_lot_config import get_lots_kelly
+                        _ml_p=signal.get('ml_prob',0.5)
+                        _rr=signal.get('rr_ratio',2.0)
+                        _prem=signal.get('real_prem',50)
+                        _lots=get_lots_kelly(instrument,capital,_ml_p,_rr,_prem)
+                    except:
+                        _lots=get_lots(instrument,capital)
+                    # Expiry day safety check!
+                    try:
+                        from v31_angel_options import get_expiry_str
+                        from datetime import datetime as _edt2
+                        _exp2=get_expiry_str(instrument)
+                        _exp_dt2=_edt2.strptime(_exp2,'%d%b%y')
+                        _days2=(_exp_dt2.date()-_edt2.now().date()).days
+                        if _days2<=1:
+                            _lots=1
+                            log.info(f'[V31] {instrument} expiry {_days2}d - forced 1 lot!')
+                    except:pass
+
+                    # Expiry day safety check (merged)
+                    try:
+                        from v31_angel_options import get_expiry_str
+                        from datetime import datetime as _dt
+                        _exp=get_expiry_str(instrument)
+                        _exp_dt=_dt.strptime(_exp,"%d%b%y")
+                        _days_to_expiry=(_exp_dt.date()-_dt.now().date()).days
+                        if _days_to_expiry<=1:
+                            _lots=1
+                            log.info(f"[V31] {instrument} expiry {_days_to_expiry}d - forced 1 lot!")
+                    except Exception as _ee:
+                        log.debug(f"[V31] Expiry check error {instrument}: {_ee}")
+
+                    # Expiry safety: max 1 lot when expiry <=1 day
+                    try:
+                        from v31_angel_options import get_expiry_str
+                        from datetime import datetime as _dt_exp
+                        _exp=get_expiry_str(instrument)
+                        _exp_dt=_dt_exp.strptime(_exp,"%d%b%y")
+                        _days_to_expiry=(_exp_dt.date()-_dt_exp.now().date()).days
+                        if _days_to_expiry<=1:
+                            _lots=1
+                            log.info(f"[V31] {instrument} expiry {_days_to_expiry}d - 1 lot!")
+                    except Exception as _exp_e:
+                        log.debug(f"[V31] Expiry check: {_exp_e}")
+
+                    # Apply SL/T1 multipliers (once only!)
+                    try:
+                        if not signal.get('score_adjusted'):
+                            _sl_mult=signal.get('sl_multiplier',1.0)
+                            _t1_mult=signal.get('t1_multiplier',1.0)
+                            if _sl_mult!=1.0 or _t1_mult!=1.0:
+                                signal['sl_pct']=signal.get('sl_pct',0.40)*_sl_mult
+                                signal['t1_pct']=signal.get('t1_pct',1.60)*_t1_mult
+                                log.info(f'[SCORE] {instrument} SL×{_sl_mult} T1×{_t1_mult}')
+                            signal['score_adjusted']=True  # Fix 1: prevent double!
+                    except:pass
+
+                    # Smart lot allocation
+                    _lots=signal.get('suggested_lots',1)  # From score!
+                    try:
+                        from v31_capital_engine import capital_engine
+                        from v31_exit_monitor import exit_monitor
+                        # Global lot cap
+                        MAX_TOTAL_LOTS=5
+                        _open_lots=sum(
+                            p.get('qty',1) for p in exit_monitor.positions.values()
+                            if p.get('status')=='OPEN'
+                        )
+                        if _open_lots>=MAX_TOTAL_LOTS:
+                            log.info(f'[CAP] Global lot cap reached ({_open_lots}/{MAX_TOTAL_LOTS})')
+                            continue
+                        _smart_lots=capital_engine.get_lots(
+                            instrument,_lots,_score,capital,
+                            direction=_action)
+                        if _smart_lots==0:
+                            log.info(f'[CAP] {instrument} skipped - poor performer')
+                            continue
+                        # Ensure global cap not exceeded
+                        _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
+
+                        # Fix 2+3: Capital cap with safety buffer!
+                        try:
+                            _prem=float(signal.get('premium',50))
+                            _lot_size=signal.get('lot_size',1)
+                            _cost_per_lot=_prem*_lot_size*1.15  # Fix 2: 15% buffer!
+                            if _cost_per_lot>0:
+                                _max_lots=int(capital//_cost_per_lot)
+                                # Fix 3: No forced bad trades!
+                                if _max_lots<=0:
+                                    log.info(f'[CAP] {instrument} insufficient capital! skip')
+                                    continue
+                                _lots=min(_lots,_max_lots)
+                                log.info(f'[CAP] {instrument} capital cap: {_lots}/{_max_lots} lots')
+                        except:pass
+                    except:pass
+                    _qty=_lots
+
+                    signal_cooldown[instrument]=datetime.now().timestamp()
+                    signal['signal_time']=_time.time()
+
+                    # Record in Signal Manager
+                    try:
+                        signal_manager.record_trade(instrument,_action)
+                    except:pass
+
+                    # Log decision
+                    try:
+                        from v31_trade_logger import log_decision
+                        log_decision(instrument,signal,'TAKEN','All filters passed')
+                    except:pass
+
+                    # Get option result for tracking
+                    _opt_result=None
+                    try:
+                        from v31_option_engine import get_option
+                        _opt_type='CE' if signal.get('action')=='BUY' else 'PE'
+                        # Use current market price for ATM strike!
+                        try:
+                            _mkt_price=float(df5['close'].iloc[-1])
+                        except:
+                            _mkt_price=float(signal.get('price',0))
+                        _opt_result=get_option(instrument,_mkt_price,_opt_type)
+                    except:pass
+
+                    # Liquidity check
+                    _is_liquid=True
+                    try:
+                        if _opt_result and angel_trader and angel_trader.connected:
+                            from v31_option_engine import is_liquid
+                            _prem=signal.get('real_prem',0)
+                            if _prem>0:
+                                _is_liquid=is_liquid(
+                                    angel_trader.obj,
+                                    _opt_result.get('segment','NFO'),
+                                    _opt_result.get('symbol',''),
+                                    _opt_result.get('token',''),
+                                    _prem
+                                )
+                                if not _is_liquid:
+                                    log.info(f'[V31] {instrument} ILLIQUID - skipping order!')
+                    except:pass
+
+                    # NOTIFY TELEGRAM
+                    notified=notify_v31_entry(signal,_qty,instrument)
+                    if not notified:
+                        log.info(f'[V31] {instrument} skipped by notify (too expensive)')
+                        # Strike ladder: try OTM strikes!
+                        try:
+                            from v31_option_engine import get_option
+                            from v31_angel_trader import angel_trader as _at
+                            # Fix: get correct opt_type
+                            _action=signal.get('action','BUY')
+                            _opt_type_ladder='CE' if _action=='BUY' else 'PE'
+                            _curr_price=float(df5['close'].iloc[-1])
+                            _atr=float((df5['high']-df5['low']).tail(14).mean())
+                            _max_step=_curr_price*0.02  # Max 2% OTM
+
+                            _tried=set()  # Prevent duplicate strikes!
+                            _fail_reasons=[]  # Track why failed!
+                            # More steps for high ATR instruments!
+                            _mults=[0.5,1.0,1.5,2.0,3.0] if _atr>100 else [0.5,1.0,1.5]
+                            for _mult in _mults:
+                                _step=min(_atr*_mult,_max_step)
+                                if _opt_type_ladder=='PE':
+                                    _otm_price=_curr_price-_step
+                                else:
+                                    _otm_price=_curr_price+_step
+
+                                _otm_result=get_option(instrument,_otm_price,_opt_type_ladder)
+                                if not _otm_result or not _otm_result.get('token'):
+                                    continue
+
+                                # Prevent duplicate strikes!
+                                _strike_sym=_otm_result['symbol']
+                                if _strike_sym in _tried:
+                                    continue
+                                _tried.add(_strike_sym)
+
+                                # Fetch real LTP!
+                                _ltp_val=0
+                                _ltp_r=None  # Safe init!
+                                try:
+                                    _seg=_otm_result.get('segment','NFO')
+                                    _ltp_r=_at.obj.ltpData(
+                                        _seg,_otm_result['symbol'],
+                                        _otm_result['token'])
+                                    if _ltp_r and _ltp_r.get('data'):
+                                        _ltp_val=_ltp_r['data']['ltp']
+                                except:pass
+
+                                # LTP fetch failed?
+                                if _ltp_val<=0:
+                                    log.debug(f'[V31] {instrument} LTP fetch failed')

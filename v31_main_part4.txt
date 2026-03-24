@@ -1,0 +1,200 @@
+                        instrument,
+                        trade.get('signal',{}),
+                        trade.get('features',[]),
+                        pnl,capital)
+                except:pass
+
+                # Update causal engine with outcome
+                try:
+                    from v31_causal_engine_v2 import update_trade,get_auto_adjustments
+                    _tid=trade.get('signal',{}).get('trade_id','')
+                    if _tid:
+                        update_trade(
+                            _tid,
+                            result='WIN' if pnl>0 else 'LOSS',
+                            pnl=pnl,
+                            exit_reason=reason,
+                            entry_price=trade.get('entry',0),
+                            exit_price=current,
+                            sl_pts=trade.get('sl_points',50)
+                        )
+                        # Auto-adjust filters every 20 trades
+                        if trade_counter%20==0:
+                            get_auto_adjustments(instrument)
+                except:pass
+
+                # Save for ML learning
+                outcome=1 if pnl>0 else 0
+                if trade.get('features'):
+                    from v31_ml_engine import save_trade_result
+                    save_trade_result(instrument,trade['features'],outcome,net)
+
+                from v31_notify import (notify_v31_startup,notify_v31_entry,
+    notify_v31_exit,notify_v31_daily_summary,notify_v31_gamma_alert)
+                emoji='✅' if pnl>0 else '❌'
+                send(f"""{emoji} <b>V31 TRADE EXIT</b>
+━━━━━━━━━━━━━━━
+📊 {instrument} | {reason}
+{'📈' if pnl>0 else '📉'} PnL: {'+'if pnl>0 else ''}₹{net:,.0f}
+💰 Capital: ₹{capital:,.0f}
+⏰ {datetime.now().strftime('%H:%M:%S')}""")
+                log.info(f'[V31] EXIT {instrument} {reason} PnL:₹{net:,.0f}')
+        except Exception as e:
+            log.error(f'[V31] Manage error {instrument}: {e}')
+
+async def daily_reset():
+    while True:
+        now=datetime.now()
+        next_reset=now.replace(hour=9,minute=0,second=0,microsecond=0)
+        if now>=next_reset:next_reset+=timedelta(days=1)
+        await asyncio.sleep((next_reset-now).total_seconds())
+        active_trades.clear()
+        log.info('[V31] Daily reset done!')
+
+async def main():
+    global capital
+    log.info('='*50)
+    log.info('  KAIROS V31 - GAMMA WALL + SMC SYSTEM')
+    log.info('='*50)
+
+    # Connect
+    kotak=get_kotak_client()
+    angel=get_angel_client()
+
+    if not kotak:
+        log.error('Kotak connection failed!')
+        return
+
+
+    # Fetch real capital from Kotak (once on startup)
+    global capital
+    real_cap=get_real_capital(kotak)
+    if real_cap>1000:
+        log.info(f'[V31] Real capital: Rs.{real_cap:,}')
+        capital=real_cap
+    capital_logged=True
+    # Load capital
+    try:
+        from v30_risk import DailyRiskManager
+        rm=DailyRiskManager(capital)
+    except:pass
+
+    # Load feed
+    from v30_feed import MarketDataFeed
+    feed=MarketDataFeed(kotak)
+    try:
+        from v30_feed import patch_feed
+        patch_feed(feed)
+    except:pass
+
+    # Load historical candles from LOCAL FILES (no API calls!)
+    import json as _json,pandas as _pd,os as _os
+    _TOKENS={'NIFTY':'99926000','BANKNIFTY':'99926009','SENSEX':'99919000','FINNIFTY':'99926037','MIDCPNIFTY':'99926074','CRUDEOIL':'472790','GOLDM':'477904','SILVERM':'457533','LT':'11483','NTPC':'11630','MARUTI':'10999','BHARTIARTL':'10604','SBIN':'3045','TATAMOTORS':'3456','RELIANCE':'2885','HINDUNILVR':'1394','TCS':'11536','TATASTEEL':'3499','NATURALGAS':'475111'}
+    log.info('Loading historical candles...')
+    for inst in INSTRUMENTS:
+        try:
+            token=_TOKENS.get(inst,'')
+            all_candles=[]
+            for year in [2022,2023,2024,2025,2026]:
+                for fname in [
+                    f'historical_data/{inst}_{year}_5min.json',
+                    f'historical_data/{token}_{year}_5min.json'
+                ]:
+                    if _os.path.exists(fname):
+                        all_candles.extend(_json.load(open(fname)))
+                        break
+            if not all_candles:
+                continue
+            # Pre-sort before DataFrame (faster!)
+            try:
+                all_candles=sorted(all_candles,key=lambda x:x[0])
+            except:pass
+            df5=_pd.DataFrame(all_candles)
+            if len(df5.columns)==6:
+                df5.columns=['time','open','high','low','close','volume']
+            for col in ['open','high','low','close','volume']:
+                df5[col]=_pd.to_numeric(df5[col],errors='coerce')
+            df5=df5.dropna().reset_index(drop=True)
+            df15=df5.iloc[::3].copy()
+            log.info(f'  {inst}: {len(df5)} candles loaded')
+            # Load into feed builders - use LATEST candles!
+            if inst in feed.builders:
+                df5_sorted=df5.sort_values('time').tail(500)
+                for row in df5_sorted.to_dict('records'):
+                    feed.builders[inst]['5'].candles.append({
+                        'time':str(row['time']),
+                        'open':float(row['open']),
+                        'high':float(row['high']),
+                        'low':float(row['low']),
+                        'close':float(row['close']),
+                        'volume':float(row['volume'])
+                    })
+                # Cap buffer: prevent memory leak!
+                _b5=feed.builders[inst]['5'].candles
+                if len(_b5)>600:del _b5[:-500]
+
+                df15_sorted=df15.sort_values('time').tail(200)
+                for row in df15_sorted.to_dict('records'):
+                    feed.builders[inst]['15'].candles.append({
+                        'time':str(row['time']),
+                        'open':float(row['open']),
+                        'high':float(row['high']),
+                        'low':float(row['low']),
+                        'close':float(row['close']),
+                        'volume':float(row['volume'])
+                    })
+                # Cap 15min buffer!
+                _b15=feed.builders[inst]['15'].candles
+                if len(_b15)>300:del _b15[:-200]
+        except Exception as ie:
+            log.error(f'[V31] Load error {inst}: {ie}')
+    from v30_cache import preload_cache
+    preload_cache()
+    feed.start()
+    log.info('[V31] LIVE! Websocket connected')
+
+    # Notify startup
+    from v31_notify import (notify_v31_startup,notify_v31_entry,
+    notify_v31_exit,notify_v31_daily_summary,notify_v31_gamma_alert)
+    notify_v31_startup(capital)
+
+    asyncio.create_task(daily_reset())
+
+    log.info('[V31] Starting main scan loop...')
+    _last_capital_refresh=0
+    log.info(f'[V31] Python version check OK')
+    # Test market check
+    try:
+        from v30_holiday import is_market_open
+        ok,reason=is_market_open()
+        log.info(f'[V31] Market status: {ok} {reason}')
+    except Exception as me:
+        log.error(f'[V31] Market check error: {me}')
+    log.info('[V31] Entering while loop...')
+    while True:
+        try:
+            log.info('[V31] Loop iteration start')
+            from v30_holiday import is_market_open
+            ok,reason=is_market_open()
+            if not ok:
+                if not getattr(main,'_closed_sent',False):
+                    from v30_notify import send
+                    send(f"🏖 <b>Market Closed</b>\n{reason}\n⏰ V31 resumes Monday 9:15 AM")
+                    main._closed_sent=True
+                log.info(f"[V31] {reason} - no trading")
+                await asyncio.sleep(3600)
+                continue
+
+            now=datetime.now()
+
+            # Holiday check
+            _nse_hol=_mcx_hol=False
+            try:
+                from v31_holidays import is_nse_holiday,is_mcx_holiday
+                _nse_hol,_=is_nse_holiday(now.date())
+                _mcx_hol,_=is_mcx_holiday(now.date())
+            except:pass
+
+            # Trading hours
+            NSE_HOURS=list(range(9,15))
+            nse_open=now.hour in NSE_HOURS and now.weekday()<5

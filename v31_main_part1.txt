@@ -1,0 +1,200 @@
+import asyncio,logging,json,os
+from v31_options_sell import run_sell_strategy
+from datetime import datetime,timedelta
+import pandas as pd
+
+# File only logging - no duplicates
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [V31] %(message)s',
+    filename='v31_log.txt',
+    filemode='a'
+)
+log=logging.getLogger(__name__)
+
+# Premium limits per instrument (module level!)
+_PREM_LIMITS={
+    'NIFTY':200,'BANKNIFTY':400,
+    'FINNIFTY':150,'SENSEX':300,
+    'MIDCPNIFTY':100,'CRUDEOIL':500,
+    'GOLDM':400,'SILVERM':300,
+    'NATURALGAS':100
+}
+
+from v31_instrument_manager import instrument_manager,INSTRUMENTS as _INST_CONFIG
+INSTRUMENTS=instrument_manager.get_all_instruments()
+
+def get_inst_exchange(inst):
+    return _INST_CONFIG.get(inst,{}).get('exch_seg','NFO')
+
+def get_inst_token(inst):
+    return _INST_CONFIG.get(inst,{}).get('token','')
+from v31_options_sell import run_sell_strategy
+from datetime import datetime,timedelta
+import pandas as pd
+
+# File only logging - no duplicates
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [V31] %(message)s',
+    filename='v31_log.txt',
+    filemode='a'
+)
+log=logging.getLogger(__name__)
+
+# Premium limits per instrument (module level!)
+_PREM_LIMITS={
+    'NIFTY':200,'BANKNIFTY':400,
+    'FINNIFTY':150,'SENSEX':300,
+    'MIDCPNIFTY':100,'CRUDEOIL':500,
+    'GOLDM':400,'SILVERM':300,
+    'NATURALGAS':100
+}
+
+INSTRUMENTS=['NIFTY','BANKNIFTY','SENSEX','FINNIFTY','MIDCPNIFTY',
+             'CRUDEOIL','GOLDM','SILVERM',
+             'LT','NTPC','MARUTI','BHARTIARTL','SBIN',
+             'TATAMOTORS','RELIANCE','HINDUNILVR','TCS','TATASTEEL','NATURALGAS']
+LOT={'NIFTY':65,'BANKNIFTY':30,'SENSEX':20,'FINNIFTY':60,
+     'MIDCPNIFTY':120,'CRUDEOIL':100,'GOLDM':10,'SILVERM':30,
+     'LT':450,'NTPC':4500,'MARUTI':100,'BHARTIARTL':950,
+     'SBIN':1500,'TATAMOTORS':1350,'RELIANCE':250,
+     'HINDUNILVR':300,'TCS':150,'TATASTEEL':5500,'NATURALGAS':1250}
+TOKEN={'NIFTY':'99926000','BANKNIFTY':'99926009','SENSEX':'99919000',
+       'FINNIFTY':'99926037','MIDCPNIFTY':'99926074',
+       'CRUDEOIL':'472790','GOLDM':'477904','SILVERM':'457533',
+       'LT':'11483','NTPC':'11630','MARUTI':'10999',
+       'BHARTIARTL':'10604','SBIN':'3045','TATAMOTORS':'3456',
+       'RELIANCE':'2885','HINDUNILVR':'1394','TCS':'11536','TATASTEEL':'3499','NATURALGAS':'475111'}
+
+active_trades={}
+signal_cooldown={}  # Prevents duplicate signals
+used_zones={}  # {instrument_zone: timestamp} - persists across scans
+ENABLE_PATH_CD=True   # Enabled for paper trading!
+last_signals={}    # Strike+direction cooldown (30 min)
+last_prices={}     # Price distance filter
+# used_zones defined above as dict
+trades_today={}    # Max 2 signals per instrument per day
+
+# Angel One MCX feed
+try:
+    from v31_angel_feed import angel_mcx_feed
+    angel_mcx_feed.connect()
+    log.info('[V31] Angel MCX feed ready!')
+except Exception as ae:
+    log.warning(f'[V31] Angel MCX feed failed: {ae}')
+    angel_mcx_feed=None
+
+# Angel One Trader (primary broker)
+try:
+    from v31_angel_trader import angel_trader
+    angel_trader.connect()
+    log.info('[V31] Angel One trader ready!')
+except Exception as ae:
+    log.warning(f'[V31] Angel trader failed: {ae}')
+    angel_trader=None
+active_positions={}
+active_positions={}
+capital=50000  # Default fallback
+trade_counter=0  # Counts live trades for auto-retrain
+
+# ============================================================
+# PAPER TRADING MODE
+# True  = No real orders (safe testing)
+# False = Real orders on Angel One
+# ============================================================
+PAPER_TRADE=True  # Change to False when ready for live!
+paper_pnl={}  # Track paper trade results
+from v31_risk_manager import V31RiskManager
+risk_mgr=V31RiskManager(capital)
+
+# Auto-fetch latest lot sizes
+try:
+    from v31_lot_fetcher import get_lot_sizes
+    _fresh_lots=get_lot_sizes()
+    LOT.update(_fresh_lots)
+    log.info(f'[V31] Lot sizes updated: {LOT}')
+except Exception as le:
+    log.warning(f'[V31] Lot fetch failed, using defaults: {le}')
+from v31_risk_manager import V31RiskManager
+risk_mgr=V31RiskManager(capital)
+
+def get_real_capital(kotak):
+    """Fetch real capital from Kotak account"""
+    try:
+        for seg in ['FO','CASH','ALL']:
+            limits=kotak.limits(segment=seg)
+            if not limits:continue
+            # Check for bridge error (night time)
+            if limits.get('stCode')==300015:
+                log.warning('[V31] Kotak bridge error (night?), using default capital')
+                return 50000
+            data=limits.get('data',{})
+            if not data:continue
+            cash=float(
+                data.get('net',0) or
+                data.get('availablecash',0) or
+                data.get('cashmarginavailable',0) or
+                data.get('marginused',0) or 0
+            )
+            if cash>1000:
+                log.info(f'[V31] Capital from Kotak ({seg}): Rs.{cash:,.0f}')
+                return round(cash)
+        return 50000
+    except Exception as e:
+        log.warning(f'[V31] Capital fetch failed: {e}')
+        return 50000
+
+def get_lots(instrument,capital,sl_pts=None):
+    from v30_lot_config import get_lots as base_lots
+    return base_lots(instrument,capital)
+
+def get_kotak_client():
+    try:
+        import pyotp
+        from neo_api_client import NeoAPI
+        totp=pyotp.TOTP("4GUPM2UMIUHNUGGD7DPAWO7J7A").now()
+        client=NeoAPI(environment="prod",access_token=None,neo_fin_key=None,consumer_key="d425cd90-3afe-4d53-a5d1-1ce97279f184")
+        client.totp_login(mobile_number="+918050220481",ucc="YIK0S",totp=totp)
+
+
+
+
+        log.info("Kotak connected!")
+        return client
+    except Exception as e:
+        log.error(f'Kotak login error: {e}')
+        return None
+
+def get_angel_client():
+    try:
+        import pyotp
+        from SmartApi import SmartConnect
+        obj=SmartConnect(api_key='pEOas0vU')
+        totp=pyotp.TOTP('R2T2F2BMP56U44O4OMOYJZTFJI').now()
+        obj.generateSession('J234619','1605',totp)
+        return obj
+    except Exception as e:
+        log.error(f'Angel login error: {e}')
+        return None
+
+def load_candles(angel,instrument,tf=5):
+    import time as _lt
+    # Check cache first
+    from v31_data_cache import _cache
+    import time as _ct
+    _ck=f'{instrument}_{tf}'
+    if _ck in _cache:
+        _data,_ts=_cache[_ck]
+        if _ct.time()-_ts<60:
+            return _data
+    # Small delay to avoid rate limiting
+    _lt.sleep(0.3)
+    try:
+        import json,os,time
+        all_candles=[]
+        token=TOKEN.get(instrument,'')
+        for year in [2022,2023,2024]:
+            for fname in [
+                f'historical_data/{instrument}_{year}_5min.json',
+                f'historical_data/{token}_{year}_5min.json'
