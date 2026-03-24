@@ -210,9 +210,24 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
 
 
 def search_option_token(obj,inst,price,opt_type):
-    """Search Angel One for option token using master file"""
+    """Search Angel One for option token - dynamic expiry!"""
+    # Use option_engine for correct strike + expiry!
+    try:
+        from v31_option_engine import get_option
+        result=get_option(inst,price,opt_type)
+        if result and result.get('token'):
+            log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
+            return (result['token'],result['symbol'],
+                    result.get('segment','NFO'))
+    except Exception as _de:
+        log.debug(f'[ANGEL OPT] Engine failed: {_de}')
+
+    # Fallback to old method
     symbol,strike,expiry=get_option_symbol(inst,price,opt_type)
-    # SENSEX uses BFO exchange
+    exchange=EXCHANGE_MAP.get(inst,'NFO')
+    if inst=='SENSEX':exchange='BFO'
+    try:
+        import json,os
     exchange=EXCHANGE_MAP.get(inst,'NFO')
     if inst=='SENSEX':exchange='BFO' 
     try:
