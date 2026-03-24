@@ -1522,11 +1522,31 @@ async def main():
                     notified=notify_v31_entry(signal,_qty,instrument)
                     if not notified:
                         log.info(f'[V31] {instrument} skipped by notify (too expensive)')
+                        # Try OTM strike (cheaper!)
                         try:
-                            from v31_trade_logger import log_decision
-                            log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
-                        except:pass
-                        continue
+                            from v31_option_engine import get_option
+                            from v31_angel_options import get_atm_strike
+                            _curr_price=float(df5['close'].iloc[-1])
+                            _atr=float((df5['high']-df5['low']).tail(14).mean())
+                            _step=_atr*0.5  # 0.5 ATR away from ATM
+                            _otm_price=_curr_price-_step if _opt_type=='PE' else _curr_price+_step
+                            _otm_result=get_option(instrument,_otm_price,_opt_type)
+                            if _otm_result and _otm_result.get('token'):
+                                signal['option_token']=_otm_result['token']
+                                signal['option_symbol']=_otm_result['symbol']
+                                signal['premium']=signal.get('premium',0)*0.7
+                                log.info(f'[V31] {instrument} trying OTM: {_otm_result["symbol"]}')
+                                notified=notify_v31_entry(signal,_qty,instrument)
+                                if notified:
+                                    log.info(f'[V31] {instrument} OTM trade accepted!')
+                        except Exception as _otme:
+                            log.debug(f'[V31] OTM fallback error: {_otme}')
+                        if not notified:
+                            try:
+                                from v31_trade_logger import log_decision
+                                log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
+                            except:pass
+                            continue
 
                     # Track position
                     try:
