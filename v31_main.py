@@ -1572,16 +1572,24 @@ async def main():
                                     log.debug(f'[V31] {instrument} OTM illiquid: Rs.{_ltp_val}')
                                     continue
 
-                                # Spread filter: avoid wide spreads!
+                                # Premium ceiling filter!
+                                if _ltp_val>signal.get('max_premium',300):
+                                    log.debug(f'[V31] {instrument} premium ceiling: Rs.{_ltp_val}')
+                                    continue
+
+                                # Spread filter: safe depth access!
                                 try:
-                                    _depth=_ltp_r.get('data',{})
-                                    _bid=_depth.get('depth',{}).get('buy',[{}])[0].get('price',0)
-                                    _ask=_depth.get('depth',{}).get('sell',[{}])[0].get('price',0)
-                                    if _bid and _ask and _bid>0:
-                                        _spread=(_ask-_bid)/_bid
-                                        if _spread>0.05:
-                                            log.debug(f'[V31] {instrument} wide spread: {_spread:.2%}')
-                                            continue
+                                    _depth_data=_ltp_r.get('data',{}).get('depth',{})
+                                    _buy=_depth_data.get('buy',[])
+                                    _sell=_depth_data.get('sell',[])
+                                    if _buy and _sell:
+                                        _bid=_buy[0].get('price',0)
+                                        _ask=_sell[0].get('price',0)
+                                        if _bid>0:
+                                            _spread=(_ask-_bid)/_bid
+                                            if _spread>0.05:
+                                                log.debug(f'[V31] {instrument} wide spread: {_spread:.2%}')
+                                                continue
                                 except:pass
 
                                 signal['premium']=_ltp_val
