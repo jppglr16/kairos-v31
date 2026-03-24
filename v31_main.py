@@ -1573,9 +1573,7 @@ async def main():
                                     continue
 
                                 # Premium ceiling filter!
-                                if _ltp_val>signal.get('max_premium',300):
-                                    log.debug(f'[V31] {instrument} premium ceiling: Rs.{_ltp_val}')
-                                    continue
+                                if notified:
 
                                 # Spread filter: safe depth access!
                                 try:
@@ -1599,7 +1597,7 @@ async def main():
                                 log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]} LTP={_ltp_val}')
                                 notified=notify_v31_entry(signal,_qty,instrument)
                                 if notified:
-                                    log.info(f'[V31] {instrument} OTM accepted! x{_mult}')
+                                    log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult}')
                                     break
                         except Exception as _otme:
                             log.debug(f'[V31] OTM ladder error: {_otme}')
