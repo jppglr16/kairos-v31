@@ -325,6 +325,20 @@ class SignalManager:
         now=datetime.now()
         dir_key='SELL' if direction in SELL_TYPES else 'BUY'
 
+        # Real session detection based on time + instrument
+        _mcx_insts=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
+        _now_t=now.hour*60+now.minute
+        if instrument in _mcx_insts:
+            if 15*60+30<=_now_t<18*60:session_name='EVENING'
+            elif 18*60<=_now_t<23*60:session_name='NIGHT'
+            else:session_name='MCX_OFF'
+        else:
+            if 9*60+30<=_now_t<13*60+30:session_name='MORNING'
+            elif 13*60+30<=_now_t<15*60:session_name='AFTERNOON'
+            else:session_name='NSE_OFF'
+        log.debug(f'[SM] {instrument} session={session_name}')
+
+
         # 0. KILL SWITCH
         if self.kill_switch:
             return False,'System paused (kill switch active)'
