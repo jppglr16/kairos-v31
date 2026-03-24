@@ -11,7 +11,7 @@ log=logging.getLogger(__name__)
 # SESSION DEFINITIONS
 # ============================================================
 NSE_SESSIONS=[
-    {'name':'MORNING',  'start':time(9,30),  'end':time(13,0)},
+    {'name':'MORNING',  'start':time(9,30),  'end':time(13,30)},
     {'name':'AFTERNOON','start':time(13,30), 'end':time(15,0)},
 ]
 MCX_SESSIONS=[
