@@ -81,10 +81,16 @@ def build_tokens_once(data):
             continue
         # Validate
         validate_contract(inst,contract)
+        # Safe lotsize
+        try:
+            lotsize=int(contract.get('lotsize',1) or 1)
+            if lotsize<=0:raise Exception()
+        except:
+            raise Exception(f"Bad lotsize for {inst}")
         tokens[inst]={
             'token':contract['token'],
             'symbol':contract['symbol'],
-            'lotsize':contract.get('lotsize',1),
+            'lotsize':lotsize,
             'exchange':'MCX'
         }
     # All-or-nothing!
@@ -105,8 +111,12 @@ def build_tokens(data):
     # Fallback to previous tokens
     if os.path.exists('mcx_tokens.json'):
         log.warning('Using previous tokens as fallback!')
-        return json.load(open('mcx_tokens.json'))
-    raise Exception("Token build failed after retries - no fallback!")
+        try:
+            with open('mcx_tokens.json') as f:
+                return json.load(f)
+        except Exception as e:
+            raise Exception(f"Fallback tokens invalid: {e}")
+    raise Exception("Token build failed - no fallback available!")
 
 def backup_file(filepath):
     """Backup file before modify"""
@@ -134,12 +144,12 @@ def update_feed(tokens):
         pattern=rf"'{inst}':\s*\{{[^}}]*\}}"
         new_val=(f"'{inst}': {{'token':'{info['token']}',"
                 f"'exchange':'MCX'}}  # {info['symbol']}")
+        count=len(re.findall(pattern,content))
+        if count!=1:
+            raise Exception(f"{inst}: Expected 1 match, found {count}")
         new_content=re.sub(pattern,new_val,content)
-        if new_content==content:
-            log.warning(f'{inst}: Pattern not found!')
-        else:
-            content=new_content
-            log.info(f'{inst}: Updated')
+        content=new_content
+        log.info(f'{inst}: Updated')
     if DRY_RUN:
         log.info("DRY RUN - not writing")
         return
@@ -186,11 +196,11 @@ def auto_git_commit():
             "cd ~/kairos_kotak_bot && "
             "git diff --quiet angel_feed.py mcx_tokens.json")
         if diff!=0:
-            os.system(
-                "cd ~/kairos_kotak_bot && "
-                "git add angel_feed.py mcx_tokens.json && "
-                "git commit -m 'Auto: MCX token update' && "
-                "git push origin main")
+            r1=os.system("cd ~/kairos_kotak_bot && git add angel_feed.py mcx_tokens.json")
+            r2=os.system("cd ~/kairos_kotak_bot && git commit -m 'Auto: MCX token update'")
+            r3=os.system("cd ~/kairos_kotak_bot && git push origin main")
+            if r3!=0:
+                raise Exception(f"Git push failed! code={r3}")
             log.info('Git commit done!')
         else:
             log.info('No changes to commit')
@@ -208,8 +218,8 @@ def update_mcx_tokens():
         validate_tokens(tokens)
         update_feed(tokens)
         save_tokens(tokens)
-        send_telegram_alert(tokens,success=True)
         auto_git_commit()
+        send_telegram_alert(tokens,success=True)
         log.info(f'SUCCESS: {len(tokens)}/4 tokens updated!')
         return tokens
     except Exception as e:
