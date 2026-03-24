@@ -1533,6 +1533,7 @@ async def main():
                             _atr=float((df5['high']-df5['low']).tail(14).mean())
                             _max_step=_curr_price*0.02  # Max 2% OTM
 
+                            _tried=set()  # Prevent duplicate strikes!
                             for _mult in [0.5,1.0,1.5]:
                                 _step=min(_atr*_mult,_max_step)
                                 if _opt_type_ladder=='PE':
@@ -1544,20 +1545,33 @@ async def main():
                                 if not _otm_result or not _otm_result.get('token'):
                                     continue
 
+                                # Prevent duplicate strikes!
+                                _strike_sym=_otm_result['symbol']
+                                if _strike_sym in _tried:
+                                    continue
+                                _tried.add(_strike_sym)
+
                                 # Fetch real LTP!
+                                _ltp_val=0
                                 try:
                                     _seg=_otm_result.get('segment','NFO')
                                     _ltp_r=_at.obj.ltpData(
                                         _seg,_otm_result['symbol'],
                                         _otm_result['token'])
                                     if _ltp_r and _ltp_r.get('data'):
-                                        signal['premium']=_ltp_r['data']['ltp']
-                                        signal['real_prem']=_ltp_r['data']['ltp']
+                                        _ltp_val=_ltp_r['data']['ltp']
                                 except:pass
 
+                                # Liquidity filter: skip junk options!
+                                if _ltp_val<5:
+                                    log.debug(f'[V31] {instrument} OTM illiquid: Rs.{_ltp_val}')
+                                    continue
+
+                                signal['premium']=_ltp_val
+                                signal['real_prem']=_ltp_val
                                 signal['option_token']=_otm_result['token']
                                 signal['option_symbol']=_otm_result['symbol']
-                                log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]}')
+                                log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]} LTP={_ltp_val}')
                                 notified=notify_v31_entry(signal,_qty,instrument)
                                 if notified:
                                     log.info(f'[V31] {instrument} OTM accepted! x{_mult}')
@@ -1565,6 +1579,7 @@ async def main():
                         except Exception as _otme:
                             log.debug(f'[V31] OTM ladder error: {_otme}')
                         if not notified:
+                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f} if "atr" in dir() else ""')
                             try:
                                 from v31_trade_logger import log_decision
                                 log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
