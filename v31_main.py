@@ -1562,10 +1562,27 @@ async def main():
                                         _ltp_val=_ltp_r['data']['ltp']
                                 except:pass
 
+                                # LTP fetch failed?
+                                if _ltp_val<=0:
+                                    log.debug(f'[V31] {instrument} LTP fetch failed')
+                                    continue
+
                                 # Liquidity filter: skip junk options!
                                 if _ltp_val<5:
                                     log.debug(f'[V31] {instrument} OTM illiquid: Rs.{_ltp_val}')
                                     continue
+
+                                # Spread filter: avoid wide spreads!
+                                try:
+                                    _depth=_ltp_r.get('data',{})
+                                    _bid=_depth.get('depth',{}).get('buy',[{}])[0].get('price',0)
+                                    _ask=_depth.get('depth',{}).get('sell',[{}])[0].get('price',0)
+                                    if _bid and _ask and _bid>0:
+                                        _spread=(_ask-_bid)/_bid
+                                        if _spread>0.05:
+                                            log.debug(f'[V31] {instrument} wide spread: {_spread:.2%}')
+                                            continue
+                                except:pass
 
                                 signal['premium']=_ltp_val
                                 signal['real_prem']=_ltp_val
@@ -1579,7 +1596,7 @@ async def main():
                         except Exception as _otme:
                             log.debug(f'[V31] OTM ladder error: {_otme}')
                         if not notified:
-                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f} if "atr" in dir() else ""')
+                            log.warning(f'[V31] {instrument} ALL OTM FAILED | ATR={_atr:.2f}')
                             try:
                                 from v31_trade_logger import log_decision
                                 log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
