@@ -25,9 +25,9 @@ STOCKS={
 }
 
 def get_client():
-    obj=SmartConnect(api_key='pEOas0vU')
-    totp=pyotp.TOTP('R2T2F2BMP56U44O4OMOYJZTFJI').now()
-    obj.generateSession('J234619','1605',totp)
+    obj=SmartConnect(api_key=os.getenv('ANGEL_API_KEY',''))
+    totp=pyotp.TOTP(os.getenv('ANGEL_TOTP','')).now()
+    obj.generateSession(os.getenv('ANGEL_CLIENT_ID',''),'1605',totp)
     return obj
 
 def download_stock_history(client,symbol,token,year):

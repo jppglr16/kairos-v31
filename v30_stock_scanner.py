@@ -6,10 +6,10 @@ from v30_cache import cache
 HEADERS={'User-Agent':'Mozilla/5.0','Accept':'application/json','Referer':'https://www.nseindia.com'}
 
 ANGEL_CONFIG={
-    'api_key':'pEOas0vU',
-    'client_id':'J234619',
+    'api_key':os.getenv('ANGEL_API_KEY',''),
+    'client_id':os.getenv('ANGEL_CLIENT_ID',''),
     'mpin':'1605',
-    'totp_secret':'R2T2F2BMP56U44O4OMOYJZTFJI'
+    'totp_secret':os.getenv('ANGEL_TOTP','')
 }
 
 # Priority index instruments

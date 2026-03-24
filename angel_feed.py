@@ -4,10 +4,10 @@ from datetime import datetime,timedelta
 
 import os
 ANGEL_CONFIG={
-    'api_key':os.getenv('ANGEL_API_KEY','pEOas0vU'),
-    'client_id':'J234619',
+    'api_key':os.getenv('ANGEL_API_KEY',''),
+    'client_id':os.getenv('ANGEL_CLIENT_ID',''),
     'mpin':os.getenv('ANGEL_MPIN','1605'),
-    'totp_secret':os.getenv('ANGEL_TOTP','R2T2F2BMP56U44O4OMOYJZTFJI')
+    'totp_secret':os.getenv('ANGEL_TOTP','')
 }
 
 SYMBOLS={
