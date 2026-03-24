@@ -97,7 +97,7 @@ def get_historical(client,instrument,tf_minutes):
             'todate':to_time
         }
         import time
-        time.sleep(0.5)  # Rate limit: 0.5s between calls!
+        time.sleep(1.2)  # Rate limit: 1.2s between calls!
         data=client.getCandleData(params)
         if data and data.get('status') and data.get('data'):
             candles=[]
