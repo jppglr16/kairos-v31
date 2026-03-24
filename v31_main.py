@@ -933,7 +933,7 @@ async def main():
             for inst_idx,instrument in enumerate(INSTRUMENTS):
                 if inst_idx>0:
                     import time as _sleep_time
-                    _sleep_time.sleep(0.3)  # Reduced from 1.5s!
+                    _sleep_time.sleep(1.5)  # Back to 1.5s - prevent rate limit!
 
                 inst_cfg=_INST_CONFIG.get(instrument,{})
                 inst_type=inst_cfg.get('type','STOCK')

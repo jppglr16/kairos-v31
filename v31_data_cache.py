@@ -16,10 +16,10 @@ _cache_lock=threading.Lock()
 
 # TTL per timeframe
 TTL_MAP={
-    'FIVE_MINUTE':   60,   # 1 min
-    'FIFTEEN_MINUTE':180,  # 3 mins
-    '5':             60,
-    '15':            180,
+    'FIVE_MINUTE':   120,  # 2 mins - reduce API calls!
+    'FIFTEEN_MINUTE':360,  # 6 mins - reduce API calls!
+    '5':             120,
+    '15':            360,
     'D':             600,
 }
 
