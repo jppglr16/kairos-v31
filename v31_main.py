@@ -705,6 +705,10 @@ async def main():
                         break
             if not all_candles:
                 continue
+            # Pre-sort before DataFrame (faster!)
+            try:
+                all_candles=sorted(all_candles,key=lambda x:x[0])
+            except:pass
             df5=_pd.DataFrame(all_candles)
             if len(df5.columns)==6:
                 df5.columns=['time','open','high','low','close','volume']
@@ -725,6 +729,10 @@ async def main():
                         'close':float(row['close']),
                         'volume':float(row['volume'])
                     })
+                # Cap buffer: prevent memory leak!
+                _b5=feed.builders[inst]['5'].candles
+                if len(_b5)>600:del _b5[:-500]
+
                 df15_sorted=df15.sort_values('time').tail(200)
                 for row in df15_sorted.to_dict('records'):
                     feed.builders[inst]['15'].candles.append({
@@ -735,6 +743,9 @@ async def main():
                         'close':float(row['close']),
                         'volume':float(row['volume'])
                     })
+                # Cap 15min buffer!
+                _b15=feed.builders[inst]['15'].candles
+                if len(_b15)>300:del _b15[:-200]
         except Exception as ie:
             log.error(f'[V31] Load error {inst}: {ie}')
     from v30_cache import preload_cache
