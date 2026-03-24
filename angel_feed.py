@@ -97,12 +97,18 @@ def get_historical(client,instrument,tf_minutes):
             'todate':to_time
         }
         import time
-        global _last_call,_MIN_GAP
-        _now=time.time()
-        _gap=_now-_last_call
-        if _gap<_MIN_GAP:
-            time.sleep(_MIN_GAP-_gap)
-        _last_call=time.time()
+        global _last_call,_MIN_GAP,_last_adjust,_throttle_lock
+        with _throttle_lock:
+            _now=time.time()
+            _gap=_now-_last_call
+            if _gap<_MIN_GAP:
+                time.sleep(_MIN_GAP-_gap)
+            _last_call=time.time()
+            # Soft reset: recover every 60s
+            if _now-_last_adjust>60:
+                _MIN_GAP=max(_MIN_GAP-0.1,0.7)
+                _last_adjust=_now
+                log.debug(f'[FEED] throttle gap={_MIN_GAP:.2f}s')
         data=client.getCandleData(params)
         if data and data.get('status') and data.get('data'):
             candles=[]
