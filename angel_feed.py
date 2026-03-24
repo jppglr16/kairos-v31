@@ -17,10 +17,10 @@ SYMBOLS={
     'MIDCPNIFTY':{'token':'99926074','exchange':'NSE'},
     'SENSEX':    {'token':'99919000','exchange':'BSE'},
     # MCX
-    'CRUDEOIL': {'token':'486502','exchange':'MCX'}  # CRUDEOIL20APR26FUT  # CRUDEOIL20APR26FUT  # CRUDEOIL20APR26FUT  # CRUDEOIL20APR26FUT,  # CRUDEOIL20APR26FUT
-    'GOLDM': {'token':'477904','exchange':'MCX'}  # GOLDM03APR26FUT  # GOLDM03APR26FUT  # GOLDM03APR26FUT  # GOLDM03APR26FUT,
-    'SILVERM': {'token':'457533','exchange':'MCX'}  # SILVERM30APR26FUT  # SILVERM30APR26FUT  # SILVERM30APR26FUT  # SILVERM30APR26FUT,
-    'NATURALGAS': {'token':'475111','exchange':'MCX'}  # NATURALGAS26MAR26FUT  # NATURALGAS26MAR26FUT  # NATURALGAS26MAR26FUT  # NATURALGAS26MAR26FUT,
+    'CRUDEOIL':  {'token':'486502','exchange':'MCX'},  # CRUDEOIL20APR26FUT
+    'GOLDM':  {'token':'477904','exchange':'MCX'},  # GOLDM03APR26FUT
+    'SILVERM':  {'token':'457533','exchange':'MCX'},  # SILVERMIC30APR26FUT
+    'NATURALGAS':  {'token':'473860','exchange':'MCX'},  # NATURALGAS26MAR26FUT
     # NSE Stocks
     'LT':        {'token':'11483','exchange':'NSE'},
     'NTPC':      {'token':'11630','exchange':'NSE'},
@@ -97,7 +97,12 @@ def get_historical(client,instrument,tf_minutes):
             'todate':to_time
         }
         import time
-        time.sleep(1.2)  # Rate limit: 1.2s between calls!
+        global _last_call,_MIN_GAP
+        _now=time.time()
+        _gap=_now-_last_call
+        if _gap<_MIN_GAP:
+            time.sleep(_MIN_GAP-_gap)
+        _last_call=time.time()
         data=client.getCandleData(params)
         if data and data.get('status') and data.get('data'):
             candles=[]
