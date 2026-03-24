@@ -1564,7 +1564,9 @@ async def main():
 
                             _tried=set()  # Prevent duplicate strikes!
                             _fail_reasons=[]  # Track why failed!
-                            for _mult in [0.5,1.0,1.5]:
+                            # More steps for high ATR instruments!
+                            _mults=[0.5,1.0,1.5,2.0,3.0] if _atr>100 else [0.5,1.0,1.5]
+                            for _mult in _mults:
                                 _step=min(_atr*_mult,_max_step)
                                 if _opt_type_ladder=='PE':
                                     _otm_price=_curr_price-_step
@@ -1609,6 +1611,7 @@ async def main():
                                 _max_prem=_PREM_LIMITS.get(instrument,300)
                                 if _ltp_val>_max_prem:
                                     log.debug(f"[V31] {instrument} premium ceiling Rs.{_ltp_val}>{_max_prem}")
+                                    _fail_reasons.append('HIGH_PREMIUM')
                                     continue
 
                                 # Spread filter: safe depth access!
