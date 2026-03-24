@@ -1582,7 +1582,7 @@ async def main():
                             _tried=set()  # Prevent duplicate strikes!
                             _fail_reasons=[]  # Track why failed!
                             # More steps for high ATR instruments!
-                            _mults=[0.5,1.0,1.5,2.0,3.0] if _atr>100 else [0.5,1.0,1.5]
+                            _mults=[0.5,1.0,1.5,2.0,3.0,4.0,5.0] if _atr>50 else [0.5,1.0,1.5]
                             for _mult in _mults:
                                 _step=min(_atr*_mult,_max_step)
                                 if _opt_type_ladder=='PE':
