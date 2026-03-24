@@ -8,6 +8,12 @@ log=logging.getLogger(__name__)
 # Global cache store
 cache={}
 
+# Global API throttle
+import threading
+_cache_last_call=0
+_cache_min_gap=1.0
+_cache_lock=threading.Lock()
+
 # TTL per timeframe
 TTL_MAP={
     'FIVE_MINUTE':   60,   # 1 min
@@ -35,6 +41,15 @@ def get_candle_cached(instrument,tf,fetch_func):
         if age<ttl:
             log.debug(f'[CACHE] Hit: {key} age={age:.0f}s')
             return data
+
+    # Global throttle before API call
+    global _cache_last_call,_cache_min_gap
+    with _cache_lock:
+        _now=time.time()
+        _gap=_now-_cache_last_call
+        if _gap<_cache_min_gap:
+            time.sleep(_cache_min_gap-_gap)
+        _cache_last_call=time.time()
 
     # Fetch with retry + backoff
     for attempt in range(3):
