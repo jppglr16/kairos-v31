@@ -58,7 +58,12 @@ def get_expiry_str(inst):
                         dt=datetime.strptime(e,'%d%b%y')
                         if dt.date()>=today.date():future.append((dt,e))
                     except:pass
-                if future:
+                # Skip today expiry!
+                future_valid=[(dt,e) for dt,e in future
+                             if dt.date()>datetime.now().date()]
+                if future_valid:
+                    return min(future_valid,key=lambda x:x[0])[1]
+                elif future:
                     return min(future,key=lambda x:x[0])[1]
         except:pass
         days=(3-today.weekday())%7
@@ -203,6 +208,16 @@ def get_option_symbol(inst,price,opt_type,lookup=None,today=None):
 
 def search_option_token(obj,inst,price,opt_type):
     """Search Angel One for option token using master file"""
+    # Dynamic expiry via option_engine!
+    try:
+        from v31_option_engine import get_option
+        result=get_option(inst,price,opt_type)
+        if result and result.get("token"):
+            log.info(f'[ANGEL OPT] Token found: {result["symbol"]} = {result["token"]}')
+            return (result["token"],result["symbol"],result.get("segment","NFO"))
+    except Exception as _de:
+        log.debug(f"[ANGEL OPT] Engine fallback: {_de}")
+
     # Dynamic expiry via option_engine!
     try:
         from v31_option_engine import get_option
