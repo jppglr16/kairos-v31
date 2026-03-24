@@ -144,18 +144,20 @@ class SignalManager:
                 return s['name']
         return None
 
-    def _get_limits(self,score):
-        """✅ Fix 1: Score-based limits"""
+    def _get_limits(self,score,session=None):
+        """Score-based limits with MCX NIGHT bonus"""
+        # MCX NIGHT session gets extra trade!
+        _mcx_night=session in ['NIGHT','EVENING']
         if score>=28:
-            return {'BUY':2,'SELL':2}  # High conviction
+            return {'BUY':2,'SELL':3 if _mcx_night else 2}
         elif score>=25:
-            return {'BUY':2,'SELL':1}
+            return {'BUY':2,'SELL':2 if _mcx_night else 1}
         elif score>=20:
-            return {'BUY':1,'SELL':1}
+            return {'BUY':1,'SELL':2 if _mcx_night else 1}
         elif score>=15:
-            return {'BUY':1,'SELL':1}  # Allow lower scores!
+            return {'BUY':1,'SELL':2 if _mcx_night else 1}
         else:
-            return {'BUY':0,'SELL':0}  # Too low!
+            return {'BUY':0,'SELL':0}
 
     def _get_daily_total(self,instrument):
         """Get total trades today for instrument"""
@@ -402,10 +404,12 @@ class SignalManager:
 
         # 6. SCORE FILTER
         if score>=28:
-            limits={'BUY':3,'SELL':2}  # Boost (not bypass!)
-            log.info(f'[SM] {instrument} HIGH SCORE BOOST ({score})')
-        else:
-            limits=self._get_limits(score)
+                limits=self._get_limits(score,session=session_name)
+                limits['BUY']=min(limits.get('BUY',0)+1,3)
+                limits['SELL']=min(limits.get('SELL',0)+1,3)
+                log.info(f'[SM] {instrument} HIGH SCORE BOOST ({score}) session={session_name}')
+            else:
+                limits=self._get_limits(score,session=session_name)
         if limits[dir_key]==0:
             return False,f'Score {score} too low for {dir_key} (need>=20)'
 
