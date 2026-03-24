@@ -404,12 +404,12 @@ class SignalManager:
 
         # 6. SCORE FILTER
         if score>=28:
-                limits=self._get_limits(score,session=session_name)
-                limits['BUY']=min(limits.get('BUY',0)+1,3)
-                limits['SELL']=min(limits.get('SELL',0)+1,3)
-                log.info(f'[SM] {instrument} HIGH SCORE BOOST ({score}) session={session_name}')
-            else:
-                limits=self._get_limits(score,session=session_name)
+            limits=self._get_limits(score,session=session_name)
+            limits['BUY']=min(limits.get('BUY',0)+1,3)
+            limits['SELL']=min(limits.get('SELL',0)+1,3)
+            log.info(f'[SM] {instrument} HIGH SCORE BOOST ({score}) session={session_name}')
+        else:
+            limits=self._get_limits(score,session=session_name)
         if limits[dir_key]==0:
             return False,f'Score {score} too low for {dir_key} (need>=20)'
 
