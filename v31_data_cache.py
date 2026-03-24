@@ -11,7 +11,7 @@ cache={}
 # Global API throttle
 import threading
 _cache_last_call=0
-_cache_min_gap=2.0  # Increased!
+_cache_min_gap=3.0  # 3 sec gap!  # Increased!
 _cache_lock=threading.Lock()
 
 # TTL per timeframe
