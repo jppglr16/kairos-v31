@@ -1020,15 +1020,6 @@ async def main():
                         log.info(f'[V31] {instrument} max signals reached today (2)')
                         continue
 
-                # Priority check - skip if too soon!
-                if priority_engine:
-                    _should,_pri=priority_engine.should_fetch(instrument)
-                    if not _should:
-                        log.debug(f'[V31] {instrument} skip ({_pri} - too soon)')
-                        continue
-                    priority_engine.update_priority(
-                        instrument,active_trades,recent_score=0)
-                    priority_engine.mark_fetched(instrument)
 
                 # Generate signal (Path A)
                     from v31_strategy import generate_v31_signal,notify_v31_signal
