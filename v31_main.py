@@ -867,7 +867,7 @@ async def main():
 
                 # MCX evening: relax VIX filter after NSE close
                 from datetime import datetime as _now_dt
-                _is_mcx_instrument=True  # Relax VIX for all after NSE close
+                _is_mcx_instrument=instrument in ["CRUDEOIL","GOLDM","SILVERM","NATURALGAS"]
                 _after_nse_close=_now_dt.now().hour>=15 and _now_dt.now().minute>=30
                 if not _vix_ok and _is_mcx_instrument and _after_nse_close:
                     log.info(f"[VIX] MCX evening - relaxing VIX for {instrument}")
