@@ -1669,7 +1669,15 @@ async def main():
                                 signal['option_token']=_otm_result['token']
                                 signal['option_symbol']=_otm_result['symbol']
                                 log.info(f'[V31] {instrument} OTM ladder x{_mult}: {_otm_result["symbol"]} LTP={_ltp_val}')
-                                notified=notify_v31_entry(signal,_qty,instrument)
+                                # Dedup check!
+                                _nkey=f'{instrument}_{signal.get("option_symbol","")}_{_ltp_val}'
+                                _nlast=_notified_signals.get(_nkey,0)
+                                if time.time()-_nlast<_NOTIFY_COOLDOWN:
+                                    log.info(f'[V31] {instrument} duplicate notify blocked!')
+                                    notified=True  # Pretend sent!
+                                else:
+                                    _notified_signals[_nkey]=time.time()
+                                    notified=notify_v31_entry(signal,_qty,instrument)
                                 if notified:
                                     _dist=abs(_otm_price-_curr_price)
                                     log.info(f'[V31] {instrument} FINAL PICK: {_otm_result["symbol"]} | Prem=Rs.{_ltp_val} | ATR={_atr:.2f} | mult={_mult} | dist={_dist:.2f} | reason=OTM_LADDER')
