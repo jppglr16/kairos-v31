@@ -60,17 +60,6 @@ SYMBOLS={
     'KEI':       {'token':'13310','exchange':'NSE'},
 }
 
-import threading
-import time
-import logging
-log = logging.getLogger(__name__)
-
-# Rate limiter - properly initialized!
-_last_call = 0.0
-_MIN_GAP = 0.7
-_last_adjust = 0.0
-_throttle_lock = threading.Lock()
-
 def get_angel_client():
     try:
         obj=SmartConnect(api_key=ANGEL_CONFIG['api_key'])
