@@ -472,6 +472,19 @@ class SignalManager:
                 f'(session:{self.state[instrument][session][dir_key]} daily:{total})')
         self.save_state()
 
+        # Track in execution tracker immediately!
+        try:
+            from v31_execution_tracker import execution_tracker
+            _score=signal.get("score",0) if signal else score
+            _path=signal.get("path","?") if signal else "?"
+            _tid=execution_tracker.approved(
+                instrument,dir_key,_score,_path,1)
+            _price=signal.get("price",0) if signal else 0
+            execution_tracker.executed(_tid,_price)
+            log.info(f"[PAPER] ✅ Tracked! {instrument} {dir_key} ID:{_tid}")
+        except Exception as _te:
+            log.debug(f"[PAPER] Tracker error: {_te}")
+
     def release_sell_lock(self,instrument):
         """Release sell lock when position closed"""
         if instrument in self.active_sells:
