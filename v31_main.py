@@ -819,7 +819,7 @@ async def main():
             # Reason: Focus on NSE during market hours, MCX after close
             mcx_trade_start=15
             mcx_open=(
-                (mcx_trade_start<=now.hour<23 or (now.hour==23 and now.minute<30))
+                (mcx_trade_start<=now.hour<24 or (now.hour==23 and now.minute<30))
                 and now.weekday()<5
                 and not _mcx_hol
             )
