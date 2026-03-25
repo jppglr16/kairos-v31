@@ -1584,7 +1584,21 @@ async def main():
                     # NOTIFY TELEGRAM
                     notified=notify_v31_entry(signal,_qty,instrument)
                     if not notified:
-                        log.info(f'[V31] {instrument} skipped by notify (too expensive)')
+                    if PAPER_TRADE:
+                        # Paper mode: track even if too expensive!
+                        log.info(f"[PAPER] {instrument} force track (paper mode!)")
+                        try:
+                            from v31_execution_tracker import execution_tracker
+                            _tid=execution_tracker.approved(
+                                instrument,signal.get("action","BUY"),
+                                signal.get("score",0),
+                                signal.get("path","?"),1)
+                            execution_tracker.executed(_tid,signal.get("price",0))
+                            log.info(f"[PAPER] Force tracked! ID:{_tid}")
+                        except Exception as _pte:
+                            log.warning(f"[PAPER] Track error: {_pte}")
+                    else:
+                        log.info(f"[V31] {instrument} skipped by notify (too expensive)")
                         # Strike ladder: try OTM strikes!
                         try:
                             from v31_option_engine import get_option
