@@ -80,7 +80,16 @@ class ExecutionOptimizer:
             use_market=False
             reason=''
 
-            if momentum>1.5:
+            # Paper mode = always MARKET!
+            try:
+                import v31_main as _m
+                _paper=getattr(_m,"PAPER_TRADE",True)
+            except:_paper=True
+            if _paper:
+                use_market=True
+                reason="PAPER_MARKET_ORDER"
+                log.info(f"[EXEC] Paper mode: market order")
+            elif momentum>1.5:
                 use_market=True
                 reason='HIGH_MOMENTUM'
             elif vol_ratio>2.0:
