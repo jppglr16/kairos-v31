@@ -144,6 +144,14 @@ send('⚠️ V31 was stopped!\nRestarted automatically!\nMarket ready!')
     # ============================================================
     # 3:35 PM - NSE P&L Report
     if [ "$HHMM" = "15:35" ]; then
+        # Send paper trading EOD report!
+        python3 -c "
+from v31_paper_tracker import telegram_report
+from v30_notify import send
+msg=telegram_report()
+send(msg)
+print('Paper report sent!')
+" 2>/dev/null
         python3 v31_pnl_report.py 2>/dev/null
         log "3:35 PM - NSE P&L report sent"
     fi
