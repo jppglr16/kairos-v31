@@ -1423,7 +1423,7 @@ async def main():
                     _action=signal.get('action','BUY')
                     _score=signal.get('score',18)
                     try:
-                        _sm_ok,_sm_reason=signal_manager.can_trade(instrument,_action,_score)
+                        _sm_ok,_sm_reason=signal_manager.can_trade(instrument,_action,_score,signal=signal)
                         if not _sm_ok:
                             log.info(f'[SM] {instrument} BLOCKED: {_sm_reason}')
                             try:
