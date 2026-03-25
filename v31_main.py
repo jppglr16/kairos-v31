@@ -1583,7 +1583,6 @@ async def main():
 
                     # NOTIFY TELEGRAM
                     notified=notify_v31_entry(signal,_qty,instrument)
-                    if not notified:
                     if PAPER_TRADE:
                         # Paper mode: track even if too expensive!
                         log.info(f"[PAPER] {instrument} force track (paper mode!)")
