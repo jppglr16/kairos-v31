@@ -85,7 +85,7 @@ def record_signal(instrument, action, score,
             log.info(f'[PAPER] Dedup: {instrument} {action} already open')
             return t['id']
 
-    trade_id = f"{instrument}_{datetime.now().strftime('%H%M%S')}"
+    trade_id = f"{instrument}_{int(time.time()*1000)}"
 
     trade = {
         'id': trade_id,
@@ -192,7 +192,8 @@ def record_exit(trade_id, exit_price, reason='MANUAL'):
                 log.warning(f'[PAPER] No premium for {trade_id}')
                 return None
 
-            pnl = round((exit_price - prem) * lot, 2)
+            BROKERAGE = 40  # Per trade realistic cost
+            pnl = round((exit_price - prem) * lot - BROKERAGE, 2)
             pnl_pct = round((exit_price-prem)/prem*100, 1)
             hold = round((time.time()-t['entry_ts'])/60, 1)
 
@@ -266,6 +267,7 @@ def get_today_summary():
     """Today's complete summary"""
     data = _load()
     _expire_pending(data)
+    _save(data)  # Persist expired trades!
     today = datetime.now().strftime('%Y-%m-%d')
     today_t = [t for t in data['trades'] if t['date']==today]
 

@@ -472,18 +472,22 @@ class SignalManager:
                 f'(session:{self.state[instrument][session][dir_key]} daily:{total})')
         self.save_state()
 
-        # Track in execution tracker immediately!
+        # Paper tracker Step 1: record at ALLOWED!
         try:
-            from v31_execution_tracker import execution_tracker
-            _score=signal.get("score",0) if signal else score
-            _path=signal.get("path","?") if signal else "?"
-            _tid=execution_tracker.approved(
-                instrument,dir_key,_score,_path,1)
-            _price=signal.get("price",0) if signal else 0
-            execution_tracker.executed(_tid,_price)
-            log.info(f"[PAPER] ✅ Tracked! {instrument} {dir_key} ID:{_tid}")
+            from v31_paper_tracker import record_signal
+            _score=signal.get('score',0) if signal else score
+            _path=signal.get('path','?') if signal else '?'
+            _price=signal.get('price',0) if signal else 0
+            _strat=signal.get('liq_type','?') if signal else '?'
+            _tid=record_signal(
+                instrument,dir_key,_score,
+                _price,_path,_strat)
+            # Pass trade_id to signal for Step 2!
+            if signal and _tid:
+                signal['paper_trade_id']=_tid
+            log.info(f'[PAPER] ✅ Step1: {_tid}')
         except Exception as _te:
-            log.debug(f"[PAPER] Tracker error: {_te}")
+            log.warning(f'[PAPER] Step1 error: {_te}')
 
     def release_sell_lock(self,instrument):
         """Release sell lock when position closed"""

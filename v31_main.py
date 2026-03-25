@@ -1583,21 +1583,20 @@ async def main():
 
                     # NOTIFY TELEGRAM
                     notified=notify_v31_entry(signal,_qty,instrument)
-                    if PAPER_TRADE:
-                        # Paper mode: track even if too expensive!
-                        log.info(f"[PAPER] {instrument} force track (paper mode!)")
+
+                    # Paper tracker Step 2: update with option details!
+                    if notified and PAPER_TRADE:
                         try:
-                            from v31_execution_tracker import execution_tracker
-                            _tid=execution_tracker.approved(
-                                instrument,signal.get("action","BUY"),
-                                signal.get("score",0),
-                                signal.get("path","?"),1)
-                            execution_tracker.executed(_tid,signal.get("price",0))
-                            log.info(f"[PAPER] Force tracked! ID:{_tid}")
-                        except Exception as _pte:
-                            log.warning(f"[PAPER] Track error: {_pte}")
-                    else:
-                        log.info(f"[V31] {instrument} skipped by notify (too expensive)")
+                            from v31_paper_tracker import update_option
+                            _paper_id=signal.get("paper_trade_id","")
+                            _opt_sym=signal.get("option_symbol","")
+                            _prem=signal.get("premium",0)
+                            if _paper_id and _opt_sym and _prem:
+                                update_option(_paper_id,_opt_sym,_prem,-35)
+                                log.info(f"[PAPER] ✅ Step2: {_paper_id} {_opt_sym} Rs.{_prem}")
+                        except Exception as _p2e:
+                            log.warning(f"[PAPER] Step2 error: {_p2e}")
+
                         # Strike ladder: try OTM strikes!
                         try:
                             from v31_option_engine import get_option
@@ -1722,13 +1721,7 @@ async def main():
                             log.info(f'[PAPER] {instrument} {_action} 1 lot - notified via Telegram')
                             # Track paper trades too!
                             try:
-                                from v31_execution_tracker import execution_tracker
-                                _tid=execution_tracker.approved(
-                                    instrument,_action,
-                                    signal.get('score',0),
-                                    signal.get('path','?'),_lots)
-                                execution_tracker.executed(_tid,signal.get('price',0))
-                                log.info(f'[PAPER] Trade tracked! ID:{_tid}')
+                                pass
                             except Exception as _te:
                                 log.debug(f'[PAPER] Tracker error: {_te}')
                         else:
