@@ -163,6 +163,24 @@ class ExitMonitor:
         # Record to trade log
         self._record_trade(pos,exit_prem,reason,pnl)
 
+
+        # Paper tracker Step 3: record exit!
+        try:
+            from v31_paper_tracker import record_exit,get_open_trades
+            open_trades=get_open_trades()
+            _found=False
+            for _pt in open_trades:
+                if (_pt["instrument"]==inst and
+                    _pt.get("status")=="OPEN"):
+                    record_exit(_pt["id"],exit_prem,reason)
+                    log.info(f"[PAPER] ✅ Step3: {inst} {reason} Rs.{exit_prem}")
+                    _found=True
+                    break
+            if not _found:
+                log.warning(f"[PAPER] ⚠️ No open trade for {inst}")
+        except Exception as _p3e:
+            log.warning(f"[PAPER] Step3 error: {_p3e}")
+
         # Record exit in Trade Journal
         try:
             from v31_trade_journal import trade_journal
