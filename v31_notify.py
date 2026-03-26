@@ -115,13 +115,80 @@ def notify_v31_entry(signal,qty,symbol):
             log.info(f'[V31] {inst} option premium too low: Rs.{prem}')
             return
 
-        # Skip if cannot afford even 1 lot
-        _lot_size=LOT.get(inst,75)
-        _min_cost=prem*_lot_size
-        _available=signal.get('capital',50000)
-        if _min_cost>_available*0.40:
-            log.info(f'[V31] {inst} too expensive: Rs.{_min_cost:,.0f} > 40% capital Rs.{_available:,.0f}')
+        # ============================================
+        # SMART CAPITAL MANAGEMENT (Production Grade)
+        # Real deployment tracking + strict 60% cap
+        # Survival protection + near expiry bonus
+        # ============================================
+        _lot_size = LOT.get(inst, 75)
+        _min_cost = prem * _lot_size
+        _available = signal.get('capital', 50000)
+        _open_positions = signal.get('open_positions', 0)
+        _days_to_expiry = signal.get('days_to_expiry', 5)
+
+        # Fix 1: Real deployment = actual cost per position
+        # Not fake 20% assumption!
+        _positions = signal.get('positions', [])
+        if _positions:
+            _total_deployed = sum(p.get('cost', 0)
+                                  for p in _positions)
+        else:
+            # Fallback: use actual min_cost per position
+            _total_deployed = _open_positions * _min_cost
+
+        # Fix 4: Survival protection
+        # Stop trading if capital too low!
+        _min_trade_cap = 3000
+        if _available < _min_trade_cap * 3:
+            log.info(f'[V31] {inst} capital too low: '
+                     f'Rs.{_available:,.0f} < safety limit')
             return False
+
+        # Per trade budget = 20% of capital
+        _max_per_trade = _available * 0.20
+
+        # Near expiry bonus (last day)
+        if _days_to_expiry <= 1:
+            _max_per_trade = min(_available * 0.25,
+                                 _max_per_trade * 1.25)
+            log.info(f'[V31] {inst} near expiry: '
+                     f'budget Rs.{_max_per_trade:,.0f}')
+
+        # Fix 2: Hard 60% cap enforcement
+        if _total_deployed + _max_per_trade > _available * 0.60:
+            _allowed = max(0, _available*0.60 - _total_deployed)
+            if _allowed < _min_trade_cap:
+                log.info(f'[V31] {inst} 60% cap reached: '
+                         f'deployed=Rs.{_total_deployed:,.0f}')
+                return False
+            _max_per_trade = _allowed
+
+        # Survival protection per trade
+        if _max_per_trade < _min_trade_cap:
+            log.info(f'[V31] {inst} budget too small: '
+                     f'Rs.{_max_per_trade:,.0f}')
+            return False
+
+        # Check 1 lot affordable
+        if _min_cost > _max_per_trade:
+            log.info(f'[V31] {inst} too expensive: '
+                     f'Rs.{_min_cost:,.0f} > '
+                     f'Rs.{_max_per_trade:,.0f} '
+                     f'(positions={_open_positions} '
+                     f'capital=Rs.{_available:,.0f})')
+            return False
+
+        # Fix 3: Safe lot calculation
+        _max_lots = int(_max_per_trade // _min_cost)
+        if _max_lots < 1:
+            log.info(f'[V31] {inst} insufficient for 1 lot')
+            return False
+
+        log.info(f'[V31] {inst} capital OK: '
+                 f'Rs.{_min_cost:,.0f} × {_max_lots} lots '
+                 f'| deployed=Rs.{_total_deployed:,.0f} '
+                 f'| budget=Rs.{_max_per_trade:,.0f} '
+                 f'| cap=Rs.{_available*0.60:,.0f}')
         # SL based on UNDERLYING movement not premium %
         # Use sl_points from signal (based on OB/FVG/Swing)
         underlying_sl=signal.get('sl_points',0)
