@@ -277,7 +277,9 @@ def place_trade_angel(angel,signal,capital):
                 _ltp=angel.obj.ltpData(_exch,_sym,_tok)
                 prem=float(_ltp['data'].get('ltp',0)) if _ltp and _ltp.get('data') else 0
             else:prem=0
-        except:prem=0
+        except Exception as _ltp_e:
+            log.warning(f'[LTP] Fetch error: {_ltp_e}')
+            prem=0
         if not prem:prem=signal.get('real_prem',max(50,round(atr*0.9)))
         est_cost=prem*qty
         if capital<est_cost*1.2:
@@ -1530,7 +1532,8 @@ async def main():
                         # Ensure global cap not exceeded
                         _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
 
-                    except:pass
+                    except Exception as _cap_e:
+                        log.warning(f'[CAP] Engine error: {_cap_e}')
                     # Capital context for smart sizing in notify!
                     signal['capital']=capital
                     try:
@@ -1582,7 +1585,8 @@ async def main():
                         except:
                             _mkt_price=float(signal.get('price',0))
                         _opt_result=get_option(instrument,_mkt_price,_opt_type)
-                    except:pass
+                    except Exception as _opt_e:
+                        log.warning(f'[OPT] Option fetch error: {_opt_e}')
 
                     # Liquidity check
                     _is_liquid=True
@@ -1752,7 +1756,8 @@ async def main():
                         _prem=signal.get('real_prem',0)
                         if _prem>0 and _opt_result and _is_liquid:
                             exit_monitor.add_position(signal,_qty,_prem,_opt_result)
-                    except:pass
+                    except Exception as _exit_e:
+                        log.warning(f'[EXIT] Position track error: {_exit_e}')
 
                     # Execute trade
                     try:
