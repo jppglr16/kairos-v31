@@ -1597,6 +1597,23 @@ async def main():
                                     log.info(f'[V31] {instrument} ILLIQUID - skipping order!')
                     except:pass
 
+                    # Pass capital context to signal for smart sizing!
+                    signal['capital'] = capital
+                    try:
+                        from v31_exit_monitor import exit_monitor
+                        _open_pos = len([p for p in exit_monitor.positions.values()
+                                        if p.get('status')=='OPEN'])
+                        _positions_list = [
+                            {'cost': p.get('entry_prem',0)*p.get('lot_size',1)}
+                            for p in exit_monitor.positions.values()
+                            if p.get('status')=='OPEN'
+                        ]
+                        signal['open_positions'] = _open_pos
+                        signal['positions'] = _positions_list
+                    except:
+                        signal['open_positions'] = 0
+                        signal['positions'] = []
+
                     # NOTIFY TELEGRAM
                     notified=notify_v31_entry(signal,_qty,instrument)
 
