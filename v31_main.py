@@ -1530,6 +1530,7 @@ async def main():
                         # Ensure global cap not exceeded
                         _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
 
+                    except:pass
                     # Capital context for smart sizing in notify!
                     signal['capital']=capital
                     try:
