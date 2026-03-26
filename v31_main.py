@@ -1092,7 +1092,7 @@ async def main():
                     if _now_ts2-_zone_time<3600:  # 1 hour zone lock
                         log.info(f'[V31] {instrument} duplicate zone signal blocked ({_zone_key})')
                         continue
-                    used_zones[_zone_key]=_now_ts2
+                    # Zone locked AFTER successful execution (see below)
 
                     # Reset zones daily at midnight
                     if datetime.now().hour==0 and datetime.now().minute<2:
@@ -1553,6 +1553,11 @@ async def main():
                     # Record in Signal Manager
                     try:
                         signal_manager.record_trade(instrument,_action,signal=signal,score=_score)
+                        # Lock zone ONLY after successful trade!
+                        try:
+                            used_zones[_zone_key]=_time.time()
+                            log.info(f'[V31] Zone locked: {_zone_key}')
+                        except:pass
                     except:pass
 
                     # Log decision
