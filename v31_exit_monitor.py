@@ -40,33 +40,36 @@ class ExitMonitor:
         segment=option_result.get('segment','NFO')
         opt_type='CE' if action=='BUY' else 'PE'
 
-        # Use signal SL if available, else smart default
+        # CORRECT approach: track UNDERLYING price for SL
+        # Option premium is noisy (IV/theta) - underlying is clean!
         sl_pts = signal.get('sl_points', 0)
-        spot = signal.get('price', 0)
+        spot_entry = signal.get('price', 0)
+        action_type = action  # BUY or SELL
 
-        if sl_pts > 0 and spot > 0:
-            # Convert spot SL points to premium SL
-            # Approximate: option moves 0.3-0.5 per spot point (delta)
-            _delta = 0.4  # Conservative delta estimate
-            sl = max(round(prem - (sl_pts * _delta)), round(prem * 0.65))
-            log.info(f'[EXIT] Using signal SL: {sl_pts}pts → premium SL={sl}')
+        # Store underlying SL level (most reliable!)
+        if sl_pts > 0 and spot_entry > 0:
+            if action_type == 'BUY':
+                spot_sl = round(spot_entry - sl_pts, 2)
+            else:
+                spot_sl = round(spot_entry + sl_pts, 2)
         else:
-            # Smart premium-based fallback
-            if prem <= 15:   sl = max(round(prem * 0.75), 1)  # -25%
-            elif prem <= 50: sl = round(prem * 0.70)          # -30%
-            elif prem <= 150: sl = round(prem * 0.65)         # -35%
-            else:             sl = round(prem * 0.60)         # -40%
+            spot_sl = 0
 
-        # Targets from signal if available
-        t1_pts = signal.get('target1', 0)
-        t2_pts = signal.get('target2', 0)
-        if t1_pts > 0 and spot > 0:
-            _delta = 0.4
-            t1 = round(prem + (abs(t1_pts - spot) * _delta))
-            t2 = round(prem + (abs(t2_pts - spot) * _delta))
-        else:
-            t1 = round(prem * 1.40)  # +40% realistic T1
-            t2 = round(prem * 2.00)  # +100% T2
+        # Premium SL as backup (when no live spot data)
+        # Tiered by premium size (realistic ranges)
+        if prem <= 20:    sl = max(round(prem * 0.70), 1)  # -30%
+        elif prem <= 50:  sl = round(prem * 0.65)          # -35%
+        elif prem <= 150: sl = round(prem * 0.60)          # -40%
+        else:             sl = round(prem * 0.55)          # -45%
+
+        # Realistic targets based on RR ratio from signal
+        rr = signal.get('rr_ratio', 2.0)
+        sl_prem_pts = prem - sl  # How many Rs premium at risk
+        t1 = round(prem + sl_prem_pts * rr * 0.5)   # 50% of full target
+        t2 = round(prem + sl_prem_pts * rr)          # Full RR target
+
+        # Time-based SL (theta protection - 45 mins)
+        time_sl_mins = 45
 
         pos={
             'instrument':instrument,
@@ -78,9 +81,19 @@ class ExitMonitor:
             'entry_prem':prem,
             'qty':qty,
             'lot_size':qty,
-            'sl':sl,
+            'sl':sl,                    # Premium-based SL backup
             't1':t1,
             't2':t2,
+            # Spot-based SL (primary - more reliable!)
+            'spot_entry':spot_entry,    # Underlying price at entry
+            'spot_sl':spot_sl,          # Underlying SL level
+            'sl_pts':sl_pts,            # Original SL points
+            'action_type':action_type,
+            # Time-based SL
+            'time_sl_mins':time_sl_mins,
+            'entry_ts':time.time(),
+            # Trailing SL
+            'trail_spot_sl':spot_sl,    # Updates as price moves!
             'entry_time':datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'status':'OPEN',
             'partial_exit':False,
@@ -116,33 +129,102 @@ class ExitMonitor:
                 t2=pos['t2']
                 inst=pos['instrument']
                 qty=pos['qty']
+                action=pos.get('action','BUY')
                 pnl=(ltp-entry)*qty
 
-                log.info(f'[EXIT] {inst}: LTP={ltp} SL={sl} T1={t1} T2={t2} PnL={pnl:.0f}')
+                # Get live spot price for underlying SL check
+                _spot_sl=pos.get('spot_sl',0)
+                _spot_entry=pos.get('spot_entry',0)
+                _sl_pts=pos.get('sl_pts',0)
+                _live_spot=0
+                if _spot_sl>0:
+                    try:
+                        from angel_feed import SYMBOLS
+                        _sym_info=SYMBOLS.get(inst,{})
+                        _spot_resp=angel_obj.ltpData(
+                            _sym_info.get('exchange','NSE'),
+                            inst,
+                            _sym_info.get('token',''))
+                        if _spot_resp and _spot_resp.get('data'):
+                            _live_spot=float(_spot_resp['data'].get('ltp',0))
+                    except:pass
+
+                log.info(f'[EXIT] {inst}: LTP={ltp} SL={sl} T1={t1} T2={t2} '
+                         f'SpotSL={_spot_sl} LiveSpot={_live_spot} PnL={pnl:.0f}')
 
                 # ============================================================
-                # EXIT CONDITIONS
+                # EXIT CONDITIONS (Priority order)
                 # ============================================================
 
-                # SL Hit
-                if ltp<=sl:
+                exited=False
+
+                # 1. SPOT SL HIT (most reliable!)
+                if not exited and _live_spot>0 and _spot_sl>0:
+                    if action=='BUY' and _live_spot<=_spot_sl:
+                        pnl=(ltp-entry)*qty
+                        self._exit_position(sym,pos,ltp,'SPOT_SL_HIT',pnl)
+                        closed.append(sym)
+                        exited=True
+                        log.info(f'[EXIT] {inst} SPOT SL: {_live_spot}<={_spot_sl}')
+                    elif action=='SELL' and _live_spot>=_spot_sl:
+                        pnl=(ltp-entry)*qty
+                        self._exit_position(sym,pos,ltp,'SPOT_SL_HIT',pnl)
+                        closed.append(sym)
+                        exited=True
+
+                # 2. TRAILING SL UPDATE + CHECK
+                if not exited and _live_spot>0 and _sl_pts>0:
+                    _trail=pos.get('trail_spot_sl',0)
+                    if action=='BUY':
+                        _new_trail=_live_spot-_sl_pts
+                        if _new_trail>_trail:
+                            pos['trail_spot_sl']=_new_trail
+                            log.info(f'[EXIT] {inst} Trail SL updated: {_trail:.0f}→{_new_trail:.0f}')
+                        if _live_spot<=pos.get('trail_spot_sl',0) and pos.get('trail_spot_sl',0)>_spot_sl:
+                            pnl=(ltp-entry)*qty
+                            self._exit_position(sym,pos,ltp,'TRAIL_SL_HIT',pnl)
+                            closed.append(sym)
+                            exited=True
+                    elif action=='SELL':
+                        _new_trail=_live_spot+_sl_pts
+                        if _new_trail<_trail or _trail==0:
+                            pos['trail_spot_sl']=_new_trail
+                        if _live_spot>=pos.get('trail_spot_sl',0) and pos.get('trail_spot_sl',0)>0:
+                            pnl=(ltp-entry)*qty
+                            self._exit_position(sym,pos,ltp,'TRAIL_SL_HIT',pnl)
+                            closed.append(sym)
+                            exited=True
+
+                # 3. TIME SL (theta protection)
+                if not exited:
+                    _elapsed=( time.time()-pos.get('entry_ts',time.time()))/60
+                    _time_sl=pos.get('time_sl_mins',45)
+                    if _elapsed>=_time_sl:
+                        pnl=(ltp-entry)*qty
+                        self._exit_position(sym,pos,ltp,
+                            f'TIME_SL_{_elapsed:.0f}m',pnl)
+                        closed.append(sym)
+                        exited=True
+                        log.info(f'[EXIT] {inst} TIME SL: {_elapsed:.0f} mins elapsed')
+
+                # 4. PREMIUM SL (backup)
+                if not exited and ltp<=sl:
                     pnl=(ltp-entry)*qty
-                    self._exit_position(sym,pos,ltp,'SL_HIT',pnl)
+                    self._exit_position(sym,pos,ltp,'PREM_SL_HIT',pnl)
                     closed.append(sym)
+                    exited=True
 
-                # T2 Hit (full target)
-                elif ltp>=t2:
+                # 5. T2 Hit (full target)
+                elif not exited and ltp>=t2:
                     pnl=(ltp-entry)*qty
                     self._exit_position(sym,pos,ltp,'T2_HIT',pnl)
                     closed.append(sym)
+                    exited=True
 
-                # T1 Hit (partial exit - book 50%)
-                elif ltp>=t1 and not pos.get('partial_exit'):
+                # 6. T1 Hit (partial - book 50%)
+                elif not exited and ltp>=t1 and not pos.get('partial_exit'):
                     pnl=(ltp-entry)*qty*0.5
                     self._partial_exit(sym,pos,ltp,pnl)
-                # Update trailing SL
-                if pos.get('trail_active') and pos.get('partial_exit'):
-                    self._update_trailing_sl(sym,pos,ltp)
 
                 # Time exit: 3:15 PM for NSE options
                 elif self._is_time_exit(pos):
