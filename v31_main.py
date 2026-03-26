@@ -1084,7 +1084,9 @@ async def main():
                     if not signal:continue
 
                     # Zone dedup - same zone within 60 mins = skip
-                    _zone_key=f'{instrument}_{signal.get("sl_type","")}_{round(signal.get("sl_points",0),0)}'
+                    # Zone key includes price level - different price = different zone!
+                    _spot=round(float(df5['close'].iloc[-1]),-1)  # Round to nearest 10
+                    _zone_key=f'{instrument}_{signal.get("sl_type","")}_{round(signal.get("sl_points",0),0)}_{_spot}'
                     _zone_time=used_zones.get(_zone_key,0)
                     _now_ts2=_time.time()
                     if _now_ts2-_zone_time<3600:  # 1 hour zone lock
