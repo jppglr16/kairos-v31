@@ -792,15 +792,24 @@ async def main():
             log.info('[V31] Loop iteration start')
             from v30_holiday import is_market_open
             ok,reason=is_market_open()
-            if not ok:
-                if not getattr(main,'_closed_sent',False):
+            # Check MCX holiday separately!
+            try:
+                from v31_holidays import is_mcx_holiday
+                _mcx_closed,_=is_mcx_holiday(datetime.now().date())
+            except:_mcx_closed=False
+            # Allow MCX even on NSE holidays!
+            now=datetime.now()
+            _mcx_time=(15<=now.hour<=23 and now.weekday()<5 and not _mcx_closed)
+            if not ok and not _mcx_time:
+                if not getattr(main,"_closed_sent",False):
                     from v30_notify import send
-                    send(f"🏖 <b>Market Closed</b>\n{reason}\n⏰ V31 resumes Monday 9:15 AM")
+                    send(f"🏖 <b>Market Closed</b>\n{reason}\n⏰ V31 resumes tomorrow")
                     main._closed_sent=True
                 log.info(f"[V31] {reason} - no trading")
                 await asyncio.sleep(3600)
                 continue
-
+            if not ok and _mcx_time:
+                log.info(f"[V31] NSE holiday but MCX active - continuing")
             now=datetime.now()
 
             # Holiday check
