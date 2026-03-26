@@ -40,14 +40,33 @@ class ExitMonitor:
         segment=option_result.get('segment','NFO')
         opt_type='CE' if action=='BUY' else 'PE'
 
-        # SL and targets from signal
-        # Adaptive SL based on premium size
-        if prem<=15:   sl_pct=0.25
-        elif prem<=30: sl_pct=0.30
-        else:          sl_pct=0.40
-        sl=max(round(prem*sl_pct),1)
-        t1=round(prem*1.60)          # T1 at +60%
-        t2=round(prem*2.50)          # T2 at +150%
+        # Use signal SL if available, else smart default
+        sl_pts = signal.get('sl_points', 0)
+        spot = signal.get('price', 0)
+
+        if sl_pts > 0 and spot > 0:
+            # Convert spot SL points to premium SL
+            # Approximate: option moves 0.3-0.5 per spot point (delta)
+            _delta = 0.4  # Conservative delta estimate
+            sl = max(round(prem - (sl_pts * _delta)), round(prem * 0.65))
+            log.info(f'[EXIT] Using signal SL: {sl_pts}pts → premium SL={sl}')
+        else:
+            # Smart premium-based fallback
+            if prem <= 15:   sl = max(round(prem * 0.75), 1)  # -25%
+            elif prem <= 50: sl = round(prem * 0.70)          # -30%
+            elif prem <= 150: sl = round(prem * 0.65)         # -35%
+            else:             sl = round(prem * 0.60)         # -40%
+
+        # Targets from signal if available
+        t1_pts = signal.get('target1', 0)
+        t2_pts = signal.get('target2', 0)
+        if t1_pts > 0 and spot > 0:
+            _delta = 0.4
+            t1 = round(prem + (abs(t1_pts - spot) * _delta))
+            t2 = round(prem + (abs(t2_pts - spot) * _delta))
+        else:
+            t1 = round(prem * 1.40)  # +40% realistic T1
+            t2 = round(prem * 2.00)  # +100% T2
 
         pos={
             'instrument':instrument,
