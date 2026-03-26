@@ -439,7 +439,7 @@ class SignalManager:
         log.info(f'[SM] {instrument}|{session}|{dir_key}|{current+1}/{max_allowed}|Score:{score}')
         return True,f'Allowed ({current+1}/{max_allowed}) in {session}'
 
-    def record_trade(self,instrument,direction,strategy_type='DIRECT'):
+    def record_trade(self,instrument,direction,strategy_type='DIRECT',signal=None,score=18):
         """Record trade taken"""
         session=self._get_session(instrument)
         if not session:return

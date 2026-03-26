@@ -1550,7 +1550,7 @@ async def main():
 
                     # Record in Signal Manager
                     try:
-                        signal_manager.record_trade(instrument,_action)
+                        signal_manager.record_trade(instrument,_action,signal=signal,score=_score)
                     except:pass
 
                     # Log decision
