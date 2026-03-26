@@ -1635,6 +1635,7 @@ async def main():
                         except Exception as _p2e:
                             log.warning(f"[PAPER] Step2 error: {_p2e}")
 
+                    if not notified:
                         # Strike ladder: try OTM strikes!
                         try:
                             from v31_option_engine import get_option
@@ -1743,6 +1744,7 @@ async def main():
                                 log_decision(instrument,signal,'BLOCKED','TOO_EXPENSIVE')
                             except:pass
                             continue
+
 
                     # Track position
                     try:
