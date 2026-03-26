@@ -559,7 +559,8 @@ def manage_trades(feed):
                 result='WIN' if outcome==1 else 'LOSS'
                 log.info(f'[SIM] {instrument} simulation {result}')
                 del active_trades[sim_key]
-        except:pass
+        except Exception as _sim_e:
+            log.debug(f'[SIM] Error: {_sim_e}')
 
     global capital
     global capital
@@ -620,7 +621,8 @@ def manage_trades(feed):
                         trade.get('signal',{}),
                         trade.get('features',[]),
                         pnl,capital)
-                except:pass
+                except Exception as _cap_e:
+                    log.debug(f'[CAP] Update error: {_cap_e}')
 
                 # Update causal engine with outcome
                 try:
@@ -695,7 +697,8 @@ async def main():
     try:
         from v30_risk import DailyRiskManager
         rm=DailyRiskManager(capital)
-    except:pass
+    except Exception as _rm_e:
+        log.warning(f'[RISK] Manager error: {_rm_e}')
 
     # Load feed
     from v30_feed import MarketDataFeed
@@ -850,7 +853,8 @@ async def main():
                 elif angel_trader:
                     log.warning('[MAIN] Angel disconnected! Reconnecting...')
                     angel_trader.reconnect()
-            except:pass
+            except Exception as _re_e:
+                log.warning(f'[ANGEL] Reconnect error: {_re_e}')
 
             # Refresh capital every hour
             import time as _time
@@ -862,7 +866,8 @@ async def main():
                             capital=float(rms['data'].get('availablecash',capital) or capital)
                             log.info(f'[ANGEL] Available margin: Rs.{capital:,.0f}')
                     _last_capital_refresh=_time.time()
-                except:pass
+                except Exception as _cr_e:
+                    log.warning(f'[CAP] Refresh error: {_cr_e}')
 
             # VIX filter + strategy mode (cached once per cycle!)
             try:
@@ -1572,7 +1577,8 @@ async def main():
                     try:
                         from v31_trade_logger import log_decision
                         log_decision(instrument,signal,'TAKEN','All filters passed')
-                    except:pass
+                    except Exception as _tl_e:
+                        log.debug(f'[LOG] Trade log error: {_tl_e}')
 
                     # Get option result for tracking
                     _opt_result=None
@@ -1604,7 +1610,8 @@ async def main():
                                 )
                                 if not _is_liquid:
                                     log.info(f'[V31] {instrument} ILLIQUID - skipping order!')
-                    except:pass
+                    except Exception as _liq_e:
+                        log.warning(f'[LIQ] Check error: {_liq_e}')
 
                     # Pass capital context to signal for smart sizing!
                     signal['capital'] = capital
