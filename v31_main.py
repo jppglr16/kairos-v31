@@ -1530,21 +1530,25 @@ async def main():
                         # Ensure global cap not exceeded
                         _lots=min(_smart_lots,MAX_TOTAL_LOTS-_open_lots)
 
-                        # Fix 2+3: Capital cap with safety buffer!
-                        try:
-                            _prem=float(signal.get('premium',50))
-                            _lot_size=signal.get('lot_size',1)
-                            _cost_per_lot=_prem*_lot_size*1.15  # Fix 2: 15% buffer!
-                            if _cost_per_lot>0:
-                                _max_lots=int(capital//_cost_per_lot)
-                                # Fix 3: No forced bad trades!
-                                if _max_lots<=0:
-                                    log.info(f'[CAP] {instrument} insufficient capital! skip')
-                                    continue
-                                _lots=min(_lots,_max_lots)
-                                log.info(f'[CAP] {instrument} capital cap: {_lots}/{_max_lots} lots')
-                        except:pass
-                    except:pass
+                    # Capital context for smart sizing in notify!
+                    signal['capital']=capital
+                    try:
+                        from v31_exit_monitor import exit_monitor
+                        _open_pos_list=[
+                            p for p in exit_monitor.positions.values()
+                            if p.get('status')=='OPEN']
+                        signal['open_positions']=len(_open_pos_list)
+                        signal['positions']=[
+                            {'cost':p.get('entry_prem',0)*
+                                   p.get('lot_size',p.get('qty',1))}
+                            for p in _open_pos_list]
+                        log.info(f'[CAP] {instrument}: '
+                                f'capital=Rs.{capital:,.0f} '
+                                f'open={len(_open_pos_list)}')
+                    except Exception as _ce:
+                        signal['open_positions']=0
+                        signal['positions']=[]
+                        log.debug(f'[CAP] Context error: {_ce}')
                     _qty=_lots
 
                     signal_cooldown[instrument]=datetime.now().timestamp()
