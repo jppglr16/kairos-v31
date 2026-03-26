@@ -132,25 +132,15 @@ class ExitMonitor:
                 action=pos.get('action','BUY')
                 pnl=(ltp-entry)*qty
 
-                # Get live spot price for underlying SL check
                 _spot_sl=pos.get('spot_sl',0)
                 _spot_entry=pos.get('spot_entry',0)
                 _sl_pts=pos.get('sl_pts',0)
-                _live_spot=0
-                if _spot_sl>0:
-                    try:
-                        from angel_feed import SYMBOLS
-                        _sym_info=SYMBOLS.get(inst,{})
-                        _spot_resp=angel_obj.ltpData(
-                            _sym_info.get('exchange','NSE'),
-                            inst,
-                            _sym_info.get('token',''))
-                        if _spot_resp and _spot_resp.get('data'):
-                            _live_spot=float(_spot_resp['data'].get('ltp',0))
-                    except:pass
+                # Use pre-fetched spot cache (not per-position API call!)
+                _live_spot=spot_cache.get(inst,0)
 
-                log.info(f'[EXIT] {inst}: LTP={ltp} SL={sl} T1={t1} T2={t2} '
-                         f'SpotSL={_spot_sl} LiveSpot={_live_spot} PnL={pnl:.0f}')
+                log.info(f'[EXIT] {inst}: LTP={ltp} PremSL={sl} '
+                         f'SpotSL={_spot_sl} TrailSL={pos.get("trail_spot_sl",0):.0f} '
+                         f'LiveSpot={_live_spot:.0f} T1={t1} T2={t2} PnL={pnl:.0f}')
 
                 # ============================================================
                 # EXIT CONDITIONS (Priority order)
@@ -187,7 +177,7 @@ class ExitMonitor:
                             exited=True
                     elif action=='SELL':
                         _new_trail=_live_spot+_sl_pts
-                        if _new_trail<_trail or _trail==0:
+                        if _trail==0 or _new_trail<_trail:
                             pos['trail_spot_sl']=_new_trail
                         if _live_spot>=pos.get('trail_spot_sl',0) and pos.get('trail_spot_sl',0)>0:
                             pnl=(ltp-entry)*qty
@@ -225,6 +215,11 @@ class ExitMonitor:
                 elif not exited and ltp>=t1 and not pos.get('partial_exit'):
                     pnl=(ltp-entry)*qty*0.5
                     self._partial_exit(sym,pos,ltp,pnl)
+                    # Breakeven shift: move SL to entry (no-loss mode!)
+                    if _spot_entry>0:
+                        pos['trail_spot_sl']=max(
+                            pos.get('trail_spot_sl',0),_spot_entry)
+                        log.info(f'[EXIT] {inst} T1 hit → SL moved to breakeven!')
 
                 # Time exit: 3:15 PM for NSE options
                 elif self._is_time_exit(pos):
