@@ -144,29 +144,45 @@ def notify_v31_entry(signal,qty,symbol):
                      f'Rs.{_available:,.0f} < safety limit')
             return False
 
-        # MCX needs higher budget (large lot sizes!)
+        # Smart budget: adapts to capital size!
         _MCX=['CRUDEOIL','NATURALGAS','GOLDM','SILVERM']
         _is_mcx = inst in _MCX
 
-        # Per trade budget:
-        # MCX = 60% (large lots)
-        # NSE = 20% (normal)
-        _max_per_trade = _available * (0.60 if _is_mcx else 0.20)
+        # Dynamic % based on capital:
+        # Small capital (<50k): use higher % to afford trades
+        # Large capital (>1L): use lower % for risk management
+        if _available >= 100000:
+            # Large capital: conservative
+            _nse_pct = 0.20
+            _mcx_pct = 0.50
+        elif _available >= 50000:
+            # Medium capital: balanced
+            _nse_pct = 0.25
+            _mcx_pct = 0.60
+        elif _available >= 25000:
+            # Small capital: aggressive to afford trades
+            _nse_pct = 0.40
+            _mcx_pct = 0.70
+        else:
+            # Very small: use max possible
+            _nse_pct = 0.50
+            _mcx_pct = 0.80
 
-        # Near expiry bonus
+        _max_per_trade = _available * (_mcx_pct if _is_mcx else _nse_pct)
+
+        # Near expiry bonus (last day = cheaper premiums)
         if _days_to_expiry <= 1:
-            _bonus = 0.70 if _is_mcx else 0.25
-            _max_per_trade = min(_available * _bonus,
+            _max_per_trade = min(_available * 0.80,
                                  _max_per_trade * 1.25)
             log.info(f'[V31] {inst} near expiry bonus: '
                      f'Rs.{_max_per_trade:,.0f}')
 
-        # Hard cap: MCX=80% total, NSE=60% total
-        _hard_cap = _available * (0.80 if _is_mcx else 0.60)
+        # Hard cap: never deploy > 80% of capital
+        _hard_cap = _available * 0.80
         if _total_deployed + _max_per_trade > _hard_cap:
             _allowed = max(0, _hard_cap - _total_deployed)
             if _allowed < _min_trade_cap:
-                log.info(f'[V31] {inst} cap reached: '
+                log.info(f'[V31] {inst} 80% cap reached: '
                          f'deployed=Rs.{_total_deployed:,.0f}')
                 return False
             _max_per_trade = _allowed
