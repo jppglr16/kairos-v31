@@ -10,20 +10,28 @@ log = logging.getLogger(__name__)
 LOT_FILE = 'lot_sizes.json'
 
 # V31 instruments to track
-INSTRUMENTS = [
-    # Indices
-    'NIFTY','BANKNIFTY','FINNIFTY','MIDCPNIFTY','SENSEX',
-    # MCX
-    'CRUDEOIL','GOLDM','SILVERM','NATURALGAS',
-    # NSE Stocks
-    'LT','NTPC','MARUTI','BHARTIARTL','SBIN',
-    'TATAMOTORS','TMPV','RELIANCE','HINDUNILVR','TCS','TATASTEEL',
-    'EICHERMOT','SHREECEM','CUMMINSIND','ABB','DIVISLAB',
-    'HEROMOTOCO','INDIGO','TATAELXSI','AMBER','ALKEM',
-    'TORNTPHARM','KEI','HDFCBANK','ICICIBANK','BAJFINANCE',
-    'SIEMENS','POLYCAB','SOLARINDS','TVSMOTOR','BOSCHLTD',
-    'PAGEIND','BRITANNIA','APOLLOHOSP','OFSS','BAJAJ-AUTO'
-]
+# Auto-load from instrument manager!
+# Add new instrument there = auto included here!
+try:
+    from v31_instrument_manager import instrument_manager
+    INSTRUMENTS = instrument_manager.get_all_instruments()
+    # Add TMPV for TATAMOTORS rename
+    if 'TATAMOTORS' in INSTRUMENTS and 'TMPV' not in INSTRUMENTS:
+        INSTRUMENTS.append('TMPV')
+    print(f'[LOT] Loaded {len(INSTRUMENTS)} instruments from manager')
+except Exception as e:
+    print(f'[LOT] Fallback to static list: {e}')
+    INSTRUMENTS = [
+        'NIFTY','BANKNIFTY','FINNIFTY','MIDCPNIFTY','SENSEX',
+        'CRUDEOIL','GOLDM','SILVERM','NATURALGAS',
+        'LT','NTPC','MARUTI','BHARTIARTL','SBIN','TATAMOTORS','TMPV',
+        'RELIANCE','HINDUNILVR','TCS','TATASTEEL','EICHERMOT',
+        'SHREECEM','CUMMINSIND','ABB','DIVISLAB','HEROMOTOCO',
+        'INDIGO','TATAELXSI','AMBER','ALKEM','TORNTPHARM','KEI',
+        'HDFCBANK','ICICIBANK','BAJFINANCE','SIEMENS','POLYCAB',
+        'SOLARINDS','TVSMOTOR','BOSCHLTD','PAGEIND','BRITANNIA',
+        'APOLLOHOSP','OFSS','BAJAJ-AUTO'
+    ]
 
 # Default fallback lot sizes
 DEFAULTS = {
