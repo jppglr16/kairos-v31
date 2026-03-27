@@ -286,6 +286,18 @@ Check connection!')
     # ============================================================
     # UPDATE OPTIONS MASTER - Every day at 8:30 AM
     # ============================================================
+    if [ "$HHMM" = "08:25" ]; then
+        # MCX token refresh before market!
+        python3 v32_token_updater.py >> daily_download_log.txt 2>&1
+        log "08:25 AM - MCX tokens refreshed"
+    fi
+
+    if [ "$HHMM" = "18:00" ]; then
+        # MCX evening token refresh!
+        python3 v32_token_updater.py >> daily_download_log.txt 2>&1
+        log "06:00 PM - MCX evening tokens refreshed"
+    fi
+
     if [ "$HHMM" = "08:30" ]; then
         log "Updating Angel options master..."
         python3 /data/data/com.termux/files/home/kairos_kotak_bot/update_options_master.py >> daily_download_log.txt 2>&1
