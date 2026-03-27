@@ -290,6 +290,9 @@ Check connection!')
         # MCX token refresh before market!
         python3 v32_token_updater.py >> daily_download_log.txt 2>&1
         log "08:25 AM - MCX tokens refreshed"
+        # NSE lot sizes refresh (changes every 6 months!)
+        python3 v31_lot_updater.py >> daily_download_log.txt 2>&1
+        log "08:25 AM - NSE lot sizes refreshed"
     fi
 
     if [ "$HHMM" = "08:30" ]; then
