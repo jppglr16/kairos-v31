@@ -144,21 +144,29 @@ def notify_v31_entry(signal,qty,symbol):
                      f'Rs.{_available:,.0f} < safety limit')
             return False
 
-        # Per trade budget = 20% of capital
-        _max_per_trade = _available * 0.20
+        # MCX needs higher budget (large lot sizes!)
+        _MCX=['CRUDEOIL','NATURALGAS','GOLDM','SILVERM']
+        _is_mcx = inst in _MCX
 
-        # Near expiry bonus (last day)
+        # Per trade budget:
+        # MCX = 60% (large lots)
+        # NSE = 20% (normal)
+        _max_per_trade = _available * (0.60 if _is_mcx else 0.20)
+
+        # Near expiry bonus
         if _days_to_expiry <= 1:
-            _max_per_trade = min(_available * 0.25,
+            _bonus = 0.70 if _is_mcx else 0.25
+            _max_per_trade = min(_available * _bonus,
                                  _max_per_trade * 1.25)
-            log.info(f'[V31] {inst} near expiry: '
-                     f'budget Rs.{_max_per_trade:,.0f}')
+            log.info(f'[V31] {inst} near expiry bonus: '
+                     f'Rs.{_max_per_trade:,.0f}')
 
-        # Fix 2: Hard 60% cap enforcement
-        if _total_deployed + _max_per_trade > _available * 0.60:
-            _allowed = max(0, _available*0.60 - _total_deployed)
+        # Hard cap: MCX=80% total, NSE=60% total
+        _hard_cap = _available * (0.80 if _is_mcx else 0.60)
+        if _total_deployed + _max_per_trade > _hard_cap:
+            _allowed = max(0, _hard_cap - _total_deployed)
             if _allowed < _min_trade_cap:
-                log.info(f'[V31] {inst} 60% cap reached: '
+                log.info(f'[V31] {inst} cap reached: '
                          f'deployed=Rs.{_total_deployed:,.0f}')
                 return False
             _max_per_trade = _allowed
