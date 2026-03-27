@@ -71,6 +71,286 @@ LOT_SIZES = {
     'DEFAULT':75,
 }
 
+# ============================================
+# ADVANCED INSTITUTIONAL LOGIC
+# ============================================
+
+def detect_pin_risk(current, strike_gex, atr):
+    """
+    PIN RISK DETECTION
+    Market pinned near high OI strike = 
+    explosive breakout when released!
+    """
+    try:
+        if not strike_gex:
+            return False, 0
+        # Find highest OI strike
+        max_oi = max(strike_gex, 
+                    key=lambda x: x['ce_oi']+x['pe_oi'])
+        pin_strike = max_oi['strike']
+        distance = abs(current - pin_strike)
+        
+        # Near pin = within 0.5 ATR
+        near_pin = distance < atr * 0.5
+        pin_strength = max(0, 1 - distance/(atr*2))
+        
+        return near_pin, round(pin_strength, 2)
+    except:
+        return False, 0
+
+def detect_vanna_charm_effect(df5, dte):
+    """
+    VANNA/CHARM EFFECT
+    Near expiry: delta hedging creates momentum!
+    Vanna = vol moves → delta changes → hedging flows
+    Charm = time decay → delta changes → forced hedging
+    
+    Effect strongest in last 2 days!
+    """
+    try:
+        # Proxy: volatility moving + price trending
+        closes = df5['close']
+        ranges = df5['high'] - df5['low']
+        
+        # Vol trend
+        vol_up = float(ranges.iloc[-1]) > float(ranges.iloc[-3])
+        
+        # Price trend strength
+        price_move = abs(float(closes.iloc[-1]) - 
+                        float(closes.iloc[-5]))
+        avg_move = float(ranges.tail(10).mean())
+        
+        # Charm effect strongest on last day!
+        charm_factor = 1.0 if dte == 0 else 0.7 if dte == 1 else 0.4
+        
+        vanna_active = vol_up and price_move > avg_move
+        score_boost = int(charm_factor * 4) if vanna_active else 0
+        
+        return vanna_active, score_boost, charm_factor
+    except:
+        return False, 0, 0
+
+def detect_delta_hedging_flow(df5, action):
+    """
+    DELTA HEDGING FLOW DETECTION
+    Market makers delta hedge = amplifies moves!
+    
+    Signs:
+    = Consistent same-direction pressure
+    = Increasing volume each candle
+    = No pullback candles
+    """
+    try:
+        closes = df5['close']
+        volumes = df5['volume']
+        
+        # Check last 3 candles
+        c1 = float(closes.iloc[-1])
+        c2 = float(closes.iloc[-2])
+        c3 = float(closes.iloc[-3])
+        
+        v1 = float(volumes.iloc[-1])
+        v2 = float(volumes.iloc[-2])
+        v3 = float(volumes.iloc[-3])
+        
+        if action == 'SELL':
+            price_consistent = c1 < c2 < c3  # Each lower
+            vol_increasing = v1 > v2 > v3 * 0.8  # Volume rising
+        else:
+            price_consistent = c1 > c2 > c3  # Each higher
+            vol_increasing = v1 > v2 > v3 * 0.8
+            
+        hedging_flow = price_consistent and vol_increasing
+        return hedging_flow
+    except:
+        return False
+
+def detect_skew(instrument, action):
+    """
+    OPTIONS SKEW ANALYSIS
+    High put skew = fear = sell expensive
+    Low skew = complacency = buy cheap!
+    
+    Use PCR as proxy for skew!
+    """
+    try:
+        from v31_oi_pcr import oi_pcr
+        pcr, atm_oi, signal = oi_pcr.get_pcr(instrument)
+        if pcr is None:
+            return 'NEUTRAL', 0
+        
+        # High PCR = expensive puts = good for SELL
+        # Low PCR = expensive calls = good for BUY
+        if action == 'SELL':
+            if pcr > 2.0: return 'HIGH_SKEW', 3    # Very bearish
+            if pcr > 1.5: return 'ELEVATED', 2
+            return 'NORMAL', 0
+        else:  # BUY
+            if pcr < 0.5: return 'LOW_SKEW', 3     # Very bullish
+            if pcr < 0.7: return 'MUTED', 2
+            return 'NORMAL', 0
+    except:
+        return 'UNKNOWN', 0
+
+def detect_exhaustion(df5, action, atr):
+    """
+    EXHAUSTION DETECTION
+    Don't enter when move already exhausted!
+    
+    Signs:
+    = Large candle followed by doji
+    = Volume dropping
+    = Price not making new extremes
+    """
+    try:
+        closes = df5['close']
+        highs = df5['high']
+        lows = df5['low']
+        volumes = df5['volume']
+        
+        # Last candle much smaller than previous
+        last_range = abs(float(highs.iloc[-1]) - float(lows.iloc[-1]))
+        prev_range = abs(float(highs.iloc[-2]) - float(lows.iloc[-2]))
+        
+        # Volume dropping
+        vol_dropping = float(volumes.iloc[-1]) < float(volumes.iloc[-2]) * 0.7
+        
+        # Price making new extreme?
+        if action == 'SELL':
+            new_extreme = float(lows.iloc[-1]) < float(lows.iloc[-2])
+        else:
+            new_extreme = float(highs.iloc[-1]) > float(highs.iloc[-2])
+        
+        # Exhausted if: small candle + dropping volume + no new extreme
+        exhausted = (last_range < prev_range * 0.5 and 
+                    vol_dropping and not new_extreme)
+        
+        return exhausted
+    except:
+        return False
+
+def smart_reentry_check(instrument, action):
+    """
+    SMART RE-ENTRY LOGIC
+    After SL hit, allow re-entry if:
+    = Price confirms direction
+    = Score is higher than first entry
+    = At least 5 mins gap
+    """
+    try:
+        state = get_gamma_state(instrument)
+        if not state:
+            return True, 'Fresh entry'
+        
+        # Check if same direction re-entry
+        if state['direction'] == action:
+            elapsed = (datetime.now() - 
+                      state['entry_time']).seconds / 60
+            if elapsed >= 5:
+                return True, f'Re-entry after {elapsed:.0f} mins'
+            return False, 'Too soon for re-entry'
+        
+        return True, 'Different direction'
+    except:
+        return True, 'Allow'
+
+def get_market_regime_context(df5, df15):
+    """
+    MARKET REGIME CONTEXT
+    Classify overall market state for better sizing
+    """
+    try:
+        # Trend strength
+        ema20 = df5['close'].ewm(span=20).mean()
+        price = float(df5['close'].iloc[-1])
+        ema_val = float(ema20.iloc[-1])
+        
+        # Volatility state
+        ranges = df5['high'] - df5['low']
+        vol_ratio = float(ranges.iloc[-1]) / float(ranges.tail(20).mean())
+        
+        if vol_ratio > 2.0:
+            regime = 'EXPLOSIVE'    # Best for gamma!
+            size_mult = 1.0
+        elif vol_ratio > 1.5:
+            regime = 'ACTIVE'       # Good
+            size_mult = 0.8
+        elif vol_ratio > 1.0:
+            regime = 'NORMAL'       # Okay
+            size_mult = 0.6
+        else:
+            regime = 'QUIET'        # Avoid!
+            size_mult = 0.3
+            
+        return regime, size_mult
+    except:
+        return 'UNKNOWN', 0.5
+
+def detect_institutional_activity(df5):
+    """
+    INSTITUTIONAL ACTIVITY DETECTION
+    Big players = large candles + high volume
+    = Better to follow than fight!
+    """
+    try:
+        volumes = df5['volume']
+        ranges = df5['high'] - df5['low']
+        
+        vol_avg = float(volumes.tail(20).mean())
+        range_avg = float(ranges.tail(20).mean())
+        
+        vol_now = float(volumes.iloc[-1])
+        range_now = float(ranges.iloc[-1])
+        
+        # 2x normal = institutional!
+        vol_spike = vol_now > vol_avg * 2.0
+        range_spike = range_now > range_avg * 1.8
+        
+        institutional = vol_spike and range_spike
+        conviction = round(
+            (vol_now/vol_avg + range_now/range_avg) / 2, 2)
+        
+        return institutional, conviction
+    except:
+        return False, 1.0
+
+def get_optimal_strike_v2(current, action, instrument, 
+                           strength, dte, gex_data):
+    """
+    ADVANCED STRIKE SELECTION
+    Considers: strength, DTE, GEX walls, squeeze!
+    """
+    step = STRIKE_STEPS.get(instrument, STRIKE_STEPS['DEFAULT'])
+    atm = round(current / step) * step
+    
+    # DTE-based aggressiveness
+    # Last day = more OTM (lottery play!)
+    # 2 days = slightly OTM
+    if dte == 0 and strength > 3.0:
+        otm_steps = 2  # 2 strikes OTM on expiry!
+    elif strength > 3.0 or dte == 0:
+        otm_steps = 1  # 1 strike OTM
+    else:
+        otm_steps = 0  # ATM (safer)
+    
+    # Check GEX walls
+    if gex_data:
+        call_wall = gex_data.get('call_wall')
+        put_wall = gex_data.get('put_wall')
+        
+        if action == 'BUY' and call_wall:
+            # Strike below call wall = better gamma!
+            if current < call_wall:
+                return atm  # ATM is fine
+        if action == 'SELL' and put_wall:
+            if current > put_wall:
+                return atm
+    
+    if action == 'BUY':
+        return atm + (step * otm_steps)
+    else:
+        return atm - (step * otm_steps)
+
 def get_days_to_expiry(instrument):
     try:
         from v31_angel_options import get_option_symbol
@@ -397,6 +677,49 @@ def gamma_blast_signal(df5, df15, instrument, capital):
         # Filter 9: Squeeze
         squeeze, sq_ratio = gamma_squeeze_detected(df5, atr)
 
+        # ADVANCED: Exhaustion check (don't enter late!)
+        if detect_exhaustion(df5, action, atr):
+            log.debug(f'[GAMMA] {instrument} exhausted skip')
+            return None
+
+        # ADVANCED: Re-entry check
+        reentry_ok, reentry_reason = smart_reentry_check(
+            instrument, action)
+        if not reentry_ok:
+            log.debug(f'[GAMMA] {instrument} {reentry_reason}')
+            return None
+
+        # ADVANCED: Market regime context
+        mkt_regime, size_mult = get_market_regime_context(df5, df15)
+        if mkt_regime == 'QUIET':
+            log.debug(f'[GAMMA] {instrument} quiet market skip')
+            return None
+
+        # ADVANCED: Institutional activity
+        institutional, conviction = detect_institutional_activity(df5)
+
+        # ADVANCED: Delta hedging flow
+        delta_flow = detect_delta_hedging_flow(df5, action)
+
+        # ADVANCED: Vanna/Charm effect (near expiry!)
+        vanna_active, vanna_boost, charm = detect_vanna_charm_effect(
+            df5, dte)
+
+        # ADVANCED: Options skew
+        skew_type, skew_boost = detect_skew(instrument, action)
+
+        # ADVANCED: Pin risk
+        pin_near = False
+        pin_strength = 0
+        if gex_data and gex_data.get('total_gex'):
+            pin_near, pin_strength = detect_pin_risk(
+                current,
+                [{'strike': gex_data.get('call_wall', 0),
+                  'ce_oi': 1000, 'pe_oi': 0},
+                 {'strike': gex_data.get('put_wall', 0),
+                  'ce_oi': 0, 'pe_oi': 1000}],
+                atr)
+
         # Dealer trap zone check
         step = STRIKE_STEPS.get(instrument, 50)
         atm = round(current/step)*step
@@ -459,9 +782,10 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             log.info(f'[GAMMA] {instrument} VALID FLIP! score={score}>=28')
 
         # Position sizing
-        strike = select_strike(current, action, instrument, strength)
+        strike = get_optimal_strike_v2(current, action, instrument, strength, dte, gex_data)
+        # Apply regime multiplier to position size!
         capital_alloc, contracts = calculate_position_size(
-            capital, atr, strength, instrument)
+            capital * size_mult, atr, strength, instrument)
 
         signal = {
             'instrument': instrument,
@@ -510,6 +834,16 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             'call_wall': call_wall,
             'put_wall': put_wall,
             'straddle': _straddle,
+            'mkt_regime': mkt_regime,
+            'size_mult': size_mult,
+            'institutional': institutional,
+            'conviction': conviction,
+            'delta_flow': delta_flow,
+            'vanna_active': vanna_active,
+            'charm_factor': charm,
+            'skew_type': skew_type,
+            'pin_near': pin_near,
+            'pin_strength': pin_strength,
             'gamma_independent': True,  # Independent from other paths!
             'timestamp': now.strftime('%Y-%m-%d %H:%M:%S'),
             'version': 'V31_GAMMA',
@@ -522,10 +856,17 @@ def gamma_blast_signal(df5, df15, instrument, capital):
         log.info(
             f'[GAMMA] 🔥 {instrument} PATH E {action} '
             f'Score:{score} DTE:{dte} '
-            f'Regime:{regime}({acceleration:.1f}x↑{accel_inc}) '
+            f'Regime:{regime}({acceleration:.1f}x) '
+            f'MktRegime:{mkt_regime}({size_mult}x) '
             f'Squeeze:{squeeze}({sq_ratio}x) '
+            f'Inst:{institutional}(conv:{conviction}) '
+            f'DeltaFlow:{delta_flow} '
+            f'Vanna:{vanna_active}(+{vanna_boost}) '
+            f'Skew:{skew_type}(+{skew_boost}) '
+            f'Pin:{pin_near}({pin_strength:.1f}) '
+            f'Straddle:{_straddle} '
             f'OI:{oi_flow}(PCR:{pcr_val:.2f}) '
-            f'Pin:{near_pin} Budget:Rs.{capital_alloc:.0f}')
+            f'Budget:Rs.{capital_alloc:.0f}')
 
         return signal
 
