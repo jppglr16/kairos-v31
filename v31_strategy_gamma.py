@@ -170,12 +170,15 @@ def select_strike(current, action, instrument, strength):
     return atm
 
 def calculate_position_size(capital, atr, strength, instrument):
-    """Risk-adjusted with lot size normalization"""
+    """
+    Gamma Blast: Use 6% of capital per trade!
+    Stop if total gamma losses > 10%
+    """
     lot = LOT_SIZES.get(instrument, LOT_SIZES['DEFAULT'])
     risk_factor = min(1.0, strength/3.0)
     max_risk = capital * 0.02      # 2% max risk
     sl_value = atr * 0.3
-    budget = capital * 0.20 * risk_factor
+    budget = capital * 0.06 * risk_factor  # 6% for gamma!
 
     if sl_value > 0 and lot > 0:
         contracts = max(1, int(max_risk / (sl_value * lot)))
