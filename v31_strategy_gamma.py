@@ -296,6 +296,7 @@ def gamma_blast_signal(df5, df15, instrument, capital):
         # GEX Analysis (Dealer positioning)
         gex_data = None
         gex_bias = 'UNKNOWN'
+        gex_strength = 0.0
         gamma_flip = None
         call_wall = None
         put_wall = None
@@ -304,13 +305,21 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             gex_data = get_gex_analysis(instrument, current)
             if gex_data:
                 gex_bias = gex_data['gex_bias']
+                gex_strength = gex_data.get('gex_strength', 0.0)
                 gamma_flip = gex_data['gamma_flip']
                 call_wall = gex_data['call_wall']
                 put_wall = gex_data['put_wall']
-                # Only trade SHORT/SLIGHT_SHORT gamma!
+
+                # Hard filter: LONG_GAMMA = pinned market
                 if gex_bias == 'LONG_GAMMA':
                     log.debug(f'[GAMMA] {instrument} GEX LONG skip')
                     return None
+
+                # Weak signal filter: low conviction skip!
+                if abs(gex_strength) < 0.02:
+                    log.debug(f'[GAMMA] {instrument} GEX weak ({gex_strength:.3f}) skip')
+                    return None
+
         except Exception as _ge:
             log.debug(f'[GEX] Error: {_ge}')
 
@@ -349,15 +358,22 @@ def gamma_blast_signal(df5, df15, instrument, capital):
 
         if time(9,30)<=now.time()<=time(11,30): score+=2
 
-        # GEX score bonuses
-        if gex_bias == 'SHORT_GAMMA': score+=5
-        if gex_bias == 'SLIGHT_SHORT': score+=2
+        # GEX dynamic scoring (strength-based!)
+        if gex_bias == 'SHORT_GAMMA':
+            score += 5 + min(5, int(abs(gex_strength)*20))
+        elif gex_bias == 'SLIGHT_SHORT':
+            score += 2 + min(3, int(abs(gex_strength)*10))
+
+        # Flip zone = highest conviction entry!
         if gamma_flip and abs(current-gamma_flip)<atr:
-            score+=4  # Near flip = most explosive!
+            score+=5
+            log.info(f'[GAMMA] {instrument} near FLIP zone! +5')
+
+        # Wall breakout
         if call_wall and action=='BUY' and current>call_wall:
-            score+=3  # Above call wall = squeeze!
+            score+=3
         if put_wall and action=='SELL' and current<put_wall:
-            score+=3  # Below put wall = squeeze!
+            score+=3
 
         # MINIMUM SCORE = 25 (quality over quantity!)
         if score < 25:
@@ -399,6 +415,7 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             'capital_alloc': capital_alloc,
             'suggested_lots': contracts,
             'gex_bias': gex_bias,
+            'gex_strength': gex_strength,
             'gamma_flip': gamma_flip,
             'call_wall': call_wall,
             'put_wall': put_wall,
