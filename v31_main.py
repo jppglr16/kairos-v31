@@ -1095,6 +1095,17 @@ async def main():
                         except Exception as _se:
                             log.debug(f'[V31] ST err: {_se}')
 
+                    # Path E: Gamma Blast (near expiry only!)
+                    if not signal:
+                        try:
+                            from v31_strategy_gamma import gamma_blast_signal
+                            signal=gamma_blast_signal(df5,df15,instrument,capital)
+                            if signal:
+                                signal['timestamp']=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                log.info(f'[V31] {instrument} PATH E GAMMA Score:{signal["score"]} DTE:{signal.get("days_to_expiry",0)}')
+                        except Exception as _ge:
+                            log.debug(f'[V31] Gamma err: {_ge}')
+
                     if not signal:continue
 
                     # Zone dedup - same zone within 60 mins = skip
