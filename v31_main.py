@@ -1030,7 +1030,11 @@ async def main():
                                 if _d.weekday()<5:  # Mon-Fri only
                                     _trading_days+=1
                                 _d+=timedelta(days=1)
-                            if _trading_days>6:
+                            # MCX monthly contracts = up to 22 trading days!
+                            # NSE weekly = max 6 days
+                            _MCX_INST=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
+                            _max_dte = 22 if instrument in _MCX_INST else 6
+                            if _trading_days > _max_dte:
                                 log.info(f'[V31] {instrument} skipped - {_trading_days} trading days to expiry')
                                 continue
                             log.info(f'[V31] {instrument} ACTIVE! {_trading_days} trading days to expiry')
