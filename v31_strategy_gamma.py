@@ -180,13 +180,23 @@ def calculate_position_size(capital, atr, strength, instrument):
     sl_value = atr * 0.3
     budget = capital * 0.06 * risk_factor  # 6% for gamma!
 
-    if sl_value > 0 and lot > 0:
-        contracts = max(1, int(max_risk / (sl_value * lot)))
-        size = min(budget, contracts * sl_value * lot * 10)
-    else:
-        size = budget
+    # Use full budget to calculate lots!
+    # Budget = 6% of capital
+    # cost_per_lot = premium × lot_size (passed via signal)
+    # contracts = budget / cost_per_lot
+    # Minimum 1 lot always!
 
-    return round(size, 0), max(1, int(size / max(1, sl_value * lot)))
+    # Fallback if sl_value available
+    if sl_value > 0 and lot > 0:
+        # How many lots can budget afford?
+        # Will be refined in main using actual premium
+        approx_prem = sl_value * 3  # Rough premium estimate
+        cost_per_lot = approx_prem * lot
+        contracts = max(1, int(budget / max(cost_per_lot, 1)))
+    else:
+        contracts = 1
+
+    return round(budget, 0), contracts
 
 def check_kill_switch(capital):
     """Stop trading if daily loss > 5%"""
