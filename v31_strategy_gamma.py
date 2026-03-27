@@ -413,13 +413,15 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             # Smart exit based on lot count!
             't1_pct': 1.0,         # 100% gain = T1
             't2_pct': 3.0,         # 300% gain = T2
-            'trail_sl_pct': 0.50,  # Trail SL = 50% of peak
+            'trail_sl_pct': 0.33,  # Trail SL = 33% of peak
             'max_hold_mins': 45,   # Max hold 45 mins!
-            # Exit lots calculation:
-            # 1 lot  → hold all till T2 (no split)
-            # 2 lots → 1 at T1, 1 at T2 (no trail)
-            # 3 lots → 1 at T1, 1 at T2, 1 trail
-            # 4+ lots→ 30% T1, 30% T2, 40% trail
+            # Exit plan by lots:
+            # 1 lot → hold all, exit at T2
+            # 2 lots→ 0 at T1, 1 at T2, 1 trail 33%
+            # 3 lots→ 1 T1, 1 T2, 1 trail 33%
+            # 4 lots→ 1 T1, 1 T2, 2 trail 33%
+            # 5 lots→ 2 T1, 2 T2, 1 trail 33%
+            # 6 lots→ 2 T1, 2 T2, 2 trail 33%
             'days_to_expiry': dte,
             'max_premium': max_prem,
             'time_sl_mins': 15,
