@@ -1033,7 +1033,7 @@ async def main():
                             # MCX monthly contracts = up to 22 trading days!
                             # NSE weekly = max 6 days
                             _MCX_INST=['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
-                            _max_dte = 22 if instrument in _MCX_INST else 6
+                            _max_dte = 25 if instrument in _MCX_INST else 6
                             if _trading_days > _max_dte:
                                 log.info(f'[V31] {instrument} skipped - {_trading_days} trading days to expiry')
                                 continue
