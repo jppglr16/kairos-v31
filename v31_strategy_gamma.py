@@ -9,6 +9,50 @@ log = logging.getLogger(__name__)
 
 INDEX_INST = ['NIFTY','BANKNIFTY','SENSEX','FINNIFTY','MIDCPNIFTY']
 
+# Gamma blast independent state (separate from other paths!)
+_gamma_positions = {}  # instrument → {direction, entry_time, score}
+
+def get_gamma_state(instrument):
+    """Check current gamma position for instrument"""
+    return _gamma_positions.get(instrument, None)
+
+def set_gamma_state(instrument, direction, score):
+    """Record gamma position"""
+    from datetime import datetime
+    _gamma_positions[instrument] = {
+        'direction': direction,
+        'entry_time': datetime.now(),
+        'score': score
+    }
+
+def clear_gamma_state(instrument):
+    """Clear gamma position on exit"""
+    _gamma_positions.pop(instrument, None)
+
+def can_straddle(df5, atr):
+    """
+    Check if market conditions suit straddle
+    = Low IV + range-bound
+    = Buy both CE and PE!
+    """
+    try:
+        ranges = df5['high'] - df5['low']
+        current_range = float(ranges.iloc[-1])
+        avg_range = float(ranges.tail(10).mean())
+        # Low IV = current range < 70% of average
+        low_iv = current_range < avg_range * 0.70
+        
+        # Range bound = price between recent high/low
+        recent_high = float(df5['high'].tail(10).max())
+        recent_low = float(df5['low'].tail(10).min())
+        price = float(df5['close'].iloc[-1])
+        range_pct = (recent_high - recent_low) / price
+        range_bound = range_pct < 0.005  # Less than 0.5% range
+        
+        return low_iv and range_bound
+    except:
+        return False
+
 MAX_PREMIUM = {
     'NIFTY':40,'BANKNIFTY':60,'SENSEX':60,
     'FINNIFTY':30,'MIDCPNIFTY':20,
@@ -229,6 +273,20 @@ def gamma_blast_signal(df5, df15, instrument, capital):
     try:
         now = datetime.now()
 
+        # Rule 1: Path E is INDEPENDENT!
+        # = Don't check other path positions
+        # = Has its own capital (6%)
+        # = Runs parallel to A/B/C/D!
+
+        # Rule 2: Zone block within Path E only
+        existing = get_gamma_state(instrument)
+        if existing:
+            elapsed = (datetime.now() - existing['entry_time']).seconds / 60
+            same_dir = existing['direction'] == ('BUY' if not False else 'SELL')
+            if elapsed < 30:  # 30 min zone lock
+                log.debug(f'[GAMMA] {instrument} zone locked ({elapsed:.0f} mins)')
+                return None
+
         # Trade frequency control (max 3 gamma trades/day)
         MAX_GAMMA_TRADES = 3
         try:
@@ -393,6 +451,13 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             log.debug(f'[GAMMA] {instrument} score {score}<25 skip')
             return None
 
+        # Rule 3 enforcement: flip needs score >= 28!
+        if existing and existing['direction'] != action:
+            if score < 28:
+                log.debug(f'[GAMMA] {instrument} flip needs score>=28 got {score}')
+                return None
+            log.info(f'[GAMMA] {instrument} VALID FLIP! score={score}>=28')
+
         # Position sizing
         strike = select_strike(current, action, instrument, strength)
         capital_alloc, contracts = calculate_position_size(
@@ -444,10 +509,15 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             'gamma_flip': gamma_flip,
             'call_wall': call_wall,
             'put_wall': put_wall,
+            'straddle': _straddle,
+            'gamma_independent': True,  # Independent from other paths!
             'timestamp': now.strftime('%Y-%m-%d %H:%M:%S'),
             'version': 'V31_GAMMA',
             'liq_type': f'GAMMA_BLAST_DTE{dte}',
         }
+
+        # Record gamma state (zone lock!)
+        set_gamma_state(instrument, action, score)
 
         log.info(
             f'[GAMMA] 🔥 {instrument} PATH E {action} '
