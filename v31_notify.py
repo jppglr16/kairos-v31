@@ -19,10 +19,27 @@ def notify_v31_startup(capital):
 🕐 {datetime.now().strftime('%d-%b-%Y %H:%M')}
 ✅ All systems ready!""")
 
-LOT={'NIFTY':65,'BANKNIFTY':30,'SENSEX':20,'FINNIFTY':60,'MIDCPNIFTY':120,
-    'CRUDEOIL':100,'GOLDM':100,'SILVERM':30,'NATURALGAS':1250,
-    'LT':175,'NTPC':1500,'MARUTI':50,'BHARTIARTL':475,'SBIN':750,
-    'TATAMOTORS':800,'TMPV':800,'RELIANCE':500,'HINDUNILVR':300,'TCS':175,'TATASTEEL':5500}
+LOT={}
+try:
+    import json as _json, os as _os
+    _lf = _os.path.join(_os.path.dirname(__file__), 'lot_sizes.json')
+    if _os.path.exists(_lf):
+        LOT = _json.load(open(_lf)).get('lot_sizes', {})
+        # Handle TATAMOTORS → TMPV
+        if 'TMPV' in LOT:
+            LOT['TATAMOTORS'] = LOT['TMPV']
+except: pass
+# Fallback defaults
+_LOT_DEFAULTS = {
+    'NIFTY':65,'BANKNIFTY':30,'SENSEX':20,'FINNIFTY':60,
+    'MIDCPNIFTY':120,'CRUDEOIL':100,'GOLDM':100,
+    'SILVERM':30,'NATURALGAS':1250,'LT':175,'NTPC':1500,
+    'MARUTI':50,'BHARTIARTL':475,'SBIN':750,'TATAMOTORS':800,
+    'TMPV':800,'RELIANCE':500,'HINDUNILVR':300,'TCS':175,
+    'TATASTEEL':5500
+}
+for _k,_v in _LOT_DEFAULTS.items():
+    if _k not in LOT: LOT[_k]=_v
 
 def notify_v31_entry(signal,qty,symbol):
     try:
