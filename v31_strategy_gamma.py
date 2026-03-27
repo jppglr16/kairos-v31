@@ -415,7 +415,7 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             'capital_alloc': capital_alloc,
             'suggested_lots': contracts,
             'gex_bias': gex_bias,
-            'gex_strength': gex_strength,
+            'gex_strength': gex_strength if gex_data else 0.0,
             'gamma_flip': gamma_flip,
             'call_wall': call_wall,
             'put_wall': put_wall,
