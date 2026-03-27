@@ -873,13 +873,16 @@ async def main():
             # VIX filter + strategy mode (cached once per cycle!)
             try:
                 from v31_vix import vix_engine
-                _vix_ok,_vix_reason=vix_engine.should_trade()
+                # Get VIX info - actual blocking done per-instrument!
                 _vix_data={
                     'mode':vix_engine.get_strategy_mode(),
                     'trend':vix_engine.get_trend(),
                     'vix':vix_engine.get_vix_value()
                 }
                 _strategy_mode=_vix_data['mode']
+                _vix_ok=True  # Check per-instrument with direction!
+                _vix_reason='checked per instrument'
+                _vix_val=_vix_data['vix'] or 0
                 log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
 
                 # MCX evening: relax VIX filter after NSE close
@@ -914,13 +917,16 @@ async def main():
             # VIX filter + strategy mode (cached once per cycle!)
             try:
                 from v31_vix import vix_engine
-                _vix_ok,_vix_reason=vix_engine.should_trade()
+                # Get VIX info - actual blocking done per-instrument!
                 _vix_data={
                     'mode':vix_engine.get_strategy_mode(),
                     'trend':vix_engine.get_trend(),
                     'vix':vix_engine.get_vix_value()
                 }
                 _strategy_mode=_vix_data['mode']
+                _vix_ok=True  # Check per-instrument with direction!
+                _vix_reason='checked per instrument'
+                _vix_val=_vix_data['vix'] or 0
                 log.info(f'[VIX] Mode={_strategy_mode} Trend={_vix_data["trend"]} VIX={_vix_data["vix"]}')
 
                 # MCX evening: relax VIX filter after NSE close
@@ -1441,6 +1447,17 @@ async def main():
                     # Signal Manager V2 - 7-step check
                     _action=signal.get('action','BUY')
                     _score=signal.get('score',18)
+
+                    # Per-instrument VIX check with direction!
+                    try:
+                        from v31_vix import vix_engine
+                        _vix_ok_inst,_vix_reason_inst=vix_engine.should_trade(
+                            direction=_action, score=_score)
+                        if not _vix_ok_inst:
+                            log.info(f'[VIX] {instrument} {_action} blocked: {_vix_reason_inst}')
+                            continue
+                    except:pass
+
                     try:
                         _sm_ok,_sm_reason=signal_manager.can_trade(instrument,_action,_score,signal=signal)
                         if not _sm_ok:

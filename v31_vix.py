@@ -155,19 +155,48 @@ class VIXEngine:
         log.info(f'[VIX] {vix:.1f} regime={regime} trend={trend} boost={boost:+d}')
         return boost,regime,vix
 
-    def should_trade(self):
+    def should_trade(self, direction=None, score=0):
         """
-        Hard filter:
-        VIX > 25 = STOP all trading!
-        VIX < 12 = Warn (low premium)
+        Smart VIX filter:
+        VIX <= 26: All trading allowed
+        VIX 26-28: SELL only (market falling = opportunity!)
+        VIX 28-30: High score SELL only (score >= 22)
+        VIX > 30: Block everything (panic mode!)
+        Near expiry: relax by 2 points
         """
-        vix=self.get_vix()
-        if vix is None:return True,'Unknown VIX - allow'
-        if vix>VIX_CONFIG["DANGER"]:
-            return False,f'VIX too high ({vix:.1f}) - dangerous for buying!'
-        if vix<10:
-            return True,f'VIX low ({vix:.1f}) - avoid buying only'
-        return True,f'VIX={vix:.1f} OK'
+        vix = self.get_vix()
+        if vix is None:
+            return True, 'Unknown VIX - allow'
+
+        # Near expiry relaxation (last 2 days)
+        from datetime import datetime
+        _day = datetime.now().weekday()
+        _near_expiry = _day >= 3  # Thursday/Friday
+        _vix_adj = vix - 2 if _near_expiry else vix
+
+        # Low VIX warning
+        if vix < 10:
+            return True, f'VIX low ({vix:.1f}) - caution'
+
+        # All clear
+        if _vix_adj <= 26:
+            return True, f'VIX={vix:.1f} OK'
+
+        # VIX 26-28: SELL only
+        if _vix_adj <= 28:
+            if direction == 'SELL':
+                return True, f'VIX={vix:.1f} HIGH - SELL allowed'
+            return False, f'VIX too high ({vix:.1f}) - BUY blocked!'
+
+        # VIX 28-30: High score SELL only
+        if _vix_adj <= 30:
+            if direction == 'SELL' and score >= 22:
+                return True, f'VIX={vix:.1f} EXTREME - high score SELL only'
+            return False, f'VIX={vix:.1f} EXTREME - need SELL score>=22'
+
+        # VIX > 30: Block everything
+        return False, f'VIX={vix:.1f} PANIC - all trading blocked!'
+    
 
     def get_strategy_mode(self):
         """
