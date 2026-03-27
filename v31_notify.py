@@ -157,7 +157,7 @@ def notify_v31_entry(signal,qty,symbol):
             _mcx_pct = 0.50
         elif _available >= 50000:
             # Medium capital: balanced
-            _nse_pct = 0.25
+            _nse_pct = 0.30  # 30% for NSE (handles lot sizes better)
             _mcx_pct = 0.60
         elif _available >= 25000:
             # Small capital: aggressive to afford trades
