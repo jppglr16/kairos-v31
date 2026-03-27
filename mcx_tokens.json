@@ -18,8 +18,8 @@
     "exchange": "MCX"
   },
   "NATURALGAS": {
-    "token": "475111",
-    "symbol": "NATURALGAS26MAR26FUT",
+    "token": "487465",
+    "symbol": "NATURALGAS27APR26FUT",
     "lotsize": 1250,
     "exchange": "MCX"
   }
