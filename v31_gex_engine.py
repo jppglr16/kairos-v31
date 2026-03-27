@@ -50,11 +50,17 @@ def calculate_gex(oi_data, spot):
             ce_oi = row.get('ce_oi', 0)
             pe_oi = row.get('pe_oi', 0)
 
-            # Gamma proxy: distance from spot × OI
-            # Calls above spot = positive gamma
-            # Puts below spot = negative gamma
-            call_gamma = ce_oi * max(0, spot - strike)
-            put_gamma  = pe_oi * max(0, strike - spot)
+            # Fix 2: Skip deep OTM (noise reduction!)
+            if abs(strike - spot) > spot * 0.10:
+                continue
+
+            # Fix 1: Distance decay weighting
+            # ATM dominates, far OTM less influence!
+            distance = abs(spot - strike)
+            weight = 1.0 / (1.0 + distance / max(spot * 0.01, 1))
+
+            call_gamma = ce_oi * max(0, spot-strike) * weight
+            put_gamma  = pe_oi * max(0, strike-spot) * weight
             net = call_gamma - put_gamma
 
             total_gex += net
@@ -72,12 +78,16 @@ def calculate_gex(oi_data, spot):
         return 0, []
 
 def find_key_levels(strike_gex):
-    """Find call wall and put wall"""
+    """
+    Fix 5: OI-based walls (matches real institutional levels!)
+    """
     try:
         if not strike_gex:
             return None, None
-        call_wall = max(strike_gex, key=lambda x: x['gex'])
-        put_wall  = min(strike_gex, key=lambda x: x['gex'])
+        # Call wall = strike with max CE OI
+        call_wall = max(strike_gex, key=lambda x: x['ce_oi'])
+        # Put wall = strike with max PE OI
+        put_wall  = max(strike_gex, key=lambda x: x['pe_oi'])
         return call_wall['strike'], put_wall['strike']
     except:
         return None, None
@@ -100,18 +110,28 @@ def find_gamma_flip(strike_gex):
     except:
         return None
 
-def interpret_gex(total_gex):
+def interpret_gex(total_gex, oi_data=None):
     """
-    LONG_GAMMA = market pinned, mean reverting
-    SHORT_GAMMA = explosive moves expected!
+    Adaptive thresholds based on instrument scale!
+    Works for NIFTY, BANKNIFTY, stocks equally!
     """
-    if total_gex > 500000:
-        return 'LONG_GAMMA'    # Pinned ❌ avoid
-    elif total_gex < -500000:
-        return 'SHORT_GAMMA'   # Explosive ✅ trade!
-    elif total_gex < 0:
-        return 'SLIGHT_SHORT'  # Leaning explosive
-    return 'NEUTRAL'
+    # Fix 3: Adaptive scale
+    if oi_data:
+        scale = sum(abs(r.get('ce_oi',0)+r.get('pe_oi',0))
+                   for r in oi_data)
+    else:
+        scale = 1000000  # fallback
+
+    # Fix 4: GEX strength
+    gex_strength = round(total_gex / max(scale, 1), 4)
+
+    if gex_strength > 0.10:
+        return 'LONG_GAMMA', gex_strength
+    elif gex_strength < -0.10:
+        return 'SHORT_GAMMA', gex_strength
+    elif gex_strength < 0:
+        return 'SLIGHT_SHORT', gex_strength
+    return 'NEUTRAL', gex_strength
 
 def get_gex_analysis(instrument, spot):
     """
@@ -126,10 +146,11 @@ def get_gex_analysis(instrument, spot):
         total_gex, strike_gex = calculate_gex(oi_data, spot)
         call_wall, put_wall = find_key_levels(strike_gex)
         gamma_flip = find_gamma_flip(strike_gex)
-        gex_bias = interpret_gex(total_gex)
+        gex_bias, gex_strength = interpret_gex(total_gex, oi_data)
 
         result = {
             'total_gex': total_gex,
+            'gex_strength': gex_strength,
             'gex_bias': gex_bias,
             'call_wall': call_wall,
             'put_wall': put_wall,
