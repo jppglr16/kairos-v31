@@ -265,14 +265,14 @@ def gamma_blast_signal(df5, df15, instrument, capital):
         c = df5['close']
         sell_str = (float(c.iloc[-3])-float(c.iloc[-1]))/atr if atr>0 else 0
         buy_str  = (float(c.iloc[-1])-float(c.iloc[-3]))/atr if atr>0 else 0
+        buy_str  = min(buy_str,  5.0)  # Cap for gaps!
+        sell_str = min(sell_str, 5.0)  # Cap for gaps!
         sell_mom = (float(c.iloc[-1])<float(c.iloc[-2])<float(c.iloc[-3])
                     and sell_str>1.5)
         buy_mom  = (float(c.iloc[-1])>float(c.iloc[-2])>float(c.iloc[-3])
                     and buy_str>1.5)
 
-        sell_str = min(sell_str, 5.0)  # Cap for gaps!
         if sell_mom: action,strength = 'SELL',sell_str
-        buy_str = min(buy_str, 5.0)   # Cap for gaps!
         elif buy_mom: action,strength = 'BUY',buy_str
         else: return None
 
