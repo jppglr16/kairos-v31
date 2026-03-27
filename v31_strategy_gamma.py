@@ -410,6 +410,14 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             'target1': current+(atr*2) if action=='BUY' else current-(atr*2),
             'target2': current+(atr*4) if action=='BUY' else current-(atr*4),
             'rr_ratio': 4.0,
+            # Trailing exit logic!
+            't1_exit_pct': 0.30,   # Exit 30% at T1
+            't2_exit_pct': 0.30,   # Exit 30% at T2
+            'trail_remaining': 0.40,  # Trail 40%!
+            't1_pct': 1.0,         # 100% gain = T1
+            't2_pct': 3.0,         # 300% gain = T2
+            'trail_sl_pct': 0.50,  # Trail SL = 50% of peak
+            'max_hold_mins': 45,   # Max hold 45 mins!
             'days_to_expiry': dte,
             'max_premium': max_prem,
             'time_sl_mins': 15,
