@@ -96,13 +96,22 @@ def check_mtf_momentum(df5, df15, action):
     except: return False
 
 def breakout_confirm(df5, action):
-    """Clean breakout - no almost-breakouts!"""
+    """Clean breakout with volume confirmation!"""
     try:
         recent_high = float(df5['high'].tail(20).max())
         recent_low = float(df5['low'].tail(20).min())
         price = float(df5['close'].iloc[-1])
-        if action=='BUY': return price > recent_high
-        else: return price < recent_low
+
+        # Price breakout
+        price_ok = (price > recent_high if action=='BUY'
+                   else price < recent_low)
+        if not price_ok: return False
+
+        # Volume confirmation
+        vol = df5['volume']
+        vol_avg = float(vol.tail(20).mean())
+        vol_spike = float(vol.iloc[-1]) > vol_avg * 1.5
+        return vol_spike
     except: return False
 
 def is_trap(df5):
@@ -207,6 +216,21 @@ def gamma_blast_signal(df5, df15, instrument, capital):
     try:
         now = datetime.now()
 
+        # Trade frequency control (max 3 gamma trades/day)
+        MAX_GAMMA_TRADES = 3
+        try:
+            import json, os
+            if os.path.exists('paper_trades.json'):
+                d = json.load(open('paper_trades.json'))
+                today = datetime.now().strftime('%Y-%m-%d')
+                gamma_today = [t for t in d.get('trades',[])
+                              if t.get('date')==today
+                              and t.get('path')=='E_GAMMA']
+                if len(gamma_today) >= MAX_GAMMA_TRADES:
+                    log.debug(f'[GAMMA] Max trades reached today')
+                    return None
+        except: pass
+
         # Kill switch first!
         killed, loss = check_kill_switch(capital)
         if killed:
@@ -246,7 +270,9 @@ def gamma_blast_signal(df5, df15, instrument, capital):
         buy_mom  = (float(c.iloc[-1])>float(c.iloc[-2])>float(c.iloc[-3])
                     and buy_str>1.5)
 
+        sell_str = min(sell_str, 5.0)  # Cap for gaps!
         if sell_mom: action,strength = 'SELL',sell_str
+        buy_str = min(buy_str, 5.0)   # Cap for gaps!
         elif buy_mom: action,strength = 'BUY',buy_str
         else: return None
 
@@ -319,7 +345,7 @@ def gamma_blast_signal(df5, df15, instrument, capital):
             'price': current,
             'score': score,
             'path': 'E_GAMMA',
-            'sl_points': atr*0.3,
+            'sl_points': atr*(0.5 if squeeze else 0.3),
             'sl_type': 'GAMMA_TIME',
             'target1': current+(atr*2) if action=='BUY' else current-(atr*2),
             'target2': current+(atr*4) if action=='BUY' else current-(atr*4),
