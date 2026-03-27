@@ -848,11 +848,12 @@ async def main():
 
             # Auto-refresh Angel token every 6 hours
             try:
-                if angel_trader and angel_trader.connected:
-                    angel_trader.check_and_refresh()
-                elif angel_trader:
+                _at = angel_trader if 'angel_trader' in dir() else None
+                if _at and _at.connected:
+                    _at.check_and_refresh()
+                elif _at:
                     log.warning('[MAIN] Angel disconnected! Reconnecting...')
-                    angel_trader.reconnect()
+                    _at.reconnect()
             except Exception as _re_e:
                 log.warning(f'[ANGEL] Reconnect error: {_re_e}')
 
