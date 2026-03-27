@@ -46,15 +46,28 @@ def extract_expiry(symbol):
     return datetime.max
 
 def get_nearest_futures(data,inst):
-    """Find nearest futures contract"""
+    """Find nearest active futures contract"""
+    from datetime import datetime
+    today = datetime.now().replace(hour=0,minute=0,second=0)
+    
     futures=[d for d in data
              if d.get('exch_seg')=='MCX'
              and d.get('symbol','').startswith(inst)
              and 'FUT' in d.get('symbol','')
              and not d['symbol'].endswith(('CE','PE'))]
     if not futures:return None
+    
+    # Sort by expiry
     futures.sort(key=lambda x:extract_expiry(x['symbol']))
-    return futures[0]
+    
+    # Skip expired contracts!
+    for f in futures:
+        expiry = extract_expiry(f['symbol'])
+        if expiry >= today:
+            return f
+    
+    # All expired? Return last one
+    return futures[-1]
 
 def validate_contract(inst,contract):
     """Validate contract data"""
