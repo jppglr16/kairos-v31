@@ -38,13 +38,29 @@ def fetch_lot_sizes():
         data = requests.get(url, timeout=30).json()
         log.info(f'[LOT] Downloaded {len(data)} instruments')
 
+        MCX_INST_LIST = ['CRUDEOIL','GOLDM','SILVERM','NATURALGAS']
+
         lot_sizes = {}
         for inst in INSTRUMENTS:
-            # Find options for this instrument
-            opts = [d for d in data
-                   if d.get('symbol','').startswith(inst)
-                   and d.get('exch_seg') in ['NFO','BFO','MCX']
-                   and d.get('instrumenttype') in ['OPTSTK','OPTIDX','OPTFUT']]
+            if inst in MCX_INST_LIST:
+                # MCX: look for options first (most accurate lot)
+                # Exact prefix mapping for MCX
+                _mcx_prefix = {
+                    'SILVERM': 'SILVER',
+                    'GOLDM': 'GOLDM',  # NOT 'GOLD'!
+                    'CRUDEOIL': 'CRUDEOIL',
+                    'NATURALGAS': 'NATURALGAS'
+                }.get(inst, inst)
+                opts = [d for d in data
+                       if d.get('exch_seg')=='MCX'
+                       and d.get('instrumenttype')=='OPTFUT'
+                       and d.get('symbol','').startswith(_mcx_prefix)]
+            else:
+                # NSE/BSE: look for stock/index options
+                opts = [d for d in data
+                       if d.get('symbol','').startswith(inst)
+                       and d.get('exch_seg') in ['NFO','BFO']
+                       and d.get('instrumenttype') in ['OPTSTK','OPTIDX']]
 
             if opts:
                 lot = int(opts[0].get('lotsize', DEFAULTS.get(inst,75)))
