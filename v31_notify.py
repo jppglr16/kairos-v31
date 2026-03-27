@@ -14,8 +14,8 @@ def notify_v31_startup(capital):
 ━━━━━━━━━━━━━━━
 💰 Capital: ₹{capital:,.0f}
 📊 System: Gamma Walls + SMC + ML
-🎯 RR: Min 1:3 → Target 1:5-1:10
 🧠 Filters: Liq Sweep + FVG + Trend
+📱 Mode: Paper Trading
 🕐 {datetime.now().strftime('%d-%b-%Y %H:%M')}
 ✅ All systems ready!""")
 
