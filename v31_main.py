@@ -712,6 +712,16 @@ async def main():
     import json as _json,pandas as _pd,os as _os
     _TOKENS={'NIFTY':'99926000','BANKNIFTY':'99926009','SENSEX':'99919000','FINNIFTY':'99926037','MIDCPNIFTY':'99926074','CRUDEOIL':'472790','GOLDM':'477904','SILVERM':'457533','LT':'11483','NTPC':'11630','MARUTI':'10999','BHARTIARTL':'10604','SBIN':'3045','TATAMOTORS':'3456','RELIANCE':'2885','HINDUNILVR':'1394','TCS':'11536','TATASTEEL':'3499','NATURALGAS':'475111'}
     log.info('Loading historical candles...')
+
+    # Initialize new candle cache!
+    try:
+        from v31_candle_cache import candle_cache
+        log.info('[CACHE] Initializing candle cache...')
+        candle_cache.load_state()  # Restore from restart!
+        loaded = candle_cache.load_all_historical(INSTRUMENTS)
+        log.info(f'[CACHE] ✅ {loaded} instruments cached!')
+    except Exception as _ce:
+        log.warning(f'[CACHE] Init error: {_ce}')
     for inst in INSTRUMENTS:
         try:
             token=_TOKENS.get(inst,'')
