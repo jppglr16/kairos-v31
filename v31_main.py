@@ -775,8 +775,6 @@ async def main():
                 if len(_b15)>300:del _b15[:-200]
         except Exception as ie:
             log.error(f'[V31] Load error {inst}: {ie}')
-    from v30_cache import preload_cache
-    preload_cache()
     feed.start()
     log.info('[V31] LIVE! Websocket connected')
 
