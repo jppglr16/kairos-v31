@@ -58,8 +58,9 @@ class CandleCache:
         self._initialized = set()
         self._dirty = set()
         self._tick_cache = defaultdict(list)
-        self._latency = {}        # Latency tracking
+        self._latency = {}         # Latency tracking
         self._last_tick_price = {}  # Deduplication
+        self._last_tick_volume = {} # Volume dedup
 
     # ============================================
     # HISTORICAL LOAD
@@ -205,10 +206,12 @@ class CandleCache:
             if price <= 0:
                 return
 
-            # Fix 4: Tick deduplication!
-            if self._last_tick_price.get(inst) == price:
+            # Fix 4: Smart dedup (price + volume!)
+            if (self._last_tick_price.get(inst) == price and
+                self._last_tick_volume.get(inst) == cum_vol):
                 return
             self._last_tick_price[inst] = price
+            self._last_tick_volume[inst] = cum_vol
 
             # Fix 5: Latency tracking!
             if 'exchange_time' in tick_data:
@@ -254,10 +257,14 @@ class CandleCache:
             prices = [t['price'] for t in ticks]
             cum_vols = [t['cum_vol'] for t in ticks]
 
-            # Fix 1: Delta volume (not cumulative sum!)
+            # Fix 1: Delta volume with reset handling!
             real_volume = 0
             for i in range(1, len(cum_vols)):
-                delta = cum_vols[i] - cum_vols[i-1]
+                if cum_vols[i] < cum_vols[i-1]:
+                    # Exchange reset cumulative volume!
+                    delta = cum_vols[i]
+                else:
+                    delta = cum_vols[i] - cum_vols[i-1]
                 real_volume += max(0, delta)
 
             new_row = pd.DataFrame([{
