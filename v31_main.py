@@ -799,6 +799,35 @@ async def main():
         log.info(f'[V31] Market status: {ok} {reason}')
     except Exception as me:
         log.error(f'[V31] Market check error: {me}')
+    # Populate candle cache from existing feed (instant!)
+    try:
+        from v31_candle_cache import candle_cache
+        import pandas as _pd2
+        _copied = 0
+        for _inst in INSTRUMENTS:
+            try:
+                if _inst in feed.builders:
+                    _c5 = feed.builders[_inst]['5'].candles
+                    if _c5:
+                        _df = _pd2.DataFrame(_c5)
+                        _df['time'] = _pd2.to_datetime(_df['time'])
+                        for c in ['open','high','low','close','volume']:
+                            _df[c] = _pd2.to_numeric(_df[c], errors='coerce')
+                        _df = (_df.dropna()
+                                  .sort_values('time')
+                                  .reset_index(drop=True))
+                        with candle_cache._lock:
+                            candle_cache._cache5[_inst] = _df
+                            candle_cache._cache15[_inst] = (
+                                candle_cache._resample_15(_df))
+                            candle_cache._initialized.add(_inst)
+                        _copied += 1
+            except Exception as _ce2:
+                log.debug(f'[CACHE] Copy {_inst}: {_ce2}')
+        log.info(f'[CACHE] ✅ {_copied} instruments copied from feed!')
+    except Exception as _ce:
+        log.warning(f'[CACHE] Feed copy error: {_ce}')
+
     log.info('[V31] Entering while loop...')
     while True:
         try:
