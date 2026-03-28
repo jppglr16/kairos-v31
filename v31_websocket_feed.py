@@ -92,10 +92,12 @@ class AngelWebSocketFeed:
         t.name = 'AngelWS'
         t.start()
 
-        # Fix 3: Tick processor thread
-        w = threading.Thread(target=self._tick_worker, daemon=True)
-        w.name = 'TickWorker'
-        w.start()
+        # Fix 3: Multiple tick workers for scaling!
+        for _i in range(3):  # 3 workers handles high load!
+            w = threading.Thread(
+                target=self._tick_worker, daemon=True)
+            w.name = f'TickWorker-{_i}'
+            w.start()
 
         # Fix 1: Heartbeat monitor thread
         h = threading.Thread(target=self._heartbeat_monitor, daemon=True)
@@ -187,18 +189,20 @@ class AngelWebSocketFeed:
                 ltp = float(data.get('last_traded_price', 0) or
                            data.get('ltp', 0))
                 prev = self._last_tick.get(inst, {}).get('ltp', 0)
-                if prev and abs(ltp - prev) < 0.01:
+                # Adaptive threshold: 0.01% of price!
+                threshold = max(0.01, prev * 0.0001)
+                if prev and abs(ltp - prev) < threshold:
                     return  # Ignore noise tick!
 
-            # Elite 2: Dynamic queue sizing
-            queue_usage = self._tick_queue.qsize() / 10000
-            if queue_usage > 0.8 and self._tick_queue.maxsize < 50000:
-                # High load - increase queue!
-                log.warning(f'[WS] Queue {queue_usage:.0%} full, expanding!')
-                self._tick_queue = Queue(maxsize=50000)
-            elif queue_usage < 0.1 and self._tick_queue.maxsize > 10000:
-                # Low load - shrink queue!
-                self._tick_queue = Queue(maxsize=10000)
+            # Elite 2: Soft throttling (safe!)
+            # Drop early under pressure - never replace queue!
+            queue_usage = (self._tick_queue.qsize() /
+                          self._tick_queue.maxsize)
+            if queue_usage > 0.9:
+                self._dropped_ticks += 1
+                return  # Drop early, protect system!
+            elif queue_usage > 0.7:
+                log.debug(f'[WS] Queue pressure: {queue_usage:.0%}')
 
             # Elite 3: Circuit breaker!
             if self._dropped_ticks > 5000:
