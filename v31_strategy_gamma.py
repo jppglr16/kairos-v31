@@ -522,8 +522,8 @@ def calculate_position_size(capital, atr, strength, instrument):
 
     return round(budget, 0), contracts
 
-def check_kill_switch(capital):
-    """Stop trading if daily loss > 5%"""
+def check_kill_switch(capital, max_loss_pct=0.10):
+    """Stop trading if daily loss > 10% (gamma blast)"""
     try:
         import json, os
         if os.path.exists('paper_trades.json'):
@@ -852,6 +852,28 @@ def gamma_blast_signal(df5, df15, instrument, capital):
 
         # Record gamma state (zone lock!)
         set_gamma_state(instrument, action, score)
+
+        # Log for ML training!
+        try:
+            from v31_gamma_logger import log_gamma_entry
+            signal['_gamma_log_id'] = log_gamma_entry(
+                signal,
+                signal.get('real_prem', 0),
+                contracts
+            )
+        except Exception as _mle:
+            log.debug(f'[GAMMA_ML] Log error: {_mle}')
+
+        # Log for ML training!
+        try:
+            from v31_gamma_logger import log_gamma_entry
+            signal['_gamma_log_id'] = log_gamma_entry(
+                signal,
+                signal.get('real_prem', 0),
+                contracts
+            )
+        except Exception as _mle:
+            log.debug(f'[GAMMA_ML] Log error: {_mle}')
 
         log.info(
             f'[GAMMA] 🔥 {instrument} PATH E {action} '
