@@ -714,10 +714,8 @@ async def main():
     # Initialize new candle cache!
     try:
         from v31_candle_cache import candle_cache
-        log.info('[CACHE] Initializing candle cache...')
-        candle_cache.load_state()  # Restore from restart!
-        loaded = candle_cache.load_all_historical(INSTRUMENTS)
-        log.info(f'[CACHE] ✅ {loaded} instruments cached!')
+        candle_cache.load_state()  # Restore state only!
+        log.info('[CACHE] State restored! Feed copy happens after historical load.')
     except Exception as _ce:
         log.warning(f'[CACHE] Init error: {_ce}')
     for inst in INSTRUMENTS:
