@@ -114,7 +114,7 @@ try:
     from v31_angel_trader import angel_trader as _at_ws
     if _at_ws and _at_ws.connected:
         # Get feed token for WebSocket
-        _feed_token = getattr(_at_ws, 'feed_token', None)
+        _feed_token = getattr(_at_ws, 'feed_token', None) or getattr(angel_trader, 'feed_token', None)
         _client_code = getattr(_at_ws, 'client_id', None)
         if not _client_code:
             log.error('[WS] Missing client_id - abort WS!')

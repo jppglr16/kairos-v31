@@ -57,6 +57,9 @@ class AngelOneTrader:
                     self.connected=True
                     self._connect_time=datetime.now()
                     self._refresh_token=data.get('data',{}).get('refreshToken','')
+                    # Store for WebSocket!
+                    self.client_id = 'J234619'
+                    self.feed_token = data.get('data',{}).get('feedToken','')
                     log.info(f'[ANGEL] Connected! (attempt {attempt+1})')
                     return True
                 log.warning(f'[ANGEL] Connect failed attempt {attempt+1}')
