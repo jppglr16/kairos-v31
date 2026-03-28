@@ -67,10 +67,8 @@ _PREM_LIMITS={
     'NATURALGAS':100
 }
 
-INSTRUMENTS=['NIFTY','BANKNIFTY','SENSEX','FINNIFTY','MIDCPNIFTY',
-             'CRUDEOIL','GOLDM','SILVERM',
-             'LT','NTPC','MARUTI','BHARTIARTL','SBIN',
-             'TATAMOTORS','RELIANCE','HINDUNILVR','TCS','TATASTEEL','NATURALGAS']
+# All 44 instruments from manager (cache handles rate limiting!)
+INSTRUMENTS = instrument_manager.get_all_instruments()
 LOT={'NIFTY':65,'BANKNIFTY':30,'SENSEX':20,'FINNIFTY':60,
      'MIDCPNIFTY':120,'CRUDEOIL':100,'GOLDM':10,'SILVERM':30,
      'LT':450,'NTPC':4500,'MARUTI':100,'BHARTIARTL':950,
