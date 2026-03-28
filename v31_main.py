@@ -115,12 +115,14 @@ try:
     if _at_ws and _at_ws.connected:
         # Get feed token for WebSocket
         _feed_token = getattr(_at_ws, 'feed_token', None)
-        _client_code = getattr(_at_ws, 'client_id', 'J234619')
-        if _feed_token:
+        _client_code = getattr(_at_ws, 'client_id', None)
+        if not _client_code:
+            log.error('[WS] Missing client_id - abort WS!')
+        elif not _feed_token:
+            log.warning('[WS] No feed token - WebSocket not started')
+        else:
             angel_ws.connect(_feed_token, _client_code)
             log.info('[WS] ✅ Angel WebSocket started for 44 instruments!')
-        else:
-            log.warning('[WS] No feed token - WebSocket not started')
     else:
         log.warning('[WS] Angel trader not connected - skipping WS')
 except Exception as _we:
