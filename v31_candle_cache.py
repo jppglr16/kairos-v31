@@ -413,6 +413,17 @@ class CandleCache:
     # ============================================
     CACHE_STATE_FILE = 'cache_state.json'
 
+    def start_auto_save(self, interval=30):
+        """Auto-save state every 30 seconds!"""
+        def loop():
+            while True:
+                time.sleep(interval)
+                self.save_state()
+        t = threading.Thread(target=loop, daemon=True)
+        t.name = 'CacheSaver'
+        t.start()
+        log.info(f'[CACHE] Auto-save started ({interval}s interval)')
+
     def save_state(self):
         """Save dedup state for restart recovery"""
         try:
@@ -437,7 +448,8 @@ class CandleCache:
             import json
             if not os.path.exists(self.CACHE_STATE_FILE):
                 return False
-            state = json.load(open(self.CACHE_STATE_FILE))
+            with open(self.CACHE_STATE_FILE) as f:
+                state = json.load(f)
 
             # Only restore if less than 10 mins old!
             age = time.time() - state.get('saved_at', 0)
@@ -477,3 +489,4 @@ class CandleCache:
 
 # Global singleton!
 candle_cache = CandleCache()
+candle_cache.start_auto_save(interval=30)  # Auto-save every 30s!
