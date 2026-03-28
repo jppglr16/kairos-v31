@@ -147,7 +147,7 @@ class AngelWebSocketFeed:
                 log.info('[WS] Reconnecting in 5s...')
                 time.sleep(5)
 
-    def _on_open(self):
+    def _on_open(self, *args):
         """Subscribe all on connect"""
         try:
             self._connected = True
@@ -173,7 +173,7 @@ class AngelWebSocketFeed:
         except Exception as e:
             log.error(f'[WS] Subscribe error: {e}')
 
-    def _on_tick(self, ws, data):
+    def _on_tick(self, ws, data, *args):
         """
         Receive tick → push to queue (non-blocking!)
         Fix 3: Backpressure protection!
@@ -310,11 +310,11 @@ class AngelWebSocketFeed:
         except Exception as e:
             log.debug(f'[WS] Process error: {e}')
 
-    def _on_error(self, ws, error):
+    def _on_error(self, ws, error, *args):
         log.error(f'[WS] Error: {error}')
         self._connected = False
 
-    def _on_close(self):
+    def _on_close(self, *args):
         log.warning('[WS] Closed!')
         self._connected = False
 
