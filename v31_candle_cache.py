@@ -112,6 +112,10 @@ class CandleCache:
     # ============================================
     # LIVE UPDATE
     # ============================================
+    def is_initialized(self):
+        """Public wrapper for initialized set"""
+        return self._initialized
+
     def needs_update(self, inst):
         """Public wrapper - use this instead of _needs_update!"""
         return self._needs_update(inst)

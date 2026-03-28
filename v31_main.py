@@ -1049,8 +1049,7 @@ async def main():
                         log.debug(f'[CACHE] {instrument} incomplete skip')
                         continue
 
-                    # Clear dirty flag
-                    candle_cache.clear_dirty(instrument)
+                    # dirty flag cleared after successful processing below
 
                     if df5 is None or len(df5)<30:continue
                     if df15 is None or len(df15)<10:continue
@@ -1160,6 +1159,9 @@ async def main():
                             log.debug(f'[V31] Gamma err: {_ge}')
 
                     if not signal:continue
+
+                    # Clear dirty only on successful signal!
+                    candle_cache.clear_dirty(instrument)
 
                     # Zone dedup - same zone within 60 mins = skip
                     # Zone key includes price level - different price = different zone!
