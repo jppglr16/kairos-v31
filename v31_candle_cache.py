@@ -421,6 +421,23 @@ class CandleCache:
     # ============================================
     CACHE_STATE_FILE = 'cache_state.json'
 
+    def start_background_load(self, instruments):
+        """Load instruments in background thread"""
+        def _load():
+            import time
+            log.info(f'[CACHE] Background loading {len(instruments)}...')
+            loaded = 0
+            for inst in instruments:
+                try:
+                    if self.load_historical(inst):
+                        loaded += 1
+                except Exception as e:
+                    log.debug(f'[CACHE] Load {inst}: {e}')
+            log.info(f'[CACHE] ✅ Background done! {loaded}/{len(instruments)}')
+        t = threading.Thread(target=_load, daemon=True)
+        t.name = 'CacheLoader'
+        t.start()
+
     def start_auto_save(self, interval=30):
         """Auto-save state every 30 seconds - self healing!"""
         def loop():
