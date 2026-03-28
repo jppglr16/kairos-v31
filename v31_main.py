@@ -795,11 +795,15 @@ async def main():
         log.info(f'[V31] Market status: {ok} {reason}')
     except Exception as me:
         log.error(f'[V31] Market check error: {me}')
-    # Populate candle cache from existing feed (instant!)
+    # Populate candle cache - hybrid approach!
+    # = Copy from feed (instant) for 19 instruments
+    # = Background load files for remaining 25
     try:
         from v31_candle_cache import candle_cache
         import pandas as _pd2
         _copied = 0
+        _remaining = []
+
         for _inst in INSTRUMENTS:
             try:
                 if _inst in feed.builders:
@@ -808,7 +812,8 @@ async def main():
                         _df = _pd2.DataFrame(_c5)
                         _df['time'] = _pd2.to_datetime(_df['time'])
                         for c in ['open','high','low','close','volume']:
-                            _df[c] = _pd2.to_numeric(_df[c], errors='coerce')
+                            _df[c] = _pd2.to_numeric(
+                                _df[c], errors='coerce')
                         _df = (_df.dropna()
                                   .sort_values('time')
                                   .reset_index(drop=True))
@@ -818,9 +823,21 @@ async def main():
                                 candle_cache._resample_15(_df))
                             candle_cache._initialized.add(_inst)
                         _copied += 1
+                    else:
+                        _remaining.append(_inst)
+                else:
+                    _remaining.append(_inst)
             except Exception as _ce2:
                 log.debug(f'[CACHE] Copy {_inst}: {_ce2}')
-        log.info(f'[CACHE] ✅ {_copied} instruments copied from feed!')
+                _remaining.append(_inst)
+
+        log.info(f'[CACHE] ✅ {_copied} from feed, '
+                f'{len(_remaining)} loading in background...')
+
+        # Load remaining in background!
+        if _remaining:
+            candle_cache.start_background_load(_remaining)
+
     except Exception as _ce:
         log.warning(f'[CACHE] Feed copy error: {_ce}')
 
