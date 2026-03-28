@@ -180,6 +180,35 @@ class AngelWebSocketFeed:
             # Fix 1: Update heartbeat!
             self._last_tick_time = time.time()
 
+            # Elite 1: Tick coalescing - ignore noise!
+            token = str(data.get('token', ''))
+            inst = TOKEN_TO_INST.get(token, '')
+            if inst:
+                ltp = float(data.get('last_traded_price', 0) or
+                           data.get('ltp', 0))
+                prev = self._last_tick.get(inst, {}).get('ltp', 0)
+                if prev and abs(ltp - prev) < 0.01:
+                    return  # Ignore noise tick!
+
+            # Elite 2: Dynamic queue sizing
+            queue_usage = self._tick_queue.qsize() / 10000
+            if queue_usage > 0.8 and self._tick_queue.maxsize < 50000:
+                # High load - increase queue!
+                log.warning(f'[WS] Queue {queue_usage:.0%} full, expanding!')
+                self._tick_queue = Queue(maxsize=50000)
+            elif queue_usage < 0.1 and self._tick_queue.maxsize > 10000:
+                # Low load - shrink queue!
+                self._tick_queue = Queue(maxsize=10000)
+
+            # Elite 3: Circuit breaker!
+            if self._dropped_ticks > 5000:
+                log.critical('[WS] TOO MANY DROPS! Resetting connection...')
+                self._dropped_ticks = 0
+                try:
+                    self._ws.close_connection()
+                except: pass
+                return
+
             try:
                 self._tick_queue.put_nowait(data)
             except Full:
