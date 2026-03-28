@@ -535,7 +535,7 @@ def check_kill_switch(capital, max_loss_pct=0.10):
             daily_loss = sum(t.get('pnl',0) or 0
                             for t in today_trades
                             if (t.get('pnl') or 0) < 0)
-            if abs(daily_loss) > capital * 0.05:
+            if abs(daily_loss) > capital * max_loss_pct:
                 return True, abs(daily_loss)
     except: pass
     return False, 0
