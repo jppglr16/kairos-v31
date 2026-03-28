@@ -408,6 +408,52 @@ class CandleCache:
             return dtime(9,0) <= t <= dtime(23,30)
         return dtime(9,15) <= t <= dtime(15,30)
 
+    # ============================================
+    # STATE PERSISTENCE (survive restarts!)
+    # ============================================
+    CACHE_STATE_FILE = 'cache_state.json'
+
+    def save_state(self):
+        """Save dedup state for restart recovery"""
+        try:
+            import json
+            state = {
+                'last_price': self._last_tick_price,
+                'last_volume': self._last_tick_volume,
+                'last_update': self._last_update,
+                'saved_at': time.time()
+            }
+            tmp = self.CACHE_STATE_FILE + '.tmp'
+            with open(tmp, 'w') as f:
+                json.dump(state, f)
+            os.replace(tmp, self.CACHE_STATE_FILE)
+            log.debug('[CACHE] State saved!')
+        except Exception as e:
+            log.debug(f'[CACHE] State save error: {e}')
+
+    def load_state(self):
+        """Load dedup state after restart"""
+        try:
+            import json
+            if not os.path.exists(self.CACHE_STATE_FILE):
+                return False
+            state = json.load(open(self.CACHE_STATE_FILE))
+
+            # Only restore if less than 10 mins old!
+            age = time.time() - state.get('saved_at', 0)
+            if age > 600:
+                log.info('[CACHE] State too old, ignoring!')
+                return False
+
+            self._last_tick_price = state.get('last_price', {})
+            self._last_tick_volume = state.get('last_volume', {})
+            self._last_update = state.get('last_update', {})
+            log.info(f'[CACHE] State restored! Age:{age:.0f}s')
+            return True
+        except Exception as e:
+            log.debug(f'[CACHE] State load error: {e}')
+            return False
+
     def get_stats(self):
         with self._lock:
             avg_latency = (
