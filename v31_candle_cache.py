@@ -414,11 +414,15 @@ class CandleCache:
     CACHE_STATE_FILE = 'cache_state.json'
 
     def start_auto_save(self, interval=30):
-        """Auto-save state every 30 seconds!"""
+        """Auto-save state every 30 seconds - self healing!"""
         def loop():
             while True:
-                time.sleep(interval)
-                self.save_state()
+                try:
+                    time.sleep(interval)
+                    self.save_state()
+                except Exception as e:
+                    log.error(f'[CACHE] Auto-save crash: {e}')
+                    # Self-healing: continue after crash!
         t = threading.Thread(target=loop, daemon=True)
         t.name = 'CacheSaver'
         t.start()
