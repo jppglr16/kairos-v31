@@ -870,6 +870,31 @@ async def main():
                 except Exception as _cr_e:
                     log.warning(f'[CAP] Refresh error: {_cr_e}')
 
+            # Background cache updater (non-blocking!)
+            # Started once, runs in background thread
+            if not getattr(main, '_cache_updater_started', False):
+                import threading
+                from v31_candle_cache import candle_cache
+
+                def _cache_updater():
+                    import time
+                    while True:
+                        try:
+                            _ang = angel.obj if angel else None
+                            if _ang:
+                                candle_cache.update_all_live(
+                                    INSTRUMENTS, _ang)
+                        except Exception as _ce:
+                            log.debug(f'[CACHE] Updater: {_ce}')
+                        time.sleep(1)
+
+                _t = threading.Thread(
+                    target=_cache_updater, daemon=True)
+                _t.name = 'CacheUpdater'
+                _t.start()
+                main._cache_updater_started = True
+                log.info('[CACHE] Background updater started!')
+
             # VIX filter + strategy mode (cached once per cycle!)
             try:
                 from v31_vix import vix_engine
@@ -913,6 +938,31 @@ async def main():
                     continue
             except Exception as _ne:
                 log.debug(f'[NEWS] Filter error: {_ne}')
+
+            # Background cache updater (non-blocking!)
+            # Started once, runs in background thread
+            if not getattr(main, '_cache_updater_started', False):
+                import threading
+                from v31_candle_cache import candle_cache
+
+                def _cache_updater():
+                    import time
+                    while True:
+                        try:
+                            _ang = angel.obj if angel else None
+                            if _ang:
+                                candle_cache.update_all_live(
+                                    INSTRUMENTS, _ang)
+                        except Exception as _ce:
+                            log.debug(f'[CACHE] Updater: {_ce}')
+                        time.sleep(1)
+
+                _t = threading.Thread(
+                    target=_cache_updater, daemon=True)
+                _t.name = 'CacheUpdater'
+                _t.start()
+                main._cache_updater_started = True
+                log.info('[CACHE] Background updater started!')
 
             # VIX filter + strategy mode (cached once per cycle!)
             try:
@@ -985,23 +1035,22 @@ async def main():
                     if not nse_open:continue
 
                 try:
-                    # Load candles WITH CACHE (prevents rate limiting!)
-                    from v31_data_cache import get_candle_cached
-                    _inst=instrument
-                    if instrument in MCX_INST and angel_mcx_feed:
-                        _feed=angel_mcx_feed
-                        df5=get_candle_cached(_inst,'FIVE_MINUTE',
-                            lambda i=_inst,f=_feed: f.get_candles(i,5))
-                        df15=get_candle_cached(_inst,'FIFTEEN_MINUTE',
-                            lambda i=_inst,f=_feed: f.get_candles(i,15))
-                        df_daily=df15
-                    else:
-                        _ang=angel
-                        df5=get_candle_cached(_inst,'FIVE_MINUTE',
-                            lambda i=_inst,a=_ang: load_candles(a,i,5))
-                        df15=get_candle_cached(_inst,'FIFTEEN_MINUTE',
-                            lambda i=_inst,a=_ang: load_candles(a,i,15))
-                        df_daily=df15
+                    # NEW: Zero API candle cache!
+                    from v31_candle_cache import candle_cache
+
+                    # Read from cache - ZERO API calls!
+                    # Background thread handles updates!
+                    df5 = candle_cache.get_candles(instrument, 5)
+                    df15 = candle_cache.get_candles(instrument, 15)
+                    df_daily = df15
+
+                    # Skip if candle incomplete (< 60s old)
+                    if not candle_cache.is_candle_complete(instrument):
+                        log.debug(f'[CACHE] {instrument} incomplete skip')
+                        continue
+
+                    # Clear dirty flag
+                    candle_cache.clear_dirty(instrument)
 
                     if df5 is None or len(df5)<30:continue
                     if df15 is None or len(df15)<10:continue

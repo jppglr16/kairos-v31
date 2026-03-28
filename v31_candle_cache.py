@@ -112,6 +112,10 @@ class CandleCache:
     # ============================================
     # LIVE UPDATE
     # ============================================
+    def needs_update(self, inst):
+        """Public wrapper - use this instead of _needs_update!"""
+        return self._needs_update(inst)
+
     def _needs_update(self, inst):
         last = self._last_update.get(inst, 0)
         if last == 0:
