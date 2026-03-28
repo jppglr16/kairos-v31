@@ -107,6 +107,24 @@ try:
 except Exception as ae:
     log.warning(f'[V31] Angel trader failed: {ae}')
     angel_trader=None
+
+# Start Angel WebSocket for all 44 instruments!
+try:
+    from v31_websocket_feed import angel_ws
+    from v31_angel_trader import angel_trader as _at_ws
+    if _at_ws and _at_ws.connected:
+        # Get feed token for WebSocket
+        _feed_token = getattr(_at_ws, 'feed_token', None)
+        _client_code = getattr(_at_ws, 'client_id', 'J234619')
+        if _feed_token:
+            angel_ws.connect(_feed_token, _client_code)
+            log.info('[WS] ✅ Angel WebSocket started for 44 instruments!')
+        else:
+            log.warning('[WS] No feed token - WebSocket not started')
+    else:
+        log.warning('[WS] Angel trader not connected - skipping WS')
+except Exception as _we:
+    log.warning(f'[WS] WebSocket start error: {_we}')
 active_positions={}
 active_positions={}
 capital=50000  # Default fallback
