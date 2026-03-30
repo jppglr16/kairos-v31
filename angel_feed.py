@@ -18,10 +18,10 @@ SYMBOLS={
     'MIDCPNIFTY':{'token':'99926074','exchange':'NSE'},
     'SENSEX':    {'token':'99919000','exchange':'BSE'},
     # MCX
-        'CRUDEOIL': {'token':'486502','exchange':'MCX'}  # CRUDEOIL20APR26FUT,  # CRUDEOIL20APR26FUT
-        'GOLDM': {'token':'477904','exchange':'MCX'}  # GOLDM03APR26FUT,  # GOLDM03APR26FUT
-        'SILVERM': {'token':'457533','exchange':'MCX'}  # SILVERM30APR26FUT,  # SILVERMIC30APR26FUT
-        'NATURALGAS': {'token':'487465','exchange':'MCX'}  # NATURALGAS27APR26FUT,  # NATURALGAS27APR26FUT
+        'CRUDEOIL': {'token':'486502','exchange':'MCX'}  # CRUDEOIL20APR26FUT  # CRUDEOIL20APR26FUT,  # CRUDEOIL20APR26FUT
+        'GOLDM': {'token':'477904','exchange':'MCX'}  # GOLDM03APR26FUT  # GOLDM03APR26FUT,  # GOLDM03APR26FUT
+        'SILVERM': {'token':'457533','exchange':'MCX'}  # SILVERM30APR26FUT  # SILVERM30APR26FUT,  # SILVERMIC30APR26FUT
+        'NATURALGAS': {'token':'487465','exchange':'MCX'}  # NATURALGAS27APR26FUT  # NATURALGAS27APR26FUT,  # NATURALGAS27APR26FUT
     # NSE Stocks
     'LT':        {'token':'11483','exchange':'NSE'},
     'NTPC':      {'token':'11630','exchange':'NSE'},
