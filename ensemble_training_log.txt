@@ -1429,3 +1429,611 @@ nohup: ignoring input
   warnings.warn(
 /data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
   warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+
+============================================================
+  V31 ENSEMBLE TRAINING (RL + Transformer)
+============================================================
+
+[ENSEMBLE] NIFTY: 55431 candles
+
+[ENSEMBLE] Training all models for NIFTY...
+[RL] Training NIFTY for 30 episodes...
+[RL] NIFTY ep:0/30 reward:-873.32 epsilon:0.995
+[RL] NIFTY ep:10/30 reward:-739.19 epsilon:0.946
+[RL] NIFTY ep:20/30 reward:-807.99 epsilon:0.900
+[RL] ✅ NIFTY: Best reward=-600.93 saved!
+[ENSEMBLE] RL trained for NIFTY ✅
+[TRANSFORMER] Training NIFTY...
+[TRANSFORMER] NIFTY: {np.int64(0): np.int64(1060), np.int64(1): np.int64(1088), np.int64(2): np.int64(8925)}
+[TRANSFORMER] Training on 11073 samples...
+[ENSEMBLE] Transformer failed NIFTY: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] NIFTY complete!
+
+[ENSEMBLE] BANKNIFTY: 55422 candles
+
+[ENSEMBLE] Training all models for BANKNIFTY...
+[RL] Training BANKNIFTY for 30 episodes...
+[RL] BANKNIFTY ep:0/30 reward:-739.06 epsilon:0.995
+[RL] BANKNIFTY ep:10/30 reward:-755.27 epsilon:0.946
+[RL] BANKNIFTY ep:20/30 reward:-709.73 epsilon:0.900
+[RL] ✅ BANKNIFTY: Best reward=-561.52 saved!
+[ENSEMBLE] RL trained for BANKNIFTY ✅
+[TRANSFORMER] Training BANKNIFTY...
+[TRANSFORMER] BANKNIFTY: {np.int64(0): np.int64(1464), np.int64(1): np.int64(1584), np.int64(2): np.int64(8023)}
+[TRANSFORMER] Training on 11071 samples...
+[ENSEMBLE] Transformer failed BANKNIFTY: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] BANKNIFTY complete!
+
+[ENSEMBLE] SENSEX: 55420 candles
+
+[ENSEMBLE] Training all models for SENSEX...
+[RL] Training SENSEX for 30 episodes...
+[RL] SENSEX ep:0/30 reward:-813.18 epsilon:0.995
+[RL] SENSEX ep:10/30 reward:-862.22 epsilon:0.946
+[RL] SENSEX ep:20/30 reward:-744.65 epsilon:0.900
+[RL] ✅ SENSEX: Best reward=-594.84 saved!
+[ENSEMBLE] RL trained for SENSEX ✅
+[TRANSFORMER] Training SENSEX...
+[TRANSFORMER] SENSEX: {np.int64(0): np.int64(1058), np.int64(1): np.int64(1113), np.int64(2): np.int64(8899)}
+[TRANSFORMER] Training on 11070 samples...
+[ENSEMBLE] Transformer failed SENSEX: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] SENSEX complete!
+
+[ENSEMBLE] FINNIFTY: 55405 candles
+
+[ENSEMBLE] Training all models for FINNIFTY...
+[RL] Training FINNIFTY for 30 episodes...
+[RL] FINNIFTY ep:0/30 reward:-774.67 epsilon:0.995
+[RL] FINNIFTY ep:10/30 reward:-769.27 epsilon:0.946
+[RL] FINNIFTY ep:20/30 reward:-714.91 epsilon:0.900
+[RL] ✅ FINNIFTY: Best reward=-637.39 saved!
+[ENSEMBLE] RL trained for FINNIFTY ✅
+[TRANSFORMER] Training FINNIFTY...
+[TRANSFORMER] FINNIFTY: {np.int64(0): np.int64(1379), np.int64(1): np.int64(1469), np.int64(2): np.int64(8219)}
+[TRANSFORMER] Training on 11067 samples...
+[ENSEMBLE] Transformer failed FINNIFTY: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] FINNIFTY complete!
+
+[ENSEMBLE] MIDCPNIFTY: 54829 candles
+
+[ENSEMBLE] Training all models for MIDCPNIFTY...
+[RL] Training MIDCPNIFTY for 30 episodes...
+[RL] MIDCPNIFTY ep:0/30 reward:-758.55 epsilon:0.995
+[RL] MIDCPNIFTY ep:10/30 reward:-656.11 epsilon:0.946
+[RL] MIDCPNIFTY ep:20/30 reward:-777.70 epsilon:0.900
+[RL] ✅ MIDCPNIFTY: Best reward=-656.11 saved!
+[ENSEMBLE] RL trained for MIDCPNIFTY ✅
+[TRANSFORMER] Training MIDCPNIFTY...
+[TRANSFORMER] MIDCPNIFTY: {np.int64(0): np.int64(1423), np.int64(1): np.int64(1583), np.int64(2): np.int64(7946)}
+[TRANSFORMER] Training on 10952 samples...
+[ENSEMBLE] Transformer failed MIDCPNIFTY: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] MIDCPNIFTY complete!
+
+[ENSEMBLE] CRUDEOIL: 59492 candles
+
+[ENSEMBLE] Training all models for CRUDEOIL...
+[RL] Training CRUDEOIL for 30 episodes...
+[RL] CRUDEOIL ep:0/30 reward:-841.27 epsilon:0.995
+[RL] CRUDEOIL ep:10/30 reward:-809.73 epsilon:0.946
+[RL] CRUDEOIL ep:20/30 reward:-914.35 epsilon:0.900
+[RL] ✅ CRUDEOIL: Best reward=-773.27 saved!
+[ENSEMBLE] RL trained for CRUDEOIL ✅
+[TRANSFORMER] Training CRUDEOIL...
+[TRANSFORMER] CRUDEOIL: {np.int64(0): np.int64(2044), np.int64(1): np.int64(2143), np.int64(2): np.int64(7698)}
+[TRANSFORMER] Training on 11885 samples...
+[ENSEMBLE] Transformer failed CRUDEOIL: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] CRUDEOIL complete!
+
+[ENSEMBLE] GOLDM: 87645 candles
+
+[ENSEMBLE] Training all models for GOLDM...
+[RL] Training GOLDM for 30 episodes...
+[RL] GOLDM ep:0/30 reward:-1587.52 epsilon:0.995
+[RL] GOLDM ep:10/30 reward:-1720.32 epsilon:0.946
+[RL] GOLDM ep:20/30 reward:-1649.51 epsilon:0.900
+[RL] ✅ GOLDM: Best reward=-999.00 saved!
+[ENSEMBLE] RL trained for GOLDM ✅
+[TRANSFORMER] Training GOLDM...
+[TRANSFORMER] GOLDM: {np.int64(0): np.int64(502), np.int64(1): np.int64(516), np.int64(2): np.int64(16497)}
+[TRANSFORMER] Training on 17515 samples...
+[ENSEMBLE] Transformer failed GOLDM: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] GOLDM complete!
+
+[ENSEMBLE] SILVERM: 90120 candles
+
+[ENSEMBLE] Training all models for SILVERM...
+[RL] Training SILVERM for 30 episodes...
+[RL] SILVERM ep:0/30 reward:-1205.50 epsilon:0.995
+[RL] SILVERM ep:10/30 reward:-1280.47 epsilon:0.946
+[RL] SILVERM ep:20/30 reward:-1191.85 epsilon:0.900
+[RL] ✅ SILVERM: Best reward=-999.00 saved!
+[ENSEMBLE] RL trained for SILVERM ✅
+[TRANSFORMER] Training SILVERM...
+[TRANSFORMER] SILVERM: {np.int64(0): np.int64(1828), np.int64(1): np.int64(1751), np.int64(2): np.int64(14431)}
+[TRANSFORMER] Training on 18010 samples...
+[ENSEMBLE] Transformer failed SILVERM: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] SILVERM complete!
+
+[ENSEMBLE] NATURALGAS: 87089 candles
+
+[ENSEMBLE] Training all models for NATURALGAS...
+[RL] Training NATURALGAS for 30 episodes...
+[RL] NATURALGAS ep:0/30 reward:-1143.20 epsilon:0.995
+[RL] NATURALGAS ep:10/30 reward:-1167.10 epsilon:0.946
+[RL] NATURALGAS ep:20/30 reward:-1223.22 epsilon:0.900
+[RL] ✅ NATURALGAS: Best reward=-980.88 saved!
+[ENSEMBLE] RL trained for NATURALGAS ✅
+[TRANSFORMER] Training NATURALGAS...
+[TRANSFORMER] NATURALGAS: {np.int64(0): np.int64(5295), np.int64(1): np.int64(5195), np.int64(2): np.int64(6914)}
+[TRANSFORMER] Training on 17404 samples...
+[ENSEMBLE] Transformer failed NATURALGAS: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] NATURALGAS complete!
+
+[ENSEMBLE] LT: 55433 candles
+
+[ENSEMBLE] Training all models for LT...
+[RL] Training LT for 30 episodes...
+[RL] LT ep:0/30 reward:-713.55 epsilon:0.995
+[RL] LT ep:10/30 reward:-688.60 epsilon:0.946
+[RL] LT ep:20/30 reward:-711.44 epsilon:0.900
+[RL] ✅ LT: Best reward=-536.69 saved!
+[ENSEMBLE] RL trained for LT ✅
+[TRANSFORMER] Training LT...
+[TRANSFORMER] LT: {np.int64(0): np.int64(2221), np.int64(1): np.int64(2374), np.int64(2): np.int64(6478)}
+[TRANSFORMER] Training on 11073 samples...
+[ENSEMBLE] Transformer failed LT: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 32 is different from 8)
+[ENSEMBLE] LT complete!
+
+[ENSEMBLE] NTPC: 55433 candles
+
+[ENSEMBLE] Training all models for NTPC...
+[RL] Training NTPC for 30 episodes...
+[RL] NTPC ep:0/30 reward:-737.23 epsilon:0.995
+[RL] NTPC ep:10/30 reward:-696.06 epsilon:0.946
+[RL] NTPC ep:20/30 reward:-706.57 epsilon:0.900
+[RL] ✅ NTPC: Best reward=-612.10 saved!
+[ENSEMBLE] RL trained for NTPC ✅
+[TRANSFORMER] Training NTPC...
+[TRANSFORMER] NTPC: {np.int64(0): np.int64(2543), np.int64(1): np.int64(2631), np.int64(2): np.int64(5899)}
+[TRANSFORMER] Training on 11073 samples.../data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/data/data/com.termux/files/usr/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (1) reached and the optimization hasn't converged yet.
+  warnings.warn(

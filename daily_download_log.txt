@@ -300,3 +300,503 @@ Engine cache refreshed!
 [I 260326 02:00:15 smartConnect:124] in pool
 [I 260326 03:00:27 smartConnect:124] in pool
 [I 260326 04:00:38 smartConnect:124] in pool
+[I 260326 05:00:58 smartConnect:124] in pool
+[I 260326 06:00:09 smartConnect:124] in pool
+[I 260326 07:00:19 smartConnect:124] in pool
+[I 260326 08:00:12 smartConnect:124] in pool
+[08:30] Updating options master...
+Old: 139027 | New: 125247
+Added: 7144 | Expired removed: 13572
+Valid but removed: 7352
+Done! Options master updated!
+Engine cache refreshed!
+[I 260326 09:00:41 smartConnect:124] in pool
+[I 260326 11:00:22 smartConnect:124] in pool
+[I 260326 12:00:05 smartConnect:124] in pool
+[I 260326 13:00:23 smartConnect:124] in pool
+[I 260326 14:00:30 smartConnect:124] in pool
+[I 260326 15:00:21 smartConnect:124] in pool
+[I 260326 16:00:26 smartConnect:124] in pool
+[I 260326 18:00:04 smartConnect:124] in pool
+[I 260326 19:00:15 smartConnect:124] in pool
+[I 260326 20:00:29 smartConnect:124] in pool
+[I 260326 22:00:22 smartConnect:124] in pool
+[I 260326 23:00:41 smartConnect:124] in pool
+[I 260327 00:00:36 smartConnect:124] in pool
+[I 260327 01:00:55 smartConnect:124] in pool
+[I 260327 08:00:59 smartConnect:124] in pool
+2026-03-27 08:25:19,831 [TOKEN] ========================================
+2026-03-27 08:25:19,832 [TOKEN] V32 MCX Token Updater Starting...
+2026-03-27 08:25:19,832 [TOKEN] ========================================
+2026-03-27 08:25:19,832 [TOKEN] Downloading master (attempt 1)...
+2026-03-27 08:25:32,096 [TOKEN] Downloaded 195235 instruments
+2026-03-27 08:25:32,266 [TOKEN] CRUDEOIL: CRUDEOIL20APR26FUT token=486502
+2026-03-27 08:25:32,267 [TOKEN] GOLDM: GOLDM03APR26FUT token=477904
+2026-03-27 08:25:32,267 [TOKEN] SILVERM: SILVERMIC30APR26FUT token=466029
+2026-03-27 08:25:32,267 [TOKEN] NATURALGAS: NATURALGAS27APR26FUT token=487465
+2026-03-27 08:25:32,267 [TOKEN] Validated 4 tokens
+2026-03-27 08:25:32,272 [TOKEN] Backup: angel_feed.py.bak
+2026-03-27 08:25:32,273 [TOKEN] CRUDEOIL: Updated
+2026-03-27 08:25:32,274 [TOKEN] GOLDM: Updated
+2026-03-27 08:25:32,274 [TOKEN] SILVERM: Updated
+2026-03-27 08:25:32,275 [TOKEN] NATURALGAS: Updated
+2026-03-27 08:25:32,277 [TOKEN] Atomic write: angel_feed.py
+2026-03-27 08:25:32,278 [TOKEN] Saved mcx_tokens.json
+[main e351847] Auto: MCX token update
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+To https://github.com/jppglr16/kairos-V31.git
+   f39bd74..e351847  main -> main
+2026-03-27 08:25:34,520 [TOKEN] Git commit done!
+2026-03-27 08:25:35,284 [TOKEN] SUCCESS: 4/4 tokens updated!
+[08:30] Updating options master...
+Old: 125247 | New: 119221
+Added: 0 | Expired removed: 6026
+Valid but removed: 0
+Done! Options master updated!
+Engine cache refreshed!
+[I 260327 10:00:24 smartConnect:124] in pool
+[I 260327 11:00:54 smartConnect:124] in pool
+[I 260327 12:00:37 smartConnect:124] in pool
+[I 260327 13:00:47 smartConnect:124] in pool
+[I 260327 14:00:24 smartConnect:124] in pool
+[I 260327 15:00:47 smartConnect:124] in pool
+[I 260327 16:00:04 smartConnect:124] in pool
+[I 260327 17:00:28 smartConnect:124] in pool
+[I 260327 19:00:16 smartConnect:124] in pool
+[I 260327 20:00:29 smartConnect:124] in pool
+[I 260327 21:00:27 smartConnect:124] in pool
+[I 260327 22:00:58 smartConnect:124] in pool
+[I 260327 23:00:51 smartConnect:124] in pool
+  File "<string>", line 6
+    msg='📊 Weekly P&L Summary
+        ^
+SyntaxError: unterminated string literal (detected at line 6)
+[I 260328 00:00:43 smartConnect:124] in pool
+2026-03-28 08:25:37,518 [TOKEN] ========================================
+2026-03-28 08:25:37,519 [TOKEN] V32 MCX Token Updater Starting...
+2026-03-28 08:25:37,519 [TOKEN] ========================================
+2026-03-28 08:25:37,519 [TOKEN] Downloading master (attempt 1)...
+2026-03-28 08:25:54,184 [TOKEN] Downloaded 196867 instruments
+2026-03-28 08:25:54,361 [TOKEN] CRUDEOIL: CRUDEOILM20APR26FUT token=486503
+2026-03-28 08:25:54,361 [TOKEN] GOLDM: GOLDM03APR26FUT token=477904
+2026-03-28 08:25:54,361 [TOKEN] SILVERM: SILVERMIC30APR26FUT token=466029
+2026-03-28 08:25:54,361 [TOKEN] NATURALGAS: NATURALGAS27APR26FUT token=487465
+2026-03-28 08:25:54,361 [TOKEN] Validated 4 tokens
+2026-03-28 08:25:54,367 [TOKEN] Backup: angel_feed.py.bak
+2026-03-28 08:25:54,368 [TOKEN] CRUDEOIL: Updated
+2026-03-28 08:25:54,368 [TOKEN] GOLDM: Updated
+2026-03-28 08:25:54,369 [TOKEN] SILVERM: Updated
+2026-03-28 08:25:54,369 [TOKEN] NATURALGAS: Updated
+2026-03-28 08:25:54,372 [TOKEN] Atomic write: angel_feed.py
+2026-03-28 08:25:54,373 [TOKEN] Saved mcx_tokens.json
+[main 596ee06] Auto: MCX token update
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+To https://github.com/jppglr16/kairos-V31.git
+   074269c..596ee06  main -> main
+2026-03-28 08:25:57,010 [TOKEN] Git commit done!
+2026-03-28 08:25:57,768 [TOKEN] SUCCESS: 4/4 tokens updated!
+INFO:__main__:[LOT] Downloading master file...
+INFO:__main__:[LOT] Downloaded 196867 instruments
+INFO:__main__:[LOT] NIFTY: 65
+INFO:__main__:[LOT] BANKNIFTY: 30
+INFO:__main__:[LOT] FINNIFTY: 60
+INFO:__main__:[LOT] MIDCPNIFTY: 120
+INFO:__main__:[LOT] SENSEX: 20
+INFO:__main__:[LOT] CRUDEOIL: 100
+INFO:__main__:[LOT] GOLDM: 100
+INFO:__main__:[LOT] SILVERM: 30
+INFO:__main__:[LOT] NATURALGAS: 1250
+INFO:__main__:[LOT] LT: 175
+INFO:__main__:[LOT] NTPC: 1500
+INFO:__main__:[LOT] MARUTI: 50
+INFO:__main__:[LOT] BHARTIARTL: 475
+INFO:__main__:[LOT] SBIN: 750
+WARNING:__main__:[LOT] TATAMOTORS: using default 675
+INFO:__main__:[LOT] RELIANCE: 500
+INFO:__main__:[LOT] HINDUNILVR: 300
+INFO:__main__:[LOT] TCS: 175
+INFO:__main__:[LOT] TATASTEEL: 5500
+INFO:__main__:[LOT] EICHERMOT: 100
+INFO:__main__:[LOT] SHREECEM: 25
+INFO:__main__:[LOT] CUMMINSIND: 200
+INFO:__main__:[LOT] ABB: 125
+INFO:__main__:[LOT] DIVISLAB: 100
+INFO:__main__:[LOT] HEROMOTOCO: 150
+INFO:__main__:[LOT] INDIGO: 150
+INFO:__main__:[LOT] TATAELXSI: 100
+INFO:__main__:[LOT] AMBER: 100
+INFO:__main__:[LOT] ALKEM: 125
+INFO:__main__:[LOT] TORNTPHARM: 250
+INFO:__main__:[LOT] KEI: 175
+INFO:__main__:[LOT] HDFCBANK: 550
+INFO:__main__:[LOT] ICICIBANK: 700
+INFO:__main__:[LOT] BAJFINANCE: 750
+INFO:__main__:[LOT] SIEMENS: 175
+INFO:__main__:[LOT] POLYCAB: 125
+INFO:__main__:[LOT] SOLARINDS: 50
+INFO:__main__:[LOT] TVSMOTOR: 175
+INFO:__main__:[LOT] BOSCHLTD: 25
+INFO:__main__:[LOT] PAGEIND: 15
+INFO:__main__:[LOT] BRITANNIA: 125
+INFO:__main__:[LOT] APOLLOHOSP: 125
+INFO:__main__:[LOT] OFSS: 75
+INFO:__main__:[LOT] BAJAJ-AUTO: 75
+INFO:__main__:[LOT] TMPV: 800
+INFO:__main__:[LOT] ✅ Updated 45 lot sizes!
+[LOT] Loaded 45 instruments from manager
+
+=== Current Lot Sizes ===
+ABB: 125 ⚠️ CHANGED!
+ALKEM: 125 ⚠️ CHANGED!
+AMBER: 100 ⚠️ CHANGED!
+APOLLOHOSP: 125 ⚠️ CHANGED!
+BAJAJ-AUTO: 75 
+BAJFINANCE: 750 ⚠️ CHANGED!
+BANKNIFTY: 30 
+BHARTIARTL: 475 
+BOSCHLTD: 25 ⚠️ CHANGED!
+BRITANNIA: 125 ⚠️ CHANGED!
+CRUDEOIL: 100 
+CUMMINSIND: 200 ⚠️ CHANGED!
+DIVISLAB: 100 ⚠️ CHANGED!
+EICHERMOT: 100 ⚠️ CHANGED!
+FINNIFTY: 60 ⚠️ CHANGED!
+GOLDM: 100 ⚠️ CHANGED!
+HDFCBANK: 550 ⚠️ CHANGED!
+HEROMOTOCO: 150 ⚠️ CHANGED!
+HINDUNILVR: 300 
+ICICIBANK: 700 ⚠️ CHANGED!
+INDIGO: 150 ⚠️ CHANGED!
+KEI: 175 ⚠️ CHANGED!
+LT: 175 ⚠️ CHANGED!
+MARUTI: 50 ⚠️ CHANGED!
+MIDCPNIFTY: 120 
+NATURALGAS: 1250 
+NIFTY: 65 ⚠️ CHANGED!
+NTPC: 1500 ⚠️ CHANGED!
+OFSS: 75 
+PAGEIND: 15 ⚠️ CHANGED!
+POLYCAB: 125 ⚠️ CHANGED!
+RELIANCE: 500 ⚠️ CHANGED!
+SBIN: 750 ⚠️ CHANGED!
+SENSEX: 20 
+SHREECEM: 25 ⚠️ CHANGED!
+SIEMENS: 175 ⚠️ CHANGED!
+SILVERM: 30 
+SOLARINDS: 50 ⚠️ CHANGED!
+TATAELXSI: 100 ⚠️ CHANGED!
+TATAMOTORS: 675 
+TATASTEEL: 5500 
+TCS: 175 ⚠️ CHANGED!
+TMPV: 800 
+TORNTPHARM: 250 ⚠️ CHANGED!
+TVSMOTOR: 175 ⚠️ CHANGED!
+[I 260328 09:00:04 smartConnect:124] in pool
+[I 260328 10:00:16 smartConnect:124] in pool
+[I 260328 12:00:45 smartConnect:124] in pool
+[I 260328 13:00:23 smartConnect:124] in pool
+[I 260328 14:00:23 smartConnect:124] in pool
+[I 260328 15:00:52 smartConnect:124] in pool
+[I 260328 18:00:25 smartConnect:124] in pool
+[I 260328 19:00:43 smartConnect:124] in pool
+[I 260328 20:00:57 smartConnect:124] in pool
+[I 260328 22:00:14 smartConnect:124] in pool
+[I 260328 23:00:03 smartConnect:124] in pool
+[I 260329 00:00:13 smartConnect:124] in pool
+[I 260329 01:00:23 smartConnect:124] in pool
+[I 260329 08:00:23 smartConnect:124] in pool
+2026-03-29 08:25:06,275 [TOKEN] ========================================
+2026-03-29 08:25:06,275 [TOKEN] V32 MCX Token Updater Starting...
+2026-03-29 08:25:06,276 [TOKEN] ========================================
+2026-03-29 08:25:06,276 [TOKEN] Downloading master (attempt 1)...
+2026-03-29 08:25:17,491 [TOKEN] Downloaded 196867 instruments
+2026-03-29 08:25:17,603 [TOKEN] CRUDEOIL: CRUDEOIL20APR26FUT token=486502
+2026-03-29 08:25:17,603 [TOKEN] GOLDM: GOLDM03APR26FUT token=477904
+2026-03-29 08:25:17,603 [TOKEN] SILVERM: SILVERM30APR26FUT token=457533
+2026-03-29 08:25:17,603 [TOKEN] NATURALGAS: NATURALGAS27APR26FUT token=487465
+2026-03-29 08:25:17,603 [TOKEN] Validated 4 tokens
+2026-03-29 08:25:17,612 [TOKEN] Backup: angel_feed.py.bak
+2026-03-29 08:25:17,612 [TOKEN] CRUDEOIL: Updated
+2026-03-29 08:25:17,612 [TOKEN] GOLDM: Updated
+2026-03-29 08:25:17,613 [TOKEN] SILVERM: Updated
+2026-03-29 08:25:17,613 [TOKEN] NATURALGAS: Updated
+2026-03-29 08:25:17,615 [TOKEN] Atomic write: angel_feed.py
+2026-03-29 08:25:17,616 [TOKEN] Saved mcx_tokens.json
+[main 67b3f43] Auto: MCX token update
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+To https://github.com/jppglr16/kairos-V31.git
+   dafd36f..67b3f43  main -> main
+2026-03-29 08:25:19,693 [TOKEN] Git commit done!
+2026-03-29 08:25:20,504 [TOKEN] SUCCESS: 4/4 tokens updated!
+INFO:__main__:[LOT] Downloading master file...
+INFO:__main__:[LOT] Downloaded 196867 instruments
+INFO:__main__:[LOT] NIFTY: 25
+INFO:__main__:[LOT] BANKNIFTY: 30
+INFO:__main__:[LOT] FINNIFTY: 60
+INFO:__main__:[LOT] MIDCPNIFTY: 120
+INFO:__main__:[LOT] SENSEX: 75
+INFO:__main__:[LOT] CRUDEOIL: 10
+INFO:__main__:[LOT] GOLDM: 100
+INFO:__main__:[LOT] SILVERM: 30
+INFO:__main__:[LOT] NATURALGAS: 1250
+INFO:__main__:[LOT] LT: 175
+INFO:__main__:[LOT] NTPC: 1500
+INFO:__main__:[LOT] MARUTI: 50
+INFO:__main__:[LOT] BHARTIARTL: 475
+INFO:__main__:[LOT] SBIN: 750
+WARNING:__main__:[LOT] TATAMOTORS: using default 675
+INFO:__main__:[LOT] RELIANCE: 500
+INFO:__main__:[LOT] HINDUNILVR: 300
+INFO:__main__:[LOT] TCS: 175
+INFO:__main__:[LOT] TATASTEEL: 5500
+INFO:__main__:[LOT] EICHERMOT: 100
+INFO:__main__:[LOT] SHREECEM: 25
+INFO:__main__:[LOT] CUMMINSIND: 200
+INFO:__main__:[LOT] ABB: 125
+INFO:__main__:[LOT] DIVISLAB: 100
+INFO:__main__:[LOT] HEROMOTOCO: 150
+INFO:__main__:[LOT] INDIGO: 150
+INFO:__main__:[LOT] TATAELXSI: 100
+INFO:__main__:[LOT] AMBER: 100
+INFO:__main__:[LOT] ALKEM: 125
+INFO:__main__:[LOT] TORNTPHARM: 250
+INFO:__main__:[LOT] KEI: 175
+INFO:__main__:[LOT] HDFCBANK: 550
+INFO:__main__:[LOT] ICICIBANK: 700
+INFO:__main__:[LOT] BAJFINANCE: 750
+INFO:__main__:[LOT] SIEMENS: 175
+INFO:__main__:[LOT] POLYCAB: 125
+INFO:__main__:[LOT] SOLARINDS: 50
+INFO:__main__:[LOT] TVSMOTOR: 175
+INFO:__main__:[LOT] BOSCHLTD: 25
+INFO:__main__:[LOT] PAGEIND: 15
+INFO:__main__:[LOT] BRITANNIA: 125
+INFO:__main__:[LOT] APOLLOHOSP: 125
+INFO:__main__:[LOT] OFSS: 75
+INFO:__main__:[LOT] BAJAJ-AUTO: 75
+INFO:__main__:[LOT] TMPV: 800
+INFO:__main__:[LOT] ✅ Updated 45 lot sizes!
+[LOT] Loaded 45 instruments from manager
+
+=== Current Lot Sizes ===
+ABB: 125 ⚠️ CHANGED!
+ALKEM: 125 ⚠️ CHANGED!
+AMBER: 100 ⚠️ CHANGED!
+APOLLOHOSP: 125 ⚠️ CHANGED!
+BAJAJ-AUTO: 75 
+BAJFINANCE: 750 ⚠️ CHANGED!
+BANKNIFTY: 30 
+BHARTIARTL: 475 
+BOSCHLTD: 25 ⚠️ CHANGED!
+BRITANNIA: 125 ⚠️ CHANGED!
+CRUDEOIL: 10 ⚠️ CHANGED!
+CUMMINSIND: 200 ⚠️ CHANGED!
+DIVISLAB: 100 ⚠️ CHANGED!
+EICHERMOT: 100 ⚠️ CHANGED!
+FINNIFTY: 60 ⚠️ CHANGED!
+GOLDM: 100 ⚠️ CHANGED!
+HDFCBANK: 550 ⚠️ CHANGED!
+HEROMOTOCO: 150 ⚠️ CHANGED!
+HINDUNILVR: 300 
+ICICIBANK: 700 ⚠️ CHANGED!
+INDIGO: 150 ⚠️ CHANGED!
+KEI: 175 ⚠️ CHANGED!
+LT: 175 ⚠️ CHANGED!
+MARUTI: 50 ⚠️ CHANGED!
+MIDCPNIFTY: 120 
+NATURALGAS: 1250 
+NIFTY: 25 ⚠️ CHANGED!
+NTPC: 1500 ⚠️ CHANGED!
+OFSS: 75 
+PAGEIND: 15 ⚠️ CHANGED!
+POLYCAB: 125 ⚠️ CHANGED!
+RELIANCE: 500 ⚠️ CHANGED!
+SBIN: 750 ⚠️ CHANGED!
+SENSEX: 75 ⚠️ CHANGED!
+SHREECEM: 25 ⚠️ CHANGED!
+SIEMENS: 175 ⚠️ CHANGED!
+SILVERM: 30 
+SOLARINDS: 50 ⚠️ CHANGED!
+TATAELXSI: 100 ⚠️ CHANGED!
+TATAMOTORS: 675 
+TATASTEEL: 5500 
+TCS: 175 ⚠️ CHANGED!
+TMPV: 800 
+TORNTPHARM: 250 ⚠️ CHANGED!
+TVSMOTOR: 175 ⚠️ CHANGED!
+[08:30] Updating options master...
+Old: 119221 | New: 120930
+Added: 1709 | Expired removed: 0
+Valid but removed: 0
+Done! Options master updated!
+Engine cache refreshed!
+[I 260329 09:00:45 smartConnect:124] in pool
+[I 260329 10:00:15 smartConnect:124] in pool
+[I 260329 11:00:28 smartConnect:124] in pool
+[I 260329 15:00:46 smartConnect:124] in pool
+[I 260329 18:00:51 smartConnect:124] in pool
+[I 260329 20:00:38 smartConnect:124] in pool
+[I 260329 21:00:15 smartConnect:124] in pool
+[I 260329 22:00:08 smartConnect:124] in pool
+[I 260329 23:01:01 smartConnect:124] in pool
+[I 260330 00:00:47 smartConnect:124] in pool
+2026-03-30 08:26:00,632 [TOKEN] ========================================
+2026-03-30 08:26:00,638 [TOKEN] V32 MCX Token Updater Starting...
+2026-03-30 08:26:00,638 [TOKEN] ========================================
+2026-03-30 08:26:00,638 [TOKEN] Downloading master (attempt 1)...
+2026-03-30 08:26:12,001 [TOKEN] Downloaded 197004 instruments
+2026-03-30 08:26:12,195 [TOKEN] CRUDEOIL: CRUDEOIL20APR26FUT token=486502
+2026-03-30 08:26:12,196 [TOKEN] GOLDM: GOLDM03APR26FUT token=477904
+2026-03-30 08:26:12,196 [TOKEN] SILVERM: SILVERM30APR26FUT token=457533
+2026-03-30 08:26:12,196 [TOKEN] NATURALGAS: NATURALGAS27APR26FUT token=487465
+2026-03-30 08:26:12,196 [TOKEN] Validated 4 tokens
+2026-03-30 08:26:12,203 [TOKEN] Backup: angel_feed.py.bak
+2026-03-30 08:26:12,204 [TOKEN] CRUDEOIL: Updated
+2026-03-30 08:26:12,204 [TOKEN] GOLDM: Updated
+2026-03-30 08:26:12,204 [TOKEN] SILVERM: Updated
+2026-03-30 08:26:12,205 [TOKEN] NATURALGAS: Updated
+2026-03-30 08:26:12,207 [TOKEN] Atomic write: angel_feed.py
+2026-03-30 08:26:12,208 [TOKEN] Saved mcx_tokens.json
+[main 661e9a0] Auto: MCX token update
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+To https://github.com/jppglr16/kairos-V31.git
+   67b3f43..661e9a0  main -> main
+2026-03-30 08:26:14,970 [TOKEN] Git commit done!
+2026-03-30 08:26:15,875 [TOKEN] SUCCESS: 4/4 tokens updated!
+INFO:__main__:[LOT] Downloading master file...
+INFO:__main__:[LOT] Downloaded 197004 instruments
+INFO:__main__:[LOT] NIFTY: 65
+INFO:__main__:[LOT] BANKNIFTY: 30
+INFO:__main__:[LOT] FINNIFTY: 60
+INFO:__main__:[LOT] MIDCPNIFTY: 120
+INFO:__main__:[LOT] SENSEX: 20
+INFO:__main__:[LOT] CRUDEOIL: 100
+INFO:__main__:[LOT] GOLDM: 100
+INFO:__main__:[LOT] SILVERM: 30
+INFO:__main__:[LOT] NATURALGAS: 1250
+INFO:__main__:[LOT] LT: 175
+INFO:__main__:[LOT] NTPC: 1500
+INFO:__main__:[LOT] MARUTI: 50
+INFO:__main__:[LOT] BHARTIARTL: 475
+INFO:__main__:[LOT] SBIN: 750
+WARNING:__main__:[LOT] TATAMOTORS: using default 675
+INFO:__main__:[LOT] RELIANCE: 500
+INFO:__main__:[LOT] HINDUNILVR: 300
+INFO:__main__:[LOT] TCS: 175
+INFO:__main__:[LOT] TATASTEEL: 5500
+INFO:__main__:[LOT] EICHERMOT: 100
+INFO:__main__:[LOT] SHREECEM: 25
+INFO:__main__:[LOT] CUMMINSIND: 200
+INFO:__main__:[LOT] ABB: 125
+INFO:__main__:[LOT] DIVISLAB: 100
+INFO:__main__:[LOT] HEROMOTOCO: 150
+INFO:__main__:[LOT] INDIGO: 150
+INFO:__main__:[LOT] TATAELXSI: 100
+INFO:__main__:[LOT] AMBER: 100
+INFO:__main__:[LOT] ALKEM: 125
+INFO:__main__:[LOT] TORNTPHARM: 250
+INFO:__main__:[LOT] KEI: 175
+INFO:__main__:[LOT] HDFCBANK: 550
+INFO:__main__:[LOT] ICICIBANK: 700
+INFO:__main__:[LOT] BAJFINANCE: 750
+INFO:__main__:[LOT] SIEMENS: 175
+INFO:__main__:[LOT] POLYCAB: 125
+INFO:__main__:[LOT] SOLARINDS: 50
+INFO:__main__:[LOT] TVSMOTOR: 175
+INFO:__main__:[LOT] BOSCHLTD: 25
+INFO:__main__:[LOT] PAGEIND: 15
+INFO:__main__:[LOT] BRITANNIA: 125
+INFO:__main__:[LOT] APOLLOHOSP: 125
+INFO:__main__:[LOT] OFSS: 75
+INFO:__main__:[LOT] BAJAJ-AUTO: 75
+INFO:__main__:[LOT] TMPV: 800
+INFO:__main__:[LOT] ✅ Updated 45 lot sizes!
+[LOT] Loaded 45 instruments from manager
+
+=== Current Lot Sizes ===
+ABB: 125 ⚠️ CHANGED!
+ALKEM: 125 ⚠️ CHANGED!
+AMBER: 100 ⚠️ CHANGED!
+APOLLOHOSP: 125 ⚠️ CHANGED!
+BAJAJ-AUTO: 75 
+BAJFINANCE: 750 ⚠️ CHANGED!
+BANKNIFTY: 30 
+BHARTIARTL: 475 
+BOSCHLTD: 25 ⚠️ CHANGED!
+BRITANNIA: 125 ⚠️ CHANGED!
+CRUDEOIL: 100 
+CUMMINSIND: 200 ⚠️ CHANGED!
+DIVISLAB: 100 ⚠️ CHANGED!
+EICHERMOT: 100 ⚠️ CHANGED!
+FINNIFTY: 60 ⚠️ CHANGED!
+GOLDM: 100 ⚠️ CHANGED!
+HDFCBANK: 550 ⚠️ CHANGED!
+HEROMOTOCO: 150 ⚠️ CHANGED!
+HINDUNILVR: 300 
+ICICIBANK: 700 ⚠️ CHANGED!
+INDIGO: 150 ⚠️ CHANGED!
+KEI: 175 ⚠️ CHANGED!
+LT: 175 ⚠️ CHANGED!
+MARUTI: 50 ⚠️ CHANGED!
+MIDCPNIFTY: 120 
+NATURALGAS: 1250 
+NIFTY: 65 ⚠️ CHANGED!
+NTPC: 1500 ⚠️ CHANGED!
+OFSS: 75 
+PAGEIND: 15 ⚠️ CHANGED!
+POLYCAB: 125 ⚠️ CHANGED!
+RELIANCE: 500 ⚠️ CHANGED!
+SBIN: 750 ⚠️ CHANGED!
+SENSEX: 20 
+SHREECEM: 25 ⚠️ CHANGED!
+SIEMENS: 175 ⚠️ CHANGED!
+SILVERM: 30 
+SOLARINDS: 50 ⚠️ CHANGED!
+TATAELXSI: 100 ⚠️ CHANGED!
+TATAMOTORS: 675 
+TATASTEEL: 5500 
+TCS: 175 ⚠️ CHANGED!
+TMPV: 800 
+TORNTPHARM: 250 ⚠️ CHANGED!
+TVSMOTOR: 175 ⚠️ CHANGED!
+[08:30] Updating options master...
+Old: 120930 | New: 120930
+Added: 0 | Expired removed: 0
+Valid but removed: 0
+Done! Options master updated!
+Engine cache refreshed!
+[I 260330 09:00:16 smartConnect:124] in pool
+[I 260330 10:00:50 smartConnect:124] in pool
+[I 260330 11:00:18 smartConnect:124] in pool
+[I 260330 14:00:34 smartConnect:124] in pool
+[I 260330 16:00:48 smartConnect:124] in pool
+[I 260330 17:00:03 smartConnect:124] in pool
+[I 260330 18:00:17 smartConnect:124] in pool
+[I 260330 19:00:48 smartConnect:124] in pool
+[I 260330 20:00:02 smartConnect:124] in pool
+[I 260330 22:00:14 smartConnect:124] in pool
+[I 260330 23:00:28 smartConnect:124] in pool
+[I 260331 00:00:45 smartConnect:124] in pool
+[I 260331 01:01:01 smartConnect:124] in pool
+[I 260331 02:00:33 smartConnect:124] in pool
+[I 260331 08:00:03 smartConnect:124] in pool
+[I 260331 09:00:08 smartConnect:124] in pool
+[I 260331 10:00:59 smartConnect:124] in pool
+[I 260331 11:00:15 smartConnect:124] in pool
+[I 260331 13:00:48 smartConnect:124] in pool
+[I 260331 14:00:02 smartConnect:124] in pool
+[I 260331 15:00:19 smartConnect:124] in pool
+[I 260331 16:00:16 smartConnect:124] in pool
+[I 260331 17:00:14 smartConnect:124] in pool
+[I 260331 18:01:00 smartConnect:124] in pool
+[I 260331 19:00:37 smartConnect:124] in pool
+[I 260331 20:00:22 smartConnect:124] in pool
+[I 260331 21:00:37 smartConnect:124] in pool
+[E 260331 21:00:45 smartConnect:221] Error occurred while making a GET request to https://apiconnect.angelone.in/rest/secure/angelbroking/user/v1/getProfile. Headers: {'Content-type': 'application/json', 'X-ClientLocalIP': '127.0.0.1', 'X-ClientPublicIP': '106.193.147.98', 'X-MACAddress': 'cb:2a:66:a0:49:ed', 'Accept': 'application/json', 'X-PrivateKey': 'pEOas0vU', 'X-UserType': 'USER', 'X-SourceID': 'WEB', 'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IkoyMzQ2MTkiLCJyb2xlcyI6MCwidXNlcnR5cGUiOiJVU0VSIiwidG9rZW4iOiJleUpoYkdjaU9pSlNVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKMWMyVnlYM1I1Y0dVaU9pSmpiR2xsYm5RaUxDSjBiMnRsYmw5MGVYQmxJam9pZEhKaFpHVmZZV05qWlhOelgzUnZhMlZ1SWl3aVoyMWZhV1FpT2pFekxDSnpiM1Z5WTJVaU9pSXpJaXdpWkdWMmFXTmxYMmxrSWpvaVpHTXdNMll5T0dFdE56azJaQzB6WkRobExUZzFNR0l0T1RobVpUVXpOR014WkRZeklpd2lhMmxrSWpvaWRISmhaR1ZmYTJWNVgzWXlJaXdpYjIxdVpXMWhibUZuWlhKcFpDSTZNVE1zSW5CeWIyUjFZM1J6SWpwN0ltUmxiV0YwSWpwN0luTjBZWFIxY3lJNkltRmpkR2wyWlNKOUxDSnRaaUk2ZXlKemRHRjBkWE1pT2lKaFkzUnBkbVVpZlgwc0ltbHpjeUk2SW5SeVlXUmxYMnh2WjJsdVgzTmxjblpwWTJVaUxDSnpkV0lpT2lKS01qTTBOakU1SWl3aVpYaHdJam94TnpjMU1EVTNORE01TENKdVltWWlPakUzTnpRNU56QTROVGtzSW1saGRDSTZNVGMzTkRrM01EZzFPU3dpYW5ScElqb2lOelk1WTJFeVltSXRZV00zWWkwME1EazFMVGxsWm1ZdE4yVmhZVGMyTW1Ka1ptTmpJaXdpVkc5clpXNGlPaUlpZlEuTnQ2bko2Y1lLd3pOeFNtQkY4b0dmR3JfNHpYZ1lmSmExaTRSRjdrNFBWdzNnWmM4eTVNREVucGVFOHIyNlU3Vi1CQmgtZTJ6Uk1rYzdHLWJ5RG1adEZIQjBvSVBSV3YzdEI2bzJPNFRKMmVUdnBEQkNrVU9JYWQ0Z1hycVhwcE9rVG4zTVAyc3hBWTJLWF83ZUk3NWlHX0ZTcTN3czhuLTRSVHhWQXFyN1lBIiwiQVBJLUtFWSI6InBFT2FzMHZVIiwiWC1PTEQtQVBJLUtFWSI6ZmFsc2UsImlhdCI6MTc3NDk3MTAzOSwiZXhwIjoxNzc0OTgxODAwfQ.jnMr3bDBmWTK0NdgawxVgHlLVskqC7X7nQWNQY6eavDIDREfmBNgWDOD1bU1q38KvhnmtMmtjcOrWEkJ4tE0pQ'}, Request: {'refreshToken': 'eyJhbGciOiJIUzUxMiJ9.eyJ0b2tlbiI6IlJFRlJFU0gtVE9LRU4iLCJSRUZSRVNILVRPS0VOIjoiZXlKaGJHY2lPaUpTVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5WDNSNWNHVWlPaUpqYkdsbGJuUWlMQ0owYjJ0bGJsOTBlWEJsSWpvaWRISmhaR1ZmY21WbWNtVnphRjkwYjJ0bGJpSXNJbWR0WDJsa0lqb3dMQ0p6YjNWeVkyVWlPaUl6SWl3aVpHVjJhV05sWDJsa0lqb2laR013TTJZeU9HRXROemsyWkMwelpEaGxMVGcxTUdJdE9UaG1aVFV6TkdNeFpEWXpJaXdpYTJsa0lqb2lkSEpoWkdWZmEyVjVYM1l5SWl3aWIyMXVaVzFoYm1GblpYSnBaQ0k2TUN3aWFYTnpJam9pYkc5bmFXNWZjMlZ5ZG1salpTSXNJbk4xWWlJNklrb3lNelEyTVRraUxDSmxlSEFpT2pFM056VXdOVGMwTXprc0ltNWlaaUk2TVRjM05EazNNRGcxT1N3aWFXRjBJam94TnpjME9UY3dPRFU1TENKcWRHa2lPaUpsT1dVeU1HRTJNaTFtTlRCaUxUUXlOMll0T0dVM1ppMW1Oell5TURsak1HVXlZV1lpTENKVWIydGxiaUk2SWlKOS5odmdfSkJEUVBuNFp2dmcxN09Gb0pzYjBJaERqMFo4UTdNaW4yYWQycFdPcTR2c0cxeHFCWWRYVVd2WU9qRklKSldCbGdSbVpYTkQ0dnBUcDRoLU95ckR3Nk5FVUxnZmx3amlkSVFOQTkwbHdyRXZnMUJDMDJwczB3Tk03azdKN1FUU25QbUg2dUdnRF9HTTBTa193QURnV0V0YndtNnNhRG1FRktEWVRKV1kiLCJpYXQiOjE3NzQ5NzEwMzl9.OUYyBLXx4yG-go6KdL6R23hY8aBBQYL8yUoAWCjDuSvVDybWEPiyr2K3bul9JbbCC7AeUohdbw53M6oLygLfMQ'}, Response: HTTPSConnectionPool(host='apiconnect.angelone.in', port=443): Max retries exceeded with url: /rest/secure/angelbroking/user/v1/getProfile?%7B%22refreshToken%22:%20%22eyJhbGciOiJIUzUxMiJ9.eyJ0b2tlbiI6IlJFRlJFU0gtVE9LRU4iLCJSRUZSRVNILVRPS0VOIjoiZXlKaGJHY2lPaUpTVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5WDNSNWNHVWlPaUpqYkdsbGJuUWlMQ0owYjJ0bGJsOTBlWEJsSWpvaWRISmhaR1ZmY21WbWNtVnphRjkwYjJ0bGJpSXNJbWR0WDJsa0lqb3dMQ0p6YjNWeVkyVWlPaUl6SWl3aVpHVjJhV05sWDJsa0lqb2laR013TTJZeU9HRXROemsyWkMwelpEaGxMVGcxTUdJdE9UaG1aVFV6TkdNeFpEWXpJaXdpYTJsa0lqb2lkSEpoWkdWZmEyVjVYM1l5SWl3aWIyMXVaVzFoYm1GblpYSnBaQ0k2TUN3aWFYTnpJam9pYkc5bmFXNWZjMlZ5ZG1salpTSXNJbk4xWWlJNklrb3lNelEyTVRraUxDSmxlSEFpT2pFM056VXdOVGMwTXprc0ltNWlaaUk2TVRjM05EazNNRGcxT1N3aWFXRjBJam94TnpjME9UY3dPRFU1TENKcWRHa2lPaUpsT1dVeU1HRTJNaTFtTlRCaUxUUXlOMll0T0dVM1ppMW1Oell5TURsak1HVXlZV1lpTENKVWIydGxiaUk2SWlKOS5odmdfSkJEUVBuNFp2dmcxN09Gb0pzYjBJaERqMFo4UTdNaW4yYWQycFdPcTR2c0cxeHFCWWRYVVd2WU9qRklKSldCbGdSbVpYTkQ0dnBUcDRoLU95ckR3Nk5FVUxnZmx3amlkSVFOQTkwbHdyRXZnMUJDMDJwczB3Tk03azdKN1FUU25QbUg2dUdnRF9HTTBTa193QURnV0V0YndtNnNhRG1FRktEWVRKV1kiLCJpYXQiOjE3NzQ5NzEwMzl9.OUYyBLXx4yG-go6KdL6R23hY8aBBQYL8yUoAWCjDuSvVDybWEPiyr2K3bul9JbbCC7AeUohdbw53M6oLygLfMQ%22%7D (Caused by ConnectTimeoutError(<HTTPSConnection(host='apiconnect.angelone.in', port=443) at 0x7594febed0>, 'Connection to apiconnect.angelone.in timed out. (connect timeout=7)'))
+[I 260331 22:00:56 smartConnect:124] in pool
+[I 260331 23:00:09 smartConnect:124] in pool
+[I 260401 00:00:47 smartConnect:124] in pool
+[I 260401 01:00:11 smartConnect:124] in pool
+[I 260401 02:00:24 smartConnect:124] in pool
+[I 260401 03:00:35 smartConnect:124] in pool
+[I 260401 04:00:45 smartConnect:124] in pool

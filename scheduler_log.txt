@@ -1283,3 +1283,441 @@
 2026-03-26 04:00: Training progress: 6/18
 2026-03-26 04:00: Rotating logs...
 2026-03-26 04:00: Logs rotated!
+2026-03-26 04:05: GitHub backup done!
+2026-03-26 04:30: Training progress: 6/18
+2026-03-26 05:00: Training progress: 6/18
+2026-03-26 05:30: Training progress: 6/18
+2026-03-26 06:00: Training progress: 6/18
+2026-03-26 06:30: Training progress: 6/18
+2026-03-26 07:00: Training progress: 6/18
+2026-03-26 07:31: Training progress: 6/18
+2026-03-26 08:00: Training progress: 6/18
+2026-03-26 08:05: Smart scheduler started!
+2026-03-26 08:05: Training progress: 6/18
+2026-03-26 08:30: Training progress: 6/18
+2026-03-26 08:30: Updating Angel options master...
+2026-03-26 08:30: Options master updated!
+2026-03-26 08:45: Paused trainer PID 11754
+2026-03-26 08:45: Paused ensemble PID 11758
+2026-03-26 08:45: Training PAUSED
+2026-03-26 08:46: 8:45 AM - Training paused, good morning + checklist sent
+2026-03-26 09:00: 9:00 AM - V31 running ✅
+2026-03-26 09:00: Training progress: 6/18
+2026-03-26 09:30: Training progress: 6/18
+2026-03-26 10:04: Training progress: 6/18
+2026-03-26 10:31: Training progress: 6/18
+2026-03-26 11:00: Training progress: 6/18
+2026-03-26 11:30: Training progress: 6/18
+2026-03-26 12:00: Training progress: 6/18
+2026-03-26 12:31: Training progress: 6/18
+2026-03-26 13:00: Training progress: 6/18
+2026-03-26 13:30: Training progress: 6/18
+2026-03-26 14:00: Training progress: 6/18
+2026-03-26 14:30: Training progress: 6/18
+2026-03-26 15:00: Training progress: 6/18
+2026-03-26 15:30: Training progress: 6/18
+2026-03-26 16:00: Training progress: 6/18
+2026-03-26 16:31: Training progress: 6/18
+2026-03-26 17:01: Training progress: 6/18
+2026-03-26 17:10: ⚠️ Internet DOWN!
+2026-03-26 17:30: Training progress: 6/18
+2026-03-26 18:00: Training progress: 6/18
+2026-03-26 18:30: Training progress: 6/18
+2026-03-26 18:50: Smart scheduler started!
+2026-03-26 18:50: Training progress: 6/18
+2026-03-26 19:00: Training progress: 6/18
+2026-03-26 19:07: Smart scheduler started!
+2026-03-26 19:07: Training progress: 6/18
+2026-03-26 19:26: Smart scheduler started!
+2026-03-26 19:26: Training progress: 6/18
+2026-03-26 19:30: Training progress: 6/18
+2026-03-26 19:35: Smart scheduler started!
+2026-03-26 19:35: Training progress: 6/18
+2026-03-26 19:44: Smart scheduler started!
+2026-03-26 19:44: Training progress: 6/18
+2026-03-26 20:00: Training progress: 6/18
+2026-03-26 20:19: Smart scheduler started!
+2026-03-26 20:19: Training progress: 6/18
+2026-03-26 20:23: Smart scheduler started!
+2026-03-26 20:23: Training progress: 6/18
+2026-03-26 20:29: Smart scheduler started!
+2026-03-26 20:29: Training progress: 6/18
+2026-03-26 20:30: Training progress: 6/18
+2026-03-26 20:31: Smart scheduler started!
+2026-03-26 20:31: Training progress: 6/18
+2026-03-26 20:35: ⚠️ Internet DOWN!
+2026-03-26 20:45: Smart scheduler started!
+2026-03-26 20:45: Training progress: 6/18
+2026-03-26 21:02: Training progress: 6/18
+2026-03-26 21:30: Training progress: 6/18
+2026-03-26 22:00: Training progress: 6/18
+2026-03-26 22:30: Training progress: 6/18
+2026-03-26 23:00: Training progress: 6/18
+2026-03-26 23:30: Resumed trainer PID 11754
+2026-03-26 23:30: Resumed ensemble PID 11758
+2026-03-26 23:30: Training RESUMED
+2026-03-26 23:30: 11:30 PM - Training resumed
+2026-03-26 23:30: Training progress: 6/18
+2026-03-26 23:32: Sending daily P&L report...
+2026-03-26 23:32: Daily P&L report sent!
+2026-03-26 23:35: 11:35 PM - MCX P&L report sent
+2026-03-27 00:00: Training progress: 6/18
+2026-03-27 00:30: Training progress: 6/18
+2026-03-27 01:00: Training progress: 6/18
+2026-03-27 01:30: Training progress: 6/18
+2026-03-27 01:31: Smart scheduler started!
+2026-03-27 01:31: Training progress: 6/18
+2026-03-27 01:45: ⚠️ Internet DOWN!
+2026-03-27 02:01: Training progress: 6/18
+2026-03-27 02:30: Training progress: 6/18
+2026-03-27 06:43: Training progress: 6/18
+2026-03-27 07:04: Training progress: 6/18
+2026-03-27 07:30: Training progress: 6/18
+2026-03-27 07:41: Smart scheduler started!
+2026-03-27 07:41: Training progress: 6/18
+2026-03-27 07:56: Smart scheduler started!
+2026-03-27 07:56: Training progress: 6/18
+2026-03-27 08:00: Training progress: 6/18
+2026-03-27 08:16: Smart scheduler started!
+2026-03-27 08:16: Training progress: 6/18
+2026-03-27 08:25: 08:25 AM - MCX tokens refreshed
+2026-03-27 08:30: Training progress: 6/18
+2026-03-27 08:30: Updating Angel options master...
+2026-03-27 08:30: Options master updated!
+2026-03-27 08:45: Paused trainer PID 11754
+2026-03-27 08:45: Paused ensemble PID 11758
+2026-03-27 08:45: Training PAUSED
+2026-03-27 08:45: 8:45 AM - Training paused, good morning + checklist sent
+2026-03-27 09:03: Training progress: 6/18
+2026-03-27 09:30: Training progress: 6/18
+2026-03-27 09:56: Smart scheduler started!
+2026-03-27 09:56: Training progress: 6/18
+2026-03-27 10:00: Training progress: 6/18
+2026-03-27 10:12: Smart scheduler started!
+2026-03-27 10:12: Training progress: 6/18
+2026-03-27 10:14: Smart scheduler started!
+2026-03-27 10:14: Training progress: 6/18
+2026-03-27 10:31: 10:30 AM - Option cache refreshed
+2026-03-27 10:31: Training progress: 6/18
+2026-03-27 10:55: Smart scheduler started!
+2026-03-27 10:55: Training progress: 6/18
+2026-03-27 11:00: Training progress: 6/18
+2026-03-27 11:01: Smart scheduler started!
+2026-03-27 11:01: Training progress: 6/18
+2026-03-27 11:11: Smart scheduler started!
+2026-03-27 11:11: Training progress: 6/18
+2026-03-27 11:30: Training progress: 6/18
+2026-03-27 12:00: Training progress: 6/18
+2026-03-27 12:35: Training progress: 6/18
+2026-03-27 13:00: Training progress: 6/18
+2026-03-27 13:30: Training progress: 6/18
+2026-03-27 13:49: Smart scheduler started!
+2026-03-27 13:49: Training progress: 6/18
+2026-03-27 14:00: Training progress: 6/18
+2026-03-27 14:30: Training progress: 6/18
+2026-03-27 15:00: Training progress: 6/18
+2026-03-27 15:19: Smart scheduler started!
+2026-03-27 15:19: Training progress: 6/18
+2026-03-27 15:30: Training progress: 6/18
+2026-03-27 15:35: 3:35 PM - NSE P&L report sent
+2026-03-27 16:00: Training progress: 6/18
+2026-03-27 16:30: Training progress: 6/18
+2026-03-27 17:00: Training progress: 6/18
+2026-03-27 17:30: Training progress: 6/18
+2026-03-27 17:47: Smart scheduler started!
+2026-03-27 17:47: Training progress: 6/18
+2026-03-27 17:50: Smart scheduler started!
+2026-03-27 17:50: Training progress: 6/18
+2026-03-27 18:01: Training progress: 6/18
+2026-03-27 18:30: Training progress: 6/18
+2026-03-27 19:00: Training progress: 6/18
+2026-03-27 19:30: Training progress: 6/18
+2026-03-27 20:00: Training progress: 6/18
+2026-03-27 20:30: Training progress: 6/18
+2026-03-27 21:00: Training progress: 6/18
+2026-03-27 21:35: Training progress: 6/18
+2026-03-27 22:00: Training progress: 6/18
+2026-03-27 22:32: Training progress: 6/18
+2026-03-27 23:00: Training progress: 6/18
+2026-03-27 23:30: Resumed trainer PID 11754
+2026-03-27 23:30: Resumed ensemble PID 11758
+2026-03-27 23:30: Training RESUMED
+2026-03-27 23:30: 11:30 PM - Training resumed
+2026-03-27 23:30: Training progress: 6/18
+2026-03-27 23:32: Sending daily P&L report...
+2026-03-27 23:32: Daily P&L report sent!
+2026-03-27 23:34: Sending weekly P&L report...
+2026-03-27 23:34: Weekly P&L sent!
+2026-03-27 23:35: 11:35 PM - MCX P&L report sent
+2026-03-28 00:00: Training progress: 6/18
+2026-03-28 00:33: Training progress: 6/18
+2026-03-28 05:36: Training progress: 6/18
+2026-03-28 06:05: Training progress: 6/18
+2026-03-28 06:31: Training progress: 6/18
+2026-03-28 07:02: Training progress: 6/18
+2026-03-28 07:30: Training progress: 6/18
+2026-03-28 08:02: Training progress: 6/18
+2026-03-28 08:25: 08:25 AM - MCX tokens refreshed
+2026-03-28 08:26: 08:25 AM - NSE lot sizes refreshed
+2026-03-28 08:34: Training progress: 6/18
+2026-03-28 08:45: Paused trainer PID 11754
+2026-03-28 08:45: Paused ensemble PID 11758
+2026-03-28 08:45: Training PAUSED
+2026-03-28 08:47: 8:45 AM - Training paused, good morning + checklist sent
+2026-03-28 09:00: 9:00 AM - V31 running ✅
+2026-03-28 09:00: Training progress: 6/18
+2026-03-28 09:30: Training progress: 6/18
+2026-03-28 10:00: Training progress: 6/18
+2026-03-28 10:31: Training progress: 6/18
+2026-03-28 11:06: Training progress: 6/18
+2026-03-28 11:30: Training progress: 6/18
+2026-03-28 12:00: Training progress: 6/18
+2026-03-28 12:30: Training progress: 6/18
+2026-03-28 13:00: Training progress: 6/18
+2026-03-28 13:30: Training progress: 6/18
+2026-03-28 14:00: Training progress: 6/18
+2026-03-28 14:30: Training progress: 6/18
+2026-03-28 15:00: Training progress: 6/18
+2026-03-28 15:30: Training progress: 6/18
+2026-03-28 16:03: Training progress: 6/18
+2026-03-28 16:30: Training progress: 6/18
+2026-03-28 16:40: ⚠️ Internet DOWN!
+2026-03-28 17:02: Training progress: 6/18
+2026-03-28 17:34: Training progress: 6/18
+2026-03-28 18:00: Training progress: 6/18
+2026-03-28 18:20: ⚠️ Internet DOWN!
+2026-03-28 18:30: Training progress: 6/18
+2026-03-28 19:00: Training progress: 6/18
+2026-03-28 19:33: Training progress: 6/18
+2026-03-28 20:00: Training progress: 6/18
+2026-03-28 20:30: Training progress: 6/18
+2026-03-28 20:48: Smart scheduler started!
+2026-03-28 20:48: Training progress: 6/18
+2026-03-28 21:01: Training progress: 6/18
+2026-03-28 21:30: Training progress: 6/18
+2026-03-28 22:00: Training progress: 6/18
+2026-03-28 22:00: Starting weekly retrain...
+2026-03-28 22:00: Weekly retrain initiated!
+2026-03-28 22:30: Training progress: 6/18
+2026-03-28 22:55: Smart scheduler started!
+2026-03-28 22:55: Training progress: 6/18
+2026-03-28 22:59: Smart scheduler started!
+2026-03-28 23:00: Training progress: 6/18
+2026-03-28 23:01: Smart scheduler started!
+2026-03-28 23:01: Training progress: 6/18
+2026-03-28 23:08: Smart scheduler started!
+2026-03-28 23:08: Training progress: 6/18
+2026-03-28 23:22: Smart scheduler started!
+2026-03-28 23:22: Training progress: 6/18
+2026-03-28 23:27: Smart scheduler started!
+2026-03-28 23:27: Training progress: 6/18
+2026-03-28 23:30: Resumed trainer PID 11754
+2026-03-28 23:30: Resumed ensemble PID 11758
+2026-03-28 23:30: Training RESUMED
+2026-03-28 23:30: 11:30 PM - Training resumed
+2026-03-28 23:30: Training progress: 6/18
+2026-03-28 23:31: Smart scheduler started!
+2026-03-28 23:31: Training progress: 6/18
+2026-03-28 23:32: Weekend - skipping P&L report
+2026-03-28 23:35: 11:35 PM - MCX P&L report sent
+2026-03-28 23:37: Smart scheduler started!
+2026-03-28 23:37: Training progress: 6/18
+2026-03-28 23:40: Smart scheduler started!
+2026-03-28 23:40: Training progress: 6/18
+2026-03-29 00:00: Training progress: 6/18
+2026-03-29 00:02: Smart scheduler started!
+2026-03-29 00:02: Training progress: 6/18
+2026-03-29 00:05: Smart scheduler started!
+2026-03-29 00:05: Training progress: 6/18
+2026-03-29 00:12: Smart scheduler started!
+2026-03-29 00:12: Training progress: 6/18
+2026-03-29 00:14: Smart scheduler started!
+2026-03-29 00:14: Training progress: 6/18
+2026-03-29 00:16: Smart scheduler started!
+2026-03-29 00:16: Training progress: 6/18
+2026-03-29 00:30: Training progress: 6/18
+2026-03-29 01:00: Training progress: 6/18
+2026-03-29 01:30: Training progress: 6/18
+2026-03-29 02:01: Training progress: 6/18
+2026-03-29 02:31: Training progress: 6/18
+2026-03-29 05:42: Training progress: 6/18
+2026-03-29 06:02: Training progress: 6/18
+2026-03-29 06:30: Training progress: 6/18
+2026-03-29 07:04: Training progress: 6/18
+2026-03-29 07:34: Training progress: 6/18
+2026-03-29 08:00: Training progress: 6/18
+2026-03-29 08:25: 08:25 AM - MCX tokens refreshed
+2026-03-29 08:25: 08:25 AM - NSE lot sizes refreshed
+2026-03-29 08:30: Training progress: 6/18
+2026-03-29 08:30: Updating Angel options master...
+2026-03-29 08:30: Options master updated!
+2026-03-29 08:45: Paused trainer PID 11754
+2026-03-29 08:45: Paused ensemble PID 11758
+2026-03-29 08:45: Training PAUSED
+2026-03-29 08:45: 8:45 AM - Training paused, good morning + checklist sent
+2026-03-29 09:00: 9:00 AM - V31 running ✅
+2026-03-29 09:00: Training progress: 6/18
+2026-03-29 09:30: Training progress: 6/18
+2026-03-29 10:00: Training progress: 6/18
+2026-03-29 10:34: Training progress: 6/18
+2026-03-29 11:00: Training progress: 6/18
+2026-03-29 11:32: Training progress: 6/18
+2026-03-29 12:01: Training progress: 6/18
+2026-03-29 12:30: Training progress: 6/18
+2026-03-29 13:01: Training progress: 6/18
+2026-03-29 13:33: Training progress: 6/18
+2026-03-29 14:06: Training progress: 6/18
+2026-03-29 14:41: Training progress: 6/18
+2026-03-29 15:00: Training progress: 6/18
+2026-03-29 15:31: Training progress: 6/18
+2026-03-29 16:02: Training progress: 6/18
+2026-03-29 16:31: Training progress: 6/18
+2026-03-29 17:03: Training progress: 6/18
+2026-03-29 17:30: Training progress: 6/18
+2026-03-29 18:00: Training progress: 6/18
+2026-03-29 18:05: ⚠️ Internet DOWN!
+2026-03-29 18:30: Training progress: 6/18
+2026-03-29 18:35: ⚠️ Internet DOWN!
+2026-03-29 18:45: ⚠️ Internet DOWN!
+2026-03-29 19:03: Training progress: 6/18
+2026-03-29 19:30: Training progress: 6/18
+2026-03-29 19:40: ⚠️ Internet DOWN!
+2026-03-29 20:00: Training progress: 6/18
+2026-03-29 20:32: Training progress: 6/18
+2026-03-29 21:00: Training progress: 6/18
+2026-03-29 21:30: Training progress: 6/18
+2026-03-29 22:00: Training progress: 6/18
+2026-03-29 22:00: Starting weekly retrain...
+2026-03-29 22:00: Weekly retrain initiated!
+2026-03-29 22:30: Training progress: 6/18
+2026-03-29 23:00: Training progress: 6/18
+2026-03-29 23:30: Resumed trainer PID 11754
+2026-03-29 23:30: Resumed ensemble PID 11758
+2026-03-29 23:30: Training RESUMED
+2026-03-29 23:30: 11:30 PM - Training resumed
+2026-03-29 23:30: Training progress: 6/18
+2026-03-29 23:32: Weekend - skipping P&L report
+2026-03-29 23:35: 11:35 PM - MCX P&L report sent
+2026-03-30 00:00: Training progress: 6/18
+2026-03-30 00:30: Training progress: 6/18
+2026-03-30 01:03: Training progress: 6/18
+2026-03-30 06:41: Training progress: 6/18
+2026-03-30 07:01: Training progress: 6/18
+2026-03-30 07:31: Training progress: 6/18
+2026-03-30 08:02: Training progress: 6/18
+2026-03-30 08:26: 08:25 AM - MCX tokens refreshed
+2026-03-30 08:26: 08:25 AM - NSE lot sizes refreshed
+2026-03-30 08:30: Training progress: 6/18
+2026-03-30 08:30: Updating Angel options master...
+2026-03-30 08:30: Options master updated!
+2026-03-30 08:45: Paused trainer PID 11754
+2026-03-30 08:45: Paused ensemble PID 11758
+2026-03-30 08:45: Training PAUSED
+2026-03-30 08:45: 8:45 AM - Training paused, good morning + checklist sent
+2026-03-30 09:00: 9:00 AM - V31 running ✅
+2026-03-30 09:00: Training progress: 6/18
+2026-03-30 09:30: Training progress: 6/18
+2026-03-30 10:00: Training progress: 6/18
+2026-03-30 10:31: 10:30 AM - Option cache refreshed
+2026-03-30 10:31: Training progress: 6/18
+2026-03-30 11:00: Training progress: 6/18
+2026-03-30 11:30: Training progress: 6/18
+2026-03-30 11:35: ⚠️ Internet DOWN!
+2026-03-30 12:03: Training progress: 6/18
+2026-03-30 12:30: Training progress: 6/18
+2026-03-30 13:01: Training progress: 6/18
+2026-03-30 13:30: Training progress: 6/18
+2026-03-30 14:00: Training progress: 6/18
+2026-03-30 14:30: Training progress: 6/18
+2026-03-30 15:01: Training progress: 6/18
+2026-03-30 15:30: Training progress: 6/18
+2026-03-30 15:35: 3:35 PM - NSE P&L report sent
+2026-03-30 16:00: Training progress: 6/18
+2026-03-30 16:30: Training progress: 6/18
+2026-03-30 17:00: Training progress: 6/18
+2026-03-30 17:30: Training progress: 6/18
+2026-03-30 18:00: Training progress: 6/18
+2026-03-30 18:30: Training progress: 6/18
+2026-03-30 19:00: Training progress: 6/18
+2026-03-30 19:30: Training progress: 6/18
+2026-03-30 20:00: Training progress: 6/18
+2026-03-30 20:30: Training progress: 6/18
+2026-03-30 21:03: Training progress: 6/18
+2026-03-30 21:30: Training progress: 6/18
+2026-03-30 22:00: Training progress: 6/18
+2026-03-30 22:30: Training progress: 6/18
+2026-03-30 23:00: Training progress: 6/18
+2026-03-30 23:30: Resumed trainer PID 11754
+2026-03-30 23:30: Resumed ensemble PID 11758
+2026-03-30 23:30: Training RESUMED
+2026-03-30 23:30: 11:30 PM - Training resumed
+2026-03-30 23:30: Training progress: 6/18
+2026-03-30 23:32: Sending daily P&L report...
+2026-03-30 23:32: Daily P&L report sent!
+2026-03-30 23:35: 11:35 PM - MCX P&L report sent
+2026-03-31 00:00: Training progress: 6/18
+2026-03-31 00:30: Training progress: 6/18
+2026-03-31 01:00: Training progress: 6/18
+2026-03-31 01:30: Training progress: 6/18
+2026-03-31 02:00: Training progress: 6/18
+2026-03-31 02:31: Training progress: 6/18
+2026-03-31 06:43: Training progress: 6/18
+2026-03-31 07:02: Training progress: 6/18
+2026-03-31 07:36: Training progress: 6/18
+2026-03-31 08:00: Training progress: 6/18
+2026-03-31 08:32: Training progress: 6/18
+2026-03-31 08:45: Paused trainer PID 11754
+2026-03-31 08:45: Paused ensemble PID 11758
+2026-03-31 08:45: Training PAUSED
+2026-03-31 08:46: 8:45 AM - Training paused, good morning + checklist sent
+2026-03-31 09:00: 9:00 AM - V31 running ✅
+2026-03-31 09:00: Training progress: 6/18
+2026-03-31 09:30: Training progress: 6/18
+2026-03-31 10:00: Training progress: 6/18
+2026-03-31 10:30: 10:30 AM - Option cache refreshed
+2026-03-31 10:30: Training progress: 6/18
+2026-03-31 11:00: Training progress: 6/18
+2026-03-31 11:30: Training progress: 6/18
+2026-03-31 12:02: Training progress: 6/18
+2026-03-31 12:30: Training progress: 6/18
+2026-03-31 13:00: Training progress: 6/18
+2026-03-31 13:30: Training progress: 6/18
+2026-03-31 14:00: Training progress: 6/18
+2026-03-31 14:30: Training progress: 6/18
+2026-03-31 15:00: Training progress: 6/18
+2026-03-31 15:30: Training progress: 6/18
+2026-03-31 15:35: 3:35 PM - NSE P&L report sent
+2026-03-31 16:00: Training progress: 6/18
+2026-03-31 16:30: Training progress: 6/18
+2026-03-31 17:00: Training progress: 6/18
+2026-03-31 17:30: Training progress: 6/18
+2026-03-31 18:00: Training progress: 6/18
+2026-03-31 18:31: Training progress: 6/18
+2026-03-31 19:00: Training progress: 6/18
+2026-03-31 19:30: Training progress: 6/18
+2026-03-31 20:00: Training progress: 6/18
+2026-03-31 20:30: Training progress: 6/18
+2026-03-31 21:00: Training progress: 6/18
+2026-03-31 21:30: Training progress: 6/18
+2026-03-31 22:00: Training progress: 6/18
+2026-03-31 22:30: Training progress: 6/18
+2026-03-31 23:00: Training progress: 6/18
+2026-03-31 23:30: Resumed trainer PID 11754
+2026-03-31 23:30: Resumed ensemble PID 11758
+2026-03-31 23:30: Training RESUMED
+2026-03-31 23:30: 11:30 PM - Training resumed
+2026-03-31 23:30: Training progress: 6/18
+2026-03-31 23:32: Sending daily P&L report...
+2026-03-31 23:32: Daily P&L report sent!
+2026-03-31 23:35: 11:35 PM - MCX P&L report sent
+2026-04-01 00:00: Training progress: 6/18
+2026-04-01 00:34: Training progress: 6/18
+2026-04-01 01:00: Training progress: 6/18
+2026-04-01 01:30: Training progress: 6/18
+2026-04-01 02:00: Training progress: 6/18
+2026-04-01 02:30: Training progress: 6/18
+2026-04-01 03:00: Training progress: 6/18
+2026-04-01 03:30: Training progress: 6/18
+2026-04-01 04:00: Training progress: 6/18
+2026-04-01 04:00: Rotating logs...
+2026-04-01 04:00: Logs rotated!
