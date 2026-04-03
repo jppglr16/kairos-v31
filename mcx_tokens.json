@@ -1,13 +1,13 @@
 {
   "CRUDEOIL": {
-    "token": "486502",
-    "symbol": "CRUDEOIL20APR26FUT",
-    "lotsize": 100,
+    "token": "486503",
+    "symbol": "CRUDEOILM20APR26FUT",
+    "lotsize": 10,
     "exchange": "MCX"
   },
   "GOLDM": {
-    "token": "477904",
-    "symbol": "GOLDM03APR26FUT",
+    "token": "487819",
+    "symbol": "GOLDM05MAY26FUT",
     "lotsize": 100,
     "exchange": "MCX"
   },
